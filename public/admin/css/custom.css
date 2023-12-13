@@ -1,0 +1,80 @@
+* {
+  
+}
+.w-4 {
+  width: 1rem;
+}
+.h-4 {
+  height: 1rem;
+}
+
+.w-6 {
+  width: 1.5rem;
+}
+.h-6 {
+  height: 1.5rem;
+}
+
+.dropzone {
+  background: white;
+  border-radius: 5px;
+  border: 2px dashed rgb(0, 135, 247);
+  border-image: none;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card-footer.clearfix {
+  border: 1px solid gainsboro;
+}
+
+.card .table a {
+  color: #103a71;
+}
+
+.card-footer a.page-link {
+  color: #103a71;
+}
+
+a.brand-link {
+  text-align: center;
+  font-size: 23px;
+  background: #103a71;
+  color: white;
+  padding: 20px 0;
+}
+
+.sidebar .nav-pills .nav-link {
+  color: #103a71 !important;
+}
+
+.login-box button.btn.btn-primary.btn-block {
+  background: #103a71;
+}
+
+.login-box button.btn.btn-primary.btn-block:hover {
+  background: white;
+  color: #103a71;
+}
+
+.login-box span.fas.fa-lock, span.fas.fa-envelope {width: 18px;height: 18px;}
+.login-box .card.card-outline.card-primary {
+  border-top: 5px solid #103a71;
+}
+
+body {
+  color: #103a71;
+}
+
+.product-info p {
+  margin: 5px;
+}
+
+.inner .tp {
+  padding: 0px 15px;
+}
+
+.inner p {
+  margin-bottom: 10px;
+}
