@@ -947,6 +947,11 @@ h2.c-title {
 }
 
 /* auth */
+label.error {
+    font-size: 10px;
+    color: red;
+}
+
 .auth-box {
     border-top: 5px solid #103A71 !important;
     top: 5%;
@@ -969,10 +974,12 @@ h2.c-title {
 
 .in-group label {
     width: 100%;
+    margin-bottom: 8px;
 }
 
 .in-group {
-    margin: 15px 5px;
+    margin: 10px 5px;
+    height: 85px;
 }
 
 .in-group input {
