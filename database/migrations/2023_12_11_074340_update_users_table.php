@@ -12,11 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('phone');
-            $table->string('avatar', 500);
-            $table->string('birthday');
-            $table->string('address');
-            $table->unsignedBigInteger('id_role');
+
+            $table->unsignedBigInteger('id_role')->default(2);
             $table->tinyInteger('deleted')->default(0);
             $table->foreign('id_role')->references('id')->on('role');
         });

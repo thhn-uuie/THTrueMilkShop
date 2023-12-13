@@ -13,10 +13,10 @@
     <link rel="icon" href="https://www.thmilk.vn/wp-content/themes/wp-th/favicon.png" type="image/png">
 
     <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
-    <link href="../../../../public/frontend/css/bootstrap.min.css" rel="stylesheet">
+    <link href="public/frontend/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="../../../../public/frontend/css/style.css" rel="stylesheet">
+    <link href="public/frontend/css/style.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -31,53 +31,62 @@
 </head>
 
 <body id="page-top" class="index">
-    <div class="container">
-        <div class="row">
-            <div class="auth-box col-md-4 col-md-push-4">
-                <div class="card-title">
-                    <p>Đăng ký</p>
-                </div>
-                <div class="card-text">
-                    <form action="" id="form-sigup">
-                        <div class="in-group username">
-                            <label for="username">Username<i style="color: red;">*</i></label>
-                            <input type="text" name="username" id="username" required placeholder="Nhập tên ">
-                        </div>
 
-                        <!-- <div class="in-group email">
-                            <label for="email">Email<i style="color: red;">*</i></label>
-                            <input type="email" name="email" id="email" required>
-                        </div> -->
+    <form method="POST" action="{{ route('frontend.auth.signup') }}">
+        @csrf
+        @if (session('success'))
+            <div class="alert alert-primary">
+                {{ session('success') }}
+            </div>
+        @endif
+        <div class="container">
+            <div class="row">
+                <div class="auth-box col-md-4 col-md-push-4">
+                    <div class="card-title">
+                        <p>Đăng ký</p>
+                    </div>
+                    <div class="card-text">
+                        <form action="" id="form-sigup">
+                            <div class="in-group username">
+                                <label for="username">Username<i style="color: red;">*</i></label>
+                                <input type="text" name="username" id="username" required placeholder="Nhập tên ">
+                            </div>
 
-                        <div class="in-group tel">
-                            <label for="tel">Số điện thoại<i style="color: red;">*</i></label>
-                            <input type="tel" name="tel" id="tel" required placeholder="Nhập số điện thoại">
-                        </div>
+                            <div class="in-group email">
+                                <label for="email">Email<i style="color: red;">*</i></label>
+                                <input type="email" name="email" id="email" required>
+                            </div>
 
-                        <div class="in-group password">
-                            <label for="password">Mật khẩu<i style="color: red;">*</i></label>
-                            <input type="password" name="password" id="password" required placeholder="Nhập mật khẩu">
-                        </div>
+    {{--                        <div class="in-group tel">--}}
+    {{--                            <label for="tel">Số điện thoại<i style="color: red;">*</i></label>--}}
+    {{--                            <input type="tel" name="tel" id="tel" required placeholder="Nhập số điện thoại">--}}
+    {{--                        </div>--}}
 
-                        <!-- <div class="in-group email">
-                            <label for="password">Nhập lại mật khẩu<i style="color: red;">*</i></label>
-                            <input type="password" name="c-password" id="c-password" required placeholder="Nhập lại mật khẩu">
-                        </div> -->
+                            <div class="in-group password">
+                                <label for="password">Mật khẩu<i style="color: red;">*</i></label>
+                                <input type="password" name="password" id="password" required placeholder="Nhập mật khẩu">
+                            </div>
 
-                        <!-- /.col -->
-                        <div class="in-group">
-                            <button type="submit" class="btn btn-primary btn-block">Đăng ký</button>
+                            <!-- <div class="in-group email">
+                                <label for="password">Nhập lại mật khẩu<i style="color: red;">*</i></label>
+                                <input type="password" name="c-password" id="c-password" required placeholder="Nhập lại mật khẩu">
+                            </div> -->
+
                             <!-- /.col -->
-                            <a href="login.php" class="btn btn-primary btn-block non-active">Đăng nhập</a>
-                        </div>
-                        <div class="f-password">
-                            <a href="fpassword.php">Quên mật khẩu?</a>
-                        </div>
-                    </form>
+                            <div class="in-group">
+                                <button type="submit" class="btn btn-primary btn-block">Đăng ký</button>
+                                <!-- /.col -->
+                                <a href="{{ route('frontend.auth.login') }}" class="btn btn-primary btn-block non-active">Đăng nhập</a>
+                            </div>
+                            <div class="f-password">
+                                <a href="fpassword.php">Quên mật khẩu?</a>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
 
 <!-- đang lỗi huhu -->
     <!-- Bao gồm thư viện jQuery Validate -->
