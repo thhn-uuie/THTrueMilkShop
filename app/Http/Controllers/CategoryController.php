@@ -72,20 +72,18 @@ class CategoryController extends Controller
         $category = Category::find($id);
         if ($request->isMethod('POST')) {
             if ($request->has('file_upload')) {
-                $oldFile = public_path('admib/img/category') . '/' . $category->image;
+                $oldFile = public_path('admin/img/category') . '/' . $category->image;
                 if (File::exists($oldFile)) {
                     File::delete($oldFile);
                 }
-                $resultImg = Storage::delete($category->image);
-                if ($resultImg) {
-                    $file = $request->file('file_upload');
-                    $file_name = uniqid() . '_' . $file->getClientOriginalName();
-                    $file->move(public_path('admin/img/category'), $file_name);
-                    $request->merge(['image' => $file_name]);
-                } else {
+                $file = $request->file('file_upload');
+                $file_name = uniqid() . '_' . $file->getClientOriginalName();
+                $file->move(public_path('admin/img/category'), $file_name);
+                $request->merge(['image' => $file_name]);
+            } else {
                     $file_name = $category->image;
                     $request->merge(['image' => $file_name]);
-                }
+
             }
             $result = $category->update($request->all());
 
