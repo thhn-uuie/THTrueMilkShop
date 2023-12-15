@@ -8,10 +8,10 @@
 	<link rel="stylesheet"
 		href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
 	<!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ url('/public/admin/plugins/fontawesome-free/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/public/admin/plugins/fontawesome-free/css/all.min.css') }}">
     <!-- Theme style -->
-    <link rel="stylesheet" href="{{ url('/public/admin/css/adminlte.min.css') }}">
-    <link rel="stylesheet" href="{{ url('/public/admin/css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('/public/admin/css/adminlte.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/public/admin/css/custom.css') }}">
 </head>
 
 <body class="sidebar-mini" style="height: auto;">
@@ -39,10 +39,16 @@
 				<!-- /.container-fluid -->
 			</section>
 			<!-- Main content -->
-            @if($message = \Illuminate\Support\Facades\Session::get('success'))
-                <div class="alert alert-success">
-                    <p>{{ $message }}</p>
+            @if ($message = Session::get('success'))
+
+                <div class="alert alert-success alert-block">
+
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+
+                    <strong>{{ $message }}</strong>
+
                 </div>
+
             @endif
 			<section class="content">
 				<!-- Default box -->
@@ -76,7 +82,6 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-
                                         @foreach($categories as $item)
                                         <tr>
                                             <td> {{ $item->id }} </td>
@@ -101,7 +106,13 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="#">
+                                                <a href="{{ route('admin.category.category-detail', ['id' => $item->id]) }}">
+                                                    <svg class="filament-link-icon w-4 h-4 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                                                        <path fill-rule="evenodd" d="M19.707 9.293a1 1 0 010 1.414l-9 9a1 1 0 01-1.414 0l-9-9a1 1 0 111.414-1.414L10 16.586l8.293-8.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                                    </svg>
+                                                </a>
+                                                <a href="{{ route('admin.category.category-update', ['id' => $item->id]) }}">
                                                     <svg class="filament-link-icon w-4 h-4 mr-1"
                                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                                                         fill="currentColor" aria-hidden="true">
@@ -150,13 +161,13 @@
 	</div>
 	<!-- ./wrapper -->
 	<!-- jQuery -->
-	<script src="../public/admin/plugins/jquery/jquery.min.js"></script>
+	<script src="{{ asset('public/admin/plugins/jquery/jquery.min.js') }}"></script>
 	<!-- Bootstrap 4 -->
-	<script src="../public/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="{{ asset('public/admin/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 	<!-- AdminLTE App -->
-	<script src="../public/admin/js/adminlte.min.js"></script>
+	<script src="{{ asset('public/admin/js/adminlte.min.js') }}"></script>
 	<!-- AdminLTE for demo purposes -->
-	<script src="../public/admin/js/demo.js"></script>
+	<script src="{{ asset('public/admin/js/demo.js') }}"></script>
 </body>
 
 </html>

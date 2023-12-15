@@ -41,10 +41,9 @@ Route::get('/admin', function () {
 Route::prefix('admin/category')->name('admin.category.')->group(function () {
     Route::get('/', [CategoryController::class, 'index'])->name('categories');
     Route::match(['GET', 'POST'],'/create', [CategoryController::class, 'store'])->name('create-category');
-
-//    Route::match(['GET', 'POST'],'/detail/{id}', [CategoryController::class, 'show'])->name('detail');
+    Route::match(['GET', 'POST'],'/detail/{id}', [CategoryController::class, 'show'])->name('category-detail');
 //    Route::get('/delete/{id}', [CategoryController::class, 'destroy'])->name('delete');
-//    Route::match(['GET', 'POST'],'/update/{id}', [CategoryController::class, 'update'])->name('update');
+    Route::match(['GET', 'POST'],'/update/{id}', [CategoryController::class, 'update'])->name('category-update');
 
 });
 

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -30,20 +32,16 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         if ($request->isMethod('POST')) {
+            if ($request->has('file_upload')) {
+                $file = $request->file('file_upload');
+                $file_name = uniqid() . '_' . $file->getClientOriginalName();
+                $file->move(public_path('admin/img/category'), $file_name);
+            }
+            $request->merge(['image' => $file_name]);
+            $category = Category::create($request->all());
+            if ($category) {
 
-
-//            if ($request->has('file_upload')) {
-//                $file = $request->file('file_upload');
-//                $file_name = $file->getClientOriginalName();
-//                $file->move(public_path('public/admin/img'), $file_name);
-//            }
-//            $request->merge(['image' => $file_name]);
-            $data = Category::create([
-                'name_category' => $request->name,
-                'image' => '123',
-            ]);
-            if ($data) {
-                return redirect()->back()->with('success', 'Them moi thanh cong');
+                return view('admin.category.category-detail')->with('success', 'Them moi thanh cong')->with('category_item', $category);;
             }
         }
         return view('admin.category.create-category');
@@ -54,7 +52,8 @@ class CategoryController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $category_item = Category::find($id);
+        return view('admin.category.category-detail', compact('category_item'));
     }
 
     /**
@@ -70,7 +69,31 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $category = Category::find($id);
+        if ($request->isMethod('POST')) {
+            if ($request->has('file_upload')) {
+                $oldFile = public_path('admib/img/category') . '/' . $category->image;
+                if (File::exists($oldFile)) {
+                    File::delete($oldFile);
+                }
+                $resultImg = Storage::delete($category->image);
+                if ($resultImg) {
+                    $file = $request->file('file_upload');
+                    $file_name = uniqid() . '_' . $file->getClientOriginalName();
+                    $file->move(public_path('admin/img/category'), $file_name);
+                    $request->merge(['image' => $file_name]);
+                } else {
+                    $file_name = $category->image;
+                    $request->merge(['image' => $file_name]);
+                }
+            }
+            $result = $category->update($request->all());
+
+            if ($result) {
+                return redirect()->route('admin.category.categories')->with('success', 'Chỉnh sửa thành công');
+            }
+        }
+        return view('admin.category.category-update', compact('category'));
     }
 
     /**
@@ -78,6 +101,9 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $category = Category::find($id);
+        $deleteImg = Storage::delete($category->image);
+        $category->delete();
+        return redirect()->route('admin.category.categories')->with('success', 'Xoa thanh cong');
     }
 }

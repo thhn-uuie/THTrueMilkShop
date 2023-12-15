@@ -30,10 +30,10 @@ class ProductController extends Controller
         if ($request->isMethod('POST')) {
             dd($request);
 
-            if ($request->has('file_upload')) {
-                $file = $request->file('file_upload');
-                $file_name = $file->getClientOriginalName();
-                $file->move(public_path('public/admin/img'), $file_name);
+            if ($request->has('image')) {
+                $file = $request->file('image');
+                $file_name = uniqid() . '_' . $file->getClientOriginalName();
+                $file->move(public_path('admin/img/product'), $file_name);
             }
             $request->merge(['image' => $file_name]);
             $data = Product::create([
