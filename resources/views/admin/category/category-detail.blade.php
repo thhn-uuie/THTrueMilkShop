@@ -10,11 +10,10 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="../../../public/admin/plugins/fontawesome-free/css/all.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="../../../public/admin/css/adminlte.min.css">
-    <link rel="stylesheet" href="../../../public/admin/plugins/summernote/summernote-bs4.min.css">
-    <link rel="stylesheet" href="../../../public/admin/css/custom.css">
+	<link rel="stylesheet" href="../../public/admin/plugins/fontawesome-free/css/all.min.css">
+	<!-- Theme style -->
+	<link rel="stylesheet" href="../../public/admin/css/adminlte.min.css">
+	<link rel="stylesheet" href="../../public/admin/css/custom.css">
 </head>
 
 <body class="sidebar-mini" style="height: auto;">
@@ -129,10 +128,10 @@
                     <div class="row mb-2">
                         <div class="col-sm-6">
                             <a id="sua" class="btn btn-primary">Sửa</a>
-                            <a href="users.html" class="btn btn-primary">Xóa</a>
+                            <a href="products.html" class="btn btn-primary">Xóa</a>
                         </div>
                         <div class="col-sm-6 text-right">
-                            <a href="users.html" class="btn btn-primary">Back</a>
+                            <a href="categories.html" class="btn btn-primary">Back</a>
                         </div>
                     </div>
                 </div>
@@ -149,7 +148,7 @@
                                 <div class="card-header pt-3">
                                     <div class="row product-info">
                                         <div class="col-sm-12">
-                                            <h1 class="h4 mb-3" id="product-name">DTH</h1>
+                                            <h1 class="h4 mb-3" id="product-name">Dummy Product Title</h1>
                                         </div>
                                         <div class="col-sm-3">
                                             <!-- <div class="card mb-3"> -->
@@ -165,18 +164,10 @@
                                             <h5>Thông tin</h5>
 
                                             <p id="id">ID: 1</p>
-                                            <p id="email">Email: abc@gmai.com</p>
-											<p id="address">Address: bcjwet diewuh ửiquwhscwui </p>
-                                            <p id="phone">Phone: 029387372</p>
+
                                         </div>
                                         <div class="col-sm-3">
-                                            <h5>Gender</h5>
-                                            <div class="mb-3" id="gender">
-                                                <select name="gender" id="gender" class="form-control">
-                                                    <option value="">Female</option>
-                                                </select>
-                                            </div>
-											<h5>Status</h5>
+                                            <h5>Status</h5>
                                             <div class="mb-3" id="status">
                                                 <select name="status" id="status" class="form-control">
                                                     <option value="">Active</option>
@@ -191,50 +182,31 @@
                     </div>
 
                     <form action="">
-                        <div class="row" id="s_user">
+                        <div class="row" id="s_category">
                             <div class="col-md-8">
                                 <div class="card mb-3">
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="mb-3">
-                                                    <label for="title">Name<i style="color: red;">*</i></label>
+                                                    <label for="title">Name Category<i style="color: red;">*</i></label>
                                                     <input type="text" name="name" id="name" class="form-control"
-                                                        placeholder="Name" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="mb-3">
-                                                    <label for="price">Email<i style="color: red;">*</i></label>
-                                                    <input type="email" name="email" id="email" class="form-control"
-                                                        placeholder="Email" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="mb-3">
-                                                    <label for="description">Phone<i style="color: red;">*</i></label>
-                                                    <input type="tel" name="phone" id="phone" class="form-control"
-                                                        placeholder="Phone" required>
+                                                        placeholder="name" required>
                                                 </div>
                                             </div>
 
-											<div class="col-md-12">
-                                                <div class="mb-3">
-                                                    <label for="description">Address<i style="color: red;">*</i></label>
-                                                    <input type="text" name="address" id="address" class="form-control"
-                                                        placeholder="Address" required>
-                                                </div>
-                                            </div>
-											<div class="col-sm-12">
-                                            <div class="mb-3" id="s_gender">
-												<label for="gender">Gender</label>
-                                                <select name="s_gender" id="s_gender" class="form-control">
-                                                    <option value="">Female</option>
-													<option value="">Male</option>
-                                                </select>
-                                            </div>
-											</div>
 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <h5>Product status</h5>
+                                        <div class="mb-3">
+                                            <select name="s_status" id="s_status" class="form-control">
+                                                <option value="1">Active</option>
+                                                <option value="0">Block</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -245,35 +217,25 @@
 
                             </div>
                             <div class="col-md-4">
+
                                 <div class="card mb-3">
-									<div class="card-body">
-										<h5>Image</h5>
-										<div class="wrapp" id="wrapper">
-											<div class="image">
-												<img src="" alt="" id="img">
-											</div>
-											<div class="content">
-												<div class="icon"><i class="fa fa-cloud-upload-alt"></i></div>
-												<div class="text">No file chosen, yet!</div>
-											</div>
-											<div class="file-name">File name here</div>
-										</div>
-
-										<input type="file" id="l_image" name="image" hidden>
-										<button type="button" onclick="defaultBtnActive()" id="custom-btn">Choose a file</button>
-
-									</div>
-								</div>
-                                
-								<div class="card">
                                     <div class="card-body">
-                                        <h5>Status</h5>
-                                        <div class="mb-3">
-                                            <select name="s_status" id="s_status" class="form-control">
-                                                <option value="">Active</option>
-                                                <option value="">Block</option>
-                                            </select>
+                                        <h5>Image</h5>
+                                        <div class="wrapp" id="wrapper">
+                                            <div class="image">
+                                                <img src="" alt="" id="img">
+                                            </div>
+                                            <div class="content">
+                                                <div class="icon"><i class="fa fa-cloud-upload-alt"></i></div>
+                                                <div class="text">No file chosen, yet!</div>
+                                            </div>
+                                            <div class="file-name">File name here</div>
                                         </div>
+
+                                        <input type="file" id="l_image" name="image" hidden>
+                                        <button type="button" onclick="defaultBtnActive()" id="custom-btn">Choose a
+                                            file</button>
+
                                     </div>
                                 </div>
 
@@ -293,24 +255,23 @@
 
     </div>
 
-    <script src="../../../public/admin/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="../../../public/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="../../../public/admin/js/adminlte.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
     <!-- Summernote -->
-    <script src="../../../public/admin/plugins/summernote/summernote-bs4.min.js"></script>
-    <script src="../../../public/admin/plugins/dropzone/dropzone.js"></script>
-    <script src="../../../public/admin/js/demo.js"></script>
-    <script src="../../../public/admin/js/custom.js"></script>
+    <script src="../../plugins/summernote/summernote-bs4.min.js"></script>
+    <script src="../../public/admin/plugins/jquery/jquery.min.js"></script>
+	<!-- Bootstrap 4 -->
+	<script src="../../public/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- AdminLTE App -->
+	<script src="../../public/admin/js/adminlte.min.js"></script>
+	<!-- AdminLTE for demo purposes -->
+	<script src="../../public/admin/js/demo.js"></script>
+	<script src="../../public/admin/js/custom.js"></script>
 
     <script>
         // Lấy tham chiếu đến phần tử <a> có id là "sua"
         const suaLink = document.querySelector('#sua');
 
         // Lấy tham chiếu đến phần tử <div> có id là "s_product"
-        const sProductDiv = document.querySelector('#s_user');
+        const sProductDiv = document.querySelector('#s_category');
 
         // Gán sự kiện click cho phần tử <a>
         suaLink.addEventListener('click', () => {

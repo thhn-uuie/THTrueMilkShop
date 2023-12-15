@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="{{ url('/public/admin/css/adminlte.min.css') }}">
     <link rel="stylesheet" href="{{ url('/public/admin/css/custom.css') }}">
     <link rel="stylesheet" href="{{ url('/public/admin/plugins/summernote/summernote-bs4.min.css') }}">
-    <link rel="stylesheet" href="{{ url('/public/admin/plugins/dropzone/dropzone.css') }}">
 </head>
 
 <body class="sidebar-mini" style="height: auto;">
@@ -75,22 +74,48 @@
                                                               style="width: 100%;"></textarea>
                                                 </div>
                                             </div>
+                                            <div class="col-md-12">
+                                            <div class="card">
+                                    <div class="card-body">
+                                        <h2 class="h4  mb-3">Product category</h2>
+                                        <div class="mb-3">
+                                            
+                                            <select name="category" id="category" class="form-control">
+                                                <?php $categories = DB::table('category')->select('name_category')->get(); ?>
+                                                @foreach($categories as $item)
+                                                    <option value="{{ $item->name_category }}">{{ $item->name_category }}</option>
+                                                @endforeach
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
 
                             </div>
                             <div class="col-md-4">
-                                <div class="card mb-3">
-                                    <div class="card-body">
-                                        <h2 class="h4 mb-3">Image</h2>
-                                        <div id="image" class="dropzone dz-clickable" >
-                                            <div class="dz-message needsclick">
-                                                <br>Drop files here or click to upload.<br><br>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="card mb-3">
+									<div class="card-body">
+										<h2 class="h4 mb-3">Image</h2>
+										<div class="wrapp" id="wrapper">
+											<div class="image">
+												<img src="" alt="" id="img">
+											</div>
+											<div class="content">
+												<div class="icon"><i class="fa fa-cloud-upload-alt"></i></div>
+												<div class="text">No file chosen, yet!</div>
+											</div>
+											<div class="file-name">File name here</div>
+										</div>
+
+										<input type="file" id="l_image" name="image" hidden>
+										<button type="button" onclick="defaultBtnActive()" id="custom-btn">Choose a file</button>
+
+									</div>
+								</div>
                                 <div class="card mb-3">
                                     <div class="card-body">
                                         <h2 class="h4 mb-3">Product status</h2>
@@ -102,21 +127,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h2 class="h4  mb-3">Product category</h2>
-                                        <div class="mb-3">
-                                            <label for="category">Category</label>
-                                            <select name="category" id="category" class="form-control">
-                                                <?php $categories = DB::table('category')->select('name_category')->get(); ?>
-                                                @foreach($categories as $item)
-                                                    <option value="{{ $item->name_category }}">{{ $item->name_category }}</option>
-                                                @endforeach
-                                            </select>
-
-                                        </div>
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
 
@@ -143,30 +154,8 @@
 <!-- AdminLTE for demo purposes -->
 <!-- Summernote -->
 <script src="{{ url('/public/admin/plugins/summernote/summernote-bs4.min.js') }}"></script>
-<script src="{{ url('/public/admin/plugins/dropzone/dropzone.js') }}"></script>
 <script src="{{ url('/public/admin/js/demo.js') }}"></script>
-<script>
-    Dropzone.autoDiscover = false;
-    $(document).ready(function () {
-        // Summernote
-        $('.summernote').summernote({
-            height: '260px'
-        });
-
-        const dropzone = $("#image").dropzone({
-            url: "{{ asset('/product/create') }}",
-            maxFiles: 1,
-            addRemoveLinks: true,
-            acceptedFiles: "image/jpeg,image/png,image/gif",
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-            }, success: function (file, response) {
-                $("#image_id").val(response.id);
-            }
-        });
-
-    });
-</script>
+<script src="{{ url('/public/admin/js/custom.js') }}"></script>
 </body>
 
 </html>

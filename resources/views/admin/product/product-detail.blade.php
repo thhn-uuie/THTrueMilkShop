@@ -14,7 +14,6 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="../../../public/admin/css/adminlte.min.css">
     <link rel="stylesheet" href="../../../public/admin/plugins/summernote/summernote-bs4.min.css">
-    <link rel="stylesheet" href="../../../public/admin/plugins/dropzone/dropzone.css">
     <link rel="stylesheet" href="../../../public/admin/css/custom.css">
 </head>
 
@@ -225,14 +224,23 @@
 
                             </div>
                             <div class="col-md-4">
-                                <div class="card mb-3">
+                            <div class="card mb-3">
 									<div class="card-body">
 										<h5>Image</h5>
-										<div id="s_image" class="dropzone dz-clickable">
-											<div class="dz-message needsclick">
-												<br>Drop files here or click to upload.<br><br>
+										<div class="wrapp" id="wrapper">
+											<div class="image">
+												<img src="" alt="" id="img">
 											</div>
+											<div class="content">
+												<div class="icon"><i class="fa fa-cloud-upload-alt"></i></div>
+												<div class="text">No file chosen, yet!</div>
+											</div>
+											<div class="file-name">File name here</div>
 										</div>
+
+										<input type="file" id="l_image" name="image" hidden>
+										<button type="button" onclick="defaultBtnActive()" id="custom-btn">Choose a file</button>
+
 									</div>
 								</div>
                                 <div class="card mb-3">
@@ -282,8 +290,8 @@
     <!-- AdminLTE for demo purposes -->
     <!-- Summernote -->
     <script src="../../../public/admin/plugins/summernote/summernote-bs4.min.js"></script>
-    <script src="../../../public/admin/plugins/dropzone/dropzone.js"></script>
     <script src="../../../public/admin/js/demo.js"></script>
+    <script src="../../../public/admin/js/custom.js"></script>
 
     <script>
         // Lấy tham chiếu đến phần tử <a> có id là "sua"
@@ -297,25 +305,7 @@
             // Trượt xuống phần tử <div> s_product
             sProductDiv.scrollIntoView({ behavior: 'smooth' });
         });
-        Dropzone.autoDiscover = false;
-        $(document).ready(function () {
-            $('.summernote').summernote({
-                height: '260px'
-            });
-
-            const dropzone = $("#s_image").dropzone({
-                url: "product-detail.html",
-                maxFiles: 1,
-                addRemoveLinks: true,
-                acceptedFiles: "image/jpeg,image/png,image/gif",
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-                }, success: function (file, response) {
-                    $("#image_id").val(response.id);
-                }
-            });
-
-        });
+        
     </script>
 </body>
 

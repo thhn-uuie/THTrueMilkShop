@@ -49,7 +49,26 @@
 						<div class="card">
 							<div class="card-body">
 								<div class="row">
-									<div class="col-md-12">
+								<div class="col-md-4">
+										<div class="mb-3">
+												<label for="name">Image</label>
+												<div class="wrapp" id="wrapper">
+													<div class="image">
+														<img src="" alt="" id="img">
+													</div>
+													<div class="content">
+														<div class="icon"><i class="fa fa-cloud-upload-alt"></i></div>
+														<div class="text">No file chosen, yet!</div>
+													</div>
+													<div class="file-name">File name here</div>
+												</div>
+		
+												<input type="file" id="l_image" name="image" hidden>
+												<button type="button" onclick="defaultBtnActive()" id="custom-btn">Choose a file</button>
+		
+											</div>
+									</div>
+									<div class="col-md-8">
 										<div class="mb-3">
 											<label for="name">Name Category<i style="color: red;">*</i></label>
 											<input type="text" name="name" id="name" class="form-control"
@@ -82,6 +101,7 @@
 	<script src="../../public/admin/js/adminlte.min.js"></script>
 	<!-- AdminLTE for demo purposes -->
 	<script src="../../public/admin/js/demo.js"></script>
+	<script src="../../public/admin/js/custom.js"></script>
 </body>
 
 </html>
