@@ -80,8 +80,8 @@
                                             <td><img src="{{ url('public/admin/img/product') . '/' . $item->image }}" class="img-thumbnail" width="50"></td>
                                             <td><a href="#">{{ $item->name_product }}</a></td>
                                             <td>{{ $item->price }}</td>
-                                            <td>{{ $item->id_category }}</td>
-                                            <td>{{ $item->description }}</td>
+                                            <td>{{ $item->category->name_category }}</td>
+                                            <td>{!! $item->description !!}</td>
                                             <td>
                                                 @if( $item->status == 1)
                                                     <svg class="text-success-500 h-6 w-6 text-success"
