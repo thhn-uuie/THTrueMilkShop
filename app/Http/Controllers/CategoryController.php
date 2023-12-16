@@ -12,6 +12,14 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+//    private function config() {
+//        return [
+//            'js' => [
+//                'public/admin/js/custom.js',
+//            ]
+//        ];
+//    }
     public function index()
     {
         $categories = Category::all();
@@ -68,6 +76,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
+//        dd($this->config());
         $category = Category::find($id);
         if ($request->isMethod('POST')) {
             if ($request->has('file_upload')) {
