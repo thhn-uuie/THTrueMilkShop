@@ -11,5 +11,5 @@ class Category extends Model
 
     protected $table = 'category';
     public $timestamps = false;
-    protected $fillable = ['name_category', 'image'];
+    protected $fillable = ['name_category', 'image', 'status'];
 }

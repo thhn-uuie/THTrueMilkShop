@@ -44,6 +44,16 @@
         <section class="content">
             <form method="POST" action="" enctype="multipart/form-data">
                 @csrf
+                @if ($message = Session::get('success'))
+
+                    <div class="alert alert-success alert-block">
+
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+
+                        <strong>{{ $message }}</strong>
+
+                    </div>
+                @endif
                 <div class="row" id="s_category">
                     <div class="col-md-8">
                         <div class="card mb-3">
@@ -53,10 +63,10 @@
                                         <div class="mb-3">
                                             <label for="title">Name Category<i style="color: red;">*</i></label>
                                             @if($category->name_category !== null)
-                                                <input type="text" name="name" id="name" class="form-control"
+                                                <input type="text" name="name_category" id="name" class="form-control"
                                                        value="{{ $category->name_category }}" required>
                                             @else
-                                                <input type="text" name="name" id="name" class="form-control"
+                                                <input type="text" name="name_category" id="name" class="form-control"
                                                        placeholder="Enter name category" required>
                                             @endif
 
@@ -70,8 +80,14 @@
                                 <h5>Product status</h5>
                                 <div class="mb-3">
                                     <select name="status" id="s_status" class="form-control">
-                                        <option value="1">Active</option>
-                                        <option value="0">Block</option>
+                                        <?php $selectedStatus = $category->status?>
+                                        @if($selectedStatus == 1)
+                                            <option value="{{ $selectedStatus }}"> Active </option>
+                                            <option value="0"> Block </option>
+                                        @else
+                                            <option value="{{ $selectedStatus }}"> Block </option>
+                                            <option value="1"> Active </option>
+                                        @endif
                                     </select>
                                 </div>
                             </div>

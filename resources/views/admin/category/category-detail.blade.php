@@ -31,11 +31,11 @@
                 <div class="container-fluid my-2">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <a id="sua" class="btn btn-primary">Sửa</a>
-                            <a href="products.html" class="btn btn-primary">Xóa</a>
+                            <a href="{{ url('/admin/category/update',['id' => $category_item->id]) }}" id="sua" class="btn btn-primary">Sửa</a>
+                            <a href="{{ route('admin.category.delete', ['id' => $category_item->id]) }}" class="btn btn-primary">Xóa</a>
                         </div>
                         <div class="col-sm-6 text-right">
-                            <a href="categories.html" class="btn btn-primary">Back</a>
+                            <a href="{{ url('/admin/category') }}" class="btn btn-primary">Back</a>
                         </div>
                     </div>
                 </div>

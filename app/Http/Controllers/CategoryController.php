@@ -40,8 +40,7 @@ class CategoryController extends Controller
             $request->merge(['image' => $file_name]);
             $category = Category::create($request->all());
             if ($category) {
-
-                return view('admin.category.category-detail')->with('success', 'Them moi thanh cong')->with('category_item', $category);;
+                return redirect()->route('admin.category.category-detail', ['id'=>$category->id])->with('success', 'Them moi thanh cong');
             }
         }
         return view('admin.category.create-category');
@@ -100,7 +99,10 @@ class CategoryController extends Controller
     public function destroy(string $id)
     {
         $category = Category::find($id);
-        $deleteImg = Storage::delete($category->image);
+        $oldFile = public_path('admin/img/category') . '/' . $category->image;
+        if (File::exists($oldFile)) {
+            File::delete($oldFile);
+        }
         $category->delete();
         return redirect()->route('admin.category.categories')->with('success', 'Xoa thanh cong');
     }

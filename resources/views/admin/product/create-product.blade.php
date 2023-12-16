@@ -35,7 +35,7 @@
                         <h1>Create Product</h1>
                     </div>
                     <div class="col-sm-6 text-right">
-                        <a href="{{ asset('/product') }}" class="btn btn-primary">Back</a>
+                        <a href="{{ asset('/admin/product') }}" class="btn btn-primary">Back</a>
                     </div>
                 </div>
             </div>
@@ -68,9 +68,9 @@
                                         </div>
                                         <div class="col-md-12">
                                             <div class="mb-3">
-                                                <label for="description">Description</label>
+                                                <label for="description">Description<i style="color: red;">*</i></label>
                                                 <textarea name="description" id="description" cols="30" rows="10"
-                                                          class="summernote" placeholder="Description"
+                                                          class="summernote" placeholder="Description" required
                                                           style="width: 100%;"></textarea>
                                             </div>
                                         </div>
@@ -79,12 +79,11 @@
                                                 <div class="card-body">
                                                     <h2 class="h4  mb-3">Product category</h2>
                                                     <div class="mb-3">
-
                                                         <select name="category" id="category" class="form-control">
-                                                            <?php $categories = DB::table('category')->select('name_category')->get(); ?>
+                                                            <?php $categories = DB::table('category')->get(); ?>
                                                             @foreach($categories as $item)
                                                                 <option
-                                                                    value="{{ $item->name_category }}">{{ $item->name_category }}</option>
+                                                                    value="{{ $item->id }}">{{ $item->name_category }}</option>
                                                             @endforeach
                                                         </select>
 
@@ -111,7 +110,7 @@
                                         </div>
                                         <div class="file-name">File name here</div>
                                     </div>
-                                    <input type="file" id="l_image" name="image" hidden>
+                                    <input type="file" id="l_image" name="file_upload" hidden>
                                     <button type="button" onclick="defaultBtnActive()" id="custom-btn">Choose a file
                                     </button>
                                 </div>
@@ -133,7 +132,7 @@
 
                     <div class="pb-5 pt-3">
                         <button type="submit" class="btn btn-primary">Create</button>
-                        <a href="{{ asset('/product') }}" class="btn btn-outline-dark ml-3">Cancel</a>
+                        <a href="{{ asset('/admin/product') }}" class="btn btn-outline-dark ml-3">Cancel</a>
                     </div>
                 </div>
             </form>

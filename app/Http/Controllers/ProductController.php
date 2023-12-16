@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
@@ -28,19 +29,22 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         if ($request->isMethod('POST')) {
-            dd($request);
-
-            if ($request->has('image')) {
-                $file = $request->file('image');
+            if ($request->has('file_upload')) {
+                $file = $request->file('file_upload');
                 $file_name = uniqid() . '_' . $file->getClientOriginalName();
                 $file->move(public_path('admin/img/product'), $file_name);
             }
             $request->merge(['image' => $file_name]);
             $data = Product::create([
-                $request->all()
+                'name_product' => $request->title,
+                'price' => $request->price,
+                'image' => $request->image,
+                'description' => $request->description,
+                'id_category' => $request->category,
+                'status' => $request->status,
             ]);
             if ($data) {
-                return redirect()->back()->with('success', 'Them moi thanh cong');
+                return redirect()->route('admin.product.product-detail', ['id'=>$data->id])->with('success', 'Them moi thanh cong');
             }
         }
         return view('admin.product.create-product');
@@ -51,7 +55,8 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $product_item = Product::find($id);
+        return view('admin.product.product-detail', compact('product_item'));
     }
 
     /**
@@ -67,7 +72,36 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $product = Product::find($id);
+        if ($request->isMethod('POST')) {
+            if ($request->has('file_upload')) {
+                $oldFile = public_path('admin/img/product') . '/' . $product->image;
+                if (File::exists($oldFile)) {
+                    File::delete($oldFile);
+                }
+                $file = $request->file('file_upload');
+                $file_name = uniqid() . '_' . $file->getClientOriginalName();
+                $file->move(public_path('admin/img/product'), $file_name);
+                $request->merge(['image' => $file_name]);
+            } else {
+                $file_name = $product->image;
+                $request->merge(['image' => $file_name]);
+
+            }
+            $result = $product->update([
+                'name_product' => $request->title,
+                'price' => $request->price,
+                'image' => $request->image,
+                'description' => $request->description,
+                'id_category' => $request->category,
+                'status' => $request->status,
+            ]);
+
+            if ($result) {
+                return redirect()->route('admin.product.products')->with('success', 'Chỉnh sửa thành công');
+            }
+        }
+        return view('admin.product.product-update', compact('product'));
     }
 
     /**
@@ -75,6 +109,12 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $product = Product::find($id);
+        $oldFile = public_path('admin/img/product') . '/' . $product->image;
+        if (File::exists($oldFile)) {
+            File::delete($oldFile);
+        }
+        $product->delete();
+        return redirect()->route('admin.product.products')->with('success', 'Xoa thanh cong');
     }
 }

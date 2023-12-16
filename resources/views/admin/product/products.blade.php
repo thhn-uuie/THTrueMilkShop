@@ -77,7 +77,7 @@
                                     @foreach($products as $item)
                                         <tr>
                                             <td> {{ $item->id }} </td>
-                                            <td><img src="../../../public/admin/img/product-1.jpg" class="img-thumbnail" width="50"></td>
+                                            <td><img src="{{ url('public/admin/img/product') . '/' . $item->image }}" class="img-thumbnail" width="50"></td>
                                             <td><a href="#">{{ $item->name_product }}</a></td>
                                             <td>{{ $item->price }}</td>
                                             <td>{{ $item->id_category }}</td>
@@ -101,7 +101,13 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="product-detail.html">
+                                                <a href="{{ route('admin.product.product-detail', ['id' => $item->id]) }}">
+                                                    <svg class="filament-link-icon w-4 h-4 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                                                        <path fill-rule="evenodd" d="M19.707 9.293a1 1 0 010 1.414l-9 9a1 1 0 01-1.414 0l-9-9a1 1 0 111.414-1.414L10 16.586l8.293-8.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                                    </svg>
+                                                </a>
+                                                <a href="{{ route('admin.product.product-update', ['id' => $item->id]) }}">
                                                     <svg class="filament-link-icon w-4 h-4 mr-1"
                                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                                                         fill="currentColor" aria-hidden="true">
@@ -110,7 +116,7 @@
                                                         </path>
                                                     </svg>
                                                 </a>
-                                                <a href="#" class="text-danger w-4 h-4 mr-1">
+                                                <a href="{{ route('admin.product.delete', ['id' => $item->id]) }}" class="text-danger w-4 h-4 mr-1">
                                                     <svg wire:loading.remove.delay="" wire:target=""
                                                         class="filament-link-icon w-4 h-4 mr-1"
                                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
