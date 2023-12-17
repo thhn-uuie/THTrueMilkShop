@@ -82,7 +82,7 @@
                             </div>
                         </div>
                         <div class="">
-                            <button type="submit" class="btn btn-primary">Sửa</button>
+                            <button type="submit" class="btn btn-primary">Cập nhật</button>
                         </div>
 
 

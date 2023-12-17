@@ -184,3 +184,36 @@ body {
     font-style: italic;
     margin-bottom: 8px;
 }
+
+#product-name {
+    font-weight: 600;
+    margin-bottom: 1rem;
+
+}
+
+.sub-info p.tittle{
+    font-weight: 600;
+    margin-bottom: 10px;
+
+}
+
+.product-info .sub-info{
+    margin-bottom: 1rem;
+
+}
+
+.product-info #image img{
+    width: 100%;
+
+}
+
+.card-header {
+    padding: 40px;
+}
+
+.card-body .table td {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }

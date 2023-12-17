@@ -21,7 +21,7 @@
                 <div class="row mb-2">
                     <div class="col-sm-6">
                         <a href="{{ url('/admin/category/update',['id' => $category_item->id]) }}" id="sua"
-                           class="btn btn-primary">Sửa</a>
+                           class="btn btn-primary">Cập nhật</a>
                         <a href="{{ route('admin.category.delete', ['id' => $category_item->id]) }}"
                            class="btn btn-primary">Xóa</a>
                     </div>
@@ -40,37 +40,36 @@
 
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header pt-3">
+                            <div class="card-header">
                                 <div class="row product-info">
-                                    <div class="col-sm-12">
-                                        <h1 class="h4 mb-3" id="product-name">{{ $category_item->name_category }}</h1>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <!-- <div class="card mb-3"> -->
-                                        <!-- <div class="card-body"> -->
-                                        <h5>Image</h5>
+                                   
+                                    <div class="col-sm-4">
                                         <div id="image">
                                             <?php $image_current = url('/public/admin/img/category') . '/' . $category_item->image ?>
-                                            <img src="{{ $image_current }}" width="80%">
+                                            <img src="{{ $image_current }}" >
                                             <!-- </div> -->
                                             <!-- </div> -->
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <h5>Thông tin</h5>
-
-                                        <p id="id">ID: {{ $category_item->id }}</p>
-
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <h5>Status</h5>
-                                        <div class="mb-3" id="status">
-                                            <select name="status" id="status" class="form-control">
-                                                <option value="">Active</option>
-                                            </select>
+                                    <div class="col-sm-8">
+                                    <h1 id="product-name" class="h2">{{ $category_item->name_category }}</h1>
+                                        <div class="sub-info">
+                                            <p class="tittle">ID</p>
+                                            <p id="id">{{ $category_item->id }}</p>
                                         </div>
 
+                                        <div class="sub-info">
+                                        <p class="tittle">Trạng thái</p>
+                                        
+                                        @if( $category_item->status == 1)
+                                        <p id="status">Hoạt động</p>
+                                            @else
+                                            <p id="status">Không hoạt động</p>
+                                            @endif
+                                        </div>
+                                    
                                     </div>
+                                    
                                 </div>
                             </div>
                         </div>
