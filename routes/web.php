@@ -5,6 +5,9 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\AuthController;
+use App\Http\Middleware\AuthenticateMiddleware;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,25 +24,31 @@ use App\Http\Controllers\OrderController;
 // localhost/project
 Route::get('/', function () {
     return view('frontend.index');
-});
+})->name('template');
 
     // Register
     // localhost/project/signup
-Route::get('/signup', [UserController::class, 'signup'])->name('frontend.auth.signup');
-Route::post('/signup', [UserController::class, 'postSignup']);
+Route::get('/signup', [AuthController::class, 'signup'])->name('frontend.auth.signup');
+Route::post('/signup', [AuthController::class, 'postSignup']);
 
     // Login
     // localhost/project/login
-Route::get('/login', [UserController::class, 'login'])->name('frontend.auth.login');
-Route::post('/login', [UserController::class, 'postLogin']);
+Route::get('/login', [AuthController::class, 'login'])->name('frontend.auth.login');
+Route::post('/login', [AuthController::class, 'postLogin']);
 
+    //Logout
+Route::get('/logout', [AuthController::class, 'logout'])->name('frontend.auth.logout');
 
 
 // Backend
+
 // localhost/project/admin
-Route::get('/admin', function () {
-    return view('admin.dashboard');
-});
+Route::get('/admin', [AdminController::class, 'login'])->name('login');
+Route::post('/admin', [AdminController::class, 'postLogin']);
+Route::get('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
+
+    // Dashboard
+Route::get('/admin/dashboard', [\App\Http\Controllers\DashboardController::class, 'index'])->name('admin.dashboard');
 
     // Category
 Route::prefix('admin/category')->name('admin.category.')->group(function () {
