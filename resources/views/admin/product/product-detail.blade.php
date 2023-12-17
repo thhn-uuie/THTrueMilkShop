@@ -53,11 +53,10 @@
                                     </div>
                                     <div class="col-sm-8">
                                     <h1 class="h2" id="product-name">{{ $product_item->name_product }}</h1>
-                                        <div class="sub-info">
-                                            <p class="tittle">ID</p>
-                                            <p id="id">{{ $product_item->id }}</p>
+                                    <div class="sub-info">
+                                            <p class="tittle">Mô tả sản phẩm</p>
+                                            <p id="description">{!! $product_item->description  !!} </p>
                                         </div>
-
                                         <div class="sub-info">
                                             <p class="tittle">Giá tiền</p>
                                             <p id="price">${{ $product_item->price }}</p>
@@ -75,11 +74,6 @@
                                             @else
                                             <p id="status">Không hoạt động</p>
                                             @endif
-                                        </div>
-
-                                        <div class="sub-info">
-                                            <p class="tittle">Mô tả sản phẩm</p>
-                                            <p id="description">{!! $product_item->description  !!} </p>
                                         </div>
                                     </div>
                                     

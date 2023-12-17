@@ -53,10 +53,6 @@
                                     </div>
                                     <div class="col-sm-8">
                                     <h1 id="product-name" class="h2">{{ $category_item->name_category }}</h1>
-                                        <div class="sub-info">
-                                            <p class="tittle">ID</p>
-                                            <p id="id">{{ $category_item->id }}</p>
-                                        </div>
 
                                         <div class="sub-info">
                                         <p class="tittle">Trạng thái</p>
