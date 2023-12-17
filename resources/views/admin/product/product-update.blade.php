@@ -5,7 +5,7 @@
     @include('admin.component.head')
     <link rel="stylesheet" href="{{ asset('/public/admin/plugins/summernote/summernote-bs4.min.css') }}">
 </head>
-<body>
+<body class="sidebar-mini" style="height: auto;">
 <div class="wrapper">
     <!-- Navbar -->
     @include('admin.component.navbar')
