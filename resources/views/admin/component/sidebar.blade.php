@@ -15,7 +15,7 @@
 
 </head>
 <body>
-<aside class="main-sidebar elevation-4">
+<aside class="main-sidebar elevation-4" style="background: #fff;">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
         <!-- <img src="https://www.thmilk.vn/wp-content/themes/wp-th/assets/images/logo.png?>" alt="logo"> -->
