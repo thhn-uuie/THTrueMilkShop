@@ -96,6 +96,7 @@
 <!-- jQuery -->
 @include('admin.component.script');
 <script src="{{ asset('public/admin/js/custom.js') }}"></script>
+<script src="{{ asset('public/admin/js/adminlte.min.js') }}"></script>
 
 </body>
 

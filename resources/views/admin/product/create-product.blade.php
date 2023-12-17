@@ -138,6 +138,7 @@
 <!-- Summernote -->
 <script src="{{ asset('/public/admin/plugins/summernote/summernote-bs4.min.js') }}"></script>
 <script src="{{ asset('/public/admin/js/custom.js') }}"></script>
+<script src="{{ asset('public/admin/js/adminlte.min.js') }}"></script>
 </body>
 
 </html>

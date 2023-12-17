@@ -94,24 +94,7 @@
 </div>
 
 @include('admin.component.script');
-<!-- Summernote -->
-<script src="{{ asset('/public/admin/plugins/summernote/summernote-bs4.min.js') }}"></script>
-{{--<script src="{{ asset('/public/admin/js/custom.js') }}"></script>--}}
-
-{{--<script>--}}
-{{--    // Lấy tham chiếu đến phần tử <a> có id là "sua"--}}
-{{--    const suaLink = document.querySelector('#sua');--}}
-
-{{--    // Lấy tham chiếu đến phần tử <div> có id là "s_product"--}}
-{{--    const sProductDiv = document.querySelector('#s_product');--}}
-
-{{--    // Gán sự kiện click cho phần tử <a>--}}
-{{--    suaLink.addEventListener('click', () => {--}}
-{{--        // Trượt xuống phần tử <div> s_product--}}
-{{--        sProductDiv.scrollIntoView({behavior: 'smooth'});--}}
-{{--    });--}}
-
-{{--</script>--}}
+<script src="{{ asset('public/admin/js/adminlte.min.js') }}"></script>
 </body>
 
 </html>
