@@ -10,34 +10,7 @@
   <meta name="author" content="">
 
   <title>Khuyến mãi – TH true MILK</title>
-  <link rel="icon" href="https://www.thmilk.vn/wp-content/themes/wp-th/favicon.png" type="image/png">
-
-  <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
-  <link href="../css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Custom CSS -->
-  <link href="../css/style.css" rel="stylesheet">
-
-  <!-- Custom Fonts -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-  <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-  <link rel="stylesheet" href="../css/owl.carousel.min.css">
-  <link rel="stylesheet" href="../css/owl.theme.default.min.css">
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"> -->
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-      <![endif]-->
+  @include('frontend.component.head')
 
 </head>
 
@@ -50,81 +23,7 @@
     <div class="menu-header" id="navbar">
       <!-- Navigation -->
       <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle" data-toggle="collapse"
-              data-target="#bs-example-navbar-collapse-1">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a href="landing.html" id="logo" class="l">
-              <img src="https://www.thmilk.vn/wp-content/themes/wp-th/assets/images/logo.png?>" alt="logo">
-            </a>
-          </div>
-
-          <div class = "navbar-nav navbar-right">
-            <div class="icon-cart" onclick="toggleCartDropdown()">
-                <i class="fa fa-solid fa-cart-shopping fa-lg"></i>
-                <span>0</span>
-            </div>
-          
-            <div class="cart-dropdown">
-              <div class="header">
-                Thông tin giỏ hàng
-              </div>
-              <div class="product-info">
-                  <!-- Dynamic content will be added here -->
-              </div>
-              <div class="total-price">
-                <span class="label">Tổng tiền: </span>
-                <span id="totalPrice">0 ₫</span>
-              </div>
-              <div class="actions">
-                  <div class="action viewcart">Xem giỏ hàng</div>
-                  <div class="action checkout">Thanh toán</div>
-              </div>
-          </div>
-          
-          </div>
-
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-              <li class="hidden">
-                <a href="#page-top"></a>
-              </li>
-              <li class="page-scroll">
-                <a href="cau_chuyen_that_th.html" class="click">CÂU CHUYỆN THẬT TH</a>
-              </li>
-              <li class="page-scroll">
-                <a href="san_pham.html">SẢN PHẨM</a>
-                
-              </li>
-           
-            </li>
-
-            <li class="page-scroll">
-              <a href="khuyen_mai.html">Khuyến mãi</a>
-            </li>
-            <li class="page-scroll">
-              <a href="#">Cửa hàng</a>
-            </li>
-            <li class="page-scroll">
-              <a href="truyen_thong.html">Truyền thông</a>
-              
-            </li>
-            
-            </li>
-            <li class="page-scroll">
-              <a href="#">Tuyển dụng</a>
-            </li>
-            </ul>
-          </div>
-          <!-- /.navbar-collapse -->
-        </div>
+        @include('frontend.component.navbar')
         <!-- /.container-fluid -->
       </nav>
     </div>
@@ -288,10 +187,7 @@
     </div>
 
   </div>
-
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script type="text/javascript"
-    src="https://owlcarousel2.github.io/OwlCarousel2/assets/owlcarousel/owl.carousel.js"></script>
+@include('frontend.component.script')
   <script type="text/javascript">
     let mybutton = document.getElementById("back-top");
 
@@ -424,9 +320,6 @@
       changePage(1);
     };
   </script>
-<script src="../js/app.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </body>
 
 </html>

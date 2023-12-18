@@ -10,6 +10,7 @@ use App\Http\Middleware\AuthenticateMiddleware;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SiteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,13 @@ Route::post('/login', [AuthController::class, 'postLogin']);
     //Logout
 Route::get('/logout', [AuthController::class, 'logout'])->name('frontend.auth.logout');
 
+Route::get('/cau-chuyen-that-th', [SiteController::class, 'story'])->name('cau_chuyen_that_th');
+
+Route::get('/san-pham', [SiteController::class, 'product'])->name('san_pham');
+
+Route::get('/khuyen-mai', [SiteController::class, 'promotion'])->name('khuyen_mai');
+
+Route::get('/truyen-thong', [SiteController::class, 'media'])->name('truyen_thong');
 
 // Backend
 
