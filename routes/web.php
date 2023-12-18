@@ -8,6 +8,8 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AuthController;
 use App\Http\Middleware\AuthenticateMiddleware;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,15 +45,16 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('frontend.auth.lo
 // Backend
 
 // localhost/project/admin
-Route::get('/admin', [AdminController::class, 'login'])->name('login');
-Route::post('/admin', [AdminController::class, 'postLogin']);
+
+Route::get('/admin/login', [AdminController::class, 'login'])->name('admin.login');
+Route::post('/admin/login', [AdminController::class, 'postLogin']);
 Route::get('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
 
     // Dashboard
-Route::get('/admin/dashboard', [\App\Http\Controllers\DashboardController::class, 'index'])->name('admin.dashboard');
+Route::get('/admin', [DashboardController::class, 'index'])->name('admin.dashboard')->middleware('admin');
 
     // Category
-Route::prefix('admin/category')->name('admin.category.')->group(function () {
+Route::prefix('admin/category')->middleware('admin')->name('admin.category.')->group(function () {
 
     // Category: localhost/project/admin/category
     Route::get('/', [CategoryController::class, 'index'])->name('categories');
@@ -71,7 +74,7 @@ Route::prefix('admin/category')->name('admin.category.')->group(function () {
 
 
 // Product
-Route::prefix('admin/product')->name('admin.product.')->group(function () {
+Route::prefix('admin/product')->middleware('admin')->name('admin.product.')->group(function () {
 
     // Product: localhost/project/admin/product
     Route::get('/', [ProductController::class, 'index'])->name('products');
@@ -92,18 +95,29 @@ Route::prefix('admin/product')->name('admin.product.')->group(function () {
 
 
     // User
-Route::prefix('user')->name('admin.user.')->group(function () {
-    Route::get('/', [CategoryController::class, 'index'])->name('users');
-//    Route::match(['GET', 'POST'],'/create', [CategoryController::class, 'store'])->name('create');
-//    Route::match(['GET', 'POST'],'/detail/{id}', [CategoryController::class, 'show'])->name('detail');
-//    Route::get('/delete/{id}', [CategoryController::class, 'destroy'])->name('delete');
-//    Route::match(['GET', 'POST'],'/update/{id}', [CategoryController::class, 'update'])->name('update');
+Route::prefix('admin/user')->middleware('admin')->name('admin.user.')->group(function () {
+    Route::get('/', [UserController::class, 'index'])->name('users');
+    Route::match(['GET', 'POST'],'/create', [UserController::class, 'store'])->name('create-user');
+    Route::match(['GET', 'POST'],'/detail/{id}', [UserController::class, 'show'])->name('user-detail');
+    Route::get('/delete/{id}', [UserController::class, 'destroy'])->name('delete');
+    Route::match(['GET', 'POST'],'/update/{id}', [UserController::class, 'update'])->name('user-update');
+
+});
+
+    // Profile
+Route::prefix('admin/profile')->middleware('admin')->name('admin.profile.')->group(function () {
+    Route::get('/', [ProfileController::class, 'index'])->name('profiles');
+//    Route::match(['GET', 'POST'],'/create', [UserController::class, 'store'])->name('create-profile');
+    Route::match(['GET', 'POST'],'/detail/{id}', [ProfileController::class, 'show'])->name('profile-detail');
+    Route::get('/delete/{id}', [ProfileController::class, 'destroy'])->name('delete');
+//    Route::match(['GET', 'POST'],'/update/{id}', [UserController::class, 'update'])->name('profile-update');
 
 });
 
 
-Route::prefix('order')->name('admin.order.')->group(function () {
-    Route::get('/', [CategoryController::class, 'index'])->name('orders');
+    // Order
+Route::prefix('admin/order')->middleware('admin')->name('admin.order.')->group(function () {
+    Route::get('/', [OrderController::class, 'index'])->name('orders');
 //    Route::match(['GET', 'POST'],'/create', [CategoryController::class, 'store'])->name('create');
 //    Route::match(['GET', 'POST'],'/detail/{id}', [CategoryController::class, 'show'])->name('detail');
 //    Route::get('/delete/{id}', [CategoryController::class, 'destroy'])->name('delete');

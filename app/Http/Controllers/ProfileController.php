@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Profile;
 use Illuminate\Http\Request;
 
-class OrderController extends Controller
+class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('admin.order.orders');
+        $profile = Profile::all();
+        return view('admin.profile.profiles', compact('profile'));
     }
 
     /**
@@ -19,7 +21,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+//        return view('admin.profile.create-profile');
     }
 
     /**
@@ -27,7 +29,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -35,7 +37,8 @@ class OrderController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $profile = Profile::find($id);
+        return view('admin.profile.profile-detail', ['profile'=>$profile]);
     }
 
     /**

@@ -16,9 +16,12 @@ class AuthenticateMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::id() == null) {
-            return redirect()->route('admin.login');
+//        dd(Auth::check());
+        if (Auth::check() && Auth::user()->id_role == 1 ) {
+
+            return $next($request);
         }
-        return $next($request);
+//        dd('a');
+        return redirect()->route('admin.login');
     }
 }

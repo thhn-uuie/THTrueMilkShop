@@ -10,7 +10,9 @@
     @include('admin.component.navbar')
     <!-- /.navbar -->
     <!-- Main Sidebar Container -->
-    @include('admin.component.sidebar')
+    <aside class="main-sidebar elevation-4">
+        @include('admin.component.sidebar')
+    </aside>
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -158,7 +160,6 @@
 <!-- ./wrapper -->
 <!-- jQuery -->
 @include('admin.component.script')
-<script src="{{ asset('public/admin/js/adminlte.min.js') }}"></script>
 </body>
 
 </html>

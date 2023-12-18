@@ -5,9 +5,3 @@
 <script src="{{ asset('/public/admin/js/adminlte.min.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('/public/admin/js/demo.js') }}"></script>
-
-{{--@if (isset($config))--}}
-{{--    @foreach($config['js'] as $key => $val)--}}
-{{--        {!! '<script src="' . asset($val) . '"></script>' !!}--}}
-{{--    @endforeach--}}
-{{--@endif--}}

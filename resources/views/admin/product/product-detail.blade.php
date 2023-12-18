@@ -13,7 +13,9 @@
     @include('admin.component.navbar')
     <!-- /.navbar -->
     <!-- Main Sidebar Container -->
-    @include('admin.component.sidebar')
+    <aside class="main-sidebar elevation-4">
+        @include('admin.component.sidebar')
+    </aside>
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -43,7 +45,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <div class="row product-info">
-                                    
+
                                     <div class="col-sm-4">
                                         <div id="image">
                                             <img src="{{ url('public/admin/img/product/'). '/' .$product_item->image }}">
@@ -76,7 +78,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -94,7 +96,6 @@
 </div>
 
 @include('admin.component.script');
-<script src="{{ asset('public/admin/js/adminlte.min.js') }}"></script>
 </body>
 
 </html>

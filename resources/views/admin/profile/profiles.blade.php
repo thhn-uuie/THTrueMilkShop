@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="height: auto;">
 
 <head>
     @include('admin.component.head')
@@ -10,8 +9,6 @@
 <div class="wrapper">
     <!-- Navbar -->
     @include('admin.component.navbar')
-    <!-- /.navbar -->
-    <!-- Main Sidebar Container -->
     <aside class="main-sidebar elevation-4">
         @include('admin.component.sidebar')
     </aside>
@@ -22,10 +19,7 @@
             <div class="container-fluid my-2">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Products</h1>
-                    </div>
-                    <div class="col-sm-6 text-right">
-                        <a href=" {{ route('admin.product.create-product') }}" class="btn btn-primary">New Product</a>
+                        <h1>Profile</h1>
                     </div>
                 </div>
             </div>
@@ -55,45 +49,35 @@
                             <thead>
                             <tr>
                                 <th width="60">ID</th>
-                                <th width="80">Image</th>
-                                <th>Product</th>
-                                <th>Price</th>
-                                <th>Category</th>
-                                <th>Description</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Gender</th>
                                 <th width="100">Status</th>
-                                <th width="100">Action</th>
+                                <th width="100">Actions</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($products as $item)
+                            @foreach($profile as $item)
                                 <tr>
-                                    <td> {{ $item->id }} </td>
-                                    <td><img src="{{ url('public/admin/img/product') . '/' . $item->image }}"
-                                             class="img-thumbnail" width="50"></td>
-                                    <td><a href="#">{{ $item->name_product }}</a></td>
-                                    <td>{{ $item->price }}</td>
-                                    <td>{{ $item->category->name_category }}</td>
-                                    <td>{!! $item->description !!}</td>
                                     <td>
-                                        @if( $item->status == 1)
-                                            <svg class="text-success-500 h-6 w-6 text-success"
-                                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                 stroke-width="2" stroke="currentColor" aria-hidden="true">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                            </svg>
-                                        @else
-                                            <svg class="text-danger h-6 w-6" xmlns="http://www.w3.org/2000/svg"
-                                                 fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                                 aria-hidden="true">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                      d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z">
-                                                </path>
-                                            </svg>
-                                        @endif
+                                        {{ $item->id }}
+                                    </td>
+                                    <td> {{ $item->name }} </td>
+                                    <td> {{ \App\Models\Profile::find($item->id)->user->email }} </td>
+                                    <td> {{ $item->phone }} </td>
+                                    <td> {{ $item->gender }} </td>
+                                    <td>
+                                        <svg class="text-success-500 h-6 w-6 text-success"
+                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                             stroke-width="2" stroke="currentColor" aria-hidden="true">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
                                     </td>
                                     <td>
-                                        <a href="{{ route('admin.product.product-detail', ['id' => $item->id]) }}">
+
+                                        <a href="{{ route('admin.profile.profile-detail', ['id' => $item->id]) }}">
                                             <svg class="filament-link-icon w-4 h-4 mr-1"
                                                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                                                  fill="currentColor" aria-hidden="true">
@@ -103,7 +87,7 @@
                                                       clip-rule="evenodd"/>
                                             </svg>
                                         </a>
-                                        <a href="{{ route('admin.product.product-update', ['id' => $item->id]) }}">
+                                        <a href="">
                                             <svg class="filament-link-icon w-4 h-4 mr-1"
                                                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                                                  fill="currentColor" aria-hidden="true">
@@ -112,13 +96,12 @@
                                                 </path>
                                             </svg>
                                         </a>
-                                        <a href="{{ route('admin.product.delete', ['id' => $item->id]) }}"
-                                           class="text-danger w-4 h-4 mr-1">
+                                        <a href="" class="text-danger w-4 h-4 mr-1">
                                             <svg wire:loading.remove.delay="" wire:target=""
                                                  class="filament-link-icon w-4 h-4 mr-1"
                                                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                                                  fill="currentColor" aria-hidden="true">
-                                                <path ath fill-rule="evenodd"
+                                                <path ath="" fill-rule="evenodd"
                                                       d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
                                                       clip-rule="evenodd"></path>
                                             </svg>
@@ -148,9 +131,12 @@
     <!-- /.content-wrapper -->
 
 </div>
+<!-- /.content-wrapper -->
+
+</div>
 <!-- ./wrapper -->
 <!-- jQuery -->
-@include('admin.component.script');
+@include('admin.component.script')
 </body>
 
 </html>

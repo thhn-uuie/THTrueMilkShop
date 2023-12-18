@@ -7,7 +7,9 @@
     <div class="wrapper">
         @include('admin.component.navbar')
 
-        @include('admin.component.sidebar')
+        <aside class="main-sidebar elevation-4">
+            @include('admin.component.sidebar')
+        </aside>
 
         <div class="content-wrapper" style="min-height: 384.76px;">
             <!-- Content Header (Page header) -->
@@ -97,5 +99,4 @@
 </body>
 
 @include('admin.component.script')
-
 </html>
