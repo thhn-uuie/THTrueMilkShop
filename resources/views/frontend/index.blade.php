@@ -72,6 +72,7 @@
     <!-- end carousel -->
 
     <div class="nd1">
+        <div class="container">
         <div class="owl-sp">
             <div class="owl-carousel owl-theme" id="owl-carousel1">
                 <div class="item">
@@ -228,8 +229,10 @@
                 </div>
             </div>
         </div>
+        </div>
 
         <div class="sp">
+            <div class="container">
             <h1 class="ctext">Sản phẩm nổi bật</h1>
             <div class="owl-sp2">
                 <div class="owl-carousel owl-theme " id="owl-carousel2">
@@ -327,9 +330,11 @@
                 </div>
             </div>
         </div>
+            </div>
     </div>
 
     <div class="nd2">
+        <div class="container">
         <div class="owl-sp3">
             <div class="owl-carousel owl-theme" id="owl-carousel3">
                 <div class="item">
@@ -452,6 +457,7 @@
                     </a>
                 </div>
             </div>
+        </div>
         </div>
     </div>
 
