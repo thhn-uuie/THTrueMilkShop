@@ -1,27 +1,16 @@
 <html lang="en" style="height: auto;">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Administrative – TH true MILK</title>
-    <link rel="icon" href="https://www.thmilk.vn/wp-content/themes/wp-th/favicon.png" type="image/png">
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="public/admin/plugins/fontawesome-free/css/all.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="public/admin/css/adminlte.min.css">
-    <link rel="stylesheet" href="public/admin/css/custom.css">
+    @include('admin.component.head')
 </head>
+
 <body class="sidebar-mini" style="height: auto;">
-<!-- Site wrapper -->
     <div class="wrapper">
-        <!-- Navbar -->
-        @include('admin.navbar')
-        <!-- /.navbar -->
-        <!-- Main Sidebar Container -->
-        @include('admin.sidebar')
-        <!-- Content Wrapper. Contains page content -->
+        @include('admin.component.navbar')
+
+        <aside class="main-sidebar elevation-4">
+            @include('admin.component.sidebar')
+        </aside>
+
         <div class="content-wrapper" style="min-height: 384.76px;">
             <!-- Content Header (Page header) -->
             <section class="content-header">
@@ -56,7 +45,7 @@
                                     <i class="ion ion-bag"></i>
                                 </div>
                                 <a href="{{ route('admin.user.users') }}" class="small-box-footer text-dark">More info <i
-                                        class="fas fa-arrow-circle-right"></i></a>
+                                            class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
 
@@ -108,15 +97,6 @@
         <div id="sidebar-overlay"></div>
     </div>
 </body>
-<!-- ./wrapper -->
-<!-- jQuery -->
-<script src="public/admin/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="public/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="public/admin/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="public/admin/js/demo.js"></script>
 
-
+@include('admin.component.script')
 </html>

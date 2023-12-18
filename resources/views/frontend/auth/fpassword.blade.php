@@ -34,7 +34,7 @@
 <body id="page-top" class="index">
     <div class="container">
         <div class="row">
-            <div class="auth-box col-md-4 col-md-push-4">
+            <div class="auth-box col-md-4 col-md-push-4 col-xs-10 col-xs-push-1 col-sm-8 col-sm-push-2">
                 <div class="card-title">
                     <p>Quên mật khẩu</p>
                 </div>
