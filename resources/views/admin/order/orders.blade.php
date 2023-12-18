@@ -202,5 +202,5 @@
 	<!-- ./wrapper -->
 	<!-- jQuery -->
 </body>
-
+@include('admin.component.script')
 </html>
