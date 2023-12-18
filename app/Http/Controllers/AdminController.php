@@ -9,9 +9,6 @@ class AdminController extends Controller
 {
 
     public function login() {
-        if (Auth::id()) {
-            return redirect()->route('admin.dashboard');
-        }
         return view('admin.login');
     }
 
@@ -28,7 +25,9 @@ class AdminController extends Controller
         $data = [
             'email' => $request->email,
             'password' => $request->password,
+//            'id_role' => 1,
         ];
+
         if (Auth::attempt($data)) {
             return redirect()->route('admin.dashboard');
         }
@@ -38,7 +37,7 @@ class AdminController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('login');
+        return redirect()->route('admin.login');
     }
 
 }

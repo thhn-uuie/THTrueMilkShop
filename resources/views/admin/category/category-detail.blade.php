@@ -12,7 +12,9 @@
     @include('admin.component.navbar')
     <!-- /.navbar -->
     <!-- Main Sidebar Container -->
-    @include('admin.component.sidebar')
+    <aside class="main-sidebar elevation-4">
+        @include('admin.component.sidebar')
+    </aside>
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -42,7 +44,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <div class="row product-info">
-                                   
+
                                     <div class="col-sm-4">
                                         <div id="image">
                                             <?php $image_current = url('/public/admin/img/category') . '/' . $category_item->image ?>
@@ -56,16 +58,16 @@
 
                                         <div class="sub-info">
                                         <p class="tittle">Trạng thái</p>
-                                        
+
                                         @if( $category_item->status == 1)
                                         <p id="status">Hoạt động</p>
                                             @else
                                             <p id="status">Không hoạt động</p>
                                             @endif
                                         </div>
-                                    
+
                                     </div>
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -85,7 +87,6 @@
 <!-- Summernote -->
 
 @include('admin.component.script')
-<script src="{{ asset('public/admin/js/adminlte.min.js') }}"></script>
 </body>
 
 </html>

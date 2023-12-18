@@ -11,7 +11,9 @@
     @include('admin.component.navbar')
     <!-- /.navbar -->
     <!-- Main Sidebar Container -->
-    @include('admin.component.sidebar')
+    <aside class="main-sidebar elevation-4">
+        @include('admin.component.sidebar')
+    </aside>
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -162,5 +164,4 @@
 <!-- Summernote -->
 <script src="{{ asset('/public/admin/plugins/summernote/summernote-bs4.min.js') }}"></script>
 <script src="{{ asset('public/admin/js/custom.js') }}"></script>
-<script src="{{ asset('public/admin/js/adminlte.min.js') }}"></script>
 </html>
