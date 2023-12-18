@@ -15,10 +15,22 @@
     <aside class="main-sidebar elevation-4">
         @include('admin.component.sidebar')
     </aside>
+
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
+            @if ($message = Session::get('success'))
+
+                <div class="alert alert-success alert-block">
+
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+
+                    <strong>{{ $message }}</strong>
+
+                </div>
+
+            @endif
             <div class="container-fluid my-2">
                 <div class="row mb-2">
                     <div class="col-sm-6">
@@ -54,14 +66,14 @@
                         <table class="table table-hover text-nowrap">
                             <thead>
                             <tr>
-                                <th width="60">ID</th>
-                                <th width="80">Image</th>
+                                <th width="60px">ID</th>
+                                <th width="200px">Image</th>
                                 <th>Product</th>
                                 <th>Price</th>
                                 <th>Category</th>
                                 <th>Description</th>
-                                <th width="100">Status</th>
-                                <th width="100">Action</th>
+                                <th width="100px">Status</th>
+                                <th width="100px">Action</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -69,7 +81,7 @@
                                 <tr>
                                     <td> {{ $item->id }} </td>
                                     <td><img src="{{ url('public/admin/img/product') . '/' . $item->image }}"
-                                             class="img-thumbnail" width="50"></td>
+                                             class="img-thumbnail" width="100%"></td>
                                     <td><a href="#">{{ $item->name_product }}</a></td>
                                     <td>{{ $item->price }}</td>
                                     <td>{{ $item->category->name_category }}</td>
@@ -126,18 +138,14 @@
                                     </td>
                                 </tr>
                             @endforeach
-
                             </tbody>
                         </table>
                     </div>
+
+
+
                     <div class="card-footer clearfix">
-                        <ul class="pagination pagination m-0 float-right">
-                            <li class="page-item"><a class="page-link" href="#">«</a></li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">»</a></li>
-                        </ul>
+                        {{ $products->links() }}
                     </div>
                 </div>
             </div>

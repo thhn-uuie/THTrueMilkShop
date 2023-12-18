@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SiteController extends Controller
 {
@@ -11,7 +14,9 @@ class SiteController extends Controller
     }
 
     public function product() {
-        return view('frontend.trang_chu.san_pham');
+//        $products = Product::all();
+        $category = Category::all();
+        return view('frontend.trang_chu.san_pham', compact('category'));
     }
 
     public function promotion() {
@@ -20,5 +25,9 @@ class SiteController extends Controller
 
     public function media() {
         return view('frontend.trang_chu.truyen_thong');
+    }
+
+    public function getCategory() {
+
     }
 }

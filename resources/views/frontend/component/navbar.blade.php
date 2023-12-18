@@ -8,7 +8,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a href="landing.html" id="logo" class="l">
+        <a href="{{ asset('/') }}" id="logo" class="l">
             <img src="https://www.thmilk.vn/wp-content/themes/wp-th/assets/images/logo.png?>" alt="logo">
         </a>
     </div>
