@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\OrderDetail;
+use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -35,15 +36,17 @@ class OrderController extends Controller
     public function show(string $id)
     {
         $order_item = Order::find($id);
-        $order_details = OrderDetail::where('number_product', $id);
+        $order_details = OrderDetail::where('id_order', $id)->get();
         $allCost = 0;
+        $user = Profile::where('id_user',($order_item->id_user))->get()['0'];
         foreach ($order_details as $order_detail) {
             $allCost += $order_detail->price * $order_detail->number_product;
         }
+    
         if (Auth::user()->id_role == 1) {
-            return view('admin.order.order-detail', compact(['order_item','order_details', 'allCost']));
+            return view('admin.order.order-detail', compact(['order_details', 'allCost', 'user']));
         } else {
-            return view('user.order.order-detail', compact(['order_item','order_details', 'allCost']));
+            return view('user.order.order-detail', compact(['order_item', 'allCost', 'user']));
         }
     }
 

@@ -8,7 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class OrderDetail extends Model
 {
     use HasFactory;
-    protected $table = 'oder_detail';
+    protected $table = 'order_detail';
     public $timestamps = false;
-    protected $fillable = ['id_order', 'id_product', 'price', 'id_order', 'number_product'];
+    protected $fillable = ['id_order', 'id_product', 'price', 'number_product'];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'id_product');
+    }
 }

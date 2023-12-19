@@ -19,7 +19,7 @@
             <div class="login">
               <div class="icon-login">
                 <i class="fa fa-solid fa-user fa-lg"></i>
-                <a href="../auth/login.html">
+                <a href="..auth/login.html">
                   <span class="lg">Đăng nhập</span>
                   <span>Tài khoản</span>
                 </a>

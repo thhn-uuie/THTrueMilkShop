@@ -53,62 +53,11 @@
 		</nav>
 		<!-- /.navbar -->
 		<!-- Main Sidebar Container -->
+		
 		<aside class="main-sidebar elevation-4">
-			<!-- Brand Logo -->
-			<a href="#" class="brand-link">
-				<!-- <img src="https://www.thmilk.vn/wp-content/themes/wp-th/assets/images/logo.png?>" alt="logo"> -->
-				<span class="brand-text">TH True Milk</span>
-			</a>
-			<!-- Sidebar -->
-			<div class="sidebar">
-				<!-- Sidebar user (optional) -->
-				<nav class="mt-2">
-					<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-						data-accordion="false">
-						<!-- Add icons to the links using the .nav-icon class
-								with font-awesome or any other icon font library -->
-						<li class="nav-item">
-							<a href="dashboard.html" class="nav-link">
-								<i class="nav-icon fas fa-tachometer-alt"></i>
-								<p>Dashboard</p>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="categories.html" class="nav-link">
-								<i class="nav-icon fas fa-file-alt"></i>
-								<p>Category</p>
-							</a>
-						</li>
-
-
-						<li class="nav-item">
-							<a href="products.html" class="nav-link">
-								<i class="nav-icon fas fa-tag"></i>
-								<p>Products</p>
-							</a>
-						</li>
-
-
-						<li class="nav-item">
-							<a href="orders.html" class="nav-link">
-								<i class="nav-icon fas fa-shopping-bag"></i>
-								<p>Orders</p>
-							</a>
-						</li>
-
-						<li class="nav-item">
-							<a href="users.html" class="nav-link">
-								<i class="nav-icon  fas fa-users"></i>
-								<p>Users</p>
-							</a>
-						</li>
-
-					</ul>
-				</nav>
-				<!-- /.sidebar-menu -->
-			</div>
-			<!-- /.sidebar -->
+			@include('admin.component.sidebar')
 		</aside>
+	
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
@@ -116,7 +65,7 @@
 				<div class="container-fluid my-2">
 					<div class="row mb-2">
 						<div class="col-sm-6">
-							<h1>Order: #4F3S8J</h1>
+							<h1>Order: #{{$order_details['0']->id_order}}</h1>
 						</div>
 						<div class="col-sm-6 text-right">
 							<a href="#" class="btn btn-primary">Xóa</a>
@@ -139,21 +88,18 @@
 										<div class="col-sm-4 invoice-col">
 											<h1 class="h5 mb-3">Shipping Address</h1>
 											<address>
-												<strong>Mohit Singh</strong><br>
-												795 Folsom Ave, Suite 600<br>
-												San Francisco, CA 94107<br>
-												Phone: (804) 123-5432<br>
-												Email: info@example.com
+												<strong>Tên khách hàng: </strong> {{$user->name}}<br>
+												<strong>SDT: </strong> {{$user->phone}}<br>
+												<strong>Địa chỉ: </strong> {{$user->address}}<br>
 											</address>
 										</div>
 
 
 
 										<div class="col-sm-4 invoice-col">
-											<b>Invoice #007612</b><br>
-											<br>
-											<b>Order ID:</b> 4F3S8J<br>
-											<b>Total:</b> $90.40<br>
+			
+											<b>Order ID: #</b> {{$order_details['0']->id_order}} <br>
+											<b>Total:</b> ${{$allCost}}<br>
 											<b>Status:</b> <span class="text-success">Delivered</span>
 											<br>
 										</div>
@@ -170,43 +116,14 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<td>Call of Duty</td>
-												<td>$10.00</td>
-												<td>2</td>
-												<td>$20.00</td>
-											</tr>
-											<tr>
-												<td>Call of Duty</td>
-												<td>$10.00</td>
-												<td>2</td>
-												<td>$20.00</td>
-											</tr>
-											<tr>
-												<td>Call of Duty</td>
-												<td>$10.00</td>
-												<td>2</td>
-												<td>$20.00</td>
-											</tr>
-											<tr>
-												<td>Call of Duty</td>
-												<td>$10.00</td>
-												<td>2</td>
-												<td>$20.00</td>
-											</tr>
-											<tr>
-												<th colspan="3" class="text-right">Subtotal:</th>
-												<td>$80.00</td>
-											</tr>
-
-											<tr>
-												<th colspan="3" class="text-right">Shipping:</th>
-												<td>$5.00</td>
-											</tr>
-											<tr>
-												<th colspan="3" class="text-right">Grand Total:</th>
-												<td>$85.00</td>
-											</tr>
+											@foreach($order_details as $item)
+                                <tr>
+									<td> {{$item->product->name_product ?? ''}}</td>
+                                    <td> ${{$item->price}}</td>
+                                    <td> {{$item->number_product}}</td>
+									<td> ${{$item->price * $item->number_product}}
+								</tr>	
+                            @endforeach
 										</tbody>
 									</table>
 								</div>
@@ -218,10 +135,10 @@
 									<h2 class="h4 mb-3">Order Status</h2>
 									<div class="mb-3">
 										<select name="status" id="status" class="form-control">
-											<option value="">Pending</option>
-											<option value="">Shipped</option>
-											<option value="">Delivered</option>
-											<option value="">Cancelled</option>
+											<option value="1">Pending</option>
+											<option value="2">Shipped</option>
+											<option value="3">Delivered</option>
+											<option value="4">Cancelled</option>
 										</select>
 									</div>
 									<div class="mb-3">
