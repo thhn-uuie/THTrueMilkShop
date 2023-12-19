@@ -18,7 +18,6 @@ class AuthenticateMiddleware
     {
 //        dd(Auth::check());
         if (Auth::check() && Auth::user()->id_role == 1 ) {
-
             return $next($request);
         }
 //        dd('a');

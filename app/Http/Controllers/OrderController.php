@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\order;
+use App\Models\OrderDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class orderController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,10 +35,15 @@ class orderController extends Controller
     public function show(string $id)
     {
         $order_item = Order::find($id);
+        $order_details = OrderDetail::where('number_product', $id);
+        $allCost = 0;
+        foreach ($order_details as $order_detail) {
+            $allCost += $order_detail->price * $order_detail->number_product;
+        }
         if (Auth::user()->id_role == 1) {
-            return view('admin.order.order-detail', compact('order_item'));
+            return view('admin.order.order-detail', compact(['order_item','order_details', 'allCost']));
         } else {
-            return view('user.order.order-detail', compact('order_item'));
+            return view('user.order.order-detail', compact(['order_item','order_details', 'allCost']));
         }
     }
 
@@ -47,34 +53,19 @@ class orderController extends Controller
     public function update(Request $request, string $id)
     {
         $order = Order::find($id);
-        $status1 = $order->status;
         if ($request->isMethod('POST')) {
-            if (Auth::user()->id == $order->id_user) {
-                if ($order->status < 2 && $request->status == 5) { // bi xoa boi nguoi dung khi chua duoc giao di
-                    $status1 = 5;
-                }
-                $result = $order->update([
-                    'note'=> $request->note,
-                    'status'=> $request->status,
-                ]);
-                return view('user.order.order-update', compact('order'));
-
-            }
             if (Auth::user()->id->id_role == 1) {
-                if (!$request->status == 5) { //khong bi xoa boi nguoi dung
-                    $status1 = 5;
-                }
                 $result = $order->update([
                     'status'=> $request->status,
                 ]);
-
+                if ($result) {
+                    return view('admin.order.orders');
+                }
+                return view('admin.order.order-update', compact('order'))->with('success', 'Cap nhat trang thai don hang thanh cong');;
             }
 
         }
-            if ($result) {
-                return redirect()->route('user.order.orders')->with('success', 'Chỉnh sửa thành công');
-            }
-        return view('admin.order.order-update', compact('order'));
+        
     }
 
     /**
@@ -90,6 +81,9 @@ class orderController extends Controller
 
     public function index()
     {
+        if (Auth::user()->id_role == 1) {
+            return view('admin.order.orders');
+        }
         return view('user.order.orders');
     }
 }

@@ -389,8 +389,7 @@
                             <p></p>
                         </div>
                         <div class="list1">
-                            <a class="btn btn-primary" href="
-                    /he-thong-cua-hang/?csrt=14388090062690665609" target="">
+                            <a class="btn btn-primary" href="/he-thong-cua-hang/?csrt=14388090062690665609" target="">
                                 Tìm cửa hàng <i class="fa fa-search"></i></a>
                             <a class="btn btn-primary" href="https://www.thtruemart.vn/" target="_blank">
                                 Mua hàng trực tuyến <i class="fa fa-shopping-cart"></i></a>
@@ -558,7 +557,7 @@
     });
 
     $("#owl-carousel2").owlCarousel({
-        dots: false,
+        dots: true,
         nav: false,
         responsive: {
             0: {
@@ -574,8 +573,8 @@
     });
 
     $("#owl-carousel3").owlCarousel({
-        nav: true,
-        dots: false,
+        nav: false,
+        dots: true,
         items: 1, //10 items above 1000px browser width
     });
 </script>
