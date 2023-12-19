@@ -60,11 +60,13 @@
                 </div>
             </div>
             <a class="left carousel-control" href="#slider1" role="button" data-slide="prev">
-                <i class="fa fa-angle-left" aria-hidden="true"></i>
+                <!-- <i class="fa fa-angle-left" aria-hidden="true"></i> -->
+                <i class="owl-prev"><span aria-label="Previous">‹</span></i>
                 <span class="sr-only">Previous</span>
             </a>
             <a class="right carousel-control" href="#slider1" role="button" data-slide="next">
-                <i class="fa fa-angle-right" aria-hidden="true"></i>
+                <!-- <i class="fa fa-angle-right" aria-hidden="true"></i> -->
+                <i class="owl-next"><span aria-label="Next">›</span></i>
                 <span class="sr-only">Next</span>
             </a>
         </div>

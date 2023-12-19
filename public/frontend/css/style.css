@@ -239,7 +239,7 @@
      padding-right: 40px;
  }
  
- .sld i.fa.fa-angle-left {
+ .sld .owl-prev {
      position: relative;
      top: 40%;
      left: -40px;
@@ -248,7 +248,7 @@
  }
  
  
- .sld i.fa.fa-angle-right {
+ .sld .owl-next {
      position: relative;
      top: 40%;
      right: -40px;
