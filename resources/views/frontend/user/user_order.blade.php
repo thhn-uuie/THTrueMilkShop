@@ -102,7 +102,6 @@
             </div>
           </div>
 
-
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -110,10 +109,11 @@
                 <a href="#page-top"></a>
               </li>
               <li class="page-scroll">
-                <a href="shop.html">CÂU CHUYỆN THẬT TH</a>
+                <a href="">CÂU CHUYỆN THẬT TH</a>
               </li>
-              <li class="page-scroll">
+              <li class="page-scroll has-children">
                 <a href="#">SẢN PHẨM</a>
+
 
               </li>
               </li>
@@ -124,14 +124,12 @@
               <li class="page-scroll">
                 <a href="#">Cửa hàng</a>
               </li>
-              <li class="page-scroll">
+              <li class="page-scroll has-children">
                 <a href="#">Truyền thông</a>
-
               </li>
+              <li class="page-scroll">
+                <a href="#">Tuyển dụng</a>
               </li>
-              <!-- <li class="page-scroll">
-              <a href="#">Tuyển dụng</a>
-            </li> -->
             </ul>
           </div>
           <!-- /.navbar-collapse -->
@@ -192,7 +190,7 @@
                 <div class="order-container"><strong>Order: #1702984966195</strong>
                   <div class="order-item"><img
                       src="https://www.thmilk.vn/wp-content/uploads/2019/11/UHT-it-duong-1L_275x186.png"
-                      alt="uht-it-duong-1l_275x186" class="product-image">
+                      class="product-image">
                     <div class="info">
                       <div class="product-name">Sữa Tươi Tiệt Trùng Ít Đường 1 L</div>
                       <div class="product-price">37200 ₫</div>
@@ -202,12 +200,10 @@
                 </div>
                 <div class="total-price"><span>Tổng tiền: </span><span id="totalPrice">74400 ₫</span>
                 </div>
-
-
                 <div class="order-container"><strong>Order: #1702989160851</strong>
                   <div class="order-item"><img
                       src="https://www.thmilk.vn/wp-content/uploads/2019/11/UHT-it-duong-1L_275x186.png"
-                      alt="uht-it-duong-1l_275x186" class="product-image">
+                      class="product-image">
                     <div class="info">
                       <div class="product-name">Sữa Tươi Tiệt Trùng Ít Đường 1 L</div>
                       <div class="product-price">37200 ₫</div>
@@ -216,7 +212,7 @@
                   </div>
                   <div class="order-item"><img
                       src="https://www.thmilk.vn/wp-content/uploads/2019/11/UHT-co-duong-1L_275x186.png"
-                      alt="uht-co-duong-1l_275x186" class="product-image">
+                      class="product-image">
                     <div class="info">
                       <div class="product-name">Sữa Tươi Tiệt Trùng Có Đường 1 L</div>
                       <div class="product-price">37200 ₫</div>
@@ -314,9 +310,9 @@
   </script>
 
   <script src="../js/app.js"></script>
+  <!-- <script src="../js/user_order.js"></script> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <!-- Font Awesome -->
 
 </body>
 
