@@ -10,7 +10,7 @@ class Profile extends Model
     use HasFactory;
     protected $table = 'profile';
     public $timestamps = false;
-    protected $fillable = ['name', 'birthday', 'gender', 'phone', 'address'];
+    protected $fillable = ['name', 'birthday', 'gender', 'phone', 'address', 'id_user'];
 
     public function user()
     {
