@@ -42,9 +42,9 @@ class OrderController extends Controller
         foreach ($order_details as $order_detail) {
             $allCost += $order_detail->price * $order_detail->number_product;
         }
-    
+
         if (Auth::user()->id_role == 1) {
-            return view('admin.order.order-detail', compact(['order_details', 'allCost', 'user']));
+            return view('admin.order.order-detail', compact(['order_details', 'allCost', 'user', 'order_item']));
         } else {
             return view('user.order.order-detail', compact(['order_item', 'allCost', 'user']));
         }
@@ -53,22 +53,23 @@ class OrderController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        $order = Order::find($id);
-        if ($request->isMethod('POST')) {
-            if (Auth::user()->id->id_role == 1) {
-                $result = $order->update([
-                    'status'=> $request->status,
-                ]);
-                if ($result) {
-                    return view('admin.order.orders');
-                }
-                return view('admin.order.order-update', compact('order'))->with('success', 'Cap nhat trang thai don hang thanh cong');;
-            }
 
+    public function updateStatus(Request $request) {
+//        dd($request);
+        $orderId = $request->id;
+        $status = $request->status;
+
+        $order = Order::find($orderId);
+//        dd($order);
+        if ($order) {
+            $order->status = $status;
+            $order->save();
+
+            return redirect()->back()->with('success', 'Status updated successfully');
         }
-        
+
+        return redirect()->back()->with('error', 'Object not found');
+
     }
 
     /**
@@ -91,4 +92,3 @@ class OrderController extends Controller
         return view('user.order.orders', compact('order'));
     }
 }
-    

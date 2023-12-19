@@ -45,7 +45,7 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('frontend.auth.lo
 Route::get('/cau-chuyen-that-th', [SiteController::class, 'story'])->name('cau_chuyen_that_th');
 
 Route::get('/san-pham', [SiteController::class, 'product'])->name('san_pham');
-
+Route::get('/detail', [SiteController::class, 'show'])->name('detail');
 Route::get('/khuyen-mai', [SiteController::class, 'promotion'])->name('khuyen_mai');
 
 Route::get('/truyen-thong', [SiteController::class, 'media'])->name('truyen_thong');
@@ -101,6 +101,7 @@ Route::prefix('admin/product')->middleware('admin')->name('admin.product.')->gro
 });
 
 
+Route::post('/update-status', [OrderController::class, 'updateStatus'])->name('update-status');
 
     // User
 Route::prefix('admin/user')->middleware('admin')->name('admin.user.')->group(function () {
@@ -108,8 +109,6 @@ Route::prefix('admin/user')->middleware('admin')->name('admin.user.')->group(fun
     Route::match(['GET', 'POST'],'/create', [UserController::class, 'store'])->name('create-user');
     Route::match(['GET', 'POST'],'/detail/{id}', [UserController::class, 'show'])->name('user-detail');
     Route::get('/delete/{id}', [UserController::class, 'destroy'])->name('delete');
-    Route::match(['GET', 'POST'],'/update/{id}', [UserController::class, 'update'])->name('user-update');
-
 });
 
     // Profile
