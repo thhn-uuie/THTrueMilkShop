@@ -239,7 +239,7 @@
      padding-right: 40px;
  }
  
- .sld .owl-prev {
+ .sld .btn-left {
      position: relative;
      top: 40%;
      left: -40px;
@@ -248,7 +248,7 @@
  }
  
  
- .sld .owl-next {
+ .sld .btn-right {
      position: relative;
      top: 40%;
      right: -40px;
