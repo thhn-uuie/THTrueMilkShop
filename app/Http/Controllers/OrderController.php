@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\order;
+use App\Models\Order;
 use App\Models\OrderDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -81,10 +81,11 @@ class OrderController extends Controller
 
     public function index()
     {
+        $order = Order::all();
         if (Auth::user()->id_role == 1) {
-            return view('admin.order.orders');
+            return view('admin.order.orders', compact('order'));
         }
-        return view('user.order.orders');
+        return view('user.order.orders', compact('order'));
     }
 }
     

@@ -131,7 +131,7 @@ Route::prefix('admin/order')->middleware('admin')->name('admin.order.')->group(f
     Route::match(['GET', 'POST'],'/update/{id}', [OrderController::class, 'update'])->name('update');
 });
 
-Route::prefix('user/order')->middleware('auth')->name('admin.order.')->group(function () {
+Route::prefix('user/order')->middleware('auth')->name('user.order.')->group(function () {
     Route::get('/', [OrderController::class, 'index'])->name('orders');
     Route::match(['GET', 'POST'],'/detail/{id}', [OrderController::class, 'show'])->name('detail');
     Route::get('/delete/{id}', [OrderController::class, 'destroy'])->name('delete');

@@ -57,128 +57,17 @@
 										<th width="100">Action</th>
 									</tr>
 								</thead>
-								<tbody>
-									<tr>
-										<td>1</td>
-										<td>366</td>
-										<td>example@example.com</td>
-										<td>
-											<span class="badge bg-success">Delivered</span>
-										</td>
-										<td>Nov 20, 2022</td>
-										<td style="text-align: center;">
-											<a href="order-detail.html">
-												<svg class="filament-link-icon w-4 h-4 mr-1"
-													xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-													fill="currentColor" aria-hidden="true">
-													<path
-														d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z">
-													</path>
-												</svg>
-											</a>
-										</td>
-									</tr>
-									<tr>
-										<td>2</td>
-										<td>366</td>
-										<td>example@example.com</td>
-										<td>
-											<span class="badge bg-success">Delivered</span>
-										</td>
-										<td>Nov 20, 2022</td>
-										<td style="text-align: center;">
-											<a href="order-detail.html">
-												<svg class="filament-link-icon w-4 h-4 mr-1"
-													xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-													fill="currentColor" aria-hidden="true">
-													<path
-														d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z">
-													</path>
-												</svg>
-											</a>
-										</td>
-									</tr>
-									<tr>
-										<td>3</td>
-										<td>366</td>
-										<td>example@example.com</td>
-										<td>
-											<span class="badge bg-success">Delivered</span>
-										</td>
-										<td>Nov 20, 2022</td>
-										<td style="text-align: center;">
-											<a href="order-detail.html">
-												<svg class="filament-link-icon w-4 h-4 mr-1"
-													xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-													fill="currentColor" aria-hidden="true">
-													<path
-														d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z">
-													</path>
-												</svg>
-											</a>
-										</td>
-									</tr>
-									<tr>
-										<td>4</td>
-										<td>366</td>
-										<td>example@example.com</td>
-										<td>
-											<span class="badge bg-success">Delivered</span>
-										</td>
-										<td>Nov 20, 2022</td>
-										<td style="text-align: center;">
-											<a href="order-detail.html">
-												<svg class="filament-link-icon w-4 h-4 mr-1"
-													xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-													fill="currentColor" aria-hidden="true">
-													<path
-														d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z">
-													</path>
-												</svg>
-											</a>
-										</td>
-									</tr>
-									<tr>
-										<td>5</td>
-										<td>366</td>
-										<td>example@example.com</td>
-										<td>
-											<span class="badge bg-success">Delivered</span>
-										</td>
-										<td>Nov 20, 2022</td>
-										<td style="text-align: center;">
-											<a href="order-detail.html">
-												<svg class="filament-link-icon w-4 h-4 mr-1"
-													xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-													fill="currentColor" aria-hidden="true">
-													<path
-														d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z">
-													</path>
-												</svg>
-											</a>
-										</td>
-									</tr>
-									<tr>
-										<td>6</td>
-										<td>366</td>
-										<td>example@example.com</td>
-										<td>
-											<span class="badge bg-success">Delivered</span>
-										</td>
-										<td>Nov 20, 2022</td>
-										<td style="text-align: center;">
-											<a href="order-detail.html">
-												<svg class="filament-link-icon w-4 h-4 mr-1"
-													xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-													fill="currentColor" aria-hidden="true">
-													<path
-														d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z">
-													</path>
-												</svg>
-											</a>
-										</td>
-									</tr>
-								</tbody>
+								@foreach($order as $item)
+                                <tr>
+                                    <td> {{ $item->id }} </td>
+                                    <td> {{ $item->id_user}}</td>
+                                    <td> {{ $item->note}}</td>
+                                    <td> {{ $item->status}}</td>
+									<td> {{ $item->order_date}}
+                                    <td> 
+								</tr>
+                            @endforeach
+                            </tbody>
 							</table>
 						</div>
 						<div class="card-footer clearfix">
