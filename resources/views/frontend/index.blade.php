@@ -557,7 +557,7 @@
     });
 
     $("#owl-carousel2").owlCarousel({
-        dots: false,
+        dots: true,
         nav: false,
         responsive: {
             0: {
@@ -573,8 +573,8 @@
     });
 
     $("#owl-carousel3").owlCarousel({
-        nav: true,
-        dots: false,
+        nav: false,
+        dots: true,
         items: 1, //10 items above 1000px browser width
     });
 </script>
