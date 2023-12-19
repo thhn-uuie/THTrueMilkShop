@@ -1,3 +1,4 @@
+/* ACCOUNT */
 .account .row {
     display: -ms-flexbox;
     display: flex;
@@ -198,4 +199,26 @@ button.btn-edit.submit {
 
 #update_acc .data, #form_shange_pass .data {
     border-bottom: none;
+}
+
+
+/* ORDER */
+.order-container {
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+.order-item {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.order-item:not(:last-child) {
+    border-bottom: 1px solid #eee;
+}
+
+.product-image {
+    max-width: 300px;
 }
