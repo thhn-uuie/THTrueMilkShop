@@ -157,8 +157,8 @@
                     <div class="col-lg-8 col-md-8 order-1">
                         <div class="column main">
                             <form action="" id="checkout">
-                                <div class="block-title">
-                                    ĐỊA CHỈ GIAO HÀNG
+                                <div class="block-title h3">
+                                    <span style="font-weight: 600;">ĐỊA CHỈ GIAO HÀNG</span>
                                     <div class="item" >
                                       <div class="address">
                                           <div class="name">
@@ -211,7 +211,7 @@
                                   </div>
 
                                   <div class="thanh_toan">
-                                    <p class="h3">Phương thức thanh toán</p>
+                                    <p class="h3" style="font-weight: 600; text-transform: uppercase;">Phương thức thanh toán</p>
                                     <div class="shp">
                                         <input type="radio" value="thanhtoan" name="thanhtoan" id="thanhtoan">
                                         <label for="thanhtoan">Thanh toán khi nhận hàng</label>
@@ -227,7 +227,7 @@
 
                     <div class="col-lg-4 col-md-4 col-sm-12 order-1 right-shipping">
                         <div class="column main">
-                            <div class="block-title h4">Tóm tắt đơn hàng</div>
+                            <div class="block-title h3">Tóm tắt đơn hàng</div>
 
                             <div class="block-content shipping-content">
                                 <div class="total-price">

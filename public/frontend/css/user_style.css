@@ -316,7 +316,7 @@ button.btn-edit.submit {
 
 .right-shipping {
     background: rgb(250, 250, 250);
-    padding: 25px 20px;
+    padding: 30px 20px;
 }
 
 .shipping p.price, p.price-ship, p.amount {
@@ -385,7 +385,7 @@ button.btn-edit.submit {
 }
 
 .account.shipping {
-    padding-top: 40px;
+    padding-top: 50px;
 }
 
 .shipping .item {
@@ -480,7 +480,7 @@ button.btn-edit.submit {
 }
 
 .shipping .col-lg-8.col-md-8.order-1 {
-    padding-top: 50px;
+    padding-top: 30px;
 }
 
 .shipping .name a {
