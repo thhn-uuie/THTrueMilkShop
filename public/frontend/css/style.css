@@ -239,7 +239,7 @@
      padding-right: 40px;
  }
  
- .sld i.fa.fa-angle-left {
+ .sld .btn-left {
      position: relative;
      top: 40%;
      left: -40px;
@@ -248,7 +248,7 @@
  }
  
  
- .sld i.fa.fa-angle-right {
+ .sld .btn-right {
      position: relative;
      top: 40%;
      right: -40px;
@@ -1071,7 +1071,12 @@ button.owl-next {
      border-color: #1350a0fb;
  }
  
- 
+ .in-group input:not([type="radio"]):focus {
+    border: 1px solid #72cdf4;
+    outline-offset: 0px;
+    outline: none;
+    box-shadow: 0 0 3px #72cdf4;
+}
  
  
  

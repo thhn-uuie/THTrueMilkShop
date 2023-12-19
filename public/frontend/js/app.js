@@ -13,94 +13,94 @@ async function fetchJsonData(url) {
 }
 
 // Specify the path to your products.json file
-const jsonFilePath = 'public/frontend/json/products.json';
-let jsonData;
+// const jsonFilePath = 'public/frontend/json/products.json';
+// let jsonData;
 
-fetchJsonData(jsonFilePath)
-    .then((data) => {
-        jsonData = data;
+// fetchJsonData(jsonFilePath)
+//     .then((data) => {
+//         jsonData = data;
 
-        function createProductElement(product) {
-            const cardDiv = document.createElement('div');
-            cardDiv.className = 'c-listitem3__card1';
+//         function createProductElement(product) {
+//             const cardDiv = document.createElement('div');
+//             cardDiv.className = 'c-listitem3__card1';
         
-            const imgDiv = document.createElement('div');
-            imgDiv.className = 'c-listitem3__img1';
+//             const imgDiv = document.createElement('div');
+//             imgDiv.className = 'c-listitem3__img1';
         
-            const img = document.createElement('img');
-            img.src = product.image;
-            img.alt = product['image-alt'];
+//             const img = document.createElement('img');
+//             img.src = product.image;
+//             img.alt = product['image-alt'];
         
-            imgDiv.appendChild(img);
+//             imgDiv.appendChild(img);
         
-            const contentArticle = document.createElement('article');
-            contentArticle.className = 'c-listitem3__content1';
+//             const contentArticle = document.createElement('article');
+//             contentArticle.className = 'c-listitem3__content1';
         
-            const titleH4 = document.createElement('h4');
-            titleH4.className = 'title1';
-            titleH4.textContent = product.name;
+//             const titleH4 = document.createElement('h4');
+//             titleH4.className = 'title1';
+//             titleH4.textContent = product.name;
         
-            const infoDiv = document.createElement('div');
-            infoDiv.className = 'info1';
+//             const infoDiv = document.createElement('div');
+//             infoDiv.className = 'info1';
         
-            const priceSpan = document.createElement('span');
-            priceSpan.className = 'info1__price1';
-            priceSpan.textContent = product.price + ' ₫';
+//             const priceSpan = document.createElement('span');
+//             priceSpan.className = 'info1__price1';
+//             priceSpan.textContent = product.price + ' ₫';
         
-            const addItemDiv = document.createElement('div');
-            addItemDiv.className = 'c-add-item';
-            addItemDiv.setAttribute('onclick', `addToCart(${product.id})`);
+//             const addItemDiv = document.createElement('div');
+//             addItemDiv.className = 'c-add-item';
+//             addItemDiv.setAttribute('onclick', `addToCart(${product.id})`);
         
-            const addText = document.createTextNode('Thêm ');
+//             const addText = document.createTextNode('Thêm ');
         
-            const cartIcon = document.createElement('i');
-            cartIcon.className = 'fa fa-solid fa-cart-shopping fa-lg';
+//             const cartIcon = document.createElement('i');
+//             cartIcon.className = 'fa fa-solid fa-cart-shopping fa-lg';
         
-            addItemDiv.appendChild(addText);
-            addItemDiv.appendChild(cartIcon);
+//             addItemDiv.appendChild(addText);
+//             addItemDiv.appendChild(cartIcon);
         
-            infoDiv.appendChild(priceSpan);
-            infoDiv.appendChild(addItemDiv);
+//             infoDiv.appendChild(priceSpan);
+//             infoDiv.appendChild(addItemDiv);
         
-            contentArticle.appendChild(titleH4);
-            contentArticle.appendChild(infoDiv);
+//             contentArticle.appendChild(titleH4);
+//             contentArticle.appendChild(infoDiv);
         
-            cardDiv.appendChild(imgDiv);
-            cardDiv.appendChild(contentArticle);
+//             cardDiv.appendChild(imgDiv);
+//             cardDiv.appendChild(contentArticle);
         
-            return cardDiv;
-        }
+//             return cardDiv;
+//         }
         
 
-        function addProductsToHTML(products, containerId) {
-            const container = document.getElementById(containerId);
+//         function addProductsToHTML(products, containerId) {
+//             const container = document.getElementById(containerId);
 
-            if (container) {
-                products.forEach((product, index) => {
-                    // Create a new c-listitem3-root1 for every 4 items
-                    if (index % 3 === 0) {
-                        const currentRoot = document.createElement('div');
-                        currentRoot.className = 'c-listitem3-root1';
-                        container.appendChild(currentRoot);
+//             if (container) {
+//                 products.forEach((product, index) => {
+//                     // Create a new c-listitem3-root1 for every 4 items
+//                     if (index % 3 === 0) {
+//                         const currentRoot = document.createElement('div');
+//                         currentRoot.className = 'c-listitem3-root1';
+//                         container.appendChild(currentRoot);
         
-                        const listItemDiv = document.createElement('div');
-                        listItemDiv.className = 'c-listitem3';
-                        currentRoot.appendChild(listItemDiv);
+//                         const listItemDiv = document.createElement('div');
+//                         listItemDiv.className = 'c-listitem3';
+//                         currentRoot.appendChild(listItemDiv);
         
-                        const productElement = createProductElement(product);
-                        listItemDiv.appendChild(productElement);
-                    } else {
-                        const listItemDiv = container.lastElementChild.querySelector('.c-listitem3');
-                        const productElement = createProductElement(product);
-                        listItemDiv.appendChild(productElement);
-                    }
-                });
-            }
-        }
+//                         const productElement = createProductElement(product);
+//                         listItemDiv.appendChild(productElement);
+//                     } else {
+//                         const listItemDiv = container.lastElementChild.querySelector('.c-listitem3');
+//                         const productElement = createProductElement(product);
+//                         listItemDiv.appendChild(productElement);
+//                     }
+//                 });
+//             }
+//         }
 
-        addProductsToHTML(data.filter(product => product.category === 'suachua'), 'suachua');
-        addProductsToHTML(data.filter(product => product.category === 'suatuoitiettrung'), 'suatuoitiettrung');
-    });
+//         addProductsToHTML(data.filter(product => product.category === 'suachua'), 'suachua');
+//         addProductsToHTML(data.filter(product => product.category === 'suatuoitiettrung'), 'suatuoitiettrung');
+//     });
 
 let shoppingCart = [];
 

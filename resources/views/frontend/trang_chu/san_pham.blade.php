@@ -36,6 +36,7 @@
     </div>
 
     <div class="nd1">
+        <div class="container">
         <div class="owl-sp">
             <div class="owl-carousel owl-theme" id="owl-carousel1">
                 @foreach($category as $item)
@@ -56,10 +57,11 @@
                 @endforeach
             </div>
         </div>
+        </div>
     </div>
 
     <!-- làm tiếp ở đây nẻ -->
-    <div class="container">
+    <!-- <div class="container">
         <div class="p-product2">
             <div class="p-product2__box1" id="suatuoitiettrung">
 
@@ -71,6 +73,78 @@
                 <h2 class="p-product2__title1">Sữa chua tự nhiên</h2>
             </div>
         </div>
+    </div> -->
+    <!--  -->
+
+    <!-- code nè -->
+    <div class="container">
+      <div class="p-product2">
+        <div class="p-product2__box1" id="suatuoitiettrung">
+          
+          <h2 class="p-product2__title1">sữa tươi tiệt trùng</h2>
+          <div class="c-listitem3-root1">
+            <div class="c-listitem3">
+              <div class="c-listitem3__card1 item1-js">
+                <div class="c-listitem3__img1">
+                  <img src="https://www.thmilk.vn/wp-content/uploads/2019/11/UHT-nguyen-chat-1L_275x186.png" alt="uht-nguyen-chat-1l_275x186"> 
+                </div>
+                <article class="c-listitem3__content1">
+                  <h4 class="title1">Sữa Tươi Tiệt Trùng Nguyên Chất 1 L</h4>
+                  <div class="info1">
+                    <span class="info1__price1">37.200 ₫</span>
+                    <i class="fa fa-solid fa-cart-shopping fa-lg"></i>
+                  </div>
+                </article>
+              </div>
+              <div class="c-listitem3__card1 item1-js">
+                <div class="c-listitem3__img1">
+                  <img src="https://www.thmilk.vn/wp-content/uploads/2019/11/UHT-it-duong-1L_275x186.png" alt="uht-it-duong-1l_275x186"> 
+                </div>
+                <article class="c-listitem3__content1">
+                  <h4 class="title1">Sữa Tươi Tiệt Trùng Ít Đường 1 L</h4>
+                  <div class="info1">
+                    <span class="info1__price1">37.200 ₫</span>
+                    <i class="fa fa-solid fa-cart-shopping fa-lg"></i>
+                  </div>
+                </article>
+              </div>
+              <div class="c-listitem3__card1 item1-js">
+                <div class="c-listitem3__img1">
+                  <img src="https://www.thmilk.vn/wp-content/uploads/2019/11/UHT-co-duong-1L_275x186.png" alt="uht-co-duong-1l_275x186"> 
+                </div>
+                <article class="c-listitem3__content1">
+                  <h4 class="title1">Sữa Tươi Tiệt Trùng Có Đường 1 L</h4>
+                  <div class="info1">
+                    <span class="info1__price1">37.200 ₫</span>
+                    <i class="fa fa-solid fa-cart-shopping fa-lg"></i>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-product2__box1" id="suachua">
+          
+          <h2 class="p-product2__title1">Sữa chua tự nhiên</h2>
+          <div class="c-listitem3-root1">
+            <div class="c-listitem3">
+              <div class="c-listitem3__card1 item1-js">
+                <div class="c-listitem3__img1">
+                  <img src="https://www.thmilk.vn/wp-content/uploads/2021/04/SCA-It-duong_275x186.png" alt="sca-it-duong_275x186">
+                </div>
+                <article class="c-listitem3__content1">
+                  <h4 class="title1">Sữa Chua Ăn Ít Đường</h4>
+                  <div class="info1">
+                    <span class="info1__price1">27.800 ₫</span>
+                    <i class="fa fa-solid fa-cart-shopping fa-lg"></i>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <!--  -->
 
