@@ -16,37 +16,39 @@
 
     <!-- Shopping cart tạm thế đã -->
     <div class="navbar-nav navbar-right">
-        <!-- <div class="cart"> -->
-        <div class="icon-cart" onclick="toggleCartDropdown()">
-            <i class="fa fa-solid fa-cart-shopping fa-lg"></i>
-            <span>0</span>
-        </div>
-
-        <div class="cart-dropdown">
-            <div class="header">
-                Thông tin giỏ hàng
+            <div class="login">
+              <div class="icon-login">
+                <i class="fa fa-solid fa-user fa-lg"></i>
+                <a href="../auth/login.html">
+                  <span class="lg">Đăng nhập</span>
+                  <span>Tài khoản</span>
+                </a>
+              </div>
             </div>
-            <div class="product-info">
-                <!-- Dynamic content will be added here -->
+            <div class="cart">
+              <div class="icon-cart" onclick="toggleCartDropdown()">
+                <i class="fa fa-solid fa-cart-shopping fa-lg"></i>
+                <span>0</span>
+              </div>
+
+              <div class="cart-dropdown">
+                <div class="header">
+                  Thông tin giỏ hàng
+                </div>
+                <div class="product-info">
+                  <!-- Dynamic content will be added here -->
+                </div>
+                <div class="total-price">
+                  <span class="label">Tổng tiền: </span>
+                  <span id="totalPrice">0 ₫</span>
+                </div>
+                <div class="actions">
+                  <div class="action viewcart">Xem giỏ hàng</div>
+                  <div class="action checkout">Thanh toán</div>
+                </div>
+              </div>
             </div>
-            <div class="total-price">
-                <span class="label">Tổng tiền: </span>
-                <span id="totalPrice">0 ₫</span>
-            </div>
-            <div class="actions">
-                <div class="action viewcart">Xem giỏ hàng</div>
-                <div class="action checkout">Thanh toán</div>
-            </div>
-            <!-- </div> -->
-
-            <!-- <div class="login">
-              <i class="fa fa-user"></i>
-            </div> -->
-        </div>
-
-
-    </div>
-
+          </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
@@ -75,9 +77,9 @@
             </li>
 
             </li>
-            <li class="page-scroll">
+            <!-- <li class="page-scroll">
                 <a href="#">Tuyển dụng</a>
-            </li>
+            </li> -->
         </ul>
     </div>
     <!-- /.navbar-collapse -->

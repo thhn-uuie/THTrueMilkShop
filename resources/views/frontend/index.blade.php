@@ -389,8 +389,7 @@
                             <p></p>
                         </div>
                         <div class="list1">
-                            <a class="btn btn-primary" href="
-                    /he-thong-cua-hang/?csrt=14388090062690665609" target="">
+                            <a class="btn btn-primary" href="/he-thong-cua-hang/?csrt=14388090062690665609" target="">
                                 Tìm cửa hàng <i class="fa fa-search"></i></a>
                             <a class="btn btn-primary" href="https://www.thtruemart.vn/" target="_blank">
                                 Mua hàng trực tuyến <i class="fa fa-shopping-cart"></i></a>
