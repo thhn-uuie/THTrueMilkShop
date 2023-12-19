@@ -86,26 +86,30 @@
                             <div class="card mb-3">
                                 <div class="card-body">
                                     <h5>Image</h5>
-                                    <div class="wrapp" id="wrapper">
-                                        <div class="image">
-                                            @if($product->image !== null)
-                                                <img src="{{url('/public/admin/img/product') .'/'. $product->image }}"
-                                                     alt="" id="img">
-                                            @else
-                                                <img src="" id="img">
-                                            @endif
-                                        </div>
-                                        <div class="content">
-                                            <div class="icon"><i class="fa fa-cloud-upload-alt"></i></div>
-                                            <div class="text">No file chosen, yet!</div>
-                                        </div>
-                                        <div class="file-name">File name here</div>
-                                    </div>
+                                    <input type="file" class="form-control" id="product_images" name="product_images[]" multiple="">
 
-                                    <input type="file" id="l_image" name="file_upload" hidden>
-                                    <button type="button" onclick="defaultBtnActive()" id="custom-btn">Choose a file
-                                    </button>
+                                    {{--                                    <div class="wrapp" id="wrapper">--}}
+{{--                                        <div class="image">--}}
+{{--                                            @if($product->image !== null)--}}
+{{--                                                <img src="{{url('/public/admin/img/product') .'/'. $product->image }}"--}}
+{{--                                                     alt="" id="img">--}}
+{{--                                            @else--}}
+{{--                                                <img src="" id="img">--}}
+{{--                                            @endif--}}
+{{--                                        </div>--}}
+{{--                                        <div class="content">--}}
+{{--                                            <div class="icon"><i class="fa fa-cloud-upload-alt"></i></div>--}}
+{{--                                            <div class="text">No file chosen, yet!</div>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="file-name">File name here</div>--}}
+{{--                                    </div>--}}
 
+{{--                                    <input type="file" id="l_image" name="file_upload" hidden>--}}
+{{--                                    <button type="button" onclick="defaultBtnActive()" id="custom-btn">Choose a file--}}
+{{--                                    </button>--}}
+                                    @foreach($product['images'] as $image)
+                                        <img src="{{ url('public/admin/img/product/'.$image['image']) }}" style="width: 100px; height: 100px">
+                                    @endforeach
                                 </div>
                             </div>
                             <div class="card mb-3">

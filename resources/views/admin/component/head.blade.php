@@ -10,3 +10,6 @@
 <!-- Theme style -->
 <link rel="stylesheet" href="{{asset('/public/admin/css/adminlte.min.css')}}">
 <link rel="stylesheet" href="{{asset('/public/admin/css/custom.css')}}">
+
+<link rel="stylesheet" href="{{ asset('/public/frontend/css/owl.carousel.min.css') }}">
+<link rel="stylesheet" href="{{ asset('/public/frontend/css/owl.theme.default.min.css') }}">

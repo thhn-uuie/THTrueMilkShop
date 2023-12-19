@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Gallery;
 use App\Models\Product;
+use App\Models\ProductImages;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
 
 class ProductController extends Controller
 {
@@ -16,7 +20,6 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::paginate(3);
-
         return view('admin.product.products', compact('products'));
     }
 
@@ -29,23 +32,38 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+//dd($request);
+
+//        dd($product);
         if ($request->isMethod('POST')) {
-            if ($request->has('file_upload')) {
-                $file = $request->file('file_upload');
-                $file_name = uniqid() . '_' . $file->getClientOriginalName();
-                $file->move(public_path('admin/img/product'), $file_name);
+            $product = new Product();
+            $product->name_product = $request->title;
+            $product->price = $request->price;
+            $product->description = $request->description;
+            $product->id_category = $request->category;
+            $product->status = $request->status;
+            $product->save();
+            if ($request->hasFile('product_images')) {
+                $images = $request->file('product_images');
+                foreach ($images as $key => $image) {
+
+                    $manager = new ImageManager(new Driver());
+                    $image_temp = $manager->read($image);
+                    $extension = $image->getClientOriginalExtension();
+                    $imageName = time() . '_' . $image->getClientOriginalName();
+                    $path = public_path('admin/img/product');
+                    $image->move($path, $imageName);
+                    $manager->create(100, 100);
+
+                    $imageGallery = new Gallery();
+                    $imageGallery->image = $imageName;
+                    $imageGallery->id_product = $product->id;
+                    $imageGallery->save();
+                }
+
             }
-            $request->merge(['image' => $file_name]);
-            $data = Product::create([
-                'name_product' => $request->title,
-                'price' => $request->price,
-                'image' => $request->image,
-                'description' => $request->description,
-                'id_category' => $request->category,
-                'status' => $request->status,
-            ]);
-            if ($data) {
-                return redirect()->route('admin.product.product-detail', ['id'=>$data->id])->with('success', 'Them moi thanh cong');
+            if ($product) {
+                return redirect()->route('admin.product.product-detail', ['id' => $product->id])->with('success', 'Them moi thanh cong');
             }
         }
         return view('admin.product.create-product');
@@ -73,9 +91,9 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $product = Product::find($id);
+        $product = Product::with('images')->find($id);
         if ($request->isMethod('POST')) {
-            if ($request->has('file_upload')) {
+            if ($request->has('product')) {
                 $oldFile = public_path('admin/img/product') . '/' . $product->image;
                 if (File::exists($oldFile)) {
                     File::delete($oldFile);

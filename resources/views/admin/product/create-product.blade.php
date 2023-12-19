@@ -91,19 +91,29 @@
                             <div class="card mb-3">
                                 <div class="card-body">
                                     <h2 class="h4 mb-3">Image</h2>
-                                    <div class="wrapp" id="wrapper">
-                                        <div class="image">
-                                            <img src="" alt="" id="img">
-                                        </div>
-                                        <div class="content">
-                                            <div class="icon"><i class="fa fa-cloud-upload-alt"></i></div>
-                                            <div class="text">No file chosen, yet!</div>
-                                        </div>
-                                        <div class="file-name">File name here</div>
-                                    </div>
-                                    <input type="file" id="l_image" name="file_upload" hidden>
-                                    <button type="button" onclick="defaultBtnActive()" id="custom-btn">Choose a file
-                                    </button>
+                                    <input type="file" class="form-control" id="product_images" name="product_images[]" multiple="">
+
+{{--                                    <div class="wrapp" id="wrapper">--}}
+{{--                                        <div class="image">--}}
+{{--                                            <img src="" alt="" id="img">--}}
+{{--                                        </div>--}}
+{{--                                        <div class="content">--}}
+{{--                                            <div class="icon"><i class="fa fa-cloud-upload-alt"></i></div>--}}
+{{--                                            <div class="text">No file chosen, yet!</div>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="file-name">File name here</div>--}}
+{{--                                    </div>--}}
+{{--                                    <input type="file" id="l_image" name="file_upload" hidden>--}}
+{{--                                    <button type="button" onclick="defaultBtnActive()" id="custom-btn">Choose a file--}}
+{{--                                    </button>--}}
+
+{{--                                    <input type="hidden" id="image_id" name="image_id" value="">--}}
+{{--                                    <h2 class="h4 mb-3">Image</h2>--}}
+{{--                                    <div id="image" class="dropzone dz-clickable">--}}
+{{--                                        <div class="dz-message needsclick">--}}
+{{--                                            <br> Drop files here or click to upload. <br><br>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
                                 </div>
                             </div>
                             <div class="card mb-3">
@@ -140,6 +150,8 @@
 <!-- Summernote -->
 <script src="{{ asset('/public/admin/plugins/summernote/summernote-bs4.min.js') }}"></script>
 <script src="{{ asset('/public/admin/js/custom.js') }}"></script>
+
+
 </body>
 
 </html>

@@ -48,14 +48,28 @@
 
                                     <div class="col-sm-4">
                                         <div id="image">
-                                            <img src="{{ url('public/admin/img/product/'). '/' .$product_item->image }}">
-                                            <!-- </div> -->
-                                            <!-- </div> -->
+                                            <?php $galleryProduct = \App\Models\Gallery::where('id_product', $product_item->id)->get();?>
+                                            <div class="img1">
+                                                <img role="presentation" alt=""
+                                                     src="{{ url('public/admin/img/product') . '/' . $galleryProduct->first()->image }}">
+                                            </div>
+                                            <div class="owl-img">
+                                                <div class="owl-carousel owl-theme " id="owl-img">
+                                                    <?php $items = $galleryProduct->slice(1); ?>
+                                                    @foreach($items as $i)
+                                                    <div class="item">
+                                                        <img
+                                                            src="{{ url('public/admin/img/product') . '/' . $i->image }}"
+                                                            alt="">
+                                                    </div>
+                                                    @endforeach
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-8">
-                                    <h1 class="h2" id="product-name">{{ $product_item->name_product }}</h1>
-                                    <div class="sub-info">
+                                        <h1 class="h2" id="product-name">{{ $product_item->name_product }}</h1>
+                                        <div class="sub-info">
                                             <p class="tittle">Mô tả sản phẩm</p>
                                             <p id="description">{!! $product_item->description  !!} </p>
                                         </div>
@@ -72,9 +86,9 @@
                                         <div class="sub-info">
                                             <p class="tittle">Trạng thái</p>
                                             @if( $product_item->status == 1)
-                                        <p id="status">Hoạt động</p>
+                                                <p id="status">Hoạt động</p>
                                             @else
-                                            <p id="status">Không hoạt động</p>
+                                                <p id="status">Không hoạt động</p>
                                             @endif
                                         </div>
                                     </div>
@@ -94,8 +108,34 @@
     <!-- /.content-wrapper -->
 
 </div>
-
 @include('admin.component.script');
+<script type="text/javascript">
+    let mybutton = document.getElementById("back-top");
+
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function () { scrollFunction() };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+    $("#owl-img").owlCarousel({
+        dots: true,
+        nav: false,
+        items: 3,
+    });
+</script>
 </body>
 
 </html>

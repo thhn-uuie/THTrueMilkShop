@@ -80,7 +80,7 @@
                             @foreach($products as $item)
                                 <tr>
                                     <td> {{ $item->id }} </td>
-                                    <td><img src="{{ url('public/admin/img/product') . '/' . $item->image }}"
+                                    <td><img src="{{ url('public/admin/img/product') . '/' . $item->image()->first()->image }}"
                                              class="img-thumbnail" width="100%"></td>
                                     <td><a href="#">{{ $item->name_product }}</a></td>
                                     <td>{{ $item->price }}</td>

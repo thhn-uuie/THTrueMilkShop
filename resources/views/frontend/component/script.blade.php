@@ -9,3 +9,4 @@
 
 <script type="text/javascript"
         src="https://owlcarousel2.github.io/OwlCarousel2/assets/owlcarousel/owl.carousel.js"></script>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
