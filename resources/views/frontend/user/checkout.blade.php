@@ -149,8 +149,8 @@
         </div>
 
         <!-- làm tiếp ở đây nẻ -->
-        <div class=" account shipping">
-            <div class="container">
+        <div class="container">
+            <div class="account shipping">
                 <div class="row">
                     <div class="col-lg-12 col-md-12"></div>
 
@@ -253,10 +253,10 @@
                             <div id="sp_cart" class="collapse">
                                 <div class="product">
                                     <div class="row">
-                                        <div class="col-xs-4">
+                                        <div class="col-lg-4 col-xs-12">
                                             <img src="https://www.thtruemart.vn/media/catalog/product/cache/033f609347571ebd72d8644cf9057fec/l/o/loc-sua-tuoi-tiet-trung-th-true-milk-light-meal.jpg" width="78" height="78" alt="Lốc sữa tươi tiệt trùng bổ sung ngũ cốc dạng hạt TH true MILK LIGHT MEAL 180ml x 4 hộp" title="Lốc sữa tươi tiệt trùng bổ sung ngũ cốc dạng hạt TH true MILK LIGHT MEAL 180ml x 4 hộp">
                                         </div>
-                                        <div class="col-xs-5">
+                                        <div class="col-lg-5 col-xs-12">
                                             <div class="product-item-name-block">
                                                 <p class="product-item-name"">Lốc sữa tươi tiệt trùng bổ sung ngũ cốc dạng hạt TH true MILK LIGHT MEAL 180ml x 4 hộp</p>
                                                 <div class="details-qty">
@@ -265,7 +265,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-xs-3">
+                                        <div class="col-lg-3 col-xs-12">
                                             <span class="cart-price">
                                                 98.200 đ
                                             </span>
@@ -275,10 +275,10 @@
 
                                 <div class="product">
                                     <div class="row">
-                                        <div class="col-xs-4">
+                                        <div class="col-lg-4 col-xs-12">
                                             <img src="https://www.thtruemart.vn/media/catalog/product/cache/033f609347571ebd72d8644cf9057fec/u/n/untitled-1_copy.jpg" width="78" height="78" alt="Lốc sữa tươi tiệt trùng bổ sung ngũ cốc dạng hạt TH true MILK LIGHT MEAL 180ml x 4 hộp" title="Lốc sữa tươi tiệt trùng bổ sung ngũ cốc dạng hạt TH true MILK LIGHT MEAL 180ml x 4 hộp">
                                         </div>
-                                        <div class="col-xs-5">
+                                        <div class="col-lg-5 col-xs-12">
                                             <div class="product-item-name-block">
                                                 <p class="product-item-name"">Lốc sữa tươi tiệt trùng bổ sung ngũ cốc dạng hạt TH true MILK LIGHT MEAL 180ml x 4 hộp</p>
                                                 <div class="details-qty">
@@ -287,7 +287,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-xs-3">
+                                        <div class="col-lg-3 col-xs-12">
                                             <span class="cart-price">
                                                 98.200 đ
                                             </span>

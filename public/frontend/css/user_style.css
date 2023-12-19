@@ -314,7 +314,12 @@ button.btn-edit.submit {
     max-width: 300px;
 }
 
-.right-shipping {
+/* .right-shipping {
+    background: rgb(250, 250, 250);
+    padding: 30px 20px;
+} */
+
+.right-shipping .main{
     background: rgb(250, 250, 250);
     padding: 30px 20px;
 }
@@ -362,20 +367,29 @@ button.btn-edit.submit {
     border-bottom: 1px solid rgba(128, 128, 128, 0.404);
 }
 
-.shipping .product .col-xs-5 {
+.shipping .product .col-lg-5 {
     padding-left: 0px;
     padding-right: 0px;
 }
 
-.shipping .product .col-xs-4 img {
+/* .shipping .product .col-xs-4 img {
     width: 100%;
-}
+} */
 
 .shipping #sp_cart {
     height: 350px;
     overflow: scroll;
 }
 
+@media (max-width: 1200px) {
+    .shipping #sp_cart {
+        padding-left: 20px;
+    }
+
+    .shipping #sp_cart .col-xs-12 {
+        padding: 0;
+    }
+}
 .shipping .right-shipping .block-title {
     padding: 0px 0px 10px;
     border-bottom: 1px solid rgb(204, 204, 204);
@@ -385,7 +399,7 @@ button.btn-edit.submit {
 }
 
 .account.shipping {
-    padding-top: 50px;
+    padding: 50px 20px;
 }
 
 .shipping .item {
@@ -417,7 +431,7 @@ button.btn-edit.submit {
     position: relative;
 }
 
-#checkout .col-xs-6 {
+#checkout .col-lg-6 {
     display: inline-grid;
     margin: 10px 0px;
 }
@@ -481,6 +495,7 @@ button.btn-edit.submit {
 
 .shipping .col-lg-8.col-md-8.order-1 {
     padding-top: 30px;
+    margin-bottom: 25px;
 }
 
 .shipping .name a {
@@ -490,3 +505,15 @@ button.btn-edit.submit {
 .shipping .name a:hover {
     color: black;
 }
+
+.account.shipping {
+    margin: 50px 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 2px #80808075;
+    /* border: 0.5px solid #80808075; */
+    padding-bottom: 50px ;
+}
+
+/* .account.shipping .container {
+    padding: 0;
+} */
