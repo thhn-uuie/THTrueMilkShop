@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "category": "suachua",
+        "name":"Sữa Chua Ăn Ít Đường",
+        "price": 27800,
+        "image": "https://www.thmilk.vn/wp-content/uploads/2021/04/SCA-It-duong_275x186.png",
+        "image-alt": "sca-it-duong_275x186"
+    },
+    {
+        "id": 2,
+        "category": "suatuoitiettrung",
+        "name":"Sữa Tươi Tiệt Trùng Nguyên Chất 1 L",
+        "price": 37200,
+        "image": "https://www.thmilk.vn/wp-content/uploads/2019/11/UHT-nguyen-chat-1L_275x186.png",
+        "image-alt": "uht-nguyen-chat-1l_275x186"
+    },
+    {
+        "id": 3,
+        "category": "suatuoitiettrung",
+        "name":"Sữa Tươi Tiệt Trùng Ít Đường 1 L",
+        "price": 37200,
+        "image": "https://www.thmilk.vn/wp-content/uploads/2019/11/UHT-it-duong-1L_275x186.png",
+        "image-alt": "uht-it-duong-1l_275x186"
+    },
+    {
+        "id": 4,
+        "category": "suatuoitiettrung",
+        "name":"Sữa Tươi Tiệt Trùng Có Đường 1 L",
+        "price": 37200,
+        "image": "https://www.thmilk.vn/wp-content/uploads/2019/11/UHT-co-duong-1L_275x186.png",
+        "image-alt": "uht-co-duong-1l_275x186"
+    },
+    {
+        "id": 5,
+        "category": "suatuoitiettrung",
+        "name":"Sữa Tươi Tiệt Trùng Nguyên Chất 180 ml",
+        "price": 37500,
+        "image": "https://www.thmilk.vn/wp-content/uploads/2019/11/Icon-UHT-nguyen-chat-180-275x186.png",
+        "image-alt": "icon-uht-nguyen-chat-180-275x186"
+    },
+    {
+        "id": 6,
+        "category": "suatuoitiettrung",
+        "name":"Sữa Tươi Tiệt Trùng Ít Đường 180 ml",
+        "price": 37500,
+        "image": "https://www.thmilk.vn/wp-content/uploads/2019/11/Icon-UHT-It-duong-180-275x186-1.png",
+        "image-alt": "icon-uht-it-duong-180-275x186-3"
+    }
+]
