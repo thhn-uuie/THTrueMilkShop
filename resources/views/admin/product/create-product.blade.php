@@ -91,7 +91,10 @@
                             <div class="card mb-3">
                                 <div class="card-body">
                                     <h2 class="h4 mb-3">Image</h2>
+                                    <div class="img_multiple">
                                     <input type="file" class="form-control" id="product_images" name="product_images[]" multiple="">
+                                    <div class="img_show"></div>
+                                    </div>
 
 {{--                                    <div class="wrapp" id="wrapper">--}}
 {{--                                        <div class="image">--}}
@@ -148,9 +151,34 @@
 <!-- jQuery -->
 @include('admin.component.script');
 <!-- Summernote -->
-<script src="{{ asset('/public/admin/plugins/summernote/summernote-bs4.min.js') }}"></script>
-<script src="{{ asset('/public/admin/js/custom.js') }}"></script>
 
+<script>
+    // Đảm bảo rằng mã JavaScript được thực thi sau khi tài liệu HTML đã được tải
+    $(document).ready(function() {
+        // Multiple images preview in browser
+        var imagesPreview = function(input, placeToInsertImagePreview) {
+            if (input.files) {
+                var filesAmount = input.files.length;
+
+                for (i = 0; i < filesAmount; i++) {
+                    var reader = new FileReader();
+
+                    reader.onload = function(event) {
+                        $($.parseHTML('<img>')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                    }
+
+                    reader.readAsDataURL(input.files[i]);
+                }
+            }
+        };
+
+        $('#product_images').on('change', function() {
+            imagesPreview(this, 'div.img_show');
+        });
+
+    });
+
+</script>
 
 </body>
 
