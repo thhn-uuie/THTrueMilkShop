@@ -7,11 +7,7 @@ use App\Models\Gallery;
 use App\Models\Product;
 use App\Models\ProductImages;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
-use Intervention\Image\ImageManager;
-use Intervention\Image\Drivers\Gd\Driver;
-
 class ProductController extends Controller
 {
     /**
@@ -32,10 +28,8 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-//dd($request);
-
-//        dd($product);
         if ($request->isMethod('POST')) {
+
             $product = new Product();
             $product->name_product = $request->title;
             $product->price = $request->price;
@@ -43,8 +37,11 @@ class ProductController extends Controller
             $product->id_category = $request->category;
             $product->status = $request->status;
             $product->save();
+
             if ($request->hasFile('product_images')) {
+
                 $images = $request->file('product_images');
+
                 foreach ($images as $image) {
                     $imageName = time() . '_' . $image->getClientOriginalName();
                     $path = public_path('admin/img/product');
@@ -55,9 +52,17 @@ class ProductController extends Controller
                     $imageGallery->id_product = $product->id;
                     $imageGallery->save();
                 }
-            }
 
-                return redirect()->route('admin.product.product-detail', ['id' => $product->id])->with('success', 'Them moi thanh cong');
+            } else {
+                $defaultImage = 'no-image.png';
+                $imageGallery = new Gallery();
+                $imageGallery->image = $defaultImage;
+                $imageGallery->id_product = $product->id;
+                $imageGallery->save();
+            }
+            return redirect()->route('admin.product.product-detail', ['id' => $product->id])->with('success', 'Them moi thanh cong');
+
+
 
         }
         return view('admin.product.create-product');
@@ -98,6 +103,12 @@ class ProductController extends Controller
                     $imageGallery->id_product = $product->id;
                     $imageGallery->save();
                 }
+            } else {
+                $defaultImage = 'no-image.png';
+                $imageGallery = new Gallery();
+                $imageGallery->image = $defaultImage;
+                $imageGallery->id_product = $product->id;
+                $imageGallery->save();
             }
             return redirect()->route('admin.product.product-detail',['id'=>$product->id])->with('success', 'Chỉnh sửa thành công');
         }
@@ -128,4 +139,5 @@ class ProductController extends Controller
         $images->delete();
         return back();
     }
+
 }
