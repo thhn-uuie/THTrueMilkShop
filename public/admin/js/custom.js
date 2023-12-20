@@ -17,6 +17,7 @@ defaultBtn.addEventListener("change", function () {
         reader.onload = function () {
             const result = reader.result;
             img.src = result;
+            $('.wrapp .content').css("display", "none");
             wrapper.classList.add("active");
         }
         reader.readAsDataURL(file);
