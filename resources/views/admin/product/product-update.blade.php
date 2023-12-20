@@ -39,7 +39,7 @@
                     @if ($message = Session::get('success'))
 
                         <div class="alert alert-success alert-block">
-
+                        <i class="fa fa-check" aria-hidden="true"></i>
                             <button type="button" class="close" data-dismiss="alert">×</button>
 
                             <strong>{{ $message }}</strong>
@@ -74,62 +74,8 @@
                                                           style="width: 100%;">{!! $product->description  !!}</textarea>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="">
-                                <button type="submit" class="btn btn-primary">Cập nhật</button>
-                            </div>
-
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card mb-3">
-                                <div class="card-body">
-                                    <h5>Image</h5>
-                                    <input type="file" class="form-control" id="product_images" name="product_images[]"
-                                           multiple="">
-                                    <div>
-                                        <form action="" method="post">
-                                            <button class="btn text-danger " style="display: none;">X</button>
-                                            @csrf
-                                        </form>
-                                        <img src=""
-                                             style="width: 100px; height: 100px; display:none">
-                                    </div>
-                                    @if($product['image'] !== null)
-                                        @foreach ($product['image'] as $img)
-                                            <div>
-                                                <form action="{{ route('deleteimage', ['id'=>$img->id]) }}"
-                                                      method="post">
-                                                    <button class="btn text-danger">X</button>
-                                                    @csrf
-                                                </form>
-                                                <img src="{{ url('public/admin/img/product/'.$img->image) }}"
-                                                     style="width: 100px; height: 100px">
-                                            </div>
-                                        @endforeach
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="card mb-3">
-                                <div class="card-body">
-                                    <h5>Product status</h5>
-                                    <div class="mb-3">
-                                        <select name="status" id="s_status" class="form-control">
-                                            <?php $selectedStatus = $product->status ?>
-                                            @if($selectedStatus == 1)
-                                                <option value="{{ $selectedStatus }}"> Active</option>
-                                                <option value="0"> Block</option>
-                                            @else
-                                                <option value="{{ $selectedStatus }}"> Block</option>
-                                                <option value="1"> Active</option>
-                                            @endif
-
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card">
+                                        <div class="col-md-12">
+                                        <div class="card">
                                 <div class="card-body">
                                     <h5>Product category</h5>
                                     <div class="mb-3">
@@ -152,6 +98,67 @@
                                     </div>
                                 </div>
                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <button type="submit" class="btn btn-primary">Cập nhật</button>
+                            </div>
+
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <h5>Image</h5>
+                                    <div class="img_multiple">
+                                    <input type="file" class="form-control" id="product_images" name="product_images[]"
+                                           multiple="">
+                                           <div class="img_show"></div></div>
+                                    <div>
+                                        <form action="" method="post">
+                                            <button class="btn text-danger " style="display: none;">x</button>
+                                            @csrf
+                                        </form>
+                                        <img src=""
+                                             style="width: 100px; height: 100px; display:none">
+                                    </div>
+                                    <ul class="list_img">
+                                    @if($product['image'] !== null)
+                                        @foreach ($product['image'] as $img)
+                                            <li class="delete_img">
+                                                <form action="{{ route('deleteimage', ['id'=>$img->id]) }}"
+                                                      method="post">
+                                                    <button class="btn text-danger">X</button>
+                                                    @csrf
+                                                </form>
+                                                <img src="{{ url('public/admin/img/product/'.$img->image) }}"
+                                                     style="width: 100px; height: 100px">
+                                            </li>
+                                        @endforeach
+                                    @endif
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <h5>Product status</h5>
+                                    <div class="mb-3">
+                                        <select name="status" id="s_status" class="form-control">
+                                            <?php $selectedStatus = $product->status ?>
+                                            @if($selectedStatus == 1)
+                                                <option value="{{ $selectedStatus }}"> Active</option>
+                                                <option value="0"> Block</option>
+                                            @else
+                                                <option value="{{ $selectedStatus }}"> Block</option>
+                                                <option value="1"> Active</option>
+                                            @endif
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
 
                         </div>
 
@@ -163,9 +170,45 @@
     </div>
 
 </div>
-</body>
-@include('admin.component.script');
 <!-- Summernote -->
+<script src="{{ asset('/public/admin/plugins/jquery/jquery.min.js') }}"></script>
+<!-- Bootstrap 4 -->
+<script src="{{ asset('/public/admin/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- AdminLTE App -->
+<script src="{{ asset('/public/admin/js/adminlte.min.js') }}"></script>
 <script src="{{ asset('/public/admin/plugins/summernote/summernote-bs4.min.js') }}"></script>
-<script src="{{ asset('public/admin/js/custom.js') }}"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{{ asset('/public/admin/js/demo.js') }}"></script>
+
+<script>
+    // Đảm bảo rằng mã JavaScript được thực thi sau khi tài liệu HTML đã được tải
+    $(document).ready(function() {
+        $('.summernote').summernote({
+            height: '100px'
+        });
+        // Multiple images preview in browser
+        var imagesPreview = function(input, placeToInsertImagePreview) {
+            if (input.files) {
+                var filesAmount = input.files.length;
+
+                for (i = 0; i < filesAmount; i++) {
+                    var reader = new FileReader();
+
+                    reader.onload = function(event) {
+                        $($.parseHTML('<img>')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                    }
+
+                    reader.readAsDataURL(input.files[i]);
+                }
+            }
+        };
+
+        $('#product_images').on('change', function() {
+            imagesPreview(this, 'div.img_show');
+        });
+
+    });
+
+</script>
+</body>
 </html>

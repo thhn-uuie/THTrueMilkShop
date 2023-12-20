@@ -1,9 +1,9 @@
-* {
+* {}
 
-}
 .w-4 {
     width: 1rem;
 }
+
 .h-4 {
     height: 1rem;
 }
@@ -11,6 +11,7 @@
 .w-6 {
     width: 1.5rem;
 }
+
 .h-6 {
     height: 1.5rem;
 }
@@ -58,7 +59,12 @@ a.brand-link {
     color: #103a71;
 }
 
-.login-box span.fas.fa-lock, span.fas.fa-envelope {width: 18px;height: 18px;}
+.login-box span.fas.fa-lock,
+span.fas.fa-envelope {
+    width: 18px;
+    height: 18px;
+}
+
 .login-box .card.card-outline.card-primary {
     border-top: 5px solid #103a71;
 }
@@ -191,18 +197,18 @@ body {
 
 }
 
-.sub-info p.tittle{
+.sub-info p.tittle {
     font-weight: 600;
     margin-bottom: 10px;
 
 }
 
-.product-info .sub-info{
+.product-info .sub-info {
     margin-bottom: 1rem;
 
 }
 
-.product-info #image img{
+.product-info #image img {
     width: 100%;
 
 }
@@ -216,7 +222,7 @@ body {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
+}
 
 input:not([type="radio"]):focus {
     border: 1px solid #72cdf4;
@@ -225,8 +231,8 @@ input:not([type="radio"]):focus {
     box-shadow: 0 0 3px #72cdf4;
 }
 
-  /* image mul... */
-  input#product_images {
+/* image mul... */
+input#product_images {
     border: none;
 }
 
@@ -246,4 +252,72 @@ input:not([type="radio"]):focus {
     width: 100%;
     height: auto;
     padding: 5px 10px;
+}
+
+/* upadte product img */
+.delete_img {
+    position: relative;
+    list-style: none;
+    display: inline-flex;
+    margin: 10px;
+}
+
+.delete_img form {
+    float: left;
+    top: -12px;
+    left: 4px;
+    position: absolute;
+    z-index: 30;
+}
+
+.list_img {
+    height: auto;
+    overflow: scroll;
+    margin-top: 15px;
+    padding: 0px !important;
+}
+
+.delete_img img {
+    top: 0px;
+    right: -11px;
+    position: relative;
+    z-index: 20;
+    width: 100% !important;
+    height: 100% !important;
+    border: 1px solid gainsboro;
+}
+
+.delete_img img:hover {
+    box-shadow: 0 0 4px #c2cdda;
+}
+
+.delete_img button.btn.text-danger {
+    color: #103a71 !important;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: lowercase;
+    background: #fff;
+    padding: 0px 6px;
+    border: none;
+}
+
+.delete_img button.btn.text-danger:hover {
+    color: #e74c3c !important;
+    box-shadow: 0 0 2px #c2cdda;
+    border-radius: 7px;
+}
+
+.alert.alert-success.alert-block {
+    background: #fff;
+    border: none;
+    color: #3CCF4E;
+    width: max-content;
+}
+
+.alert.alert-success.alert-block button.close {
+    margin: 0 0 0 20px;
+}
+
+.alert.alert-success.alert-block i.fa {
+    margin: 0 5px 0 0;
 }
