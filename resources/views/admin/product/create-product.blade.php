@@ -148,13 +148,21 @@
 
 </div>
 <!-- ./wrapper -->
-<!-- jQuery -->
-@include('admin.component.script');
-<!-- Summernote -->
+<script src="{{ asset('/public/admin/plugins/jquery/jquery.min.js') }}"></script>
+<!-- Bootstrap 4 -->
+<script src="{{ asset('/public/admin/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- AdminLTE App -->
+<script src="{{ asset('/public/admin/js/adminlte.min.js') }}"></script>
+<script src="{{ asset('/public/admin/plugins/summernote/summernote-bs4.min.js') }}"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{{ asset('/public/admin/js/demo.js') }}"></script>
 
 <script>
     // Đảm bảo rằng mã JavaScript được thực thi sau khi tài liệu HTML đã được tải
     $(document).ready(function() {
+        $('.summernote').summernote({
+            height: '100px'
+        });
         // Multiple images preview in browser
         var imagesPreview = function(input, placeToInsertImagePreview) {
             if (input.files) {
