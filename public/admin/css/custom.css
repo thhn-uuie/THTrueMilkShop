@@ -217,3 +217,33 @@ body {
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+
+input:not([type="radio"]):focus {
+    border: 1px solid #72cdf4;
+    outline-offset: 0px;
+    outline: none;
+    box-shadow: 0 0 3px #72cdf4;
+}
+
+  /* image mul... */
+  input#product_images {
+    border: none;
+}
+
+.img_multiple {
+    border: 1px solid gainsboro;
+    padding: 10px 5px;
+}
+
+.img_multiple .img_show {
+    margin-top: 10px;
+    width: 100%;
+    max-height: 292px;
+    overflow: scroll;
+}
+
+.img_multiple .img_show img {
+    width: 100%;
+    height: auto;
+    padding: 5px 10px;
+}

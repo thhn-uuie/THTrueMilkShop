@@ -93,11 +93,10 @@
                             <div class="card mb-3">
                                 <div class="card-body">
                                     <h2 class="h4 mb-3">Image</h2>
-                                    {{--                                    <input type="file" class="form-control" id="product_images" name="product_images[]" multiple="">--}}
-                                    <input type="file" class="form-control" id="product_images" name="product_images[]"
-                                           multiple="">
-                                    <div id="imagePreviewContainer"></div>
-{{--                                    ?<p id="fileCount">Số lượng tệp tin: 0</p>--}}
+                                    <div class="img_multiple">
+                                    <input type="file" class="form-control" id="product_images" name="product_images[]" multiple="">
+                                    <div class="img_show"></div>
+                                    </div>
 
 
                                     {{--                                    <div class="wrapp" id="wrapper">--}}
@@ -152,25 +151,47 @@
 
 </div>
 <!-- ./wrapper -->
-<!-- jQuery -->
-@include('admin.component.script');
-<!-- Summernote -->
-{{--<script src="{{ asset('/public/admin/js/custom.js') }}"></script>--}}
+<script src="{{ asset('/public/admin/plugins/jquery/jquery.min.js') }}"></script>
+<!-- Bootstrap 4 -->
+<script src="{{ asset('/public/admin/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- AdminLTE App -->
+<script src="{{ asset('/public/admin/js/adminlte.min.js') }}"></script>
+<script src="{{ asset('/public/admin/plugins/summernote/summernote-bs4.min.js') }}"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{{ asset('/public/admin/js/demo.js') }}"></script>
 
 <script>
+    // Đảm bảo rằng mã JavaScript được thực thi sau khi tài liệu HTML đã được tải
+    $(document).ready(function() {
+        $('.summernote').summernote({
+            height: '100px'
+        });
+        // Multiple images preview in browser
+        var imagesPreview = function(input, placeToInsertImagePreview) {
+            if (input.files) {
+                var filesAmount = input.files.length;
 
-    ClassicEditor
-        .create(document.querySelector('#description'), {
+                for (i = 0; i < filesAmount; i++) {
+                    var reader = new FileReader();
 
-            height: '300px' // Thay đổi giá trị này để điều chỉnh chiều cao
-        })
-        .catch(error => {
-            console.error(error);
+                    reader.onload = function(event) {
+                        $($.parseHTML('<img>')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                    }
+
+                    reader.readAsDataURL(input.files[i]);
+                }
+            }
+        };
+
+        $('#product_images').on('change', function() {
+            imagesPreview(this, 'div.img_show');
         });
 
-
+    });
 
 </script>
+
+
 </body>
 
 </html>
