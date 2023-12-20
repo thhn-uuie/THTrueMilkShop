@@ -110,7 +110,8 @@ use App\Models\Gallery;
                                     <div class="info">
                                         <div class="product-name">{{ $gallery->product->name_product }}</div>
                                         <div class="product-price">{{$gallery->product->price}}₫</div>
-                                        <div class="product-quantity">Số lượng: 1</div>
+
+                                        <div class="product-quantity">Số lượng: {{ $qty->search($gallery->id_product)}}</div>
                                     </div>
                                 </div>
                                 @endforeach
@@ -119,8 +120,13 @@ use App\Models\Gallery;
                             @endforeach
 
                             <div class="total-price">
-                                <span class="label">Tổng tiền: </span>
-                                <span id="totalPrice">0 ₫</span>
+                                <?php $total = DB::table('gio_hang')
+                                    ->where('id_user', Auth::user()->id)
+                                    ->selectRaw('SUM(qty * price) as total')
+                                    ->value('total');
+                                ?>
+                                <span class="label">Tổng tiền:  </span>
+                                <span id="totalPrice">{{ $total }} ₫</span>
                             </div>
                             <div class="actions">
                                 <div class="action viewcart">Xem giỏ hàng</div>
