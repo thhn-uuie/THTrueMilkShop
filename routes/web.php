@@ -101,6 +101,8 @@ Route::prefix('admin/product')->middleware('admin')->name('admin.product.')->gro
 
 });
 Route::post('/deleteimage/{id}',[ProductController::class,'deleteimage'])->name('deleteimage');
+Route::post('/upload-image',[ProductController::class,'uploadImage'])->name('uploadimage');
+
 
 Route::post('/update-status', [OrderController::class, 'updateStatus'])->name('update-status');
 
@@ -110,6 +112,8 @@ Route::prefix('admin/user')->middleware('admin')->name('admin.user.')->group(fun
     Route::match(['GET', 'POST'],'/create', [UserController::class, 'store'])->name('create-user');
     Route::match(['GET', 'POST'],'/detail/{id}', [UserController::class, 'show'])->name('user-detail');
     Route::get('/delete/{id}', [UserController::class, 'destroy'])->name('delete');
+    Route::match(['GET', 'POST'],'/update/{id}', [UserController::class, 'update'])->name('user-update');
+
 });
 
     // Profile
