@@ -1,3 +1,7 @@
+<?php
+use Illuminate\Support\Facades\Auth;
+use App\Models\Cart;
+?>
 <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header page-scroll">
@@ -13,42 +17,80 @@
         </a>
     </div>
 
-
-    <!-- Shopping cart tạm thế đã -->
+    <?php $authCheck = Auth::check(); ?>
+        <!-- Shopping cart tạm thế đã -->
     <div class="navbar-nav navbar-right">
-            <div class="login">
-              <div class="icon-login">
+        <div class="login">
+            <div class="icon-login">
                 <i class="fa fa-solid fa-user fa-lg"></i>
-                <a href="../auth/login.html">
-                  <span class="lg">Đăng nhập</span>
-                  <span>Tài khoản</span>
-                </a>
-              </div>
-            </div>
-            <div class="cart">
-              <div class="icon-cart" onclick="toggleCartDropdown()">
-                <i class="fa fa-solid fa-cart-shopping fa-lg"></i>
-                <span>0</span>
-              </div>
 
-              <div class="cart-dropdown">
-                <div class="header">
-                  Thông tin giỏ hàng
-                </div>
-                <div class="product-info">
-                  <!-- Dynamic content will be added here -->
-                </div>
-                <div class="total-price">
-                  <span class="label">Tổng tiền: </span>
-                  <span id="totalPrice">0 ₫</span>
-                </div>
-                <div class="actions">
-                  <div class="action viewcart">Xem giỏ hàng</div>
-                  <div class="action checkout">Thanh toán</div>
-                </div>
-              </div>
+                @if($authCheck == false)
+                    <a href="{{ asset('/login') }}">
+                        <span class="lg">Đăng nhập</span>
+                        <span>Tài khoản</span>
+                    </a>
+
+                @else
+                    <a style="font-size: 14px">{{ Auth::user()->name }}</a>
+                @endif
             </div>
-          </div>
+        </div>
+        <?php $count = Cart::where('id_user', Auth::user()->id);?>
+    @if($authCheck == false)
+            <div class="cart">
+                <div class="icon-cart" onclick="toggleCartDropdown()">
+                    <i class="fa fa-solid fa-cart-shopping fa-lg"></i>
+                    <span>0</span>
+                </div>
+
+                <div class="cart-dropdown">
+                    <div class="header">
+                        Thông tin giỏ hàng
+                    </div>
+                    <div class="product-info">
+                        <!-- Dynamic content will be added here -->
+                    </div>
+                    <div class="total-price">
+                        <span class="label">Tổng tiền: </span>
+                        <span id="totalPrice">0 ₫</span>
+                    </div>
+                    <div class="actions">
+                        <div class="action viewcart">Xem giỏ hàng</div>
+                        <div class="action checkout">Thanh toán</div>
+                    </div>
+                </div>
+            </div>
+        @else
+
+            <div class="cart">
+                <div class="icon-cart" onclick="toggleCartDropdown()">
+                    <i class="fa fa-solid fa-cart-shopping fa-lg"></i>
+{{--                    @if($count->isEmplty)--}}
+                    <span>0</span>
+{{--                    @else--}}
+{{--                    @endif--}}
+                </div>
+
+                <div class="cart-dropdown">
+                    <div class="header">
+                        Thông tin giỏ hàng
+                    </div>
+                    <div class="product-info">
+                        @foreach($count as $item)
+                        @endforeach
+                    </div>
+                    <div class="total-price">
+                        <span class="label">Tổng tiền: </span>
+                        <span id="totalPrice">0 ₫</span>
+                    </div>
+                    <div class="actions">
+                        <div class="action viewcart">Xem giỏ hàng</div>
+                        <div class="action checkout">Thanh toán</div>
+                    </div>
+                </div>
+            </div>
+        @endif
+    </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
