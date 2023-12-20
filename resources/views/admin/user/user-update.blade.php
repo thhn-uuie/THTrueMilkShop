@@ -20,7 +20,7 @@
             <div class="container-fluid my-2">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Create User</h1>
+                        <h1>Update User</h1>
                     </div>
                     <div class="col-sm-6 text-right">
                         <a href="{{ asset('admin/user') }}" class="btn btn-primary">Back</a>

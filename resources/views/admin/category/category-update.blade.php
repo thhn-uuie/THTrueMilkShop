@@ -22,7 +22,7 @@
             <div class="container-fluid my-2">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Create Category</h1>
+                        <h1>Update Category</h1>
                     </div>
                     <div class="col-sm-6 text-right">
                         <a href="{{ asset('/admin/category') }}" class="btn btn-primary">Back</a>
@@ -136,7 +136,7 @@
 <script>
     var image = $('.wrapp .image img');
     if (image.src !== null || image.src !== '') {
-    // Nếu thuộc tính src là null hoặc trống, thêm lớp 'active'
+    // Nếu thuộc tính src khác null hoặc trống, thêm lớp 'active'
         $('.wrapp').addClass('active');
         $('.wrapp .content').css("display", "none");
   }
