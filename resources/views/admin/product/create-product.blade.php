@@ -3,7 +3,9 @@
 
 <head>
     @include('admin.component.head')
-    <link rel="stylesheet" href="{{ asset('/public/admin/plugins/summernote/summernote-bs4.min.css') }}">
+    <script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/classic/ckeditor.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
 </head>
 
 <body class="sidebar-mini" style="height: auto;">
@@ -13,7 +15,8 @@
     @include('admin.component.navbar')
     <!-- /.navbar -->
     <!-- Main Sidebar Container -->
-    @<aside class="main-sidebar elevation-4">
+    @
+    <aside class="main-sidebar elevation-4">
         @include('admin.component.sidebar')
     </aside>
     <!-- Content Wrapper. Contains page content -->
@@ -60,9 +63,8 @@
                                         <div class="col-md-12">
                                             <div class="mb-3">
                                                 <label for="description">Description<i style="color: red;">*</i></label>
-                                                <textarea name="description" id="description" cols="30" rows="10"
-                                                          class="summernote" placeholder="Description" required
-                                                          style="width: 100%;"></textarea>
+                                                <textarea name="description" id="description"
+                                                          placeholder="Description"></textarea>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
@@ -91,29 +93,34 @@
                             <div class="card mb-3">
                                 <div class="card-body">
                                     <h2 class="h4 mb-3">Image</h2>
-                                    <input type="file" class="form-control" id="product_images" name="product_images[]" multiple="">
+                                    {{--                                    <input type="file" class="form-control" id="product_images" name="product_images[]" multiple="">--}}
+                                    <input type="file" class="form-control" id="product_images" name="product_images[]"
+                                           multiple="">
+                                    <div id="imagePreviewContainer"></div>
+{{--                                    ?<p id="fileCount">Số lượng tệp tin: 0</p>--}}
 
-{{--                                    <div class="wrapp" id="wrapper">--}}
-{{--                                        <div class="image">--}}
-{{--                                            <img src="" alt="" id="img">--}}
-{{--                                        </div>--}}
-{{--                                        <div class="content">--}}
-{{--                                            <div class="icon"><i class="fa fa-cloud-upload-alt"></i></div>--}}
-{{--                                            <div class="text">No file chosen, yet!</div>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="file-name">File name here</div>--}}
-{{--                                    </div>--}}
-{{--                                    <input type="file" id="l_image" name="file_upload" hidden>--}}
-{{--                                    <button type="button" onclick="defaultBtnActive()" id="custom-btn">Choose a file--}}
-{{--                                    </button>--}}
 
-{{--                                    <input type="hidden" id="image_id" name="image_id" value="">--}}
-{{--                                    <h2 class="h4 mb-3">Image</h2>--}}
-{{--                                    <div id="image" class="dropzone dz-clickable">--}}
-{{--                                        <div class="dz-message needsclick">--}}
-{{--                                            <br> Drop files here or click to upload. <br><br>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
+                                    {{--                                    <div class="wrapp" id="wrapper">--}}
+                                    {{--                                        <div class="image">--}}
+                                    {{--                                            <img src="" alt="" id="img">--}}
+                                    {{--                                        </div>--}}
+                                    {{--                                        <div class="content">--}}
+                                    {{--                                            <div class="icon"><i class="fa fa-cloud-upload-alt"></i></div>--}}
+                                    {{--                                            <div class="text">No file chosen, yet!</div>--}}
+                                    {{--                                        </div>--}}
+                                    {{--                                        <div class="file-name">File name here</div>--}}
+                                    {{--                                    </div>--}}
+                                    {{--                                    <input type="file" id="l_image" name="file_upload" hidden>--}}
+                                    {{--                                    <button type="button" onclick="defaultBtnActive()" id="custom-btn">Choose a file--}}
+                                    {{--                                    </button>--}}
+
+                                    {{--                                    <input type="hidden" id="image_id" name="image_id" value="">--}}
+                                    {{--                                    <h2 class="h4 mb-3">Image</h2>--}}
+                                    {{--                                    <div id="image" class="dropzone dz-clickable">--}}
+                                    {{--                                        <div class="dz-message needsclick">--}}
+                                    {{--                                            <br> Drop files here or click to upload. <br><br>--}}
+                                    {{--                                        </div>--}}
+                                    {{--                                    </div>--}}
                                 </div>
                             </div>
                             <div class="card mb-3">
@@ -148,10 +155,22 @@
 <!-- jQuery -->
 @include('admin.component.script');
 <!-- Summernote -->
-<script src="{{ asset('/public/admin/plugins/summernote/summernote-bs4.min.js') }}"></script>
-<script src="{{ asset('/public/admin/js/custom.js') }}"></script>
+{{--<script src="{{ asset('/public/admin/js/custom.js') }}"></script>--}}
+
+<script>
+
+    ClassicEditor
+        .create(document.querySelector('#description'), {
+
+            height: '300px' // Thay đổi giá trị này để điều chỉnh chiều cao
+        })
+        .catch(error => {
+            console.error(error);
+        });
 
 
+
+</script>
 </body>
 
 </html>
