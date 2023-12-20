@@ -71,18 +71,14 @@
                                 <tr>
                                     <td> {{ $item->id }} </td>
 
-                                    <?php $img = \App\Models\Gallery::where('id_product', $item->id)->get();;?>
-{{--                                    {{dd($img->isEmpty())}}--}}
+                                        <?php $img = \App\Models\Gallery::where('id_product', $item->id)->get();; ?>
+                                    {{--                                    {{dd($img->isEmpty())}}--}}
                                     <td>
-                                        @if($img->isNotEmpty())
-                                            <img
-                                                src="{{ url('public/admin/img/product') . '/' . $item->image()->first()->image }}"
-                                                class="img-thumbnail" width="100%">
-                                        @else
-                                            <img
-                                                src="{{ url('public/admin/img/no-image.png') }}"
-                                                class="img-thumbnail" width="100%">
-                                        @endif
+
+                                        <img
+                                            src="{{ url('public/admin/img/product') . '/' . $item->image()->first()->image }}"
+                                            class="img-thumbnail" width="100%">
+
                                     </td>
                                     <td><a href="#">{{ $item->name_product }}</a></td>
                                     <td>{{ $item->price }}</td>

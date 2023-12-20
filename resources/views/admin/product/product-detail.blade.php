@@ -64,14 +64,8 @@
                                         <div id="image">
                                             <?php $galleryProduct = \App\Models\Gallery::where('id_product', $product_item->id)->get();?>
                                             <div class="img1">
-{{--                                                {{dd($galleryProduct->isEmpty())}}--}}
-                                                @if($galleryProduct->isNotEmpty())
                                                 <img role="presentation" alt=""
                                                      src="{{ url('public/admin/img/product') . '/' . $galleryProduct->first()->image }}">
-                                                @else
-                                                    <img role="presentation" alt=""
-                                                    src="{{ url('public/admin/img/no-image.png')}}">
-                                                @endif
                                             </div>
                                             <div class="owl-img">
                                                 <div class="owl-carousel owl-theme " id="owl-img">
@@ -112,7 +106,6 @@
                                             @endif
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
