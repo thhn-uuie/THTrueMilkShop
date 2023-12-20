@@ -11,19 +11,22 @@ use Illuminate\Testing\Fluent\Concerns\Has;
 
 class AuthController extends Controller
 {
-    public function login() {
+    public function login()
+    {
         if (Auth::id()) {
             return redirect()->route('template');
+        } else {
+            return view('frontend.auth.login');
         }
-
-        return view('frontend.auth.login');
     }
 
-    public function signup() {
+    public function signup()
+    {
         return view('frontend.auth.signup');
     }
 
-    public function postSignup(Request $request) {
+    public function postSignup(Request $request)
+    {
         $validated = $request->validate([
             'name' => 'required|unique:users',
             'email' => 'required|unique:users|max:255',
@@ -41,7 +44,8 @@ class AuthController extends Controller
         return redirect()->route('frontend.auth.login');
     }
 
-    public function postLogin(Request $request) {
+    public function postLogin(Request $request)
+    {
         $validated = $request->validate([
             'name' => 'required',
             'password' => 'required',
@@ -52,14 +56,16 @@ class AuthController extends Controller
         ];
 
         if (Auth::attempt($data)) {
-            return view('frontend.index');
+            return redirect()->route('template');
         }
         return redirect()->back()->with('error', 'Nhập sai mật khẩu hoặc tên đăng nhập!');
     }
-    public function logout(Request $request) {
+
+    public function logout(Request $request)
+    {
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('frontend.auth.login');
+        return redirect()->route('template');
     }
 }

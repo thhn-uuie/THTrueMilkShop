@@ -1,6 +1,5 @@
 <link rel="icon" href="https://www.thmilk.vn/wp-content/themes/wp-th/favicon.png" type="image/png">
 
-<!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
 <link href="{{ asset('/public/frontend/css/bootstrap.min.css') }}" rel="stylesheet">
 
 <!-- Custom CSS -->
@@ -16,10 +15,5 @@
 
 <link rel="stylesheet" href="{{ asset('/public/frontend/css/owl.carousel.min.css') }}">
 <link rel="stylesheet" href="{{ asset('/public/frontend/css/owl.theme.default.min.css') }}">
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"> -->
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
 
-<![endif]-->
+

@@ -98,7 +98,7 @@
                                     <input type="file" class="form-control" id="product_images" name="product_images[]" multiple="">
                                     <div class="img_show"></div>
                                     </div>
-                                    
+
                                 </div>
                             </div>
                             <div class="card mb-3">
@@ -147,6 +147,7 @@
         });
         // Multiple images preview in browser
         var imagesPreview = function(input, placeToInsertImagePreview) {
+            $(placeToInsertImagePreview).empty(); // Xóa bỏ các ảnh hiện tại
             if (input.files) {
                 var filesAmount = input.files.length;
 
@@ -165,7 +166,6 @@
         $('#product_images').on('change', function() {
             imagesPreview(this, 'div.img_show');
         });
-
     });
 
 </script>

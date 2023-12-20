@@ -126,14 +126,14 @@
                                     <ul class="list_img">
                                     @if($product['image'] !== null)
                                         @foreach ($product['image'] as $img)
-                                            <li class="delete_img">
+                                            <li class="delete_img" data-image-id="{{ $img->id }}">
                                                 <form action="{{ route('deleteimage', ['id'=>$img->id]) }}"
                                                       method="post">
-                                                    <button class="btn text-danger">X</button>
+                                                    <button class="btn text-danger delete-button">X</button>
                                                     @csrf
                                                 </form>
                                                 <img src="{{ url('public/admin/img/product/'.$img->image) }}"
-                                                     style="width: 100px; height: 100px">
+                                                     style="width: 100px!important; height: 100px!important">
                                             </li>
                                         @endforeach
                                     @endif
@@ -158,7 +158,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
 
                         </div>
 
@@ -188,6 +188,8 @@
         });
         // Multiple images preview in browser
         var imagesPreview = function(input, placeToInsertImagePreview) {
+            $(placeToInsertImagePreview).empty(); // Xóa bỏ các ảnh hiện tại
+
             if (input.files) {
                 var filesAmount = input.files.length;
 

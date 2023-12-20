@@ -11,6 +11,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,7 +51,12 @@ Route::get('/khuyen-mai', [SiteController::class, 'promotion'])->name('khuyen_ma
 
 Route::get('/truyen-thong', [SiteController::class, 'media'])->name('truyen_thong');
 Route::get('/thanh-toan', [SiteController::class, 'checkout'])->name('thanh_toan');
-Route::post('/gio-hang/them', [\App\Http\Controllers\CartController::class, 'addToCart'])->name('cart.add');
+Route::post('/gio-hang/them', [CartController::class, 'addToCart'])->name('cart.add');
+Route::get('/gio-hang', [SiteController::class, 'viewCart'])->name('gio_hang');
+Route::post('/gio-hang/xoa/{id}', [CartController::class, 'delete'])->name('cart.delete');
+
+
+
 // Backend
 
 // localhost/project/admin

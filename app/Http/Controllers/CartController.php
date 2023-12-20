@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Gallery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 class CartController extends Controller
 {
@@ -13,6 +15,8 @@ class CartController extends Controller
     {
 // Lấy thông tin sản phẩm từ request
         $product = $request->id_product;
+        $price = $request->price;
+//        dd($request);
         $qty = 1;
         $id_user = Auth::user()->id;
 
@@ -31,9 +35,17 @@ class CartController extends Controller
             $gioHang->id_product = $product;
             $gioHang->qty = $qty;
             $gioHang->id_user = $id_user;
+            $gioHang->price = $price;
             $gioHang->save();
         }
 
         return redirect()->route('san_pham');
+    }
+
+    public function delete($id) {
+        $cart = Cart::find($id);
+
+        $cart->delete();
+        return back();
     }
 }
