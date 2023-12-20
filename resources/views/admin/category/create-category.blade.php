@@ -96,7 +96,7 @@
 </div>
 <!-- ./wrapper -->
 <!-- jQuery -->
-@include('admin.component.script');
+@include('admin.component.script')
 <script src="{{ asset('public/admin/js/custom.js') }}"></script>
 </body>
 

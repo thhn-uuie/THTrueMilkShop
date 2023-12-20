@@ -121,7 +121,7 @@
     <!-- /.content-wrapper -->
 
 </div>
-@include('admin.component.script');
+@include('admin.component.script')
 <script type="text/javascript">
 
     // When the user clicks on the button, scroll to the top of the document

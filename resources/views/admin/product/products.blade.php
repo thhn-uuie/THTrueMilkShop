@@ -155,7 +155,7 @@
 </div>
 <!-- ./wrapper -->
 <!-- jQuery -->
-@include('admin.component.script');
+@include('admin.component.script')
 </body>
 
 </html>
