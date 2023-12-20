@@ -107,7 +107,7 @@
                                         <div class="icon"><i class="fa fa-cloud-upload-alt"></i></div>
                                         <div class="text">No file chosen, yet!</div>
                                     </div>
-                                    <div class="file-name">File name here</div>
+                                    <div class="file-name">{{ $category->image }}</div>
                                 </div>
 
                                 <input type="file" id="l_image" name="file_upload" hidden>
@@ -130,6 +130,15 @@
 
 </body>
 
-@include('admin.component.script');
+@include('admin.component.script')
+
 <script src="{{ asset('public/admin/js/custom.js') }}"></script>
+<script>
+    var image = $('.wrapp .image img');
+    if (image.src !== null || image.src !== '') {
+    // Nếu thuộc tính src là null hoặc trống, thêm lớp 'active'
+        $('.wrapp').addClass('active');
+        $('.wrapp .content').css("display", "none");
+  }
+</script>
 </html>
