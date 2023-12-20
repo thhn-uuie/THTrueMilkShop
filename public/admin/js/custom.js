@@ -27,3 +27,8 @@ defaultBtn.addEventListener("change", function () {
         fileName.textContent = valueStore;
     }
 });
+
+$('.summernote').summernote({
+    height: '100px'
+});
+
