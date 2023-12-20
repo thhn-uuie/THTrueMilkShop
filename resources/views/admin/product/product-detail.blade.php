@@ -21,10 +21,11 @@
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
+            <div class="tb">
             @if ($message = Session::get('success'))
 
                 <div class="alert alert-success alert-block">
-
+                    <i class="fa fa-check" aria-hidden="true"></i>
                     <button type="button" class="close" data-dismiss="alert">×</button>
 
                     <strong>{{ $message }}</strong>
@@ -32,6 +33,7 @@
                 </div>
 
             @endif
+            </div>
             <div class="container-fluid my-2">
                 <div class="row mb-2">
                     <div class="col-sm-6">

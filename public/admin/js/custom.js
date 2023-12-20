@@ -30,3 +30,4 @@ defaultBtn.addEventListener("change", function () {
 $('.summernote').summernote({
     height: '100px'
 });
+
