@@ -45,26 +45,20 @@ class ProductController extends Controller
             $product->save();
             if ($request->hasFile('product_images')) {
                 $images = $request->file('product_images');
-                foreach ($images as $key => $image) {
-
-                    $manager = new ImageManager(new Driver());
-                    $image_temp = $manager->read($image);
-                    $extension = $image->getClientOriginalExtension();
+                foreach ($images as $image) {
                     $imageName = time() . '_' . $image->getClientOriginalName();
                     $path = public_path('admin/img/product');
                     $image->move($path, $imageName);
-                    $manager->create(100, 100);
 
                     $imageGallery = new Gallery();
                     $imageGallery->image = $imageName;
                     $imageGallery->id_product = $product->id;
                     $imageGallery->save();
                 }
+            }
 
-            }
-            if ($product) {
                 return redirect()->route('admin.product.product-detail', ['id' => $product->id])->with('success', 'Them moi thanh cong');
-            }
+
         }
         return view('admin.product.create-product');
     }
@@ -91,34 +85,21 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $product = Product::with('images')->find($id);
+        $product = Product::find($id);
+//        dd($product);
         if ($request->isMethod('POST')) {
-            if ($request->has('product')) {
-                $oldFile = public_path('admin/img/product') . '/' . $product->image;
-                if (File::exists($oldFile)) {
-                    File::delete($oldFile);
+            if ($request->hasFile("product_images")) {
+                $files = $request->file("product_images");
+                foreach ($files as $file) {
+                    $imageName = time() . '_' . $file->getClientOriginalName();
+                    $file->move(public_path('admin/img/product'), $imageName);
+                    $imageGallery = new Gallery();
+                    $imageGallery->image = $imageName;
+                    $imageGallery->id_product = $product->id;
+                    $imageGallery->save();
                 }
-                $file = $request->file('file_upload');
-                $file_name = uniqid() . '_' . $file->getClientOriginalName();
-                $file->move(public_path('admin/img/product'), $file_name);
-                $request->merge(['image' => $file_name]);
-            } else {
-                $file_name = $product->image;
-                $request->merge(['image' => $file_name]);
-
             }
-            $result = $product->update([
-                'name_product' => $request->title,
-                'price' => $request->price,
-                'image' => $request->image,
-                'description' => $request->description,
-                'id_category' => $request->category,
-                'status' => $request->status,
-            ]);
-
-            if ($result) {
-                return redirect()->route('admin.product.products')->with('success', 'Chỉnh sửa thành công');
-            }
+            return redirect()->route('admin.product.product-detail',['id'=>$product->id])->with('success', 'Chỉnh sửa thành công');
         }
         return view('admin.product.product-update', compact('product'));
     }
@@ -135,5 +116,16 @@ class ProductController extends Controller
         }
         $product->delete();
         return redirect()->route('admin.product.products')->with('success', 'Xoa thanh cong');
+    }
+
+    public function deleteimage($id)
+    {
+        $images = Gallery::find($id);
+        $fileDelete = public_path('admin/img/product') . '/' . $images->image;
+        if (File::exists($fileDelete)) {
+            File::delete($fileDelete);
+        }
+        $images->delete();
+        return back();
     }
 }

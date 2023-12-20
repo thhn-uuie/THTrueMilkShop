@@ -33,7 +33,8 @@
         <!-- Main content -->
         <section class="content">
             <section class="content">
-                <form method="POST" action="" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('admin.product.product-update', ['id'=>$product->id]) }}"
+                      enctype="multipart/form-data">
                     @csrf
                     @if ($message = Session::get('success'))
 
@@ -42,7 +43,6 @@
                             <button type="button" class="close" data-dismiss="alert">×</button>
 
                             <strong>{{ $message }}</strong>
-
                         </div>
                     @endif
                     <div class="row" id="s_product">
@@ -86,30 +86,29 @@
                             <div class="card mb-3">
                                 <div class="card-body">
                                     <h5>Image</h5>
-                                    <input type="file" class="form-control" id="product_images" name="product_images[]" multiple="">
-
-                                    {{--                                    <div class="wrapp" id="wrapper">--}}
-{{--                                        <div class="image">--}}
-{{--                                            @if($product->image !== null)--}}
-{{--                                                <img src="{{url('/public/admin/img/product') .'/'. $product->image }}"--}}
-{{--                                                     alt="" id="img">--}}
-{{--                                            @else--}}
-{{--                                                <img src="" id="img">--}}
-{{--                                            @endif--}}
-{{--                                        </div>--}}
-{{--                                        <div class="content">--}}
-{{--                                            <div class="icon"><i class="fa fa-cloud-upload-alt"></i></div>--}}
-{{--                                            <div class="text">No file chosen, yet!</div>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="file-name">File name here</div>--}}
-{{--                                    </div>--}}
-
-{{--                                    <input type="file" id="l_image" name="file_upload" hidden>--}}
-{{--                                    <button type="button" onclick="defaultBtnActive()" id="custom-btn">Choose a file--}}
-{{--                                    </button>--}}
-                                    @foreach($product['images'] as $image)
-                                        <img src="{{ url('public/admin/img/product/'.$image['image']) }}" style="width: 100px; height: 100px">
-                                    @endforeach
+                                    <input type="file" class="form-control" id="product_images" name="product_images[]"
+                                           multiple="">
+                                    <div>
+                                        <form action="" method="post">
+                                            <button class="btn text-danger " style="display: none;">X</button>
+                                            @csrf
+                                        </form>
+                                        <img src=""
+                                             style="width: 100px; height: 100px; display:none">
+                                    </div>
+                                    @if($product['image'] !== null)
+                                        @foreach ($product['image'] as $img)
+                                            <div>
+                                                <form action="{{ route('deleteimage', ['id'=>$img->id]) }}"
+                                                      method="post">
+                                                    <button class="btn text-danger">X</button>
+                                                    @csrf
+                                                </form>
+                                                <img src="{{ url('public/admin/img/product/'.$img->image) }}"
+                                                     style="width: 100px; height: 100px">
+                                            </div>
+                                        @endforeach
+                                    @endif
                                 </div>
                             </div>
                             <div class="card mb-3">
@@ -160,6 +159,7 @@
 
                 </form>
             </section>
+        </section>
     </div>
 
 </div>

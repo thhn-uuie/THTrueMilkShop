@@ -20,17 +20,7 @@
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            @if ($message = Session::get('success'))
 
-                <div class="alert alert-success alert-block">
-
-                    <button type="button" class="close" data-dismiss="alert">×</button>
-
-                    <strong>{{ $message }}</strong>
-
-                </div>
-
-            @endif
             <div class="container-fluid my-2">
                 <div class="row mb-2">
                     <div class="col-sm-6">
@@ -80,8 +70,20 @@
                             @foreach($products as $item)
                                 <tr>
                                     <td> {{ $item->id }} </td>
-                                    <td><img src="{{ url('public/admin/img/product') . '/' . $item->image()->first()->image }}"
-                                             class="img-thumbnail" width="100%"></td>
+
+                                    <?php $img = \App\Models\Gallery::where('id_product', $item->id)->get();;?>
+{{--                                    {{dd($img->isEmpty())}}--}}
+                                    <td>
+                                        @if($img->isNotEmpty())
+                                            <img
+                                                src="{{ url('public/admin/img/product') . '/' . $item->image()->first()->image }}"
+                                                class="img-thumbnail" width="100%">
+                                        @else
+                                            <img
+                                                src="{{ url('public/admin/img/no-image.png') }}"
+                                                class="img-thumbnail" width="100%">
+                                        @endif
+                                    </td>
                                     <td><a href="#">{{ $item->name_product }}</a></td>
                                     <td>{{ $item->price }}</td>
                                     <td>{{ $item->category->name_category }}</td>
@@ -141,7 +143,6 @@
                             </tbody>
                         </table>
                     </div>
-
 
 
                     <div class="card-footer clearfix">

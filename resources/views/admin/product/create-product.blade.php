@@ -3,7 +3,7 @@
 
 <head>
     @include('admin.component.head')
-    <script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/classic/ckeditor.js"></script>
+    <link rel="stylesheet" href="{{ asset('/public/admin/plugins/summernote/summernote-bs4.min.css') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 </head>
@@ -57,14 +57,15 @@
                                             <div class="mb-3">
                                                 <label for="price">Price<i style="color: red;">*</i></label>
                                                 <input type="text" name="price" id="price" class="form-control"
-                                                       placeholder="Price" required>
+                                                       placeholder="Price" class="summernote"required>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="mb-3">
                                                 <label for="description">Description<i style="color: red;">*</i></label>
-                                                <textarea name="description" id="description"
-                                                          placeholder="Description"></textarea>
+                                                <textarea name="description" id="description" cols="30" rows="10"
+                                                          class="summernote" placeholder="Description" required
+                                                          style="width: 100%;"></textarea>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
@@ -97,29 +98,7 @@
                                     <input type="file" class="form-control" id="product_images" name="product_images[]" multiple="">
                                     <div class="img_show"></div>
                                     </div>
-
-
-                                    {{--                                    <div class="wrapp" id="wrapper">--}}
-                                    {{--                                        <div class="image">--}}
-                                    {{--                                            <img src="" alt="" id="img">--}}
-                                    {{--                                        </div>--}}
-                                    {{--                                        <div class="content">--}}
-                                    {{--                                            <div class="icon"><i class="fa fa-cloud-upload-alt"></i></div>--}}
-                                    {{--                                            <div class="text">No file chosen, yet!</div>--}}
-                                    {{--                                        </div>--}}
-                                    {{--                                        <div class="file-name">File name here</div>--}}
-                                    {{--                                    </div>--}}
-                                    {{--                                    <input type="file" id="l_image" name="file_upload" hidden>--}}
-                                    {{--                                    <button type="button" onclick="defaultBtnActive()" id="custom-btn">Choose a file--}}
-                                    {{--                                    </button>--}}
-
-                                    {{--                                    <input type="hidden" id="image_id" name="image_id" value="">--}}
-                                    {{--                                    <h2 class="h4 mb-3">Image</h2>--}}
-                                    {{--                                    <div id="image" class="dropzone dz-clickable">--}}
-                                    {{--                                        <div class="dz-message needsclick">--}}
-                                    {{--                                            <br> Drop files here or click to upload. <br><br>--}}
-                                    {{--                                        </div>--}}
-                                    {{--                                    </div>--}}
+                                    
                                 </div>
                             </div>
                             <div class="card mb-3">

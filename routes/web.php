@@ -49,7 +49,8 @@ Route::get('/detail', [SiteController::class, 'show'])->name('detail');
 Route::get('/khuyen-mai', [SiteController::class, 'promotion'])->name('khuyen_mai');
 
 Route::get('/truyen-thong', [SiteController::class, 'media'])->name('truyen_thong');
-
+Route::get('/thanh-toan', [SiteController::class, 'checkout'])->name('thanh_toan');
+Route::post('/gio-hang/them', [\App\Http\Controllers\CartController::class, 'addToCart'])->name('cart.add');
 // Backend
 
 // localhost/project/admin
@@ -99,7 +100,7 @@ Route::prefix('admin/product')->middleware('admin')->name('admin.product.')->gro
     Route::match(['GET', 'POST'],'/update/{id}', [ProductController::class, 'update'])->name('product-update');
 
 });
-
+Route::post('/deleteimage/{id}',[ProductController::class,'deleteimage'])->name('deleteimage');
 
 Route::post('/update-status', [OrderController::class, 'updateStatus'])->name('update-status');
 
@@ -135,5 +136,6 @@ Route::prefix('user/order')->middleware('auth')->name('admin.order.')->group(fun
     Route::match(['GET', 'POST'],'/detail/{id}', [OrderController::class, 'show'])->name('detail');
     Route::get('/delete/{id}', [OrderController::class, 'destroy'])->name('delete');
 });
+
 
 

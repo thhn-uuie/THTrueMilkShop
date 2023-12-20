@@ -17,9 +17,21 @@
         @include('admin.component.sidebar')
     </aside>
     <!-- Content Wrapper. Contains page content -->
+
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
+            @if ($message = Session::get('success'))
+
+                <div class="alert alert-success alert-block">
+
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+
+                    <strong>{{ $message }}</strong>
+
+                </div>
+
+            @endif
             <div class="container-fluid my-2">
                 <div class="row mb-2">
                     <div class="col-sm-6">
@@ -50,8 +62,14 @@
                                         <div id="image">
                                             <?php $galleryProduct = \App\Models\Gallery::where('id_product', $product_item->id)->get();?>
                                             <div class="img1">
+{{--                                                {{dd($galleryProduct->isEmpty())}}--}}
+                                                @if($galleryProduct->isNotEmpty())
                                                 <img role="presentation" alt=""
                                                      src="{{ url('public/admin/img/product') . '/' . $galleryProduct->first()->image }}">
+                                                @else
+                                                    <img role="presentation" alt=""
+                                                    src="{{ url('public/admin/img/no-image.png')}}">
+                                                @endif
                                             </div>
                                             <div class="owl-img">
                                                 <div class="owl-carousel owl-theme " id="owl-img">
@@ -110,18 +128,6 @@
 </div>
 @include('admin.component.script');
 <script type="text/javascript">
-    let mybutton = document.getElementById("back-top");
-
-    // When the user scrolls down 20px from the top of the document, show the button
-    window.onscroll = function () { scrollFunction() };
-
-    function scrollFunction() {
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            mybutton.style.display = "block";
-        } else {
-            mybutton.style.display = "none";
-        }
-    }
 
     // When the user clicks on the button, scroll to the top of the document
     function topFunction() {
