@@ -36,7 +36,7 @@ use App\Models\Cart;
             </div>
         </div>
         <?php $count = Cart::where('id_user', Auth::user()->id);?>
-    @if($authCheck == false || ($authCheck==true && $count->isEmpty()))
+    @if($authCheck == false)
             <div class="cart">
                 <div class="icon-cart" onclick="toggleCartDropdown()">
                     <i class="fa fa-solid fa-cart-shopping fa-lg"></i>
@@ -65,10 +65,10 @@ use App\Models\Cart;
             <div class="cart">
                 <div class="icon-cart" onclick="toggleCartDropdown()">
                     <i class="fa fa-solid fa-cart-shopping fa-lg"></i>
-                    @if($count->isEmplty)
+{{--                    @if($count->isEmplty)--}}
                     <span>0</span>
-                    @else
-                    @endif
+{{--                    @else--}}
+{{--                    @endif--}}
                 </div>
 
                 <div class="cart-dropdown">
@@ -77,7 +77,6 @@ use App\Models\Cart;
                     </div>
                     <div class="product-info">
                         @foreach($count as $item)
-                                {{$item->}}
                         @endforeach
                     </div>
                     <div class="total-price">
