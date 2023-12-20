@@ -80,6 +80,8 @@ use App\Models\Gallery;
                             <div class="header">
                                 Thông tin giỏ hàng
                             </div>
+                    
+                            <div class="product-info">
                             @foreach($count as $item)
                                 <?php
                                     $idProducts = Gallery::where('id_product', $item->id_product)
@@ -94,7 +96,6 @@ use App\Models\Gallery;
                                     }
                                     ?>
 
-                            <div class="product-info">
                                 @foreach($galleries as $gallery)
                                 <div class="cart-item">
                                     <img
@@ -114,9 +115,9 @@ use App\Models\Gallery;
                                     </div>
                                 </div>
                                 @endforeach
-
+                                @endforeach
                             </div>
-                            @endforeach
+                           
 
                             <div class="total-price">
                                 <span class="label">Tổng tiền: </span>
