@@ -37,169 +37,89 @@
 
     <div class="nd1">
         <div class="container">
-        <div class="owl-sp">
-            <div class="owl-carousel owl-theme" id="owl-carousel1">
-                @foreach($category as $item)
-                <div class="item">
-                    <div class="c-listitem1__card1">
-                        <a class="c-listitem1__link1"
-                           href="">
-                            <div class="c-listitem1__img1">
-                                <img src="{{ url('/public/admin/img/category') . '/' . $item->image }}"
-                                     alt="ic-suatietrung">
+            <div class="owl-sp">
+                <div class="owl-carousel owl-theme" id="owl-carousel1">
+                    @foreach($category as $item)
+                        <div class="item">
+                            <div class="c-listitem1__card1">
+                                <a class="c-listitem1__link1"
+                                   href="">
+                                    <div class="c-listitem1__img1">
+                                        <img src="{{ url('/public/admin/img/category') . '/' . $item->image }}"
+                                             alt="ic-suatietrung">
+                                    </div>
+                                    <article class="c-listitem1__content1">
+                                        <h4 class="title1">{{ $item->name_category }}</h4>
+                                    </article>
+                                </a>
                             </div>
-                            <article class="c-listitem1__content1">
-                                <h4 class="title1">{{ $item->name_category }}</h4>
-                            </article>
-                        </a>
-                    </div>
+                        </div>
+                    @endforeach
                 </div>
-                @endforeach
             </div>
-        </div>
         </div>
     </div>
 
-    <!-- làm tiếp ở đây nẻ -->
-    <!-- <div class="container">
-        <div class="p-product2">
-            <div class="p-product2__box1" id="suatuoitiettrung">
-
-                <h2 class="p-product2__title1">sữa tươi tiệt trùng</h2>
-            </div>
-
-            <div class="p-product2__box1" id="suachua">
-
-                <h2 class="p-product2__title1">Sữa chua tự nhiên</h2>
-            </div>
-        </div>
-    </div> -->
-    <!--  -->
-
-    <!-- code nè -->
     <div class="container">
-      <div class="p-product2">
-        <div class="p-product2__box1" id="suatuoitiettrung">
-          
-          <h2 class="p-product2__title1">sữa tươi tiệt trùng</h2>
-          <div class="c-listitem3-root1">
-            <div class="c-listitem3">
-              <div class="c-listitem3__card1 item1-js">
-                <div class="c-listitem3__img1">
-                  <img src="https://www.thmilk.vn/wp-content/uploads/2019/11/UHT-nguyen-chat-1L_275x186.png" alt="uht-nguyen-chat-1l_275x186"> 
-                </div>
-                <article class="c-listitem3__content1">
-                  <h4 class="title1">Sữa Tươi Tiệt Trùng Nguyên Chất 1 L</h4>
-                  <div class="info1">
-                    <span class="info1__price1">37.200 ₫</span>
-                    <i class="fa fa-solid fa-cart-shopping fa-lg"></i>
-                  </div>
-                </article>
-              </div>
-              <div class="c-listitem3__card1 item1-js">
-                <div class="c-listitem3__img1">
-                  <img src="https://www.thmilk.vn/wp-content/uploads/2019/11/UHT-it-duong-1L_275x186.png" alt="uht-it-duong-1l_275x186"> 
-                </div>
-                <article class="c-listitem3__content1">
-                  <h4 class="title1">Sữa Tươi Tiệt Trùng Ít Đường 1 L</h4>
-                  <div class="info1">
-                    <span class="info1__price1">37.200 ₫</span>
-                    <i class="fa fa-solid fa-cart-shopping fa-lg"></i>
-                  </div>
-                </article>
-              </div>
-              <div class="c-listitem3__card1 item1-js">
-                <div class="c-listitem3__img1">
-                  <img src="https://www.thmilk.vn/wp-content/uploads/2019/11/UHT-co-duong-1L_275x186.png" alt="uht-co-duong-1l_275x186"> 
-                </div>
-                <article class="c-listitem3__content1">
-                  <h4 class="title1">Sữa Tươi Tiệt Trùng Có Đường 1 L</h4>
-                  <div class="info1">
-                    <span class="info1__price1">37.200 ₫</span>
-                    <i class="fa fa-solid fa-cart-shopping fa-lg"></i>
-                  </div>
-                </article>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="p-product2">
+            @foreach($category as $item)
+                <div class="p-product2__box1" id="">
 
-        <div class="p-product2__box1" id="suachua">
-          
-          <h2 class="p-product2__title1">Sữa chua tự nhiên</h2>
-          <div class="c-listitem3-root1">
-            <div class="c-listitem3">
-              <div class="c-listitem3__card1 item1-js">
-                <div class="c-listitem3__img1">
-                  <img src="https://www.thmilk.vn/wp-content/uploads/2021/04/SCA-It-duong_275x186.png" alt="sca-it-duong_275x186">
+                    <h2 class="p-product2__title1">{{ $item->name_category }}</h2>
+                    <div class="c-listitem3-root1">
+                        <div class="c-listitem3">
+                                <?php $products = \App\Models\Product::where('id_category', $item->id)->get(); ?>
+
+                            @if($products->isNotEmpty())
+                                @foreach($products as $product)
+                                    <div class="c-listitem3__card1 item1-js">
+                                        <div class="c-listitem3__img1">
+                                                <?php $galleryProduct = \App\Models\Gallery::where('id_product', $product->id)->get(); ?>
+                                            @if($galleryProduct->isNotEmpty())
+                                            <img style="width: 100%; height: 150px;"
+                                                 src="{{ url('public/admin/img/product') . '/' . $galleryProduct->first()->image }}"
+                                                 alt="{{$product->name_product}}">
+                                            @else
+                                                <img style="width: 100%; height: 150px;"
+                                                     src="{{ url('public/admin/img/no-image.png')}}"
+                                                     alt="{{$product->name_product}}">
+                                            @endif
+                                        </div>
+                                        <article class="c-listitem3__content1">
+                                            <form method="post" action="{{ route('cart.add') }}">
+                                                @csrf
+                                                <h4 class="title1">{{ $product->name_product }}</h4>
+                                                <div class="info1">
+                                                    <span class="info1__price1">{{ $product->price }}</span>
+                                                    @guest
+                                                        <button type="button" onclick="showLoginAlert()">
+                                                            <i class="fa fa-solid fa-cart-shopping fa-lg"></i>
+                                                        </button>
+                                                    @else
+                                                        <button name="id_product" value="{{ $product->id }}" type="submit">
+                                                            <i class="fa fa-solid fa-cart-shopping fa-lg"></i>
+                                                        </button>
+                                                    @endguest
+                                                </div>
+                                            </form>
+
+
+                                        </article>
+                                    </div>
+                                @endforeach
+                            @endif
+                        </div>
+                    </div>
                 </div>
-                <article class="c-listitem3__content1">
-                  <h4 class="title1">Sữa Chua Ăn Ít Đường</h4>
-                  <div class="info1">
-                    <span class="info1__price1">27.800 ₫</span>
-                    <i class="fa fa-solid fa-cart-shopping fa-lg"></i>
-                  </div>
-                </article>
-              </div>
-            </div>
-          </div>
+            @endforeach
+
+
         </div>
-      </div>
     </div>
     <!--  -->
 
     <div class="footer">
-        <div class="container">
-            <p class="text-center">
-                <img src="https://www.thmilk.vn/wp-content/themes/wp-th/assets/images/logo.png" alt="logo">
-            </p>
-
-            <section class="c-footer_box">
-                <div class="row">
-                    <div class="col-xs-4 first">
-                        <ul class="c-footer">
-                            <li><a href="/lien-he/?csrt=4143374691117170324">Liên hệ</a></li>
-                            <li><a href="/cham-soc-khach-hang/?csrt=4143374691117170324">Chăm sóc khách hàng</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="col-xs-4">
-                        <ul class="c-footer">
-                            <li><a href="/dich-vu-giao-hang-tan-nha/?csrt=4143374691117170324">Dịch vụ giao hàng tận
-                                    nhà</a></li>
-                            <li><a href="/chinh-sach-quy-dinh-chung/?csrt=4143374691117170324">Chính sách &amp; Quy định
-                                    chung</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-xs-4 end">
-                        <ul class="c-footer">
-                            <li>Tải Ứng Dụng</li>
-                            <li>
-                                <ul class="child"
-                                ">
-                            <li>
-                                <a href=" https://apps.apple.com/vn/app/th-elife/id1547918408">
-                                    <img
-                                        src="https://www.thmilk.vn/wp-content/themes/wp-th/assets/images/index/img-app.svg"
-                                        alt="img-app.svg">
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="https://play.google.com/store/apps/details?id=com.thelite.production">
-                                    <img
-                                        src="https://www.thmilk.vn/wp-content/themes/wp-th/assets/images/index/img-google.svg"
-                                        alt="img-google.svg">
-                                </a>
-                            </li>
-                        </ul>
-                        </li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-        </div>
+        @include('frontend.component.footer')
     </div>
 
 </div>
@@ -249,6 +169,13 @@
     });
 </script>
 
+<script>
+    function showLoginAlert() {
+        alert('Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng.');
+        // Redirect to login page if needed
+
+    }
+</script>
 </body>
 
 </html>
