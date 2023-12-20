@@ -1,6 +1,8 @@
 <?php
+
 use Illuminate\Support\Facades\Auth;
 use App\Models\Cart;
+
 ?>
 <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -35,8 +37,9 @@ use App\Models\Cart;
                 @endif
             </div>
         </div>
-        <?php $count = Cart::where('id_user', Auth::user()->id);?>
-    @if($authCheck == false)
+        <?php $count = Cart::where('id_user', Auth::user()->id)->get(); ?>
+
+        @if($authCheck == false || ($authCheck==true && $count == null))
             <div class="cart">
                 <div class="icon-cart" onclick="toggleCartDropdown()">
                     <i class="fa fa-solid fa-cart-shopping fa-lg"></i>
@@ -61,14 +64,15 @@ use App\Models\Cart;
                 </div>
             </div>
         @else
-
             <div class="cart">
                 <div class="icon-cart" onclick="toggleCartDropdown()">
                     <i class="fa fa-solid fa-cart-shopping fa-lg"></i>
-{{--                    @if($count->isEmplty)--}}
-                    <span>0</span>
-{{--                    @else--}}
-{{--                    @endif--}}
+                    @if($count !== null)
+{{--                        {{dd('123')}}--}}
+                        <span>{{ $count->count() }}</span>
+                    @else
+                        <span>0</span>
+                    @endif
                 </div>
 
                 <div class="cart-dropdown">
