@@ -12,7 +12,7 @@ class Cart extends Model
     use HasFactory;
     protected $table = 'gio_hang';
     public $timestamps = false;
-    protected $fillable = ['id_product', 'price'];
+    protected $fillable = ['id_product', 'qty', 'id_user'];
     public function product()
     {
         return $this->belongsTo(ProductController::class, 'id_product');
