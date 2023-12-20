@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use App\Models\Cart;
+use App\Models\Gallery;
 
 ?>
 <div class="container">
@@ -27,19 +28,19 @@ use App\Models\Cart;
                 <i class="fa fa-solid fa-user fa-lg"></i>
 
                 @if($authCheck == false)
-                    <a href="{{ asset('/login') }}">
+                    <a href="{{ route('frontend.auth.login') }}">
                         <span class="">Đăng nhập</span>
                         <span>Tài khoản</span>
                     </a>
 
                 @else
                     <a style="font-size: 14px">{{ Auth::user()->name }}</a>
+                    <a href="{{ route('frontend.auth.logout') }}">Logout</a>
                 @endif
             </div>
         </div>
-{{--        <?php $count = Cart::where('id_user', Auth::user()->id)->get(); ?>--}}
 
-{{--        @if($authCheck == false || ($authCheck==true && $count == null))--}}
+        @if($authCheck == false)
             <div class="cart">
                 <div class="icon-cart" onclick="toggleCartDropdown()">
                     <i class="fa fa-solid fa-cart-shopping fa-lg"></i>
@@ -63,51 +64,73 @@ use App\Models\Cart;
                     </div>
                 </div>
             </div>
-{{--        @else--}}
+        @else
+                <?php $count = Cart::where('id_user', Auth::user()->id)->get(); ?>
             <div class="cart">
                 <div class="icon-cart" onclick="toggleCartDropdown()">
                     <i class="fa fa-solid fa-cart-shopping fa-lg"></i>
-{{--                    @if($count !== null)--}}
-                        {{--                        {{dd('123')}}--}}
-{{--                        <span>{{ $count->count() }}</span>--}}
-{{--                    @else--}}
+                    @if($count -> isNotEmpty())
+                        <span>{{ $count->count() }}</span>
+                    @else
                         <span>0</span>
-{{--                    @endif--}}
+                    @endif
                 </div>
 
-                <div class="cart-dropdown">
-                    <div class="header">
-                        Thông tin giỏ hàng
-                    </div>
-                    <div class="product-info">
-                        <div class="cart-item">
-                            <img
-                                src="https://www.thmilk.vn/wp-content/uploads/2019/11/UHT-nguyen-chat-1L_275x186.png">
-                            <div class="close-icon">
-                                <svg class="svg-inline--fa fa-circle-xmark" aria-hidden="true" focusable="false"
-                                     data-prefix="fas" data-icon="circle-xmark" role="img"
-                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
-                                    <path fill="currentColor"
-                                          d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"></path>
-                                </svg><!-- <i class="fas fa-times-circle"></i> Font Awesome fontawesome.com --></div>
-                            <div class="info">
-                                <div class="product-name">Sữa Tươi Tiệt Trùng Nguyên Chất 1 L</div>
-                                <div class="product-price">37200 ₫</div>
-                                <div class="product-quantity">Số lượng: 1</div>
+                        <div class="cart-dropdown">
+                            <div class="header">
+                                Thông tin giỏ hàng
+                            </div>
+                            @foreach($count as $item)
+                                <?php
+                                    $idProducts = Gallery::where('id_product', $item->id_product)
+                                        ->distinct('id_product')
+                                        ->pluck('id_product');
+
+                                    $galleries = collect();
+
+                                    foreach ($idProducts as $idProduct) {
+                                        $gallery = Gallery::where('id_product', $idProduct)->first();
+                                        $galleries->push($gallery);
+                                    }
+                                    ?>
+
+                            <div class="product-info">
+                                @foreach($galleries as $gallery)
+                                <div class="cart-item">
+                                    <img
+                                        src="{{ url('public/admin/img/product') . '/' . $gallery->image}}">
+                                    <div class="close-icon">
+                                        <svg class="svg-inline--fa fa-circle-xmark" aria-hidden="true" focusable="false"
+                                             data-prefix="fas" data-icon="circle-xmark" role="img"
+                                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+                                            <path fill="currentColor"
+                                                  d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"></path>
+                                        </svg><!-- <i class="fas fa-times-circle"></i> Font Awesome fontawesome.com -->
+                                    </div>
+                                    <div class="info">
+                                        <div class="product-name">{{ $gallery->product->name_product }}</div>
+                                        <div class="product-price">{{$gallery->product->price}}₫</div>
+                                        <div class="product-quantity">Số lượng: 1</div>
+                                    </div>
+                                </div>
+                                @endforeach
+
+                            </div>
+                            @endforeach
+
+                            <div class="total-price">
+                                <span class="label">Tổng tiền: </span>
+                                <span id="totalPrice">0 ₫</span>
+                            </div>
+                            <div class="actions">
+                                <div class="action viewcart">Xem giỏ hàng</div>
+                                <div class="action checkout">Thanh toán</div>
                             </div>
                         </div>
-                    </div>
-                    <div class="total-price">
-                        <span class="label">Tổng tiền: </span>
-                        <span id="totalPrice">0 ₫</span>
-                    </div>
-                    <div class="actions">
-                        <div class="action viewcart">Xem giỏ hàng</div>
-                        <div class="action checkout">Thanh toán</div>
-                    </div>
-                </div>
+
+
             </div>
-{{--        @endif--}}
+        @endif
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -144,3 +167,4 @@ use App\Models\Cart;
     </div>
     <!-- /.navbar-collapse -->
 </div>
+<script src="{{ asset('/public/frontend/js/app.js') }}"></script>
