@@ -115,7 +115,7 @@
                         
 
                         </form>
-                        {{$success}}
+                        
                     </div>
                 </div>
 

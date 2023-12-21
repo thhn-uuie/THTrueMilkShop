@@ -135,14 +135,14 @@ Route::prefix('admin/profile')->middleware('admin')->name('admin.profile.')->gro
 
     // Order
 Route::prefix('admin/order')->middleware('admin')->name('admin.order.')->group(function () {
-    Route::get('/', [OrderController::class, 'index'])->name('orders');
+    Route::get('/', [OrderController::class, 'index_admin'])->name('orders');
     Route::match(['GET', 'POST'],'/detail/{id}', [OrderController::class, 'show'])->name('detail');
     Route::get('/delete/{id}', [OrderController::class, 'destroy'])->name('delete');
     Route::match(['GET', 'POST'],'/update/{id}', [OrderController::class, 'update'])->name('update');
 });
 
 Route::prefix('user/order')->middleware('auth')->name('user.order.')->group(function () {
-    Route::get('/', [OrderController::class, 'index'])->name('orders');
+    Route::get('/', [OrderController::class, 'index_user'])->name('orders');
     Route::match(['GET', 'POST'],'/detail/{id}', [OrderController::class, 'show'])->name('detail');
     Route::get('/delete/{id}', [OrderController::class, 'destroy'])->name('delete');
     Route::match(['GET', 'POST'],'/create', [OrderController::class, 'store'])->name('create');

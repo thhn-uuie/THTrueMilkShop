@@ -111,13 +111,18 @@ class OrderController extends Controller
         return redirect()->back()->with('error', 'Object not found');
     }
 
-    public function index()
+    public function index_admin()
     {
         $order = Order::all();
         if (Auth::user()->id_role == 1) {
             return view('admin.order.orders', compact('order'));
         }
+        
+    }
+
+    public function index_user(){
         $order = Order::where('id_user', Auth::user()->id)->get();
         return view('frontend.user.user_order', compact('order'));
     }
+   
 }
