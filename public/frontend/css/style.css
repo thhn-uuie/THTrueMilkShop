@@ -9,7 +9,8 @@
      --font: 'Roboto', sans-serif;
      --nav-item: #103a71;
  }
- 
+
+
  a:hover {
      color: #eea342;
  }
@@ -42,6 +43,7 @@
  
  .page-scroll a {
      font-size: 14px;
+     color: #103A71 !important;
  }
  
  /* h1,
@@ -104,11 +106,6 @@
  
      .content .card {
          width: 80% !important;
-     }
- 
-     .nd4 img {
-         height: 100%;
-         width: 100%;
      }
  
      .content {
@@ -213,11 +210,6 @@
  
      .context {
          padding: 40px;
-     }
- 
-     .nd4 img {
-         height: 250px;
-         width: 100%;
      }
  
      .footer .col-xs-4.first {
@@ -370,11 +362,14 @@
  }
  
  button.owl-prev:hover {
-     background: none;
+     color: #103a71 !important;
+     background: none !important;
  }
  
  button.owl-next:hover {
-     background: none;
+     color: #103a71 !important;
+     background: none !important;
+  
  }
  
 .owl-prev {
@@ -548,10 +543,6 @@
 
  .nd3 {
      margin: 40px 0px;
- }
- 
- .nd4 h2.c-title-special1 {
-     margin-bottom: 30px;
  }
  
  
@@ -763,7 +754,7 @@
 
     #totalPrice {
         float: right;
-        color: #72cdf4;
+        color: #103A71;
         font-weight: 700;
     }
 }
