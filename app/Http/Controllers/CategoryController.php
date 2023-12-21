@@ -85,7 +85,7 @@ class CategoryController extends Controller
                     File::delete($oldFile);
                 }
                 $file = $request->file('file_upload');
-                $file_name = uniqid() . '_' . $file->getClientOriginalName();
+                $file_name = time() . '_' . $file->getClientOriginalName();
                 $file->move(public_path('admin/img/category'), $file_name);
                 $request->merge(['image' => $file_name]);
             } else {

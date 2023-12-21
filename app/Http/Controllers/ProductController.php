@@ -67,7 +67,6 @@ class ProductController extends Controller
             return redirect()->route('admin.product.product-detail', ['id' => $product->id])->with('success', 'Them moi thanh cong');
 
 
-
         }
         return view('admin.product.create-product');
     }
@@ -97,6 +96,7 @@ class ProductController extends Controller
         $product = Product::find($id);
 //        dd($product);
         if ($request->isMethod('POST')) {
+//            dd($request->all());
             if ($request->hasFile("product_images")) {
                 $files = $request->file("product_images");
                 foreach ($files as $file) {
@@ -116,7 +116,14 @@ class ProductController extends Controller
                     $imageGallery->save();
                 }
             }
-            return redirect()->route('admin.product.product-detail',['id'=>$product->id])->with('success', 'Chỉnh sửa thành công');
+            $productUp = $product->update([
+                'name_product' => $request->title,
+                'price' => $request->price,
+                'description' => $request->description,
+                'id_category' => $request->category,
+                'status' => $request->status,
+            ]);
+            return redirect()->route('admin.product.product-detail', ['id' => $product->id])->with('success', 'Chỉnh sửa thành công');
         }
         return view('admin.product.product-update', compact('product'));
     }
