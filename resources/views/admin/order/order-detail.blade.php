@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,52 +10,9 @@
 <!-- Site wrapper -->
 <div class="wrapper">
     <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-        <!-- Right navbar links -->
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-            </li>
-        </ul>
-        <div class="navbar-nav pl-2">
-            <ol class="breadcrumb p-0 m-0 bg-white">
-                <li class="breadcrumb-item active">Dashboard</li>
-            </ol>
-        </div>
-
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                    <i class="fas fa-expand-arrows-alt"></i>
-                </a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link p-0 pr-3" data-toggle="dropdown" href="#">
-                    <img src="../../../public/admin/img/avatar5.png" class="img-circle elevation-2" width="40"
-                         height="40" alt="">
-                </a>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-3">
-                    <h4 class="h4 mb-0"><strong>Mohit Singh</strong></h4>
-                    <div class="mb-3">example@example.com</div>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <i class="fas fa-user-cog mr-2"></i> Settings
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <i class="fas fa-lock mr-2"></i> Change Password
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item text-danger">
-                        <i class="fas fa-sign-out-alt mr-2"></i> Logout
-                    </a>
-                </div>
-            </li>
-        </ul>
-    </nav>
+    @include('admin.component.navbar')
     <!-- /.navbar -->
     <!-- Main Sidebar Container -->
-
     <aside class="main-sidebar elevation-4">
         @include('admin.component.sidebar')
     </aside>
@@ -69,7 +27,10 @@
                         <h1>Order: #{{$order_details['0']->id_order}}</h1>
                     </div>
                     <div class="col-sm-6 text-right">
-                        <a href="#" class="btn btn-primary">Xóa</a>
+                        <form method="POST" action="{{ route('admin.order.delete', ['id' => $order_details['0']->id_order]) }}" onsubmit="return confirm('Bạn chắc chắn muốn xóa?')">
+                            @csrf
+                            <button type="submit" class="btn btn-primary">Xóa</button>
+                        </form>
                         <a href="{{ asset('admin/order') }}" class="btn btn-primary">Back</a>
                     </div>
                 </div>
@@ -99,7 +60,17 @@
 
                                         <b>Order ID: #</b> {{$order_details['0']->id_order}} <br>
                                         <b>Total:</b> ${{$allCost}}<br>
-                                        <b>Status:</b> <span class="text-success">{{ $order_item->status }}</span>
+                                        <?php
+                                        $statuses = [
+                                            0 => "Đã xác nhận",
+                                            1 => "Đang vận chuyển",
+                                            2 => "Giao thành công",
+                                        ];
+
+                                        ?>
+
+
+                                        <b>Status:</b> <span class="text-success">{{ $statuses[$order_item->status] }}</span>
                                         <br>
                                     </div>
                                 </div>
@@ -137,10 +108,9 @@
                                     <div class="mb-3">
                                         <input type="hidden" name="id" value="{{ $order_details['0']->id_order }}">
                                         <select name="status" id="status" class="form-control">
-                                            <option value="Pending">Pending</option>
-                                            <option value="Shipped">Shipped</option>
-                                            <option value="Delivered">Delivered</option>
-                                            <option value="Cancelled">Cancelled</option>
+                                            <option value="0">Đã xác nhận</option>
+                                            <option value="1">Đang vận chuyển</option>
+                                            <option value="2">Giao thành công</option>
                                         </select>
                                     </div>
                                     <div class="mb-3">

@@ -14,30 +14,24 @@ use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
-    public function index() {
-        $user = User::all();
+    public function index()
+    {
+        $user = User::paginate(5);
         return view('admin.user.users', compact('user'));
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         if ($request->isMethod('POST')) {
             $validated = $request->validate([
                 'name' => 'required|unique:users',
                 'email' => 'required|unique:users|email',
                 'password' => 'required',
             ]);
-//            $username = $request->name;
-//            $email = $request->email;
-//            $user = User::create($request->all());
-//            $userExists = User::where('username', $username)
-//                ->orWhere('email', $email)
-//                ->exists();
-//            if (!$userExists) {
-                $user = User::create($request->all());
-                return redirect()->route('admin.user.user-detail', ['id'=>$user->id]);
-//            } else {
 
-//            }
+            $user = User::create($request->all());
+            return redirect()->route('admin.user.user-detail', ['id' => $user->id]);
+
         }
         return view('admin.user.create-user');
     }
@@ -51,7 +45,6 @@ class UserController extends Controller
     public function update(Request $request, string $id)
     {
         $user = User::find($id);
-//        $otherUsers = User::whereNotIn('id', [$user->id])->get();
         if ($request->isMethod('POST')) {
             $validator = Validator::make($request->all(), [
                 'name' => [
@@ -68,23 +61,31 @@ class UserController extends Controller
             if ($validator->fails()) {
                 return redirect()->back()->withErrors($validator)->withInput();
             }
-                $result = $user->update([
-                    'name' => $request->name,
-                    'email' => $request->email,
-                    'password' => Hash::make($request->password),
-                ]);
-
-
+            $result = $user->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+            ]);
             if ($result) {
-                return redirect()->route('admin.user.users')->with('success', 'Chỉnh sửa thành công');
+                return redirect()->route('admin.user.users')->with('success', 'Cập nhật tài khoản thành công');
             }
         }
         return view('admin.user.user-update', compact('user'));
     }
-    public function destroy(string $id)
+
+    public function destroy(Request $request, string $id)
     {
-        $user = User::find($id);
-        $user->delete();
-        return redirect()->route('admin.user.users')->with('success', 'Xoa thanh cong');
+        if ($request->isMethod('POST')) {
+            $user = User::find($id);
+            if($user->id_role == 1) {
+                return redirect()->route('admin.user.users')->with('error', 'Không thể xóa tài khoản admin');
+            } else {
+                $user->profile()->delete();
+                $user->delete();
+                return redirect()->route('admin.user.users')->with('success', 'Xóa tài khoản thành công');
+            }
+        } else {
+            return view('errors.405');
+        }
     }
 }

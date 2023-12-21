@@ -21,15 +21,16 @@
         <section class="content-header">
             <div class="container-fluid my-2">
                 <div class="row mb-2">
-                    <div class="col-sm-6">
+                    <div class="col-sm-6 d-flex">
                         <a href="{{ url('/admin/category/update',['id' => $category_item->id]) }}" id="sua"
-                           class="btn btn-primary">Cập nhật</a>
-                        <a href="{{ route('admin.category.delete', ['id' => $category_item->id]) }}"
-                           class="btn btn-primary">Xóa</a>
+                           class="btn btn-primary mr-2">Cập nhật</a>
+                        <form method="POST" action="{{ route('admin.category.delete', ['id' => $category_item->id])}}"
+                              onsubmit="return confirm('Bạn chắc chắn muốn xóa?')">
+                            @csrf
+                            <button type="submit" class="btn btn-primary">Xóa</button>
+                        </form>
                     </div>
-                    <div class="col-sm-6 text-right">
-                        <a href="{{ url('/admin/category') }}" class="btn btn-primary">Back</a>
-                    </div>
+
                 </div>
             </div>
             <!-- /.container-fluid -->
@@ -48,21 +49,25 @@
                                     <div class="col-sm-4">
                                         <div id="image">
                                             <?php $image_current = url('/public/admin/img/category') . '/' . $category_item->image ?>
-                                            <img src="{{ $image_current }}" >
+
+                                            <a href="{{ $image_current }}" target="_blank">
+                                                <img src="{{ $image_current }}">
+
+                                            </a>
                                             <!-- </div> -->
                                             <!-- </div> -->
                                         </div>
                                     </div>
                                     <div class="col-sm-8">
-                                    <h1 id="product-name" class="h2">{{ $category_item->name_category }}</h1>
+                                        <h1 id="product-name" class="h2">{{ $category_item->name_category }}</h1>
 
                                         <div class="sub-info">
-                                        <p class="tittle">Trạng thái</p>
+                                            <p class="tittle">Trạng thái</p>
 
-                                        @if( $category_item->status == 1)
-                                        <p id="status">Hoạt động</p>
+                                            @if( $category_item->status == 1)
+                                                <p id="status">Hoạt động</p>
                                             @else
-                                            <p id="status">Không hoạt động</p>
+                                                <p id="status">Không hoạt động</p>
                                             @endif
                                         </div>
 

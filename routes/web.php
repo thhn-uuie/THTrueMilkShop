@@ -31,20 +31,19 @@ Route::get('/', function () {
     return view('frontend.index');
 })->name('template');
 
-    // Register
-    // localhost/project/signup
+// Register
+// localhost/project/signup
 Route::get('/signup', [AuthController::class, 'signup'])->name('frontend.auth.signup');
 Route::post('/signup', [AuthController::class, 'postSignup']);
 
-    // Login
-    // localhost/project/login
+// Login
+// localhost/project/login
 Route::get('/login', [AuthController::class, 'login'])->name('frontend.auth.login');
 Route::post('/login', [AuthController::class, 'postLogin']);
 Route::post('/verify', [AuthController::class, 'verify'])->name('verify');
-Route::post('/quen_mat_khau', [AuthController::class, 'forget_password'])->name('fpassword');
-Route::get('/quen_mat_khau', [AuthController::class, 'forget_password'])->name('fpassword');
+Route::post('/verify', [AuthController::class, 'verify'])->name('verify');
 
-    //Logout
+//Logout
 Route::get('/logout', [AuthController::class, 'logout'])->name('frontend.auth.logout');
 
 Route::get('/cau-chuyen-that-th', [SiteController::class, 'story'])->name('cau_chuyen_that_th');
@@ -60,6 +59,7 @@ Route::get('/gio-hang', [SiteController::class, 'viewCart'])->name('gio_hang')->
 Route::match(['GET', 'POST'],'/gio-hang/xoa/{id}', [CartController::class, 'delete'])->name('cart.delete')->middleware('customer');
 Route::match(['GET', 'POST'],'/thong-tin', [CustomerController::class, 'showProfile'])->name('user.user_account')->middleware('customer');
 Route::match(['GET', 'POST'],'/thong-tin/cap-nhat', [CustomerController::class, 'update'])->name('user.user_account_update')->middleware('customer');
+Route::get( 'san-pham/chi-tiet/{id}', [CustomerController::class, 'detail'])->name('chi-tiet');
 
 
 
@@ -71,10 +71,10 @@ Route::get('/admin/login', [AdminController::class, 'login'])->name('admin.login
 Route::post('/admin/login', [AdminController::class, 'postLogin']);
 Route::get('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
 
-    // Dashboard
+// Dashboard
 Route::get('/admin', [DashboardController::class, 'index'])->name('admin.dashboard')->middleware('admin');
 
-    // Category
+// Category
 Route::prefix('admin/category')->middleware('admin')->name('admin.category.')->group(function () {
 
     // Category: localhost/project/admin/category
@@ -86,7 +86,7 @@ Route::prefix('admin/category')->middleware('admin')->name('admin.category.')->g
     // Xem chi tiết: localhost/project/admin/category/detail/{id}
     Route::match(['GET', 'POST'],'/detail/{id}', [CategoryController::class, 'show'])->name('category-detail');
 
-    Route::get('/delete/{id}', [CategoryController::class, 'destroy'])->name('delete');
+    Route::match(['GET', 'POST'],'/delete/{id}', [CategoryController::class, 'destroy'])->name('delete');
 
     // Update category:  localhost/project/admin/category/update/{id}
     Route::match(['GET', 'POST'],'/update/{id}', [CategoryController::class, 'update'])->name('category-update');
@@ -106,7 +106,7 @@ Route::prefix('admin/product')->middleware('admin')->name('admin.product.')->gro
     // Xem: localhost/project/admin/product/detail/{id}
     Route::match(['GET', 'POST'],'/detail/{id}', [ProductController::class, 'show'])->name('product-detail');
 
-    Route::get('/delete/{id}', [ProductController::class, 'destroy'])->name('delete');
+    Route::match(['GET', 'POST'],'/delete/{id}', [ProductController::class, 'destroy'])->name('delete');
 
     // Update: localhost/project/admin/product/update/{id}
     Route::match(['GET', 'POST'],'/update/{id}', [ProductController::class, 'update'])->name('product-update');
@@ -118,40 +118,38 @@ Route::post('/upload-image',[ProductController::class,'uploadImage'])->name('upl
 
 Route::post('/update-status', [OrderController::class, 'updateStatus'])->name('update-status');
 
-    // User
+// User
 Route::prefix('admin/user')->middleware('admin')->name('admin.user.')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('users');
     Route::match(['GET', 'POST'],'/create', [UserController::class, 'store'])->name('create-user');
     Route::match(['GET', 'POST'],'/detail/{id}', [UserController::class, 'show'])->name('user-detail');
-    Route::get('/delete/{id}', [UserController::class, 'destroy'])->name('delete');
+    Route::match(['GET', 'POST'],'/delete/{id}', [UserController::class, 'destroy'])->name('delete');
     Route::match(['GET', 'POST'],'/update/{id}', [UserController::class, 'update'])->name('user-update');
 
 });
 
-    // Profile
+// Profile
 Route::prefix('admin/profile')->middleware('admin')->name('admin.profile.')->group(function () {
     Route::get('/', [ProfileController::class, 'index'])->name('profiles');
-//    Route::match(['GET', 'POST'],'/create', [UserController::class, 'store'])->name('create-profile');
     Route::match(['GET', 'POST'],'/detail/{id}', [ProfileController::class, 'show'])->name('profile-detail');
-    Route::get('/delete/{id}', [ProfileController::class, 'destroy'])->name('delete');
-//    Route::match(['GET', 'POST'],'/update/{id}', [UserController::class, 'update'])->name('profile-update');
 
 });
 
 
-    // Order
+// Order
 Route::prefix('admin/order')->middleware('admin')->name('admin.order.')->group(function () {
     Route::get('/', [OrderController::class, 'index_admin'])->name('orders');
     Route::match(['GET', 'POST'],'/detail/{id}', [OrderController::class, 'show'])->name('detail');
-    Route::get('/delete/{id}', [OrderController::class, 'destroy'])->name('delete');
+    Route::match(['GET', 'POST'],'/delete/{id}', [OrderController::class, 'destroy'])->name('delete');
     Route::match(['GET', 'POST'],'/update/{id}', [OrderController::class, 'update'])->name('update');
 });
 
 Route::prefix('user/order')->middleware('auth')->name('user.order.')->group(function () {
     Route::get('/', [OrderController::class, 'index_user'])->name('orders');
     Route::match(['GET', 'POST'],'/detail/{id}', [OrderController::class, 'show'])->name('detail');
-    Route::get('/delete/{id}', [OrderController::class, 'destroy'])->name('delete');
+    Route::match(['GET', 'POST'],'/delete/{id}', [OrderController::class, 'destroy'])->name('delete');
     Route::match(['GET', 'POST'],'/create', [OrderController::class, 'store'])->name('create');
 });
+
 
 

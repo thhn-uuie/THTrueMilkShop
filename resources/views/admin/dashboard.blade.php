@@ -1,3 +1,8 @@
+<?php
+use App\Models\User;
+use App\Models\Product;
+use App\Models\Category;
+?>
 <html lang="en" style="height: auto;">
 <head>
     @include('admin.component.head')
@@ -34,11 +39,15 @@
                         <div class="col-lg-4 col-6">
                             <div class="small-box card">
                                 <div class="inner">
-                                    <h3>150</h3>
+                                    <?php $count_user = User::count();?>
+                                    <h3>{{$count_user}}</h3>
                                     <p>Tổng số người dùng</p>
                                     <div class="tp">
-                                        <h6 id="u_active" style="font-size: 14px;">Số danh mục hoạt động: 50</h6>
-                                        <h6 id="u_block" style="font-size: 14px;"> Số danh mục đã xóa: 10</h6>
+                                        <?php
+                                        $countAdmins = User::where('id_role', 1)->count();
+                                        ?>
+                                        <h6 id="u_active" style="font-size: 14px;">Admin: {{$countAdmins}}</h6>
+                                        <h6 id="u_block" style="font-size: 14px;"> User: {{$count_user-$countAdmins}}</h6>
                                     </div>
                                 </div>
                                 <div class="icon">
@@ -52,11 +61,11 @@
                         <div class="col-lg-4 col-6">
                             <div class="small-box card">
                                 <div class="inner">
-                                    <h3>50</h3>
+                                    <h3>{{ Product::count() }}</h3>
                                     <p>Tổng số sản phẩm</p>
                                     <div class="tp">
-                                        <h6 id="sp_active" style="font-size: 14px;">Số sản phẩm hoạt động: 40</h6>
-                                        <h6 id="sp_block" style="font-size: 14px;"> Số sản phẩm đã xóa: 10</h6>
+                                        <h6 id="sp_active" style="font-size: 14px;">Số sản phẩm hoạt động: {{Product::where('status', 1)->count()}}</h6>
+                                        <h6 id="sp_block" style="font-size: 14px;"> Số sản phẩm không hoạt động: {{Product::where('status', 0)->count()}}</h6>
                                     </div>
                                 </div>
                                 <div class="icon">
@@ -70,11 +79,11 @@
                         <div class="col-lg-4 col-6">
                             <div class="small-box card">
                                 <div class="inner">
-                                    <h3>10</h3>
+                                    <h3>{{ Category::count() }}</h3>
                                     <p>Tổng số danh mục</p>
                                     <div class="tp">
-                                        <h6 id="c_active" style="font-size: 14px;">Số danh mục hoạt động: 50</h6>
-                                        <h6 id="c_block" style="font-size: 14px;"> Số danh mục đã xóa: 10</h6>
+                                        <h6 id="c_active" style="font-size: 14px;">Số danh mục hoạt động: {{Category::where('status', 1)->count()}}</h6>
+                                        <h6 id="c_block" style="font-size: 14px;"> Số danh mục không hoạt động: {{Category::where('status', 0)->count()}}</h6>
                                     </div>
                                 </div>
                                 <div class="icon">

@@ -41,7 +41,7 @@ class CartController extends Controller
             $gioHang->save();
         }
 
-        return redirect()->route('san_pham');
+        return redirect()->back();
     }
 
     public function delete(Request $request, string $id)

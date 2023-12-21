@@ -43,7 +43,7 @@ class OrderController extends Controller
             $data = Order::create([
                 'id_user' => $id,
                 'note' => $request->note ?? '',
-                'status' => 'default',
+                'status' => '0',
                 'name' => $request->name,
                 'tel' => $request->tel,
                 'add' => $request->addr,
@@ -109,15 +109,15 @@ class OrderController extends Controller
             $order->status = $status;
             $order->save();
 
-            return redirect()->back()->with('success', 'Status updated successfully');
+            return redirect()->back()->with('success', 'Cập nhật trạng thái thành công');
         }
 
-        return redirect()->back()->with('error', 'Object not found');
+        return redirect()->back()->with('error', 'Không timg thấy đối tượng');
     }
 
     public function index_admin()
     {
-        $order = Order::all();
+        $order = Order::paginate(5);
         if (Auth::user()->id_role == 1) {
             return view('admin.order.orders', compact('order'));
         }

@@ -22,7 +22,7 @@ class CategoryController extends Controller
 //    }
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::paginate(5);
         return view('admin.category.categories', compact('categories'));
     }
 
@@ -48,7 +48,7 @@ class CategoryController extends Controller
             $request->merge(['image' => $file_name]);
             $category = Category::create($request->all());
             if ($category) {
-                return redirect()->route('admin.category.category-detail', ['id'=>$category->id])->with('success', 'Them moi thanh cong');
+                return redirect()->route('admin.category.category-detail', ['id'=>$category->id])->with('success', 'Thêm mới thành công');
             }
         }
         return view('admin.category.create-category');
@@ -93,10 +93,13 @@ class CategoryController extends Controller
                     $request->merge(['image' => $file_name]);
 
             }
+            if ($request->status == 0) {
+                $category->products()->update(['status' => 0]);
+            }
             $result = $category->update($request->all());
 
             if ($result) {
-                return redirect()->route('admin.category.categories')->with('success', 'Chỉnh sửa thành công');
+                return redirect()->route('admin.category.categories')->with('success', 'Cập nhật danh mục thành công');
             }
         }
         return view('admin.category.category-update', compact('category'));
@@ -105,14 +108,22 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request, string $id)
     {
-        $category = Category::find($id);
-        $oldFile = public_path('admin/img/category') . '/' . $category->image;
-        if (File::exists($oldFile)) {
-            File::delete($oldFile);
+        if($request->isMethod('POST')) {
+            $category = Category::find($id);
+            $oldFile = public_path('admin/img/category') . '/' . $category->image;
+            if (File::exists($oldFile)) {
+                File::delete($oldFile);
+            }
+            if ($category->products()->count() > 0) {
+                return redirect()->route('admin.category.categories')->with('error', 'Không thể xóa danh mục này.');
+            } else {
+                $category->delete();
+                return redirect()->route('admin.category.categories')->with('success', 'Xóa danh mục thành công');
+            }
+        } else {
+            return view('errors.405');
         }
-        $category->status = 0;
-        return redirect()->route('admin.category.categories')->with('success', 'Xoa thanh cong');
     }
 }

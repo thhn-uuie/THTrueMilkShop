@@ -2,8 +2,11 @@
 
 namespace App\Exceptions;
 
+use GuzzleHttp\Psr7\Response;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Exception;
+use Illuminate\Http\Request;
 
 class Handler extends ExceptionHandler
 {

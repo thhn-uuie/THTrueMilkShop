@@ -22,13 +22,8 @@
         <section class="content-header">
             <div class="container-fluid my-2">
                 <div class="row mb-2">
-                    <div class="col-sm-6">
-                        {{--                        <a href="{{ url('/admin/product/update',['id' => $profile->id]) }}" id="sua"--}}
-                        {{--                           class="btn btn-primary">Cập nhật</a>--}}
-                        <a href="{{ route('admin.profile.delete', ['id' => $profile->id]) }}"
-                           class="btn btn-primary">Xóa</a>
-                    </div>
-                    <div class="col-sm-6 text-right">
+
+                    <div class="col-sm-12 text-right">
                         <a href="{{ url('/admin/profile') }}" class="btn btn-primary">Back</a>
                     </div>
                 </div>
@@ -48,10 +43,10 @@
 
                                     <div class="col-sm-4">
                                         <div id="image">
+                                            <a href="{{ url('public/frontend/img/profile') . '/' . $profile->image  }}" target="_blank">
                                             <img
-                                                src="{{ url('public/admin/img/product/657d6e10cf493_image_default.jpg') }}">
-                                            <!-- </div> -->
-                                            <!-- </div> -->
+                                                src="{{ url('public/frontend/img/profile') . '/' . $profile->image  }}">
+                                            </a>
                                         </div>
                                     </div>
                                     <div class="col-sm-8">

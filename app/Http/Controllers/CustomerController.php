@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Product;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -46,9 +47,14 @@ class CustomerController extends Controller
                 'image' => $file_name,
             ]);
             if ($profile) {
-                return redirect()->route('user.user_account')->with('success', 'Chỉnh sửa thành công');
+                return redirect()->route('user.user_account')->with('success', 'Cập nhật thành công');
             }
         }
         return view('frontend.user.user_account_update', compact('customer'));
+    }
+
+    public function detail($id) {
+        $product = Product::find($id);
+        return view('frontend.trang_chu.product_detail', compact('product'));
     }
 }

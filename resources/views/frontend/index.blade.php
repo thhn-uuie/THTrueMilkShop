@@ -10,7 +10,7 @@
     <meta name="author" content="">
 
     <title>TH true MILK – True Happiness</title>
-   @include('frontend.component.head')
+    @include('frontend.component.head')
 
 </head>
 
@@ -76,390 +76,206 @@
     <!-- sp -->
     <div class="nd1">
         <div class="container">
-        <div class="owl-sp">
-            <div class="owl-carousel owl-theme" id="owl-carousel1">
-                <div class="item">
-                    <div class="c-listitem1__card1">
-                        <a class="c-listitem1__link1"
-                           href="https://www.thmilk.vn/san-pham/?csrt=17825376052622833316#suatuoitiettrung">
-                            <div class="c-listitem1__img1">
-                                <img src="https://www.thmilk.vn/wp-content/uploads/2019/11/ic-suatietrung.png" alt="ic-suatietrung">
+            <?php $category = \App\Models\Category::where('status', 1)->get(); ?>
+            <div class="owl-sp">
+                <div class="owl-carousel owl-theme" id="owl-carousel1">
+                    @foreach($category as $item)
+                        <div class="item">
+                            <div class="c-listitem1__card1">
+                                <a class="c-listitem1__link1"
+                                   href="{{asset('/san-pham')}}">
+                                    <div class="c-listitem1__img1">
+                                        <img src="{{ url('/public/admin/img/category') . '/' . $item->image }}"
+                                             alt="ic-suatietrung"
+                                             style="width: 60px!important; height: 60px!important;">
+                                    </div>
+                                    <article class="c-listitem1__content1">
+                                        <h4 class="title1">{{ $item->name_category }}</h4>
+                                    </article>
+                                </a>
                             </div>
-                            <article class="c-listitem1__content1">
-                                <h4 class="title1">Sữa tươi tiệt trùng</h4>
-                            </article>
-                        </a>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="c-listitem1__card1">
-                        <a class="c-listitem1__link1"
-                           href="https://www.thmilk.vn/san-pham/?csrt=17825376052622833316#suatuoitiettrung">
-                            <div class="c-listitem1__img1">
-                                <img src="https://www.thmilk.vn/wp-content/uploads/2019/11/ic-suatietrung.png" alt="ic-suatietrung">
-                            </div>
-                            <article class="c-listitem1__content1">
-                                <h4 class="title1">Sữa tươi tiệt trùng</h4>
-                            </article>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="c-listitem1__card1">
-                        <a class="c-listitem1__link1"
-                           href="https://www.thmilk.vn/san-pham/?csrt=17825376052622833316#suatuoitiettrung">
-                            <div class="c-listitem1__img1">
-                                <img src="https://www.thmilk.vn/wp-content/uploads/2019/11/ic-suatietrung.png" alt="ic-suatietrung">
-                            </div>
-                            <article class="c-listitem1__content1">
-                                <h4 class="title1">Sữa tươi tiệt trùng</h4>
-                            </article>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="c-listitem1__card1">
-                        <a class="c-listitem1__link1"
-                           href="https://www.thmilk.vn/san-pham/?csrt=17825376052622833316#suatuoitiettrung">
-                            <div class="c-listitem1__img1">
-                                <img src="https://www.thmilk.vn/wp-content/uploads/2019/11/ic-suatietrung.png" alt="ic-suatietrung">
-                            </div>
-                            <article class="c-listitem1__content1">
-                                <h4 class="title1">Sữa tươi tiệt trùng</h4>
-                            </article>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="c-listitem1__card1">
-                        <a class="c-listitem1__link1"
-                           href="https://www.thmilk.vn/san-pham/?csrt=17825376052622833316#suatuoitiettrung">
-                            <div class="c-listitem1__img1">
-                                <img src="https://www.thmilk.vn/wp-content/uploads/2019/11/ic-suatietrung.png" alt="ic-suatietrung">
-                            </div>
-                            <article class="c-listitem1__content1">
-                                <h4 class="title1">Sữa tươi tiệt trùng</h4>
-                            </article>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="c-listitem1__card1">
-                        <a class="c-listitem1__link1"
-                           href="https://www.thmilk.vn/san-pham/?csrt=17825376052622833316#suatuoitiettrung">
-                            <div class="c-listitem1__img1">
-                                <img src="https://www.thmilk.vn/wp-content/uploads/2019/11/ic-suatietrung.png" alt="ic-suatietrung">
-                            </div>
-                            <article class="c-listitem1__content1">
-                                <h4 class="title1">Sữa tươi tiệt trùng</h4>
-                            </article>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="c-listitem1__card1">
-                        <a class="c-listitem1__link1"
-                           href="https://www.thmilk.vn/san-pham/?csrt=17825376052622833316#suatuoitiettrung">
-                            <div class="c-listitem1__img1">
-                                <img src="https://www.thmilk.vn/wp-content/uploads/2019/11/ic-suatietrung.png" alt="ic-suatietrung">
-                            </div>
-                            <article class="c-listitem1__content1">
-                                <h4 class="title1">Sữa tươi tiệt trùng</h4>
-                            </article>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="c-listitem1__card1">
-                        <a class="c-listitem1__link1"
-                           href="https://www.thmilk.vn/san-pham/?csrt=17825376052622833316#suatuoitiettrung">
-                            <div class="c-listitem1__img1">
-                                <img src="https://www.thmilk.vn/wp-content/uploads/2019/11/ic-suatietrung.png" alt="ic-suatietrung">
-                            </div>
-                            <article class="c-listitem1__content1">
-                                <h4 class="title1">Sữa tươi tiệt trùng</h4>
-                            </article>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="c-listitem1__card1">
-                        <a class="c-listitem1__link1"
-                           href="https://www.thmilk.vn/san-pham/?csrt=17825376052622833316#suatuoitiettrung">
-                            <div class="c-listitem1__img1">
-                                <img src="https://www.thmilk.vn/wp-content/uploads/2019/11/ic-suatietrung.png" alt="ic-suatietrung">
-                            </div>
-                            <article class="c-listitem1__content1">
-                                <h4 class="title1">Sữa tươi tiệt trùng</h4>
-                            </article>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="c-listitem1__card1">
-                        <a class="c-listitem1__link1"
-                           href="https://www.thmilk.vn/san-pham/?csrt=17825376052622833316#suatuoitiettrung">
-                            <div class="c-listitem1__img1">
-                                <img src="https://www.thmilk.vn/wp-content/uploads/2019/11/ic-suatietrung.png" alt="ic-suatietrung">
-                            </div>
-                            <article class="c-listitem1__content1">
-                                <h4 class="title1">Sữa tươi tiệt trùng</h4>
-                            </article>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="c-listitem1__card1">
-                        <a class="c-listitem1__link1"
-                           href="https://www.thmilk.vn/san-pham/?csrt=17825376052622833316#suatuoitiettrung">
-                            <div class="c-listitem1__img1">
-                                <img src="https://www.thmilk.vn/wp-content/uploads/2019/11/ic-suatietrung.png" alt="ic-suatietrung">
-                            </div>
-                            <article class="c-listitem1__content1">
-                                <h4 class="title1">Sữa tươi tiệt trùng</h4>
-                            </article>
-                        </a>
-                    </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
-        </div>
         </div>
 
         <div class="sp">
             <div class="container">
-            <h1 class="ctext">Sản phẩm nổi bật</h1>
-            <div class="owl-sp2">
-                <div class="owl-carousel owl-theme " id="owl-carousel2">
-                    <div class="item">
-                        <div class="c-listitem2__card1">
-                            <a class="c-listitem2__link1"
-                               href="https://www.thmilk.vn/products/vien-nang-mem-lyco-prevent-60-vien/?csrt=14388090062690665609">
-                                <div class="c-listitem2__img1">
+                <h1 class="ctext">Sản phẩm mới nhất</h1>
+                <div class="owl-sp2">
 
-                                    <div class="tRes_100">
-                                        <img src="https://www.thmilk.vn/wp-content/uploads/2023/11/Lyco-prevent-60v-457x396.png"
-                                             alt="Viên Nang Mềm LYCO-PREVENT 60 viên">
+                    <div class="owl-carousel owl-theme " id="owl-carousel2">
+
+                                <?php $products = \App\Models\Product::where('status', 1)
+                                    ->latest()
+                                    ->limit(5)
+                                    ->get(); ?>
+                                @foreach($products as $item)
+                                        <?php $galleryProduct = \App\Models\Gallery::where('id_product', $item->id)->get(); ?>
+                                    <div class="item">
+                                        <div class="c-listitem2__card1">
+                                            <a class="c-listitem2__link1"
+                                               href="{{ route('chi-tiet', ['id' => $item->id]) }}">
+                                                <div class="c-listitem2__img1">
+                                                    <div class="tRes_100" ">
+                                                        <img
+                                                             src="{{ url('public/admin/img/product') . '/' . $galleryProduct->first()->image }}"
+                                                             alt="{{ $item->name_product }}">
+                                                    </div>
+                                                </div>
+                                                <article class="c-listitem2__content1">
+                                                    <h4 class="title1">{{ $item->name_product }}</h4>
+                                                </article>
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
-                                <article class="c-listitem2__content1">
-                                    <h4 class="title1">Viên Nang Mềm LYCO-PREVENT 60 viên</h4>
-                                </article>
-                            </a>
+                                @endforeach
+
+                            </div>
                         </div>
+
                     </div>
-
-                    <div class="item">
-                        <div class="c-listitem2__card1">
-                            <a class="c-listitem2__link1"
-                               href="https://www.thmilk.vn/products/vien-nang-mem-lyco-prevent-30-vien/?csrt=14388090062690665609">
-                                <div class="c-listitem2__img1">
-
-                                    <div class="tRes_100">
-                                        <img src="https://www.thmilk.vn/wp-content/uploads/2023/11/Lyco-prevent-30v-457x396.png"
-                                             alt="Viên Nang Mềm LYCO-PREVENT 30 viên">
-                                    </div>
-                                </div>
-                                <article class="c-listitem2__content1">
-                                    <h4 class="title1">Viên Nang Mềm LYCO-PREVENT 30 viên</h4>
-                                </article>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="c-listitem2__card1">
-                            <a class="c-listitem2__link1"
-                               href="https://www.thmilk.vn/products/san-pham-dinh-duong-cong-thuc-cho-tre-tu-2-den-6-tuoi-th-true-formula-4/?csrt=14388090062690665609">
-                                <div class="c-listitem2__img1">
-
-                                    <div class="tRes_100">
-                                        <img src="https://www.thmilk.vn/wp-content/uploads/2023/06/thumb-Formula-set-4.png"
-                                             alt="Sản phẩm dinh dưỡng công thức cho trẻ từ 2 đến 6 tuổi TH true Formula 4">
-                                    </div>
-                                </div>
-                                <article class="c-listitem2__content1">
-                                    <h4 class="title1">Sản phẩm dinh dưỡng công thức cho trẻ từ 2 đến 6 tuổi TH true Formula 4</h4>
-                                </article>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="c-listitem2__card1">
-                            <a class="c-listitem2__link1"
-                               href="https://www.thmilk.vn/products/san-pham-dinh-duong-cong-thuc-tu-sua-tuoi-cho-tre-tren-2-tuoi-th-true-formula-180ml/?csrt=14388090062690665609">
-                                <div class="c-listitem2__img1">
-
-                                    <div class="tRes_100">
-                                        <img src="https://www.thmilk.vn/wp-content/uploads/2023/06/thumb-Formula-liquid-180ml.png"
-                                             alt="Sản phẩm dinh dưỡng công thức từ sữa tươi cho trẻ trên 2 tuổi TH true FORMULA 180ML">
-                                    </div>
-                                </div>
-                                <article class="c-listitem2__content1">
-                                    <h4 class="title1">Sản phẩm dinh dưỡng công thức từ sữa tươi cho trẻ trên 2 tuổi TH true FORMULA
-                                        180ML</h4>
-                                </article>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="c-listitem2__card1">
-                            <a class="c-listitem2__link1"
-                               href="https://www.thmilk.vn/products/sua-yen-mach-vi-tu-nhien-th-true-oat-180ml/?csrt=14388090062690665609">
-                                <div class="c-listitem2__img1">
-
-                                    <div class="tRes_100">
-                                        <img src="https://www.thmilk.vn/wp-content/uploads/2023/05/OAT-457x396-180.png"
-                                             alt="Sữa Yến Mạch Vị Tự Nhiên – TH true OAT 180 ml">
-                                    </div>
-                                </div>
-                                <article class="c-listitem2__content1">
-                                    <h4 class="title1">Sữa Yến Mạch Vị Tự Nhiên – TH true OAT 180 ml</h4>
-                                </article>
-                            </a>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>
-            </div>
     </div>
 
     <div class="nd2">
         <div class="container">
-        <div class="owl-sp3">
-            <div class="owl-carousel owl-theme" id="owl-carousel3">
-                <div class="item">
-                    <a class="c-slider1__link1"
-                       href="https://www.thmilk.vn/nhan-the-sticker-vui-quay-so-trung-qua-chat/?csrt=14388090062690665609">
-                        <div class="c-slider1__img1">
-                            <img src="https://www.thmilk.vn/wp-content/uploads/2023/09/Banner-Home.jpg" alt="banner-home">
-                        </div>
-                    </a>
+            <div class="owl-sp3">
+                <div class="owl-carousel owl-theme" id="owl-carousel3">
+                    <div class="item">
+                        <a class="c-slider1__link1"
+                           href="https://www.thmilk.vn/nhan-the-sticker-vui-quay-so-trung-qua-chat/?csrt=14388090062690665609">
+                            <div class="c-slider1__img1">
+                                <img src="https://www.thmilk.vn/wp-content/uploads/2023/09/Banner-Home.jpg"
+                                     alt="banner-home">
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="item">
+                        <a class="c-slider1__link1"
+                           href="https://www.thmilk.vn/thong-tin-chi-tiet-ve-chuong-trinh-thu-gom-vo-hop-lan-toa-song-xanh-2023/?csrt=14388090062690665609">
+                            <div class="c-slider1__img1">
+                                <img src="https://www.thmilk.vn/wp-content/uploads/2023/08/1170x660.jpg"
+                                     alt="1170x660-2">
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="item">
+                        <a class="c-slider1__link1"
+                           href="https://www.thmilk.vn/chuong-trinh-khuyen-mai-sua-tuoi-tiet-trung-th-true-milk-hilo-va-sua-tuoi-tiet-trung-th-true-milk-light-meal/?csrt=14388090062690665609">
+                            <div class="c-slider1__img1">
+                                <img
+                                    src="https://www.thmilk.vn/wp-content/uploads/2023/12/KV-HILO-Light-meal_thmilk-main-menu.jpg"
+                                    alt="kv-hilo-light-meal_thmilk-main-menu">
+                            </div>
+                        </a>
+                    </div>
+
+
                 </div>
-
-                <div class="item">
-                    <a class="c-slider1__link1"
-                       href="https://www.thmilk.vn/thong-tin-chi-tiet-ve-chuong-trinh-thu-gom-vo-hop-lan-toa-song-xanh-2023/?csrt=14388090062690665609">
-                        <div class="c-slider1__img1">
-                            <img src="https://www.thmilk.vn/wp-content/uploads/2023/08/1170x660.jpg" alt="1170x660-2">
-                        </div>
-                    </a>
-                </div>
-
-                <div class="item">
-                    <a class="c-slider1__link1"
-                       href="https://www.thmilk.vn/chuong-trinh-khuyen-mai-sua-tuoi-tiet-trung-th-true-milk-hilo-va-sua-tuoi-tiet-trung-th-true-milk-light-meal/?csrt=14388090062690665609">
-                        <div class="c-slider1__img1">
-                            <img src="https://www.thmilk.vn/wp-content/uploads/2023/12/KV-HILO-Light-meal_thmilk-main-menu.jpg"
-                                 alt="kv-hilo-light-meal_thmilk-main-menu">
-                        </div>
-                    </a>
-                </div>
-
-
             </div>
         </div>
-    </div>
 
-    <div class="nd3">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-md-6">
-                    <div class="box1">
-                        <h3 class="title1">TH true mart</h3>
-                        <div class="text1">
-                            <p></p>
-                            <div style="text-align: justify; color: gray; margin-bottom: 20px; font-size: 16px;">
-                                TH true mart là chuỗi cửa hàng phân phối hiện đại, chuyên cung cấp trực tiếp các sản phẩm thực phẩm
-                                sạch, an toàn, tươi ngon và bổ dưỡng, đạt chuẩn Quốc tế tới tận tay người tiêu dùng.
-                                <br>
+        <div class="nd3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-md-6">
+                        <div class="box1">
+                            <h3 class="title1">TH true mart</h3>
+                            <div class="text1">
+                                <p></p>
+                                <div style="text-align: justify; color: gray; margin-bottom: 20px; font-size: 16px;">
+                                    TH true mart là chuỗi cửa hàng phân phối hiện đại, chuyên cung cấp trực tiếp các sản
+                                    phẩm thực phẩm
+                                    sạch, an toàn, tươi ngon và bổ dưỡng, đạt chuẩn Quốc tế tới tận tay người tiêu dùng.
+                                    <br>
+                                </div>
+                                <p></p>
                             </div>
-                            <p></p>
+                            <div class="list1">
+                                <a class="btn btn-primary" href="/he-thong-cua-hang/?csrt=14388090062690665609"
+                                   target="">
+                                    Tìm cửa hàng <i class="fa fa-search"></i></a>
+                                <a class="btn btn-primary" href="https://www.thtruemart.vn/" target="_blank">
+                                    Mua hàng trực tuyến <i class="fa fa-shopping-cart"></i></a>
+                            </div>
                         </div>
-                        <div class="list1">
-                            <a class="btn btn-primary" href="/he-thong-cua-hang/?csrt=14388090062690665609" target="">
-                                Tìm cửa hàng <i class="fa fa-search"></i></a>
-                            <a class="btn btn-primary" href="https://www.thtruemart.vn/" target="_blank">
-                                Mua hàng trực tuyến <i class="fa fa-shopping-cart"></i></a>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        <div class="box2">
+                            <div class="img tRes_70">
+                                <img src="https://www.thmilk.vn/wp-content/uploads/2019/11/true-mart.png"
+                                     alt="true-mart">
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-12 col-md-6">
-                    <div class="box2">
-                        <div class="img tRes_70">
-                            <img src="https://www.thmilk.vn/wp-content/uploads/2019/11/true-mart.png" alt="true-mart">
-                        </div>
+            </div>
+        </div>
+
+        <div class="nd4">
+            <div class="container">
+                <h2 class="c-title-special1"><span>Góc sức khỏe</span>
+                </h2>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <a class="list1__link1"
+                           href="http://thmilk.vn/healths/thong-tin-tu-van-su-dung-sua/?csrt=14388090062690665609">
+                            <div class="list1__content1">
+                                <div class="list1__img1">
+                                    <img src="https://www.thmilk.vn/wp-content/uploads/2019/11/img-pc1.jpg"
+                                         alt="img-pc1">
+                                </div>
+
+                                <p class="list1__text1">Thông tin tư vấn sử dụng sữa</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <a class="list1__link1"
+                           href="http://thmilk.vn/healths/bi-quyet-khoe-dep-tu-nhien/?csrt=14388090062690665609">
+                            <div class="list1__content1">
+                                <div class="list1__img1">
+                                    <img src="https://www.thmilk.vn/wp-content/uploads/2019/11/img-qc2.jpg"
+                                         alt="img-qc2">
+                                </div>
+
+                                <p class="list1__text1">Bí quyết khoẻ đẹp tự nhiên</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <a class="list1__link1"
+                           href="http://thmilk.vn/healths/bi-quyet-cham-soc-con-cai/?csrt=14388090062690665609">
+                            <div class="list1__content1">
+                                <div class="list1__img1">
+                                    <img src="https://www.thmilk.vn/wp-content/uploads/2019/11/img-qc3.jpg"
+                                         alt="img-qc3">
+                                </div>
+
+                                <p class="list1__text1">Bí quyết chăm sóc con cái</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <a class="list1__link1"
+                           href="http://thmilk.vn/healths/phong-cach-song-xanh/?csrt=14388090062690665609">
+                            <div class="list1__content1">
+                                <div class="list1__img1">
+                                    <img src="https://www.thmilk.vn/wp-content/uploads/2019/11/img-qc4.jpg"
+                                         alt="img-qc4">
+                                </div>
+                                <p class="list1__text1">Phong cách sống xanh</p>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <div class="nd4">
-        <div class="container">
-            <h2 class="c-title-special1"><span>Góc sức khỏe</span>
-            </h2>
-            <div class="row">
-                <div class="col-xs-12 col-sm-6 col-md-3">
-                    <a class="list1__link1"
-                       href="http://thmilk.vn/healths/thong-tin-tu-van-su-dung-sua/?csrt=14388090062690665609">
-                        <div class="list1__content1">
-                            <div class="list1__img1">
-                                <img src="https://www.thmilk.vn/wp-content/uploads/2019/11/img-pc1.jpg" alt="img-pc1">
-                            </div>
-
-                            <p class="list1__text1">Thông tin tư vấn sử dụng sữa</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-3">
-                    <a class="list1__link1"
-                       href="http://thmilk.vn/healths/bi-quyet-khoe-dep-tu-nhien/?csrt=14388090062690665609">
-                        <div class="list1__content1">
-                            <div class="list1__img1">
-                                <img src="https://www.thmilk.vn/wp-content/uploads/2019/11/img-qc2.jpg" alt="img-qc2">
-                            </div>
-
-                            <p class="list1__text1">Bí quyết khoẻ đẹp tự nhiên</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-3">
-                    <a class="list1__link1"
-                       href="http://thmilk.vn/healths/bi-quyet-cham-soc-con-cai/?csrt=14388090062690665609">
-                        <div class="list1__content1">
-                            <div class="list1__img1">
-                                <img src="https://www.thmilk.vn/wp-content/uploads/2019/11/img-qc3.jpg" alt="img-qc3">
-                            </div>
-
-                            <p class="list1__text1">Bí quyết chăm sóc con cái</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-3">
-                    <a class="list1__link1" href="http://thmilk.vn/healths/phong-cach-song-xanh/?csrt=14388090062690665609">
-                        <div class="list1__content1">
-                            <div class="list1__img1">
-                                <img src="https://www.thmilk.vn/wp-content/uploads/2019/11/img-qc4.jpg" alt="img-qc4">
-                            </div>
-                            <p class="list1__text1">Phong cách sống xanh</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
         </div>
     </div>
 
@@ -480,8 +296,10 @@
 
                     <div class="col-xs-4">
                         <ul class="c-footer">
-                            <li><a href="/dich-vu-giao-hang-tan-nha/?csrt=4143374691117170324">Dịch vụ giao hàng tận nhà</a></li>
-                            <li><a href="/chinh-sach-quy-dinh-chung/?csrt=4143374691117170324">Chính sách &amp; Quy định chung</a>
+                            <li><a href="/dich-vu-giao-hang-tan-nha/?csrt=4143374691117170324">Dịch vụ giao hàng tận
+                                    nhà</a></li>
+                            <li><a href="/chinh-sach-quy-dinh-chung/?csrt=4143374691117170324">Chính sách &amp; Quy định
+                                    chung</a>
                             </li>
                         </ul>
                     </div>
@@ -492,15 +310,17 @@
                                 <ul class="child">
                                     <li>
                                         <a href="https://apps.apple.com/vn/app/th-elife/id1547918408">
-                                            <img src="https://www.thmilk.vn/wp-content/themes/wp-th/assets/images/index/img-app.svg"
-                                                 alt="img-app.svg">
+                                            <img
+                                                src="https://www.thmilk.vn/wp-content/themes/wp-th/assets/images/index/img-app.svg"
+                                                alt="img-app.svg">
                                         </a>
                                     </li>
 
                                     <li>
                                         <a href="https://play.google.com/store/apps/details?id=com.thelite.production">
-                                            <img src="https://www.thmilk.vn/wp-content/themes/wp-th/assets/images/index/img-google.svg"
-                                                 alt="img-google.svg">
+                                            <img
+                                                src="https://www.thmilk.vn/wp-content/themes/wp-th/assets/images/index/img-google.svg"
+                                                alt="img-google.svg">
                                         </a>
                                     </li>
                                 </ul>
@@ -519,7 +339,9 @@
     let mybutton = document.getElementById("back-top");
 
     // When the user scrolls down 20px from the top of the document, show the button
-    window.onscroll = function () { scrollFunction() };
+    window.onscroll = function () {
+        scrollFunction()
+    };
 
     function scrollFunction() {
         if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {

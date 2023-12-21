@@ -36,11 +36,12 @@
             </div>
             <div class="container-fluid my-2">
                 <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <a href="{{ url('/admin/product/update',['id' => $product_item->id]) }}" id="sua"
-                           class="btn btn-primary">Cập nhật</a>
-                        <a href="{{ route('admin.product.delete', ['id' => $product_item->id]) }}"
-                           class="btn btn-primary">Xóa</a>
+                    <div class="col-sm-6 d-flex">
+                        <a href="{{ url('/admin/product/update',['id' => $product_item->id]) }}" id="sua" class="btn btn-primary mr-2">Cập nhật</a>
+                        <form method="POST" action="{{ route('admin.product.delete', ['id' => $product_item->id]) }}" onsubmit="return confirm('Bạn chắc chắn muốn xóa?')">
+                            @csrf
+                            <button type="submit" class="btn btn-primary">Xóa</button>
+                        </form>
                     </div>
                     <div class="col-sm-6 text-right">
                         <a href="{{ url('/admin/product') }}" class="btn btn-primary">Back</a>
@@ -64,17 +65,22 @@
                                         <div id="image">
                                             <?php $galleryProduct = \App\Models\Gallery::where('id_product', $product_item->id)->get();?>
                                             <div class="img1">
-                                                <img role="presentation" alt=""
-                                                     src="{{ url('public/admin/img/product') . '/' . $galleryProduct->first()->image }}">
+                                                <a href="{{ url('public/admin/img/product') . '/' . $galleryProduct->first()->image }}" target="_blank">
+                                                    <img role="presentation" alt=""
+                                                         src="{{ url('public/admin/img/product') . '/' . $galleryProduct->first()->image }}">
+                                                </a>
+
                                             </div>
                                             <div class="owl-img">
                                                 <div class="owl-carousel owl-theme " id="owl-img">
                                                     <?php $items = $galleryProduct->slice(1); ?>
                                                     @foreach($items as $i)
                                                     <div class="item">
-                                                        <img
-                                                            src="{{ url('public/admin/img/product') . '/' . $i->image }}"
-                                                            alt="">
+                                                        <a href="{{ url('public/admin/img/product') . '/' . $i->image }}" target="_blank">
+                                                            <img
+                                                                src="{{ url('public/admin/img/product') . '/' . $i->image }}"
+                                                                alt="">
+                                                        </a>
                                                     </div>
                                                     @endforeach
                                                 </div>

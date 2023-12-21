@@ -25,7 +25,6 @@ class Order extends Model
             $sum = $sum +  $ord->number_product * $ord->price;
         }
         return $sum;
-    
-    }
 
+    }
 }

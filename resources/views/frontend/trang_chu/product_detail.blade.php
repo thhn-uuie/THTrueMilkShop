@@ -32,7 +32,7 @@
 
         <div class="context">
             <div class="container">
-                <span class="item"><a href="https://www.thmilk.vn?csrt=4143374691117170324">Trang chủ > </a></span>
+                <span class="item"><a href="{{ asset('/') }}">Trang chủ > </a></span>
                 <span class="item">Sản phẩm > Sữa tươi tiệt trùng</span>
             </div>
         </div>
@@ -42,38 +42,27 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-4">
                         <div class="box1">
+                            <?php $galleryProduct = \App\Models\Gallery::where('id_product', $product->id)->get();?>
                             <div class="img1">
-                                <img role="presentation" alt=""
-                                    src="https://www.thmilk.vn/wp-content/uploads/2019/11/UHT-1l-NC-800x800.png">
+                                <a href="{{ url('public/admin/img/product') . '/' . $galleryProduct->first()->image }}" target="_blank">
+                                    <img role="presentation" alt=""
+                                         src="{{ url('public/admin/img/product') . '/' . $galleryProduct->first()->image }}">
+                                </a>
+
                             </div>
 
                             <div class="owl-img">
                                 <div class="owl-carousel owl-theme " id="owl-img">
-                                    <div class="item">
-                                        <img src="https://www.thmilk.vn/wp-content/uploads/2023/11/Lyco-prevent-60v-457x396.png"
-                                            alt="Viên Nang Mềm LYCO-PREVENT 60 viên">
-                                    </div>
-
-                                    <div class="item">
-                                        <img src="https://www.thmilk.vn/wp-content/uploads/2023/11/Lyco-prevent-30v-457x396.png"
-                                            alt="Viên Nang Mềm LYCO-PREVENT 30 viên">
-                                    </div>
-
-                                    <div class="item">
-                                        <img src="https://www.thmilk.vn/wp-content/uploads/2023/06/thumb-Formula-set-4.png"
-                                            alt="Sản phẩm dinh dưỡng công thức cho trẻ từ 2 đến 6 tuổi TH true Formula 4">
-                                    </div>
-
-                                    <div class="item">
-                                        <img src="https://www.thmilk.vn/wp-content/uploads/2023/06/thumb-Formula-liquid-180ml.png"
-                                            alt="Sản phẩm dinh dưỡng công thức từ sữa tươi cho trẻ trên 2 tuổi TH true FORMULA 180ML">
-                                    </div>
-
-                                    <div class="item">
-                                        <img src="https://www.thmilk.vn/wp-content/uploads/2023/05/OAT-457x396-180.png"
-                                            alt="Sữa Yến Mạch Vị Tự Nhiên – TH true OAT 180 ml">
-                                    </div>
-
+                                    <?php $items = $galleryProduct->slice(1); ?>
+                                    @foreach($items as $i)
+                                        <div class="item">
+                                            <a href="{{ url('public/admin/img/product') . '/' . $i->image }}" target="_blank">
+                                                <img
+                                                    src="{{ url('public/admin/img/product') . '/' . $i->image }}"
+                                                    alt="">
+                                            </a>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -81,72 +70,48 @@
 
                     <div class="col-xs-12 col-sm-8">
                         <div class="tittle product-name">
-                            <h1 class="h3">Sữa chua uống Thanh Trùng TH true YOGURT Có Đường</h1>
+                            <h1 class="h3">{{ $product->name_product }}</h1>
                         </div>
-                        <div class="p price"><strong>38.400 ₫ (có VAT)</strong></div>
+                        <div class="p price"><strong>{{ $product->price }} ₫</strong></div>
                         <div class="info_box">
 
-                            <ul class="info_list">
-                                <li><img class="icon" src="https://www.thmilk.vn/wp-content/uploads/2019/11/Shape-1.png"
-                                        alt="shape-2">
-                                    Quy cách đóng gói: lốc 4 chai</li>
+{{--                            <ul class="info_list">--}}
+{{--                                <li><img class="icon" src="https://www.thmilk.vn/wp-content/uploads/2019/11/Shape-1.png"--}}
+{{--                                        alt="shape-2">--}}
+{{--                                    Quy cách đóng gói: lốc 4 chai</li>--}}
 
-                                <li><img class="icon" src="https://www.thmilk.vn/wp-content/uploads/2019/11/drop-2.png"
-                                        alt="drop-4">
-                                    Dung tích: 180ml/chai</li>
-                            </ul>
+{{--                                <li><img class="icon" src="https://www.thmilk.vn/wp-content/uploads/2019/11/drop-2.png"--}}
+{{--                                        alt="drop-4">--}}
+{{--                                    Dung tích: 180ml/chai</li>--}}
+{{--                            </ul>--}}
                         </div>
 
                         <div class="nd3">
-                            <a class="btn btn-primary" href="https://www.thtruemart.vn/" target="_blank">
-                                Đặt hàng ngay <i class="fa fa-shopping-cart"></i></a>
+                            <form method="post" action="{{ route('cart.add') }}">
+                                @csrf
+
+                                    @guest
+                                        <button type="button" onclick="showLoginAlert()">
+                                            <i class="fa fa-shopping-cart"></i>
+                                            Thêm vào giỏ hàng
+                                        </button>
+                                    @else
+                                        <button name="id_product" value="{{ $product->id }}"
+                                                type="submit">
+                                            <input type="hidden" name="price"
+                                                   value="{{ $product->price }}">
+                                            <i class="fa fa-shopping-cart"></i>
+                                            Thêm vào giỏ hàng
+                                        </button>
+                                    @endguest
+
+                            </form>
+
                         </div>
 
                         <article class="box1">
-                            <p><span class="subtittle">• 100% THÀNH PHẦN TỰ NHIÊN</span><br>
-                                – Được lên men tự nhiên hoàn tòan từ sữa tươi nguyên chất của trang trại TH và các
-                                nguyên liệu tự nhiên.<br>
-                                – Không sử dụng phụ gia (chất tạo hương, chất tạo màu,…) tổng hợp, không sử dụng chất
-                                bảo quản.<br>
-                                <span class="subtittle">• HƯƠNG VỊ THƠM NGON, TƯƠI MÁT</span><br>
-                                – Là dòng sữa chua uống bảo quản lạnh với vị chua ngọt hoà quyện, mang lại trải nghiệm
-                                thơm ngon, tươi mát cho mỗi lần sử dụng.<br>
-                                – Công nghệ thanh trùng hiện đại giữ được nhiều nhất lượng vitamin và khoáng chất từ sữa
-                                bò tươi nguyên chất mà vẫn giúp sản phẩm luôn tươi ngon trọn vẹn trong suốt 60 ngày khi
-                                được bảo quản theo hướng dẫn.<br>
-                                <span class="subtittle">• DINH DƯỠNG LÀNH MẠNH</span><br>
-                                Sản phẩm cung cấp các dưỡng chất tự nhiên từ sữa bò tươi nguyên chất, tốt cho sức khỏe
-                                của cả gia đình.</p>
-                            <p>&nbsp;</p>
-                            <h3>Hướng dẫn bảo quản và sử dụng:</h3>
-                            <p>Bảo quản nơi khô ráo, thoáng mát, tránh ánh nắng, mùi mạnh và các loại hóa chất.</p>
-                            <p>Bảo quản lạnh ở 4 độ C – 8 độ C và sử dụng ngay sau khi mở</p>
-                            <p>&nbsp;</p>
-                            <h3>Thành phần dinh dưỡng trung bình trong 100 g:</h3>
-                            <table width="242">
-                                <tbody>
-                                    <tr>
-                                        <td width="121">Năng lượng</td>
-                                        <td width="121">70,5&nbsp; kcal</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Hydrat cacbon</td>
-                                        <td>12&nbsp; g</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Chất đạm</td>
-                                        <td>1,8 g</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Chất béo</td>
-                                        <td>1,7 g</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Canxi</td>
-                                        <td>60 mg</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            {!! $product->description !!}
+
                         </article>
                     </div>
                 </div>

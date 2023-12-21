@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Gallery;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\Cart;
 use App\Models\ProductImages;
@@ -19,7 +20,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate(3);
+        $products = Product::paginate(5);
         return view('admin.product.products', compact('products'));
     }
 
@@ -43,9 +44,7 @@ class ProductController extends Controller
             $product->save();
 
             if ($request->hasFile('product_images')) {
-
                 $images = $request->file('product_images');
-
                 foreach ($images as $image) {
                     $imageName = time() . '_' . $image->getClientOriginalName();
                     $path = public_path('admin/img/product');
@@ -54,6 +53,7 @@ class ProductController extends Controller
                     $imageGallery = new Gallery();
                     $imageGallery->image = $imageName;
                     $imageGallery->id_product = $product->id;
+
                     $imageGallery->save();
                 }
 
@@ -64,8 +64,7 @@ class ProductController extends Controller
                 $imageGallery->id_product = $product->id;
                 $imageGallery->save();
             }
-            return redirect()->route('admin.product.product-detail', ['id' => $product->id])->with('success', 'Them moi thanh cong');
-
+            return redirect()->route('admin.product.product-detail', ['id' => $product->id])->with('success', 'Thêm mới thành công');
 
         }
         return view('admin.product.create-product');
@@ -96,7 +95,6 @@ class ProductController extends Controller
         $product = Product::find($id);
 //        dd($product);
         if ($request->isMethod('POST')) {
-//            dd($request->all());
             if ($request->hasFile("product_images")) {
                 $files = $request->file("product_images");
                 foreach ($files as $file) {
@@ -106,6 +104,10 @@ class ProductController extends Controller
                     $imageGallery->image = $imageName;
                     $imageGallery->id_product = $product->id;
                     $imageGallery->save();
+//                    $gallery = Gallery::where('id_product', $id)
+//                        ->where('image', 'no-image.jpg')
+//                        ->first();
+//                    $gallery->delete();
                 }
             } else {
                 $gallery = Gallery::where('id_product', $product->id)->first();
@@ -123,7 +125,7 @@ class ProductController extends Controller
                 'id_category' => $request->category,
                 'status' => $request->status,
             ]);
-            return redirect()->route('admin.product.product-detail', ['id' => $product->id])->with('success', 'Chỉnh sửa thành công');
+            return redirect()->route('admin.product.product-detail', ['id' => $product->id])->with('success', 'Cập nhật sản phẩm thành công');
         }
         return view('admin.product.product-update', compact('product'));
     }
@@ -131,34 +133,47 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public static function destroy(string $id)
+    public static function destroy(Request $request, string $id)
     {
-
-        $product = Product::find($id);
-        foreach ($product->image as $item) {
-            if ($item->image != 'no_image.jpg') {
-                $oldFile = public_path('admin/img/product') . '/' . $item->image;
-                if (File::exists($oldFile)) {
-                    File::delete($oldFile);
+        if($request->isMethod('POST')) {
+            $product = Product::find($id);
+            foreach ($product->image as $item) {
+                if ($item->image != 'no-image.jpg') {
+                    $oldFile = public_path('admin/img/product') . '/' . $item->image;
+                    if (File::exists($oldFile)) {
+                        File::delete($oldFile);
+                    }
                 }
             }
+            // Xoa het trong gio hang va order
+//        OrderDetail::where('id_product', $id)->delete();
+//        Cart::where('id_product', $id)->delete();
+//        $orderDetail = OrderDetail::where('id_product', $id)->get();
+//        $order = Order::where('id')
+
+            if ($product->orders()->count() > 0) {
+                return redirect()->route('admin.product.products')->with('error', 'Không thể xóa sản phẩm này.');
+            } else {
+                $product->delete();
+                return redirect()->route('admin.product.products')->with('success', 'Xóa sản phẩm thành công.');
+            }
+        } else {
+            return view('errors.405');
         }
-        // Xoa het trong gio hang va order
-        OrderDetail::where('id_product', $id)->delete();
-        Cart::where('id_product', $id)->delete();
-        $product->delete();
-        return redirect()->route('admin.product.products')->with('success', 'Xoa thanh cong');
     }
 
     public function deleteimage($id)
     {
-        $images = Gallery::find($id);
+        $image = Gallery::find($id);
 
-        $fileDelete = public_path('admin/img/product') . '/' . $images->image;
-        if (File::exists($fileDelete)) {
-            File::delete($fileDelete);
+        if ($image->image != 'no-image.jpg') {
+            $fileDelete = public_path('admin/img/product') . '/' . $image->image;
+            if (File::exists($fileDelete)) {
+                File::delete($fileDelete);
+            }
         }
-        $images->delete();
+
+        $image->delete();
         return back();
     }
 

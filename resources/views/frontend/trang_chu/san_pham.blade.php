@@ -75,16 +75,19 @@
                                     <div class="c-listitem3__card1 item1-js">
                                         <div class="c-listitem3__img1">
                                                 <?php $galleryProduct = \App\Models\Gallery::where('id_product', $product->id)->get(); ?>
-                                            {{--                                            {{dd($galleryProduct->first()->image )}}--}}
-                                            <img style="width: 150px!important; height: 150px!important;"
-                                                 src="{{ url('public/admin/img/product') . '/' . $galleryProduct->first()->image }}"
-                                                 alt="{{$product->name_product}}">
+                                            <a href="{{ route('chi-tiet', ['id' => $product->id]) }}">
+                                                <img style="width: 150px!important; height: 150px!important;"
+                                                     src="{{ url('public/admin/img/product') . '/' . $galleryProduct->first()->image }}"
+                                                     alt="{{$product->name_product}}">
+                                            </a>
 
                                         </div>
                                         <article class="c-listitem3__content1">
                                             <form method="post" action="{{ route('cart.add') }}">
                                                 @csrf
-                                                <h4 class="title1">{{ $product->name_product }}</h4>
+                                                <a href="{{ route('chi-tiet', ['id' => $product->id]) }}">
+                                                    <h4 class="title1">{{ $product->name_product }}</h4>
+                                                </a>
                                                 <div class="info1">
                                                     <span class="info1__price1">{{ $product->price }}</span>
                                                     @guest
@@ -101,8 +104,6 @@
                                                     @endguest
                                                 </div>
                                             </form>
-
-
                                         </article>
                                     </div>
                                 @endforeach
