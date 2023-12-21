@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\Hello;
 use Illuminate\Support\Str;
+use App\Mail\ChangePassWordMail;
 
 class AuthController extends Controller
 {
@@ -121,6 +122,47 @@ class AuthController extends Controller
                 return redirect()->route('template');
             }
             return redirect()->back()->with('error', 'Nhập sai mật khẩu hoặc tên đăng nhập!');
+        }
+        
+    }
+
+    public function forget_password(Request $request) {
+        $hasAuth = null;
+        if ($request->isMethod('GET')) {
+            return view('frontend.auth.fpassword', compact('hasAuth'));
+        }
+        if ($request->action == "enter") {
+            try {
+                $email =  $request->email;
+                $token = Str::random(8);
+                $user = User::where('email', $request->email)->get()->first();
+                $user->update([
+                    'email_token' => $token,
+                ]);
+                
+                Mail::to($user->email)->send(new ChangePassWordMail($request->name,  $token));  
+                $hasAuth = 1;
+                return view('frontend.auth.fpassword', compact(['hasAuth', 'email']));
+            } catch (\Throwable $th) {
+                return view('frontend.auth.fpassword', compact(['hasAuth']))->with('error', 'Email này không tồn tại trong hệ thống!');
+            }
+        } else {
+            
+            $user = User::where('email', $request->email)->get()->first();
+            if (!$request->token == $user->email_token) {
+                $hasAuth = 1;
+                return view('frontend.auth.fpassword', compact(['hasAuth']))->with('error', 'Mã xác nhận không chính xác');
+            }
+            if (!$request->c_password == $request->c_password) {
+                $hasAuth = 1;
+                return view('frontend.auth.fpassword', compact(['hasAuth']))->with('error', 'Mật khẩu không khớp');
+            }
+            $user->update([
+                'password' => Hash::make($request->password),
+
+            ]);
+            return view('frontend.auth.fpassword', compact(['hasAuth']))->with('succed', 'Đổi mật khẩu thành công');
+    
         }
         
     }

@@ -68,7 +68,7 @@
                             ký</a>
                     </div>
                     <div class="f-password">
-                        <a href="fpassword.php">Quên mật khẩu?</a>
+                        <a href="{{route('fpassword')}}">Quên mật khẩu?</a>
                     </div>
                 </form>
             </div>

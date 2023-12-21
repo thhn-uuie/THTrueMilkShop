@@ -39,26 +39,35 @@
                     <p>Quên mật khẩu</p>
                 </div>
                 <div class="card-text">
-                    <form action="" id="form-fpw">
-
+                    <form method="POST" action="{{route('fpassword')}}" id="form-fpw">
+                        @csrf
+                        @if ($hasAuth == null)
                         <div class="in-group tel">
-                            <label for="tel">Số điện thoại<i style="color: red;">*</i></label>
-                            <input type="tel" name="tel" id="tel" required placeholder="Nhập số điện thoại">
+                            <label for="tel">Email<i style="color: red;">*</i></label>
+                            <input type="tel" name="email" id="email" required placeholder="Nhập email">
+                            <div class="in-group">
+                            <button type="submit" class="btn btn-primary btn-block" name="action" value="enter">Nhận mã xác nhận</button>
                         </div>
+                        @else
+                            <div class="in-group password">
+                                <label>Mã xác nhận<i style="color: red;">*</i></label>
+                                <input type="text" name="token" id="token" required placeholder="Nhập mã xác nhận">
+                                <input type="hidden" name="email" id="email" value="{{$email}}">
+                            </div>
+                            <div class="in-group password">
+                                <label for="password">Mật khẩu mới<i style="color: red;">*</i></label>
+                                <input type="password" name="password" id="password" required placeholder="Nhập mật khẩu mới">
+                            </div>
 
-                        <div class="in-group password">
-                            <label for="password">Mật khẩu mới<i style="color: red;">*</i></label>
-                            <input type="password" name="password" id="password" required placeholder="Nhập mật khẩu mới">
-                        </div>
-
-                        <div class="in-group c_password">
-                            <label for="password">Nhập lại mật khẩu<i style="color: red;">*</i></label>
-                            <input type="password" name="c_password" id="c_password" required placeholder="Nhập lại mật khẩu">
-                        </div>
-
-							<!-- /.col -->
-							<div class="in-group">
-					  			<button type="submit" class="btn btn-primary btn-block">Đổi mật khẩu</button>
+                            <div class="in-group c_password">
+                                <label for="password">Nhập lại mật khẩu<i style="color: red;">*</i></label>
+                                <input type="password" name="c_password" id="c_password" required placeholder="Nhập lại mật khẩu">
+                            </div>
+                            <div class="in-group">
+                                <button type="submit" class="btn btn-primary btn-block" name="action" value="change">Đổi mật khẩu</button>
+						
+                        @endif
+							
 							<!-- /.col -->
 				  		</div>
                         <!-- <div class="f-password">
@@ -67,7 +76,9 @@
                 </div>
             </div>
         </div>
+    
     </div>
+    
 
     <script>
         $(document).ready(function () {

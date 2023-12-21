@@ -41,7 +41,8 @@ Route::post('/signup', [AuthController::class, 'postSignup']);
 Route::get('/login', [AuthController::class, 'login'])->name('frontend.auth.login');
 Route::post('/login', [AuthController::class, 'postLogin']);
 Route::post('/verify', [AuthController::class, 'verify'])->name('verify');
-Route::post('/verify', [AuthController::class, 'verify'])->name('verify');
+Route::post('/quen_mat_khau', [AuthController::class, 'forget_password'])->name('fpassword');
+Route::get('/quen_mat_khau', [AuthController::class, 'forget_password'])->name('fpassword');
 
     //Logout
 Route::get('/logout', [AuthController::class, 'logout'])->name('frontend.auth.logout');

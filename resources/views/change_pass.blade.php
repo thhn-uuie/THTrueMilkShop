@@ -1,0 +1,1 @@
+Xin chào {{$name}}, đây là mã đổi mật khẩu của bạn {{$token}}
