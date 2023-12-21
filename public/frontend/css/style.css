@@ -1149,7 +1149,7 @@
  
  .auth-box.col-md-4.col-md-push-4 {
      border: 1px solid #103A71;
-     padding: 30px 25px;
+     padding: 35px 25px;
      border-radius: 10px;
  }
  
@@ -1196,7 +1196,7 @@
  
  .auth-box .f-password {
      text-align: center;
-     margin: 25px 0 0 0;
+     padding: 25px 0 0 0;
  }
  
  .auth-box .f-password a {
