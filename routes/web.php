@@ -12,6 +12,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,10 +51,12 @@ Route::get('/detail', [SiteController::class, 'show'])->name('detail');
 Route::get('/khuyen-mai', [SiteController::class, 'promotion'])->name('khuyen_mai');
 
 Route::get('/truyen-thong', [SiteController::class, 'media'])->name('truyen_thong');
-Route::get('/thanh-toan', [SiteController::class, 'checkout'])->name('thanh_toan');
-Route::post('/gio-hang/them', [CartController::class, 'addToCart'])->name('cart.add');
-Route::get('/gio-hang', [SiteController::class, 'viewCart'])->name('gio_hang');
-Route::post('/gio-hang/xoa/{id}', [CartController::class, 'delete'])->name('cart.delete');
+Route::get('/thanh-toan', [SiteController::class, 'checkout'])->name('thanh_toan')->middleware('customer');
+Route::post('/gio-hang/them', [CartController::class, 'addToCart'])->name('cart.add')->middleware('customer');
+Route::get('/gio-hang', [SiteController::class, 'viewCart'])->name('gio_hang')->middleware('customer');
+Route::post('/gio-hang/xoa/{id}', [CartController::class, 'delete'])->name('cart.delete')->middleware('customer');
+Route::match(['GET', 'POST'],'/thong-tin/{id}', [CustomerController::class, 'showProfile'])->name('user.user_account')->middleware('customer');
+Route::match(['GET', 'POST'],'/thong-tin/cap-nhat/{id}', [CustomerController::class, 'update'])->name('user.user_account_update')->middleware('customer');
 
 
 
