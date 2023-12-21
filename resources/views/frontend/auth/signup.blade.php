@@ -59,7 +59,7 @@
 
                     <div class="in-group email">
                         <label for="email">Email<i style="color: red;">*</i></label>
-                        <input type="email" name="email" id="email" placeholder="Nhap email">
+                        <input type="email" name="email" id="email" placeholder="Nhập email">
 
                         @if($errors->has('email'))
                             <div class="error-message">
