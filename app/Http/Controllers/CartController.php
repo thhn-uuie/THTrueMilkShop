@@ -7,6 +7,8 @@ use App\Models\Gallery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use PHPUnit\Framework\Exception;
+use function Laravel\Prompts\alert;
 
 class CartController extends Controller
 {
@@ -42,10 +44,16 @@ class CartController extends Controller
         return redirect()->route('san_pham');
     }
 
-    public function delete($id) {
-        $cart = Cart::find($id);
+    public function delete(Request $request, string $id)
+    {
+        if ($request->isMethod('POST')) {
+            $cart = Cart::find($id);
+            $cart->delete();
+        } else {
+//            dd('12');
+            return view('errors.405');
+        }
 
-        $cart->delete();
         return back();
     }
 }

@@ -13,6 +13,13 @@
 </head>
 @include('frontend.component.script')
 <body>
+<div class="container">
+        <div class="row">
+            <div class="auth-box col-md-4 col-md-push-4 col-xs-10 col-xs-push-1 col-sm-8 col-sm-push-2">
+                <div class="card-title">
+                    <p>Xác nhận tài khoản</p>
+                </div>
+                <div class="card-text">
 <form method="POST" action="{{route('verify')}}" enctype="multipart/form-data">
                     @csrf
                     <div class="in-group password">
@@ -22,11 +29,17 @@
                         <input type="hidden" name="password" value="{{$password}}">
                         <input type="hidden" name="token" value="{{$token}}">
                     </div>
+                        <div class="in-group">
                         <button type="submit" class="btn btn-primary btn-block" name="action" value="login">Đăng nhập</button>
-                        <button type="submit" class="btn btn-primary btn-block"name="action"value="refesh">Lấy lại mã</button>
+                        <button type="submit" class="btn btn-primary btn-block non-active"name="action"value="refesh">Lấy lại mã</button>
+                        </div>
         
                 </div>
 </form>
+</div>
+            </div>
+        </div>
+    </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </body>
