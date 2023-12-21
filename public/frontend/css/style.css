@@ -265,11 +265,6 @@
      /* font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif; */
      font-weight: 500;
  }
-
-.product-quantity {
-    font-size: 12px;
-    margin-top: 5px;
-}
  
  
  .navbar-nav.navbar-right {
@@ -715,32 +710,7 @@
      overflow-y: auto;
      box-sizing: border-box;
  
-     .total-price {
-         background-color: #fff;
-         border-top: 1px solid #ddd;
-         border-bottom: 1px solid #ddd;
-         text-transform: uppercase;
-         color: #444;
-         text-align: left;
-         padding: 13px 20px 10px;
-         box-sizing: border-box;
- 
-         .label {
-             font-weight: 700 !important;
-             font-size: 100% !important;
-             color: #444;
-             padding: 5px 0;
-             margin: 0;
-             text-align: left;
-             line-height: 21px;
-         }
- 
-         #totalPrice {
-             float: right;
-             color: #72cdf4;
-             font-weight: 700;
-         }
-     }
+     
  
      .actions {
          display: flex;
@@ -765,7 +735,34 @@
          }
      }
  }
- 
+
+ .total-price {
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    text-transform: uppercase;
+    color: #444;
+    text-align: left;
+    padding: 13px 20px 10px;
+    box-sizing: border-box;
+
+    .label {
+        font-weight: 700 !important;
+        font-size: 100% !important;
+        color: #444;
+        padding: 5px 0;
+        margin: 0;
+        text-align: left;
+        line-height: 21px;
+    }
+
+    #totalPrice {
+        float: right;
+        color: #72cdf4;
+        font-weight: 700;
+    }
+}
+
  .cart-dropdown.show {
      display: block;
  }
@@ -788,13 +785,9 @@
          flex-direction: column;
  
          .product-price {
-         color: #72cdf4;
-         font-weight: 700;
-         margin-top: 5px;
+             color: #72cdf4;
+             font-weight: 700;
          }
-     ;
-         font-size: 14px;
-         line-height: 1.5;
      }
  }
  
@@ -1204,7 +1197,7 @@
  
  .auth-box .f-password {
      text-align: center;
-     padding: 25px 0 0 0;
+     margin: 25px 0 0 0;
  }
  
  .auth-box .f-password a {
@@ -1297,6 +1290,7 @@
 .detail .col-xs-12.col-sm-4 {
     padding-right: 20px;
 }
+ 
  
 .alert.alert-success.alert-block {
     background: #FAE5E5;
