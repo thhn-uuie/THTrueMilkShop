@@ -45,7 +45,8 @@
 
                 <div class="col-lg-8 col-md-8 order-1">
                     <div class="column main">
-                        <form action="" id="checkout">
+                        <form method="POST" action="{{ route('user.order.create') }}" enctype="multipart/form-data">
+                                @csrf
                             <div class="block-title h3">
                                 <span style="font-weight: 600;">ĐỊA CHỈ GIAO HÀNG</span>
                                 <div class="item">
@@ -68,7 +69,7 @@
                             </div>
 
                             <a class="btn btn-primary" href="#address" data-toggle="collapse">Tạo địa chỉ</a>
-
+                            
                             <div class="form-address collapse" id="address">
                                 <!-- <form action=""> -->
                                 <div class="row">
@@ -111,8 +112,10 @@
                             <div class="submit">
                                 <button type="submit">Thanh toán</button>
                             </div>
+                        
 
                         </form>
+                        {{$success}}
                     </div>
                 </div>
 
@@ -123,78 +126,52 @@
                         <div class="block-content shipping-content">
                             <div class="total-price">
                                 <span>Tổng tiền</span>
-                                <p class="price">98.200 đ</p>
+                                <p class="price">{{$total}}.000 đồng</p>
                             </div>
 
                             <div class="total-ship">
                                 <span>Phí giao hàng</span>
-                                <p class="price-ship">25.000 đ</p>
+                                <p class="price-ship">25.000 đồng</p>
                             </div>
 
                             <div class="total-grand">
-                                <span>Phí giao hàng</span>
-                                <p class="amount">123.200 đ</p>
+                                <span>Tổng thanh toán</span>
+                                <p class="amount">{{$total + 25}}.000 đồn</p>
                             </div>
                         </div>
 
                         <a href="#sp_cart" class="btn btn-info" data-toggle="collapse">
-                            <span class="h4">2 Sản phẩm trong giỏ </span>
+                            <span class="h4">{{count($galleries)}} Sản phẩm trong giỏ </span>
                             <i class="fa fa-angle-down" aria-hidden="true"></i>
                         </a>
                         <div id="sp_cart" class="collapse">
+                            @foreach($galleries as $item)                    
                             <div class="product">
                                 <div class="row">
                                     <div class="col-lg-4 col-xs-12">
                                         <img
-                                            src="https://www.thtruemart.vn/media/catalog/product/cache/033f609347571ebd72d8644cf9057fec/l/o/loc-sua-tuoi-tiet-trung-th-true-milk-light-meal.jpg"
+                                            src="{{ url('public/admin/img/product') . '/' . $item->image}}"
                                             width="78" height="78"
-                                            alt="Lốc sữa tươi tiệt trùng bổ sung ngũ cốc dạng hạt TH true MILK LIGHT MEAL 180ml x 4 hộp"
-                                            title="Lốc sữa tươi tiệt trùng bổ sung ngũ cốc dạng hạt TH true MILK LIGHT MEAL 180ml x 4 hộp">
+                                            alt="{{$item->product->name_product}}"
+                                            title="{{$item->product->name_product}}">
                                     </div>
                                     <div class="col-lg-5 col-xs-12">
                                         <div class="product-item-name-block">
-                                            <p class="product-item-name">Lốc sữa tươi tiệt trùng bổ sung ngũ cốc dạng
-                                            hạt TH true MILK LIGHT MEAL 180ml x 4 hộp</p>
+                                            <p class="product-item-name">{{$item->product->name_product}}</p>
                                             <div class="details-qty">
                                                 <span>Số lượng</span>
-                                                <span class="value">2</span>
+                                                <span class="value">{{$qty->where('id_product', $item->id_product)->pluck('qty')->first()}}</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-xs-12">
                                             <span class="cart-price">
-                                                98.200 đ
+                                                {{$qty->where('id_product', $item->id_product)->pluck('qty')->first() * $item->product->price }}
                                             </span>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="product">
-                                <div class="row">
-                                    <div class="col-lg-4 col-xs-12">
-                                        <img
-                                            src="https://www.thtruemart.vn/media/catalog/product/cache/033f609347571ebd72d8644cf9057fec/u/n/untitled-1_copy.jpg"
-                                            width="78" height="78"
-                                            alt="Lốc sữa tươi tiệt trùng bổ sung ngũ cốc dạng hạt TH true MILK LIGHT MEAL 180ml x 4 hộp"
-                                            title="Lốc sữa tươi tiệt trùng bổ sung ngũ cốc dạng hạt TH true MILK LIGHT MEAL 180ml x 4 hộp">
-                                    </div>
-                                    <div class="col-lg-5 col-xs-12">
-                                        <div class="product-item-name-block">
-                                            <p class="product-item-name">Lốc sữa tươi tiệt trùng bổ sung ngũ cốc dạng
-                                            hạt TH true MILK LIGHT MEAL 180ml x 4 hộp</p>
-                                            <div class="details-qty">
-                                                <span>Số lượng</span>
-                                                <span class="value">2</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-xs-12">
-                                            <span class="cart-price">
-                                                98.200 đ
-                                            </span>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

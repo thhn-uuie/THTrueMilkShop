@@ -8,7 +8,7 @@
 <body id="page-top" class="index">
 <div class="container">
     <div class="row">
-        <div class="auth-box col-md-4 col-md-push-4 col-xs-10 col-xs-push-1 col-sm-8 col-sm-push-2">
+        <div class="auth-box col-md-4 col-md-push-4 col-xs-8 col-xs-push-2 col-sm-8 col-sm-push-2">
             <div class="card-title">
                 <p>Đăng nhập</p>
             </div>
@@ -52,10 +52,10 @@
                     @if ($message = Session::get('error'))
 
                         <div class="alert alert-success alert-block">
-
+                            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
                             <button type="button" class="close" data-dismiss="alert">×</button>
 
-                            <strong>{{ $message }}</strong>
+                            <span>{{ $message }}</span>
 
                         </div>
 

@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Gallery;
 use App\Models\Product;
+use App\Models\Cart;
 use App\Models\ProductImages;
+use App\Models\OrderDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -122,7 +124,7 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public static function destroy(string $id)
     {
 
         $product = Product::find($id);
@@ -134,6 +136,9 @@ class ProductController extends Controller
                 }
             }
         }
+        // Xoa het trong gio hang va order
+        OrderDetail::where('id_product', $id)->delete();
+        Cart::where('id_product', $id)->delete();
         $product->delete();
         return redirect()->route('admin.product.products')->with('success', 'Xoa thanh cong');
     }
