@@ -40,6 +40,8 @@ Route::post('/signup', [AuthController::class, 'postSignup']);
     // localhost/project/login
 Route::get('/login', [AuthController::class, 'login'])->name('frontend.auth.login');
 Route::post('/login', [AuthController::class, 'postLogin']);
+Route::post('/verify', [AuthController::class, 'verify'])->name('verify');
+Route::post('/verify', [AuthController::class, 'verify'])->name('verify');
 
     //Logout
 Route::get('/logout', [AuthController::class, 'logout'])->name('frontend.auth.logout');
@@ -55,8 +57,8 @@ Route::get('/thanh-toan', [SiteController::class, 'checkout'])->name('thanh_toan
 Route::post('/gio-hang/them', [CartController::class, 'addToCart'])->name('cart.add')->middleware('customer');
 Route::get('/gio-hang', [SiteController::class, 'viewCart'])->name('gio_hang')->middleware('customer');
 Route::post('/gio-hang/xoa/{id}', [CartController::class, 'delete'])->name('cart.delete')->middleware('customer');
-Route::match(['GET', 'POST'],'/thong-tin/{id}', [CustomerController::class, 'showProfile'])->name('user.user_account')->middleware('customer');
-Route::match(['GET', 'POST'],'/thong-tin/cap-nhat/{id}', [CustomerController::class, 'update'])->name('user.user_account_update')->middleware('customer');
+Route::match(['GET', 'POST'],'/thong-tin', [CustomerController::class, 'showProfile'])->name('user.user_account')->middleware('customer');
+Route::match(['GET', 'POST'],'/thong-tin/cap-nhat', [CustomerController::class, 'update'])->name('user.user_account_update')->middleware('customer');
 
 
 
@@ -150,6 +152,5 @@ Route::prefix('user/order')->middleware('auth')->name('user.order.')->group(func
     Route::get('/delete/{id}', [OrderController::class, 'destroy'])->name('delete');
     Route::match(['GET', 'POST'],'/create', [OrderController::class, 'store'])->name('create');
 });
-
 
 
