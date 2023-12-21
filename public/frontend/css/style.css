@@ -265,6 +265,11 @@
      /* font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif; */
      font-weight: 500;
  }
+
+.product-quantity {
+    font-size: 12px;
+    margin-top: 5px;
+}
  
  
  .navbar-nav.navbar-right {
@@ -783,9 +788,13 @@
          flex-direction: column;
  
          .product-price {
-             color: #72cdf4;
-             font-weight: 700;
+         color: #72cdf4;
+         font-weight: 700;
+         margin-top: 5px;
          }
+     ;
+         font-size: 14px;
+         line-height: 1.5;
      }
  }
  
@@ -1311,3 +1320,22 @@
     background: none;
     font-size: 12px;
 }
+
+.icon-login.active a.act1 {font-weight: 600;}
+
+.icon-login.active a.act2 {
+    position: relative;
+    top: 16px;
+    right: 53px;
+}
+
+ 
+ .icon-login span.log {
+    font-weight: 600;
+}
+
+.icon-login.active {
+     position: absolute !important;
+     right: 10px;
+     top: 8px;
+ }

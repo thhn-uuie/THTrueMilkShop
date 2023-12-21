@@ -24,20 +24,23 @@ use App\Models\Gallery;
         <!-- Shopping cart tạm thế đã -->
     <div class="navbar-nav navbar-right">
         <div class="login">
-            <div class="icon-login">
-                <i class="fa fa-solid fa-user fa-lg"></i>
+            
 
                 @if($authCheck == false)
+                <div class="icon-login">
+                <i class="fa fa-solid fa-user fa-lg"></i>
                     <a href="{{ route('frontend.auth.login') }}">
-                        <span class="">Đăng nhập</span>
+                        <span class="log">Đăng nhập</span>
                         <span>Tài khoản</span>
                     </a>
-
+                    </div>
                 @else
-                    <a style="font-size: 14px">{{ Auth::user()->name }}</a>
-                    <a href="{{ route('frontend.auth.logout') }}">Logout</a>
+                <div class="icon-login active">
+                <i class="fa fa-solid fa-user fa-lg"></i>
+                    <a class="act1" style="font-size: 14px">{{ Auth::user()->name }}</a>
+                    <a class="act2" href="{{ route('frontend.auth.logout') }}">Logout</a>
+                    </div>
                 @endif
-            </div>
         </div>
 
         @if($authCheck == false)
@@ -80,7 +83,7 @@ use App\Models\Gallery;
                             <div class="header">
                                 Thông tin giỏ hàng
                             </div>
-                    
+
                             <div class="product-info">
                             @foreach($count as $item)
                                 <?php
@@ -111,8 +114,8 @@ use App\Models\Gallery;
                                     <div class="info">
                                         <div class="product-name">{{ $gallery->product->name_product }}</div>
                                         <div class="product-price">{{$gallery->product->price}}₫</div>
-
-                                        <div class="product-quantity">Số lượng: {{ $qty->search($gallery->id_product)}}</div>
+                                        
+                                        <div class="product-quantity">Số lượng: {{$item->qty}}</div>
                                     </div>
                                 </div>
                                 @endforeach
