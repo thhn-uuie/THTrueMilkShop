@@ -64,19 +64,18 @@
     <div class="container">
         <div class="p-product2">
             @foreach($category as $item)
-                <div class="p-product2__box1" id="">
+                    <?php $products = \App\Models\Product::where('id_category', $item->id)->where('status', 1)->get(); ?>
+                @if($products->isNotEmpty())
+                    <div class="p-product2__box1" id="">
+                        <h2 class="p-product2__title1">{{ $item->name_category }}</h2>
+                        <div class="c-listitem3-root1">
+                            <div class="c-listitem3">
 
-                    <h2 class="p-product2__title1">{{ $item->name_category }}</h2>
-                    <div class="c-listitem3-root1">
-                        <div class="c-listitem3">
-                                <?php $products = \App\Models\Product::where('id_category', $item->id)->get(); ?>
-
-                            @if($products->isNotEmpty())
                                 @foreach($products as $product)
                                     <div class="c-listitem3__card1 item1-js">
                                         <div class="c-listitem3__img1">
                                                 <?php $galleryProduct = \App\Models\Gallery::where('id_product', $product->id)->get(); ?>
-{{--                                            {{dd($galleryProduct->first()->image )}}--}}
+                                            {{--                                            {{dd($galleryProduct->first()->image )}}--}}
                                             <img style="width: 150px!important; height: 150px!important;"
                                                  src="{{ url('public/admin/img/product') . '/' . $galleryProduct->first()->image }}"
                                                  alt="{{$product->name_product}}">
@@ -93,8 +92,10 @@
                                                             <i class="fa fa-solid fa-cart-shopping fa-lg"></i>
                                                         </button>
                                                     @else
-                                                        <button name="id_product" value="{{ $product->id }}" type="submit">
-                                                            <input type="hidden" name="price" value="{{ $product->price }}">
+                                                        <button name="id_product" value="{{ $product->id }}"
+                                                                type="submit">
+                                                            <input type="hidden" name="price"
+                                                                   value="{{ $product->price }}">
                                                             <i class="fa fa-solid fa-cart-shopping fa-lg"></i>
                                                         </button>
                                                     @endguest
@@ -105,13 +106,15 @@
                                         </article>
                                     </div>
                                 @endforeach
-                            @endif
+
+                            </div>
+
                         </div>
+
                     </div>
-                </div>
+                @endif
+
             @endforeach
-
-
         </div>
     </div>
     <!--  -->

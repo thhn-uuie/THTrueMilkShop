@@ -80,7 +80,7 @@
                                     <h5>Product category</h5>
                                     <div class="mb-3">
                                         <select name="category" id="category" class="form-control">
-                                            <?php $categories = DB::table('category')->get(); ?>
+                                            <?php $categories = \App\Models\Category::where('status',1)->get(); ?>
                                             <?php $selectedCategoryId = $product->id_category; ?>
 
                                             <?php $selectedCategory = $categories->where('id', $selectedCategoryId)->first(); ?>
