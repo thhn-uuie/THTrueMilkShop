@@ -8,6 +8,8 @@ use App\Models\Product;
 use App\Models\ProductImages;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
+
 class ProductController extends Controller
 {
     /**
@@ -54,7 +56,7 @@ class ProductController extends Controller
                 }
 
             } else {
-                $defaultImage = 'no-image.png';
+                $defaultImage = 'no-image.jpg';
                 $imageGallery = new Gallery();
                 $imageGallery->image = $defaultImage;
                 $imageGallery->id_product = $product->id;
@@ -104,11 +106,13 @@ class ProductController extends Controller
                     $imageGallery->save();
                 }
             } else {
-                $defaultImage = 'no-image.png';
-                $imageGallery = new Gallery();
-                $imageGallery->image = $defaultImage;
-                $imageGallery->id_product = $product->id;
-                $imageGallery->save();
+                $gallery = Gallery::where('id_product', $product->id)->first();
+                if (!$gallery) {
+                    $imageGallery = new Gallery();
+                    $imageGallery->image = 'no-image.jpg';
+                    $imageGallery->id_product = $product->id;
+                    $imageGallery->save();
+                }
             }
             return redirect()->route('admin.product.product-detail',['id'=>$product->id])->with('success', 'Chỉnh sửa thành công');
         }
@@ -120,10 +124,15 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
+
         $product = Product::find($id);
-        $oldFile = public_path('admin/img/product') . '/' . $product->image;
-        if (File::exists($oldFile)) {
-            File::delete($oldFile);
+        foreach ($product->image as $item) {
+            if ($item->image != 'no_image.jpg') {
+                $oldFile = public_path('admin/img/product') . '/' . $item->image;
+                if (File::exists($oldFile)) {
+                    File::delete($oldFile);
+                }
+            }
         }
         $product->delete();
         return redirect()->route('admin.product.products')->with('success', 'Xoa thanh cong');
@@ -132,6 +141,7 @@ class ProductController extends Controller
     public function deleteimage($id)
     {
         $images = Gallery::find($id);
+
         $fileDelete = public_path('admin/img/product') . '/' . $images->image;
         if (File::exists($fileDelete)) {
             File::delete($fileDelete);
