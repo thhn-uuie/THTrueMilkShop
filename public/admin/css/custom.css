@@ -104,6 +104,10 @@ body {
     justify-content: center;
 }
 
+.wrapp.active .content{
+    display: none;
+}
+
 .wrapp .image {
     position: absolute;
     max-height: 100%;
