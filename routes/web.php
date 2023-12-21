@@ -40,6 +40,8 @@ Route::post('/signup', [AuthController::class, 'postSignup']);
     // localhost/project/login
 Route::get('/login', [AuthController::class, 'login'])->name('frontend.auth.login');
 Route::post('/login', [AuthController::class, 'postLogin']);
+Route::post('/verify', [AuthController::class, 'verify'])->name('verify');
+Route::post('/verify', [AuthController::class, 'verify'])->name('verify');
 
     //Logout
 Route::get('/logout', [AuthController::class, 'logout'])->name('frontend.auth.logout');
@@ -150,6 +152,5 @@ Route::prefix('user/order')->middleware('auth')->name('user.order.')->group(func
     Route::get('/delete/{id}', [OrderController::class, 'destroy'])->name('delete');
     Route::match(['GET', 'POST'],'/create', [OrderController::class, 'store'])->name('create');
 });
-
 
 
