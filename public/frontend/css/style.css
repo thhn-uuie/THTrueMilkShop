@@ -1300,7 +1300,7 @@
 }
  
  
-.alert.alert-success.alert-block {
+.auth-box .alert.alert-success.alert-block {
     background: #FAE5E5;
     color: red;
     font-size: 11px;
@@ -1310,7 +1310,7 @@
     margin: 10px 5px 20px 5px;
 }
  
-.alert.alert-success.alert-block button.close {
+.auth-box .alert.alert-success.alert-block button.close {
     color: black;
     position: absolute;
     right: 15px;

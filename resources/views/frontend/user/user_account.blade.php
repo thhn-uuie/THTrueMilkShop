@@ -12,6 +12,7 @@
     <title>Tài khoản của tôi</title>
     @include('frontend.component.head')
     <link href="{{ asset('/public/frontend/css/user_style.css') }}" rel="stylesheet">
+    <link href="{{ asset('/public/admin/css/custom.css') }}" rel="stylesheet">
 
 
 </head>
@@ -76,33 +77,38 @@
                                         <img src="{{ url('public/frontend/img/profile') . '/' . $checkProfile->image }}"
                                              alt="" style="max-width: 100%; padding: 0px 20px 20px 0;">
                                     </div>
-                                    <input class="hidden" name="id_user" value="{{\Illuminate\Support\Facades\Auth::user()->id}}">                                    <div class="form-group col-12 col-md-6 col-lg-4">
+                                    <div class="col-md-9 col-xs-6">
+                                    <div class="row">
+                                    <div class="form-group col-xs-12 col-md-6">
+                                    <!-- <input class="hidden" name="id_user" value="{{\Illuminate\Support\Facades\Auth::user()->id}}">                                    <div class="form-group col-12 col-md-6 col-lg-4"> -->
                                         <label>Họ tên</label>
                                         <div class="data">{{ $checkProfile->name }}</div>
                                     </div>
-                                    <div class="form-group col-12 col-md-6 col-lg-4">
+                                    <div class="form-group col-xs-12 col-md-6">
                                         <label>Số điện thoại</label>
                                         <div class="data">{{ $checkProfile->phone }}</div>
                                     </div>
-                                    <div class="form-group col-12 col-md-6 col-lg-4">
+                                    <div class="form-group col-xs-12 col-md-6">
                                         <label>Email</label>
                                         <?php $user = \App\Models\User::find(\Illuminate\Support\Facades\Auth::user()->id); ?>
                                         <div class="data">{{ $user->email }}</div>
                                     </div>
-                                    <div class="form-group col-12 col-md-6 col-lg-4">
+                                    <div class="form-group col-xs-12 col-md-6">
                                         <label>Giới tính</label>
                                         <div class="data">{{ $checkProfile->gender }}</div>
                                     </div>
-                                    <div class="form-group col-12 col-md-6 col-lg-4">
+                                    <div class="form-group col-xs-12 col-md-6">
                                         <label>Ngày sinh</label>
                                         <div class="data">{{ $checkProfile->birthday }}</div>
                                     </div>
 
-                                    <div class="form-group col-12 col-md-6 col-lg-4">
+                                    <div class="form-group col-xs-12 col-md-6">
                                         <label>Địa chỉ</label>
                                         <div class="data">{{ $checkProfile->address }}</div>
                                     </div>
                                 </div>
+                                </div>
+                    </div>
 
                                 <div class="btn-edit">
 

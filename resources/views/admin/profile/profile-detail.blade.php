@@ -29,7 +29,7 @@
                            class="btn btn-primary">Xóa</a>
                     </div>
                     <div class="col-sm-6 text-right">
-                        <a href="{{ url('/admin/product') }}" class="btn btn-primary">Back</a>
+                        <a href="{{ url('/admin/profile') }}" class="btn btn-primary">Back</a>
                     </div>
                 </div>
             </div>
