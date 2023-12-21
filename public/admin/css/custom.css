@@ -104,6 +104,10 @@ body {
     justify-content: center;
 }
 
+.wrapp.active .content{
+    display: none;
+}
+
 .wrapp .image {
     position: absolute;
     max-height: 100%;
@@ -322,4 +326,22 @@ input#product_images {
 
 .alert.alert-success.alert-block i.fa {
     margin: 0 5px 0 0;
+}
+
+.login-box .alert.alert-success.alert-block {
+    background: #FAE5E5;
+    color: red;
+    font-size: 11px;
+    font-weight: 100 !important;
+    border: none;
+    padding: 10px 15px;
+    margin: 10px 0 20px 0;
+    width: 100%;
+}
+ 
+.login-box .alert.alert-success.alert-block button.close {
+    color: black;
+    position: absolute;
+    right: 15px;
+    top: 7px;
 }

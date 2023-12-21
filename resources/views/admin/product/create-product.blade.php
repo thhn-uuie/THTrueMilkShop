@@ -74,7 +74,7 @@
                                                     <h2 class="h4  mb-3">Product category</h2>
                                                     <div class="mb-3">
                                                         <select name="category" id="category" class="form-control">
-                                                            <?php $categories = DB::table('category')->get(); ?>
+                                                            <?php $categories = \App\Models\Category::where('status',1)->get(); ?>
                                                             @foreach($categories as $item)
                                                                 <option
                                                                     value="{{ $item->id }}">{{ $item->name_category }}</option>

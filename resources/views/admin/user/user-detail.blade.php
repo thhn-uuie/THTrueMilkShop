@@ -58,7 +58,7 @@
 
                                             <p id="id"> Username: {{ $user_item->name }}</p>
                                             <p id="email">Email: {{ $user_item->email }}</p>
-											<p id="address">Created by: abc </p>
+											<p id="address">Created by: {{\Illuminate\Support\Facades\Auth::user()->name}} </p>
 {{--                                            <p id="phone">Phone: 029387372</p>--}}
                                         </div>
 {{--                                        <div class="col-sm-3">--}}

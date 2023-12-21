@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -29,9 +30,10 @@ class AuthController extends Controller
 
     public function postSignup(Request $request)
     {
+        $this->logout($request);
         $validated = $request->validate([
             'name' => 'required|unique:users',
-            'email' => 'required|unique:users|max:255',
+            'email' => 'required|unique:users|email',
             'password' => 'required',
         ]);
         try {

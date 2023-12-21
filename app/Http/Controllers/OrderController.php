@@ -47,6 +47,7 @@ class OrderController extends Controller
                 'name' => $request->name,
                 'tel' => $request->tel,
                 'add' => $request->addr,
+                'order_date' => now(),
             ]);
 
 
@@ -62,10 +63,13 @@ class OrderController extends Controller
                     ]);
                     $san_pham->delete();
                 }
-                return view('frontend.user.checkout', compact(['total', 'galleries', 'qty']))->with('success', 'Them don hang thanh cong');
+
+                $order = Order::where('id_user', Auth::user()->id)->get();
+//                return view('frontend.user.user_order', compact('order'));
+
+                return redirect()->route('user.order.orders', compact('order'));
             }
         }
-
 
 
         return view('frontend.user.checkout', compact(['total', 'galleries', 'qty']));
@@ -117,12 +121,13 @@ class OrderController extends Controller
         if (Auth::user()->id_role == 1) {
             return view('admin.order.orders', compact('order'));
         }
-        
+
     }
 
-    public function index_user(){
+    public function index_user()
+    {
         $order = Order::where('id_user', Auth::user()->id)->get();
         return view('frontend.user.user_order', compact('order'));
     }
-   
+
 }

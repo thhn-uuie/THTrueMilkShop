@@ -21,7 +21,7 @@ class SiteController extends Controller
     public function product()
     {
 //        $products = Product::all();
-        $category = Category::all();
+        $category = Category::where('status', 1)->get();
         return view('frontend.trang_chu.san_pham', compact('category'));
     }
 
@@ -35,11 +35,11 @@ class SiteController extends Controller
         return view('frontend.trang_chu.truyen_thong');
     }
 
-    public function checkout()
-    {
-        return view('frontend.user.checkout');
-
-    }
+//    public function checkout()
+//    {
+//        return view('frontend.user.checkout');
+//
+//    }
 
     public function show()
     {
@@ -58,18 +58,15 @@ class SiteController extends Controller
         $qty = collect();
         foreach ($count as $item) {
             $qty->push(['id'=>$item->id, 'id_product'=>$item->id_product, 'qty'=>$item->qty]);
-//            echo $qty;
             $idProducts = Gallery::where('id_product', $item->id_product)
                 ->distinct('id_product')
                 ->pluck('id_product');
             foreach ($idProducts as $idProduct) {
-//                echo $idProduct;
                 $gallery = Gallery::where('id_product', $idProduct)->first();
                 $galleries->push($gallery);
             }
 
         }
-//        echo $qty;
         return view('frontend.trang_chu.view_cart', compact('total', 'galleries', 'qty'));
     }
 }

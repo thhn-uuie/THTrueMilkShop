@@ -53,7 +53,7 @@ Route::get('/detail', [SiteController::class, 'show'])->name('detail');
 Route::get('/khuyen-mai', [SiteController::class, 'promotion'])->name('khuyen_mai');
 
 Route::get('/truyen-thong', [SiteController::class, 'media'])->name('truyen_thong');
-Route::get('/thanh-toan', [SiteController::class, 'checkout'])->name('thanh_toan')->middleware('customer');
+//Route::get('/thanh-toan', [SiteController::class, 'checkout'])->name('thanh_toan')->middleware('customer');
 Route::post('/gio-hang/them', [CartController::class, 'addToCart'])->name('cart.add')->middleware('customer');
 Route::get('/gio-hang', [SiteController::class, 'viewCart'])->name('gio_hang')->middleware('customer');
 Route::post('/gio-hang/xoa/{id}', [CartController::class, 'delete'])->name('cart.delete')->middleware('customer');

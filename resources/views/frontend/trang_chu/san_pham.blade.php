@@ -30,7 +30,7 @@
 
     <div class="context">
         <div class="container">
-            <span class="item"><a href="https://www.thmilk.vn?csrt=4143374691117170324">Trang chủ > </a></span>
+            <span class="item"><a href="{{asset('/')}}">Trang chủ > </a></span>
             <span class="item">Sản phẩm</span>
         </div>
     </div>
@@ -43,10 +43,11 @@
                         <div class="item">
                             <div class="c-listitem1__card1">
                                 <a class="c-listitem1__link1"
-                                   href="">
+                                   href="{{asset('/san-pham')}}">
                                     <div class="c-listitem1__img1">
                                         <img src="{{ url('/public/admin/img/category') . '/' . $item->image }}"
-                                             alt="ic-suatietrung">
+                                             alt="ic-suatietrung"
+                                             style="width: 60px!important; height: 60px!important;">
                                     </div>
                                     <article class="c-listitem1__content1">
                                         <h4 class="title1">{{ $item->name_category }}</h4>
@@ -63,27 +64,22 @@
     <div class="container">
         <div class="p-product2">
             @foreach($category as $item)
-                <div class="p-product2__box1" id="">
+                    <?php $products = \App\Models\Product::where('id_category', $item->id)->where('status', 1)->get(); ?>
+                @if($products->isNotEmpty())
+                    <div class="p-product2__box1" id="">
+                        <h2 class="p-product2__title1">{{ $item->name_category }}</h2>
+                        <div class="c-listitem3-root1">
+                            <div class="c-listitem3">
 
-                    <h2 class="p-product2__title1">{{ $item->name_category }}</h2>
-                    <div class="c-listitem3-root1">
-                        <div class="c-listitem3">
-                                <?php $products = \App\Models\Product::where('id_category', $item->id)->get(); ?>
-
-                            @if($products->isNotEmpty())
                                 @foreach($products as $product)
                                     <div class="c-listitem3__card1 item1-js">
                                         <div class="c-listitem3__img1">
                                                 <?php $galleryProduct = \App\Models\Gallery::where('id_product', $product->id)->get(); ?>
-                                            @if($galleryProduct->isNotEmpty())
-                                            <img style="width: 100%; height: 150px;"
+                                            {{--                                            {{dd($galleryProduct->first()->image )}}--}}
+                                            <img style="width: 150px!important; height: 150px!important;"
                                                  src="{{ url('public/admin/img/product') . '/' . $galleryProduct->first()->image }}"
                                                  alt="{{$product->name_product}}">
-                                            @else
-                                                <img style="width: 100%; height: 150px;"
-                                                     src="{{ url('public/admin/img/no-image.png')}}"
-                                                     alt="{{$product->name_product}}">
-                                            @endif
+
                                         </div>
                                         <article class="c-listitem3__content1">
                                             <form method="post" action="{{ route('cart.add') }}">
@@ -96,8 +92,10 @@
                                                             <i class="fa fa-solid fa-cart-shopping fa-lg"></i>
                                                         </button>
                                                     @else
-                                                        <button name="id_product" value="{{ $product->id }}" type="submit">
-                                                            <input type="hidden" name="price" value="{{ $product->price }}">
+                                                        <button name="id_product" value="{{ $product->id }}"
+                                                                type="submit">
+                                                            <input type="hidden" name="price"
+                                                                   value="{{ $product->price }}">
                                                             <i class="fa fa-solid fa-cart-shopping fa-lg"></i>
                                                         </button>
                                                     @endguest
@@ -108,13 +106,15 @@
                                         </article>
                                     </div>
                                 @endforeach
-                            @endif
+
+                            </div>
+
                         </div>
+
                     </div>
-                </div>
+                @endif
+
             @endforeach
-
-
         </div>
     </div>
     <!--  -->

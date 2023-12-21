@@ -42,6 +42,17 @@
             </div>
 
         @endif
+        @if ($message = Session::get('error'))
+
+            <div class="alert alert-danger alert-block">
+                <i class="fa fa-check" aria-hidden="true"></i>
+                <button type="button" class="close" data-dismiss="alert">×</button>
+
+                <strong>{{ $message }}</strong>
+
+            </div>
+
+        @endif
         <section class="content">
             <!-- Default box -->
             <form method="POST" action="{{ route('admin.category.create-category') }}">

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_product');
             $table->integer('price');
             $table->integer('number_product');
-            $table->foreign('id_order')->references('id')->on('order');
+            $table->foreign('id_order')->references('id')->on('order')->onDelete('cascade');
             $table->foreign('id_product')->references('id')->on('product');
         });
     }

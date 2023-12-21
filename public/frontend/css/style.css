@@ -265,6 +265,11 @@
      /* font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif; */
      font-weight: 500;
  }
+
+.product-quantity {
+    font-size: 12px;
+    margin-top: 5px;
+}
  
  
  .navbar-nav.navbar-right {
@@ -710,32 +715,7 @@
      overflow-y: auto;
      box-sizing: border-box;
  
-     .total-price {
-         background-color: #fff;
-         border-top: 1px solid #ddd;
-         border-bottom: 1px solid #ddd;
-         text-transform: uppercase;
-         color: #444;
-         text-align: left;
-         padding: 13px 20px 10px;
-         box-sizing: border-box;
- 
-         .label {
-             font-weight: 700 !important;
-             font-size: 100% !important;
-             color: #444;
-             padding: 5px 0;
-             margin: 0;
-             text-align: left;
-             line-height: 21px;
-         }
- 
-         #totalPrice {
-             float: right;
-             color: #72cdf4;
-             font-weight: 700;
-         }
-     }
+     
  
      .actions {
          display: flex;
@@ -760,7 +740,34 @@
          }
      }
  }
- 
+
+ .total-price {
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    text-transform: uppercase;
+    color: #444;
+    text-align: left;
+    padding: 13px 20px 10px;
+    box-sizing: border-box;
+
+    .label {
+        font-weight: 700 !important;
+        font-size: 100% !important;
+        color: #444;
+        padding: 5px 0;
+        margin: 0;
+        text-align: left;
+        line-height: 21px;
+    }
+
+    #totalPrice {
+        float: right;
+        color: #72cdf4;
+        font-weight: 700;
+    }
+}
+
  .cart-dropdown.show {
      display: block;
  }
@@ -783,9 +790,12 @@
          flex-direction: column;
  
          .product-price {
-             color: #72cdf4;
-             font-weight: 700;
+         color: #72cdf4;
+         font-weight: 700;
+         margin-top: 5px;
          }
+     ;
+         font-size: 14px;
      }
  }
  
@@ -1195,7 +1205,7 @@
  
  .auth-box .f-password {
      text-align: center;
-     padding: 25px 0 0 0;
+     margin: 25px 0 0 0;
  }
  
  .auth-box .f-password a {
@@ -1289,7 +1299,8 @@
     padding-right: 20px;
 }
  
-.alert.alert-success.alert-block {
+ 
+.auth-box .alert.alert-success.alert-block {
     background: #FAE5E5;
     color: red;
     font-size: 11px;
@@ -1299,7 +1310,7 @@
     margin: 10px 5px 20px 5px;
 }
  
-.alert.alert-success.alert-block button.close {
+.auth-box .alert.alert-success.alert-block button.close {
     color: black;
     position: absolute;
     right: 15px;
@@ -1311,3 +1322,22 @@
     background: none;
     font-size: 12px;
 }
+
+.icon-login.active a.act1 {font-weight: 600;}
+
+.icon-login.active a.act2 {
+    position: relative;
+    top: 16px;
+    right: 53px;
+}
+
+ 
+ .icon-login span.log {
+    font-weight: 600;
+}
+
+.icon-login.active {
+     position: absolute !important;
+     right: 10px;
+     top: 8px;
+ }
