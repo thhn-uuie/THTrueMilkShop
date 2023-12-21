@@ -43,7 +43,7 @@
                         <div class="item">
                             <div class="c-listitem1__card1">
                                 <a class="c-listitem1__link1"
-                                   href="">
+                                   href="{{asset('/san-pham')}}">
                                     <div class="c-listitem1__img1">
                                         <img src="{{ url('/public/admin/img/category') . '/' . $item->image }}"
                                              alt="ic-suatietrung"
