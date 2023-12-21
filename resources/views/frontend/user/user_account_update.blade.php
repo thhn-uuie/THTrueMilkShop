@@ -69,14 +69,14 @@
                                                         <h2 class="h4 mb-3"><label>Avatar</label></h2>
                                                         <div class="wrapp" id="wrapper">
                                                             <div class="image">
-                                                                <img src="" alt="" id="img">
+
+                                                                    <img src="{{url('/public/frontend/img/profile') .'/'. $customer->image }}"
+                                                                         alt="" id="img">
                                                             </div>
                                                             <div class="content">
-                                                                <div class="icon"><i class="fa fa-cloud-upload-alt"></i>
-                                                                </div>
+                                                                <div class="icon"><i class="fa fa-cloud-upload-alt"></i></div>
                                                                 <div class="text">No file chosen, yet!</div>
                                                             </div>
-                                                            <div class="file-name">File name here</div>
                                                         </div>
 
                                                         <input type="file" id="l_image" name="file_upload"
