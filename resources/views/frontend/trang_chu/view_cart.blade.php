@@ -52,7 +52,7 @@
                                         <p>Tổng tiền</p>
                                         <strong><span id="cartViewTotal" class="price">{{$total}} ₫</span></strong>
                                     </div>
-                                    <div class="btn-wrap"><a class="btn-continue" href="/user/checkout.html">Thanh
+                                    <div class="btn-wrap"><a class="btn-continue" href="{{ route('user.order.create') }}">Thanh
                                             toán</a></div>
                                 </div>
                             </div>

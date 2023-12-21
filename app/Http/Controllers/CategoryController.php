@@ -112,7 +112,7 @@ class CategoryController extends Controller
         if (File::exists($oldFile)) {
             File::delete($oldFile);
         }
-        $category->delete();
+        $category->status = 0;
         return redirect()->route('admin.category.categories')->with('success', 'Xoa thanh cong');
     }
 }

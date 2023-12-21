@@ -11,9 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('profile', function (Blueprint $table) {
-            $table->string('image');
-        });
+        Schema::dropIfExists('profile');
     }
 
     /**
@@ -21,8 +19,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('profile', function (Blueprint $table) {
-            //
-        });
+        //
     }
 };

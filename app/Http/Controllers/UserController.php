@@ -21,10 +21,23 @@ class UserController extends Controller
 
     public function store(Request $request) {
         if ($request->isMethod('POST')) {
-            $user = User::create($request->all());
-            if ($user) {
+            $validated = $request->validate([
+                'name' => 'required|unique:users',
+                'email' => 'required|unique:users|email',
+                'password' => 'required',
+            ]);
+//            $username = $request->name;
+//            $email = $request->email;
+//            $user = User::create($request->all());
+//            $userExists = User::where('username', $username)
+//                ->orWhere('email', $email)
+//                ->exists();
+//            if (!$userExists) {
+                $user = User::create($request->all());
                 return redirect()->route('admin.user.user-detail', ['id'=>$user->id]);
-            }
+//            } else {
+
+//            }
         }
         return view('admin.user.create-user');
     }

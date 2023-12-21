@@ -53,22 +53,37 @@
 										<div class="mb-3">
 											<label for="name">Username<i style="color: red;">*</i></label>
 											<input type="text" name="name" id="name" class="form-control"
-												placeholder="Name" required>
+												placeholder="Name" >
 										</div>
+                                        @if($errors->has('name'))
+                                            <div class="error-message">
+                                                * {{ $errors->first('name') }}
+                                            </div>
+                                        @endif
 									</div>
 									<div class="col-md-6">
 										<div class="mb-3">
 											<label for="email">Email<i style="color: red;">*</i></label>
 											<input type="text" name="email" id="email" class="form-control"
-												placeholder="Email" required>
+												placeholder="Email" >
 										</div>
+                                        @if($errors->has('email'))
+                                            <div class="error-message">
+                                                * {{ $errors->first('email') }}
+                                            </div>
+                                        @endif
 									</div>
 									<div class="col-md-6">
 										<div class="mb-3">
 											<label for="phone">Password<i style="color: red;">*</i></label>
 											<input type="password" name="password" id="password" class="form-control"
-												placeholder="Password" required>
+												placeholder="Password" >
 										</div>
+                                        @if($errors->has('password'))
+                                            <div class="error-message">
+                                                * {{ $errors->first('password') }}
+                                            </div>
+                                        @endif
 									</div>
 {{--									<div class="col-md-6">--}}
 {{--										<div class="mb-3">--}}

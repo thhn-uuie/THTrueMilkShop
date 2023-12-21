@@ -51,4 +51,23 @@ class User extends Authenticatable
         'password' => 'required',
     ];
 
+    public static function boot() {
+        parent::boot();
+        static::created(function ($user) {
+            $user->createProfile();
+        });
+    }
+
+    public function createProfile()
+    {
+        $profile = new Profile();
+        $profile->id_user = $this->id;
+        $profile->image = 'no-image,jpg';
+        $this->profile()->save($profile);
+    }
+    public function profile()
+    {
+        return $this->hasOne(Profile::class, 'id_user');
+    }
+
 }
