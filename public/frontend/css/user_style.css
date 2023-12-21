@@ -412,8 +412,11 @@ button.btn-edit.submit {
 
 .shipping .address {
     
-    padding: 20px 40px;
-    height: 140px;
+padding: 20px 40px;
+    
+height: 140px;
+    
+font-size: 16px;
 }
 
 .shipping .address .phone, .shipping .address .name, .shipping .address .addr, .shipping .address .btns {
@@ -424,7 +427,7 @@ button.btn-edit.submit {
 .shipping .item .address .btns {
     position: absolute;
     right: 20px;
-    font-size: 23px;
+    font-size: 20px;
 }
 
 .shipping .item  .address {
@@ -514,6 +517,9 @@ button.btn-edit.submit {
     padding-bottom: 50px ;
 }
 
+.shipping .col-xs-6 {
+    margin-top: 15px;
+}
 /* .account.shipping .container {
     padding: 0;
 } */
