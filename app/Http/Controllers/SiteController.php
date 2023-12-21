@@ -35,11 +35,11 @@ class SiteController extends Controller
         return view('frontend.trang_chu.truyen_thong');
     }
 
-    public function checkout()
-    {
-        return view('frontend.user.checkout');
-
-    }
+//    public function checkout()
+//    {
+//        return view('frontend.user.checkout');
+//
+//    }
 
     public function show()
     {

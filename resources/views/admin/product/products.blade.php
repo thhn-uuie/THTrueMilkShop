@@ -74,7 +74,7 @@
                                         <?php $img = \App\Models\Gallery::where('id_product', $item->id)->get();; ?>
                                     {{--                                    {{dd($img->isEmpty())}}--}}
                                     <td>
-
+{{--{{dd($item->image()->first()->image)}}--}}
                                         <img
                                             src="{{ url('public/admin/img/product') . '/' . $item->image()->first()->image }}"
                                             class="img-thumbnail" width="100%">

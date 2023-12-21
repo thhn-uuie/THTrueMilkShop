@@ -30,7 +30,7 @@
 
     <div class="context">
         <div class="container">
-            <span class="item"><a href="https://www.thmilk.vn?csrt=4143374691117170324">Trang chủ > </a></span>
+            <span class="item"><a href="{{asset('/')}}">Trang chủ > </a></span>
             <span class="item">Sản phẩm</span>
         </div>
     </div>
@@ -76,6 +76,7 @@
                                     <div class="c-listitem3__card1 item1-js">
                                         <div class="c-listitem3__img1">
                                                 <?php $galleryProduct = \App\Models\Gallery::where('id_product', $product->id)->get(); ?>
+{{--                                            {{dd($galleryProduct->first()->image )}}--}}
                                             <img style="width: 150px!important; height: 150px!important;"
                                                  src="{{ url('public/admin/img/product') . '/' . $galleryProduct->first()->image }}"
                                                  alt="{{$product->name_product}}">

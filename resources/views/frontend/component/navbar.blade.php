@@ -62,7 +62,7 @@ use App\Models\Gallery;
                         <span id="totalPrice">0 ₫</span>
                     </div>
                     <div class="actions">
-                        <div class="action viewcart">Xem giỏ hàng</div>
+                        <a class="action viewcart" href="{{ asset('gio-hang') }}">Xem giỏ hàng</a>
                         <div class="action checkout">Thanh toán</div>
                     </div>
                 </div>
@@ -133,8 +133,8 @@ use App\Models\Gallery;
                                 <span id="totalPrice">{{ $total }} ₫</span>
                             </div>
                             <div class="actions">
-                                <div class="action viewcart">Xem giỏ hàng</div>
-                                <div class="action checkout">Thanh toán</div>
+                                <a class="action viewcart" href="{{ asset('gio-hang') }}">Xem giỏ hàng</a>
+                                <a class="action checkout" href="{{ route('user.order.create') }}">Thanh toán</a>
                             </div>
                         </div>
 
