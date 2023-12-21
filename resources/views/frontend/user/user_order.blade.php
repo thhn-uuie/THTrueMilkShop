@@ -187,42 +187,24 @@
               </div>
               <!-- <button class="action checkout" onclick="clearUserOrders()">Clear</button> -->
               <div class="block-content order-content">
-                <div class="order-container"><strong>Order: #1702984966195</strong>
-                  <div class="order-item"><img
-                      src="https://www.thmilk.vn/wp-content/uploads/2019/11/UHT-it-duong-1L_275x186.png"
-                      class="product-image">
-                    <div class="info">
-                      <div class="product-name">Sữa Tươi Tiệt Trùng Ít Đường 1 L</div>
-                      <div class="product-price">37200 ₫</div>
-                      <div class="product-quantity">Số lượng: 2</div>
+                @foreach($order as $ord) 
+                  <div class="order-container"><strong>Order: #{{$ord->id}}</strong>
+                    @foreach($ord->order_detail() as $item) 
+                    <div class="order-item"><img
+                        src="{{ url('public/admin/img/product') . '/' . $item->product->image}}"
+                        class="product-image">
+                      <div class="info">
+                        <div class="product-name">{{$item->product->name_product}}</div>
+                        <div class="product-price">{{$item->price}} đồng</div>
+                        <div class="product-quantity">Số lượng: {{$item->qty}}</div>
+                      </div>
                     </div>
+                    @endforeach
                   </div>
+                
+                <div class="total-price"><span>Tổng tiền: </span><span id="totalPrice">{{$ord->cost()}} đồng</span>
                 </div>
-                <div class="total-price"><span>Tổng tiền: </span><span id="totalPrice">74400 ₫</span>
-                </div>
-                <div class="order-container"><strong>Order: #1702989160851</strong>
-                  <div class="order-item"><img
-                      src="https://www.thmilk.vn/wp-content/uploads/2019/11/UHT-it-duong-1L_275x186.png"
-                      class="product-image">
-                    <div class="info">
-                      <div class="product-name">Sữa Tươi Tiệt Trùng Ít Đường 1 L</div>
-                      <div class="product-price">37200 ₫</div>
-                      <div class="product-quantity">Số lượng: 1</div>
-                    </div>
-                  </div>
-                  <div class="order-item"><img
-                      src="https://www.thmilk.vn/wp-content/uploads/2019/11/UHT-co-duong-1L_275x186.png"
-                      class="product-image">
-                    <div class="info">
-                      <div class="product-name">Sữa Tươi Tiệt Trùng Có Đường 1 L</div>
-                      <div class="product-price">37200 ₫</div>
-                      <div class="product-quantity">Số lượng: 1</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="total-price"><span>Tổng tiền: </span><span id="totalPrice">74400 ₫</span>
-                </div>
-              </div>
+                @endforeach
             </div>
           </div>
         </div>

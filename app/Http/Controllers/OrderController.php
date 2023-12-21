@@ -42,13 +42,13 @@ class OrderController extends Controller
         if ($request->isMethod('POST')) {
             $data = Order::create([
                 'id_user' => $id,
-                'note' => $request->note?? '',
-                'status'=> 'default',
+                'note' => $request->note ?? '',
+                'status' => 'default',
                 'name' => $request->name,
                 'tel' => $request->tel,
                 'add' => $request->addr,
             ]);
-           
+
 
             if ($data) {
                 $san_phams = Cart::where('id_user', $id)->get();
@@ -66,7 +66,7 @@ class OrderController extends Controller
             }
         }
 
-        
+
 
         return view('frontend.user.checkout', compact(['total', 'galleries', 'qty']));
     }
@@ -86,8 +86,6 @@ class OrderController extends Controller
 
         if (Auth::user()->id_role == 1) {
             return view('admin.order.order-detail', compact(['order_details', 'allCost', 'user', 'order_item']));
-        } else {
-            return view('user.order.order-detail', compact(['order_item', 'allCost', 'user']));
         }
     }
 
@@ -113,17 +111,6 @@ class OrderController extends Controller
         return redirect()->back()->with('error', 'Object not found');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        $order = Order::find($id);
-        $order->delete();
-        return redirect()->route('frontend.user.user_order')->with('success', 'Xoa thanh cong');
-    }
-
-
     public function index()
     {
         $order = Order::all();
@@ -131,7 +118,6 @@ class OrderController extends Controller
             return view('admin.order.orders', compact('order'));
         }
         $order = Order::where('id_user', Auth::user()->id)->get();
-        dd($order);
         return view('frontend.user.user_order', compact('order'));
     }
 }
