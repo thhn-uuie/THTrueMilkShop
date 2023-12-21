@@ -115,7 +115,7 @@ class AuthController extends Controller
             ];
             if (Auth::attempt($data)) {
                 $user = User::find(Auth::user()->id);
-                $user->update(['email_verified_at' => 1]);  
+                $user->update(['email_verified_at' => now()]);  
                 return redirect()->route('template');
             }
             return redirect()->back()->with('error', 'Nhập sai mật khẩu hoặc tên đăng nhập!');
