@@ -52,6 +52,17 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-3 order-1 col-right-main">
+                    @if ($message = Session::get('success'))
+
+                        <div class="alert alert-success alert-block">
+                            <i class="fa fa-check" aria-hidden="true"></i>
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+
+                            <strong>{{ $message }}</strong>
+
+                        </div>
+
+                    @endif
                     <div class="column main">
                         <div class="block-title">
                             <strong>Thông tin tài khoản</strong>
@@ -60,79 +71,47 @@
                             <div class="account-form form-wrap">
                                 <?php $checkProfile = \App\Models\Profile::where('id_user', \Illuminate\Support\Facades\Auth::user()->id)->get()->first(); ?>
 
-{{--                                <form action="{{ $checkProfile==null ? route('user.user_account_create') : route('user.user_account_update', ['id'=>$id]) }}" method="post">--}}
-
-{{--                                    @csrf--}}
-
-                                    @if($checkProfile == null)
-
-                                        <div class="row mb-4">
-                                            <div class="form-group col-12 col-md-6 col-lg-4">
-                                                <label>Họ tên</label>
-                                                <div class="data">Chưa có thông tin</div>
-                                            </div>
-                                            <div class="form-group col-12 col-md-6 col-lg-4">
-                                                <label>Số điện thoại</label>
-                                                <div class="data">Chưa có thông tin</div>
-                                            </div>
-                                            <div class="form-group col-12 col-md-6 col-lg-4">
-                                                <label>Email</label>
-                                                    <?php $user = \App\Models\User::find(\Illuminate\Support\Facades\Auth::$user->id); ?>
-                                                <div class="data">{{ $user->email }}</div>
-                                            </div>
-                                            <div class="form-group col-12 col-md-6 col-lg-4">
-                                                <label>Giới tính</label>
-                                                <div class="data">Chưa có thông tin</div>
-                                            </div>
-                                            <div class="form-group col-12 col-md-6 col-lg-4">
-                                                <label>Ngày sinh</label>
-                                                <div class="data">Chưa có thông tin</div>
-                                            </div>
-
-                                            <div class="form-group col-12 col-md-6 col-lg-4">
-                                                <label>Địa chỉ</label>
-                                                <div class="data">Chưa có thông tin</div>
-                                            </div>
-                                        </div>
-                                    @else
-                                        <div class="row mb-4">
-                                            <div class="form-group col-12 col-md-6 col-lg-4">
-                                                <label>Họ tên</label>
-                                                <div class="data">{{ $checkProfile->name }}</div>
-                                            </div>
-                                            <div class="form-group col-12 col-md-6 col-lg-4">
-                                                <label>Số điện thoại</label>
-                                                <div class="data">{{ $checkProfile->phone }}</div>
-                                            </div>
-                                            <div class="form-group col-12 col-md-6 col-lg-4">
-                                                <label>Email</label>
-                                                    <?php $user = \App\Models\User::find(\Illuminate\Support\Facades\Auth::user()->id); ?>
-                                                <div class="data">{{ $user->email }}</div>
-                                            </div>
-                                            <div class="form-group col-12 col-md-6 col-lg-4">
-                                                <label>Giới tính</label>
-                                                <div class="data">{{ $checkProfile->gender }}</div>
-                                            </div>
-                                            <div class="form-group col-12 col-md-6 col-lg-4">
-                                                <label>Ngày sinh</label>
-                                                <div class="data">{{ $checkProfile->birthday }}</div>
-                                            </div>
-
-                                            <div class="form-group col-12 col-md-6 col-lg-4">
-                                                <label>Địa chỉ</label>
-                                                <div class="data">{{ $checkProfile->address }}</div>
-                                            </div>
-                                        </div>
-                                    @endif
-
-                                    <div class="btn-edit">
-
-                                            <a class="action edit" href="{{route('user.user_account_update')}}">
-                                                <span>Sửa thông tin</span>
-                                            </a>
-
+                                <div class="row mb-4">
+                                    <div class="col-md-3 col-xs-6">
+                                        <img src="{{ url('public/frontend/img/profile') . '/' . $checkProfile->image }}"
+                                             alt="" style="max-width: 100%; padding: 0px 20px 20px 0;">
                                     </div>
-{{--                                </form>--}}
+                                    <input class="hidden" name="id_user" value="{{\Illuminate\Support\Facades\Auth::user()->id}}">                                    <div class="form-group col-12 col-md-6 col-lg-4">
+                                        <label>Họ tên</label>
+                                        <div class="data">{{ $checkProfile->name }}</div>
+                                    </div>
+                                    <div class="form-group col-12 col-md-6 col-lg-4">
+                                        <label>Số điện thoại</label>
+                                        <div class="data">{{ $checkProfile->phone }}</div>
+                                    </div>
+                                    <div class="form-group col-12 col-md-6 col-lg-4">
+                                        <label>Email</label>
+                                        <?php $user = \App\Models\User::find(\Illuminate\Support\Facades\Auth::user()->id); ?>
+                                        <div class="data">{{ $user->email }}</div>
+                                    </div>
+                                    <div class="form-group col-12 col-md-6 col-lg-4">
+                                        <label>Giới tính</label>
+                                        <div class="data">{{ $checkProfile->gender }}</div>
+                                    </div>
+                                    <div class="form-group col-12 col-md-6 col-lg-4">
+                                        <label>Ngày sinh</label>
+                                        <div class="data">{{ $checkProfile->birthday }}</div>
+                                    </div>
+
+                                    <div class="form-group col-12 col-md-6 col-lg-4">
+                                        <label>Địa chỉ</label>
+                                        <div class="data">{{ $checkProfile->address }}</div>
+                                    </div>
+                                </div>
+
+                                <div class="btn-edit">
+
+                                    <a class="action edit" href="{{route('user.user_account_update')}}">
+                                        <span>Sửa thông tin</span>
+                                    </a>
+
+                                </div>
+                                {{--                                </form>--}}
                             </div>
                         </div>
                     </div>

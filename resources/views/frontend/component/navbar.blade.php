@@ -24,7 +24,7 @@ use App\Models\Gallery;
         <!-- Shopping cart tạm thế đã -->
     <div class="navbar-nav navbar-right">
         <div class="login">
-            
+
 
                 @if($authCheck == false)
                 <div class="icon-login">
@@ -37,7 +37,7 @@ use App\Models\Gallery;
                 @else
                 <div class="icon-login active">
                 <i class="fa fa-solid fa-user fa-lg"></i>
-                    <a class="act1" style="font-size: 14px">{{ Auth::user()->name }}</a>
+                    <a href="{{ route('user.user_account') }}" class="act1" style="font-size: 14px">{{ Auth::user()->name }}</a>
                     <a class="act2" href="{{ route('frontend.auth.logout') }}">Logout</a>
                     </div>
                 @endif
@@ -114,14 +114,14 @@ use App\Models\Gallery;
                                     <div class="info">
                                         <div class="product-name">{{ $gallery->product->name_product }}</div>
                                         <div class="product-price">{{$gallery->product->price}}₫</div>
-                                        
+
                                         <div class="product-quantity">Số lượng: {{$item->qty}}</div>
                                     </div>
                                 </div>
                                 @endforeach
                                 @endforeach
                             </div>
-                           
+
 
                             <div class="total-price">
                                 <?php $total = DB::table('gio_hang')
