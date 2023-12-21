@@ -45,6 +45,7 @@
                         @if ($message = Session::get('error'))
 
                             <div class="alert alert-success alert-block">
+							<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
 
                                 <button type="button" class="close" data-dismiss="alert">×</button>
 
