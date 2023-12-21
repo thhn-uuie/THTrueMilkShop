@@ -22,6 +22,11 @@
      /* width: 100% !important;
      display: inline-grid !important; */
  }
+
+.icon-login .acc {
+    float: right;
+    display: inline-grid;
+}
  
  
  
@@ -72,6 +77,7 @@
      position: relative;
      bottom: -12px;
      font-size: 25px;
+     margin-right: 5px;
  }
  
  .icon-cart {
@@ -991,6 +997,11 @@
 
  @media (min-width: 768px) and (max-width: 995px) {
 
+      .icon-login.active {
+    right: 40px !important;
+    top: 6px !important;
+}
+  
      .page-scroll a {
          font-size: 11px;
          padding: 15px 10px !important;
@@ -1314,21 +1325,13 @@
     font-size: 12px;
 }
 
-.icon-login.active a.act1 {font-weight: 600;}
-
-.icon-login.active a.act2 {
-    position: relative;
-    top: 16px;
-    right: 53px;
-}
-
- 
+.icon-login.active a.act1 {font-weight: 600;} 
  .icon-login span.log {
     font-weight: 600;
 }
 
 .icon-login.active {
-     position: absolute !important;
-     right: 10px;
+     position: relative !important;
+     right: 55px;
      top: 8px;
  }

@@ -37,8 +37,10 @@ use App\Models\Gallery;
                 @else
                 <div class="icon-login active">
                 <i class="fa fa-solid fa-user fa-lg"></i>
+                    <div class="acc">
                     <a href="{{ route('user.user_account') }}" class="act1" style="font-size: 14px">{{ Auth::user()->name }}</a>
                     <a class="act2" href="{{ route('frontend.auth.logout') }}">Logout</a>
+                    </div>
                     </div>
                 @endif
         </div>
