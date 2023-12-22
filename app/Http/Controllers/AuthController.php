@@ -47,9 +47,8 @@ class AuthController extends Controller
 
             Mail::to($request->email)->send(new Hello($request->name,  $token));
         } catch (\Throwable $th) {
-            dd($th);
             $user->delete();
-            dd($th);
+            
         }
         return redirect()->route('frontend.auth.login');
     }
@@ -123,49 +122,30 @@ class AuthController extends Controller
 
     }
 
-    public function forget_password(Request $request) {
-        $hasAuth = null;
-        if ($request->isMethod('GET')) {
-            return view('frontend.auth.fpassword', compact('hasAuth'));
-        }
-        if ($request->action == "enter") {
+    public function forget_password(Request $request) {    
+        if ($request->isMethod('POST')) {
             try {
                 $email =  $request->email;
-                $token = Str::random(8);
-                $user = User::where('email', $request->email)->get()->first();
+                $password = Str::random(8);
+                $user = User::where('email', $email)->get()->first();
                 if (!$user) {
                     // Email không tồn tại trong hệ thống
                     return view('frontend.auth.fpassword')->with('error', 'Email này không tồn tại trong hệ thống!');
                 } else {
                     $user->update([
-                        'email_token' => $token,
+                        'password' => Hash::make($password),
                     ]);
-
-                    Mail::to($user->email)->send(new ChangePassWordMail($request->name, $token));
-                    $hasAuth = 1;
-                    return view('frontend.auth.fpassword', compact(['hasAuth', 'email']));
+                    Mail::to($user->email)->send(new ChangePassWordMail($request->name, $password));
+                    return redirect()->route('frontend.auth.login');
                 }
             } catch (\Throwable $th) {
-                return view('frontend.auth.fpassword', compact(['hasAuth']))->with('error', 'Email này không tồn tại trong hệ thống!');
+                dd($th);
+                return view('frontend.auth.fpassword')->with('error', 'Email này không tồn tại trong hệ thống!');
             }
-        } else {
-
-            $user = User::where('email', $request->email)->get()->first();
-            if (!$request->token == $user->email_token) {
-                $hasAuth = 1;
-                return view('frontend.auth.fpassword', compact(['hasAuth']))->with('error', 'Mã xác nhận không chính xác');
-            }
-            if (!$request->c_password == $request->c_password) {
-                $hasAuth = 1;
-                return view('frontend.auth.fpassword', compact(['hasAuth']))->with('error', 'Mật khẩu không khớp');
-            }
-            $user->update([
-                'password' => Hash::make($request->password),
-
-            ]);
-            return view('frontend.auth.fpassword', compact(['hasAuth']))->with('succed', 'Đổi mật khẩu thành công');
 
         }
+
+        return view('frontend.auth.fpassword');
 
     }
 }
