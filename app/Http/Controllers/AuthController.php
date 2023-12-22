@@ -37,6 +37,7 @@ class AuthController extends Controller
             'email' => 'required|unique:users|email',
             'password' => 'required',
         ]);
+        $user = null;
         try {
             $token = Str::random(8);
             $user = User::create([
@@ -48,6 +49,7 @@ class AuthController extends Controller
         
             Mail::to($request->email)->send(new Hello($request->name,  $token));  
         } catch (\Throwable $th) {
+            dd($th);
             $user->delete();
             dd($th);
         }

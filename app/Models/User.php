@@ -63,6 +63,7 @@ class User extends Authenticatable
     {
         $profile = new Profile();
         $profile->id_user = $this->id;
+        $profile->name = $this->name;
         $profile->image = 'no-image.jpg';
         $this->profile()->save($profile);
     }

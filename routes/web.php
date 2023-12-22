@@ -60,7 +60,8 @@ Route::match(['GET', 'POST'],'/gio-hang/xoa/{id}', [CartController::class, 'dele
 Route::match(['GET', 'POST'],'/thong-tin', [CustomerController::class, 'showProfile'])->name('user.user_account')->middleware('customer');
 Route::match(['GET', 'POST'],'/thong-tin/cap-nhat', [CustomerController::class, 'update'])->name('user.user_account_update')->middleware('customer');
 Route::get( 'san-pham/chi-tiet/{id}', [CustomerController::class, 'detail'])->name('chi-tiet');
-
+Route::post('/quen_mat_khau', [AuthController::class, 'forget_password'])->name('fpassword');
+Route::get('/quen_mat_khau', [AuthController::class, 'forget_password'])->name('fpassword');
 
 
 // Backend

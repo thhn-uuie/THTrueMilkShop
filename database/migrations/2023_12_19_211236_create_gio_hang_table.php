@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('gio_hang', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_product');
-            $table->integer('qty');
+            $table->integer('qty')->nullable();
             $table->foreign('id_product')->references('id')->on('product');
             $table->timestamps();
         });
