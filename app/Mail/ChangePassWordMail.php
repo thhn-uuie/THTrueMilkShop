@@ -17,11 +17,11 @@ class ChangePassWordMail extends Mailable
      * Create a new message instance.
      */
     public $name;
-    public $token;
-    public function __construct($name, $token)
+    public $password;
+    public function __construct($name, $password)
     {
         $this->name = $name;
-        $this->token = $token;
+        $this->password= $password;
     }
 
     /**

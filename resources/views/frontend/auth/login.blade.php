@@ -13,7 +13,7 @@
                 <p>Đăng nhập</p>
             </div>
             <div class="card-text">
-                <form method="POST" action="">
+                <form method="POST" action="{{route('frontend.auth.login')}}">
                     @csrf
                     <!-- <div class="in-group username">
                                 <label for="username">Username<i style="color: red;">*</i></label>
