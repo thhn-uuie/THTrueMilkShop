@@ -126,7 +126,7 @@
                         <div class="block-content shipping-content">
                             <div class="total_price">
                                 <span>Tổng tiền</span>
-                                <p class="price">{{$total}}.000 đồng</p>
+                                <p class="price">{{$total}} đồng</p>
                             </div>
 
                             <div class="total-ship">
@@ -136,7 +136,7 @@
 
                             <div class="total-grand">
                                 <span>Tổng thanh toán</span>
-                                <p class="amount">{{$total + 25}}.000 đồng</p>
+                                <p class="amount">{{$total + 25000}} đồng</p>
                             </div>
                         </div>
 

@@ -74,7 +74,7 @@
                                     @endforeach
                                 </div>
 
-                                <div class="total-price"><span>Tổng tiền: </span><span id="totalPrice">{{$ord->cost() + 25}} đồng</span>
+                                <div class="total-price"><span>Tổng tiền: </span><span id="totalPrice">{{$ord->cost() + 25000}} đồng</span>
                                 </div>
                             @endforeach
                         </div>

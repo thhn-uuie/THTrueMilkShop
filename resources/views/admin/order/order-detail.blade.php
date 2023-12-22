@@ -60,7 +60,7 @@
 
 
                                     <div class="col-sm-6 invoice-col">
-                                        <b>Tổng tiền:</b> {{$allCost+25}}đ<br>
+                                        <b>Tổng tiền:</b> {{$allCost+25000}}đ<br>
                                         <?php
                                         $statuses = [
                                             0 => "Đã xác nhận",
@@ -101,11 +101,11 @@
                                     </tr>
                                     <tr>
                                         <th colspan="3" class="text-right">Phí vận chuyển:</th>
-                                        <td>25đ</td>
+                                        <td>25000đ</td>
                                     </tr>
                                     <tr>
                                         <th colspan="3" class="text-right">Tổng tiền:</th>
-                                        <td>{{$allCost + 25}}đ</td>
+                                        <td>{{$allCost + 25000}}đ</td>
                                     </tr>
                                     </tbody>
                                 </table>
