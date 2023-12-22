@@ -93,7 +93,8 @@ class ProductController extends Controller
     public function update(Request $request, string $id)
     {
         $product = Product::find($id);
-//        dd($product);
+        $old_price = $product->price;
+
         if ($request->isMethod('POST')) {
             if ($request->hasFile("product_images")) {
                 $files = $request->file("product_images");
@@ -118,6 +119,7 @@ class ProductController extends Controller
                     $imageGallery->save();
                 }
             }
+
             $productUp = $product->update([
                 'name_product' => $request->title,
                 'price' => $request->price,
@@ -125,6 +127,12 @@ class ProductController extends Controller
                 'id_category' => $request->category,
                 'status' => $request->status,
             ]);
+
+            if (!$old_price == $product->price) {
+                Cart::where('id_product', $product->id)->update([
+                    'price'=>$product->price
+                ]);
+            }
             return redirect()->route('admin.product.product-detail', ['id' => $product->id])->with('success', 'Cập nhật sản phẩm thành công');
         }
         return view('admin.product.product-update', compact('product'));
