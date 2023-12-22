@@ -19,10 +19,9 @@ class CartController extends Controller
     {
         // Lấy thông tin sản phẩm từ request
         $product = $request->id_product;
-
-
         $price = Product::where('id', $product)->pluck('price')->first();
-
+        $price_cart = Cart::where('id_product', $product)->update(['price' => $price]);
+//        dd($price_cart);
         $qty = 1;
         $id_user = Auth::user()->id;
 
@@ -34,7 +33,9 @@ class CartController extends Controller
         if ($existingCartItem) {
             // Cập nhật số lượng nếu sản phẩm đã tồn tại trong giỏ hàng
             $existingCartItem->qty += $qty;
+
             $existingCartItem->save();
+
         } else {
             // Thêm sản phẩm vào giỏ hàng nếu chưa tồn tại
             $gioHang = new Cart();
