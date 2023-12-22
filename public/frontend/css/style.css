@@ -616,7 +616,7 @@
  
  ul.c-footer {
      display: inline;
-     list-style: none;
+     list-style: none !important;
  }
  
  .c-footer li {

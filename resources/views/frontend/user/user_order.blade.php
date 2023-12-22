@@ -84,11 +84,10 @@
         </div>
         <!--  -->
 
-        <div class="footer">
+    </div>
+    <div class="footer">
             @include('frontend.component.footer')
         </div>
-
-    </div>
 
     @include('frontend.component.script')
     <script type="text/javascript">
