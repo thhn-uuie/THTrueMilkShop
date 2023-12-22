@@ -133,8 +133,6 @@ Route::prefix('admin/user')->middleware('admin')->name('admin.user.')->group(fun
 Route::prefix('admin/profile')->middleware('admin')->name('admin.profile.')->group(function () {
     Route::get('/', [ProfileController::class, 'index'])->name('profiles');
     Route::match(['GET', 'POST'],'/detail/{id}', [ProfileController::class, 'show'])->name('profile-detail');
-    Route::match(['GET', 'POST'],'/delete/{id}', [ProfileController::class, 'destroy'])->name('delete');
-
 });
 
 

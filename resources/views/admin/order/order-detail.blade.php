@@ -50,7 +50,7 @@
                                     <h1 class="h5 mb-3">Thông tin đơn hàng</h1>
                                     </div>
                                     <div class="col-sm-6 invoice-col">
-                                        
+
                                         <address>
                                             <strong>Tên khách hàng: </strong> {{$order_item->name}}<br>
                                             <strong>Số điện thoại: </strong> {{$order_item->tel}}<br>
@@ -69,8 +69,6 @@
                                         ];
 
                                         ?>
-
-
                                         <b>Trạng thái đơn hàng:</b> <span class="text-success">{{ $statuses[$order_item->status] }}</span>
                                         <br>
                                     </div>
@@ -120,8 +118,10 @@
                                     <h2 class="h4 mb-3">Order Status</h2>
                                     <div class="mb-3">
                                         <input type="hidden" name="id" value="{{ $order_details['0']->id_order }}">
+
+
                                         <select name="status" id="status" class="form-control">
-                                            <option value="0">Đã xác nhận</option>
+                                            <option value="0">Đang vận chuyển</option>
                                             <option value="1">Đang vận chuyển</option>
                                             <option value="2">Giao thành công</option>
                                         </select>
@@ -132,7 +132,7 @@
                                 </div>
                             </form>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
