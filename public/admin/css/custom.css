@@ -379,4 +379,6 @@ section.content.chart-dash {
     position: relative;
 }
 
-.content-wrapper{min-height: 384.76px !important;}
+.content-wrapper{
+    min-height: 384.76px !important;
+}

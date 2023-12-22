@@ -1,36 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="height: auto;">
 
 <head>
-	@include('admin.component.head')
+    @include('admin.component.head')
 </head>
 
 <body class="sidebar-mini" style="height: auto;">
-	<!-- Site wrapper -->
-	@include('admin.component.navbar')
+<!-- Site wrapper -->
+<div class="wrapper">
+    <!-- Navbar -->
+    @include('admin.component.navbar')
     <aside class="main-sidebar elevation-4">
         @include('admin.component.sidebar')
     </aside>
-		<!-- Content Wrapper. Contains page content -->
-		<div class="content-wrapper">
-			<!-- Content Header (Page header) -->
-			<section class="content-header">
-				<div class="container-fluid my-2">
-					<div class="row mb-2">
-						<div class="col-sm-6">
-							<h1>Orders</h1>
-						</div>
-						<div class="col-sm-6 text-right">
-						</div>
-					</div>
-				</div>
-				<!-- /.container-fluid -->
-			</section>
-			<!-- Main content -->
-            @if ($message = Session::get('success'))
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid my-2">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Orders</h1>
+                    </div>
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+        <!-- Main content -->
+         @if ($message = Session::get('success'))
 
                 <div class="alert alert-success alert-block">
-				<i class="fa fa-check-circle" aria-hidden="true"></i>
+                    <i class="fa fa-check-circle" aria-hidden="true"></i>
                     <button type="button" class="close" data-dismiss="alert">×</button>
 
                     <strong>{{ $message }}</strong>
@@ -41,7 +40,7 @@
             @if ($message = Session::get('error'))
 
                 <div class="alert alert-danger alert-block">
-				<i class="fa fa-check-circle" aria-hidden="true"></i>
+				<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
                     <button type="button" class="close" data-dismiss="alert">×</button>
 
                     <strong>{{ $message }}</strong>
@@ -49,7 +48,7 @@
                 </div>
 
             @endif
-			<section class="content">
+		<section class="content">
 				<!-- Default box -->
 				<div class="container-fluid">
 					<div class="card">
@@ -123,17 +122,18 @@
                         <div class="card-footer clearfix">
                             {{ $order->links() }}
                         </div>
-					</div>
-				</div>
-				<!-- /.card -->
-			</section>
-			<!-- /.content -->
+						</div>
+                </div>
+            </form>
+            <!-- /.card -->
+        </section>
+        <!-- /.content -->
 		</div>
-		<!-- /.content-wrapper -->
+    <!-- /.content-wrapper -->
+</div>
+<!-- /.content-wrapper -->
 
-	</div>
-	<!-- ./wrapper -->
-	<!-- jQuery -->
+</div>
 </body>
 @include('admin.component.script')
 </html>
