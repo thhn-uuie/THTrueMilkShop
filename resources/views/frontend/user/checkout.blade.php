@@ -136,7 +136,7 @@
 
                             <div class="total-grand">
                                 <span>Tổng thanh toán</span>
-                                <p class="amount">{{$total + 25}}.000 đồn</p>
+                                <p class="amount">{{$total + 25}}.000 đồng</p>
                             </div>
                         </div>
 

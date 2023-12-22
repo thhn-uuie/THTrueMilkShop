@@ -64,7 +64,7 @@
                                         <div class="order-item">
                                             <img
                                                 src="{{ url('public/admin/img/product') . '/' . $item->product->image[0]->image}}"
-                                                class="product-image">
+                                                class="product-image-order">
                                             <div class="info">
                                                 <div class="product-name">{{$item->product->name_product}}</div>
                                                 <div class="product-price">{{$item->price}} đồng</div>
