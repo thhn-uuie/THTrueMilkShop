@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Gallery;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Intervention\Image\Colors\Profile;
 use PHPUnit\Framework\Exception;
 use function Laravel\Prompts\alert;
 
@@ -15,10 +17,12 @@ class CartController extends Controller
 
     public function addToCart(Request $request)
     {
-// Lấy thông tin sản phẩm từ request
+        // Lấy thông tin sản phẩm từ request
         $product = $request->id_product;
-        $price = $request->price;
-//        dd($request);
+
+
+        $price = Product::where('id', $product)->pluck('price')->first();
+
         $qty = 1;
         $id_user = Auth::user()->id;
 

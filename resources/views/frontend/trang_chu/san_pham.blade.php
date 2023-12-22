@@ -97,8 +97,7 @@
                                                     @else
                                                         <button name="id_product" value="{{ $product->id }}"
                                                                 type="submit">
-                                                            <input type="hidden" name="price"
-                                                                   value="{{ $product->price }}">
+
                                                             <i class="fa fa-solid fa-cart-shopping fa-lg"></i>
                                                         </button>
                                                     @endguest
