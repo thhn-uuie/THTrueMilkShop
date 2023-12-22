@@ -89,7 +89,7 @@
                                                     <h4 class="title1">{{ $product->name_product }}</h4>
                                                 </a>
                                                 <div class="info1">
-                                                    <span class="info1__price1">{{ $product->price }}</span>
+                                                    <span class="info1__price1">{{ $product->price }} đồng</span>
                                                     @guest
                                                         <button type="button" onclick="showLoginAlert()">
                                                             <i class="fa fa-solid fa-cart-shopping fa-lg"></i>
