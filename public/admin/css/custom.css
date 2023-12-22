@@ -360,26 +360,7 @@ section.content.chart-dash {
     padding: 30px 20px;
 }
 
-/* .chartBox {
-    padding: 30px 0;
-    display: grid;
-}
 
-.chartBox.left {
-    width: 30%;
-    max-height: 100%;
-    float: left;
-}
-
-.chartBox.right {
-    width: 70%;
-    max-height: 100%;
-    float: right;
-} */
-
-/* .card-body-chart {
-    position: relative;
-} */
 
 .card-body-chart {
     display: inline-flex;
@@ -398,3 +379,4 @@ section.content.chart-dash {
     position: relative;
 }
 
+.content-wrapper{min-height: 384.76px !important;}

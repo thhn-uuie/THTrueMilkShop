@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\DB;
         @include('admin.component.sidebar')
     </aside>
 
-    <div class="content-wrapper" style="min-height: 384.76px; overflow:scroll;">
+    <div class="content-wrapper" style="overflow:scroll;">
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
