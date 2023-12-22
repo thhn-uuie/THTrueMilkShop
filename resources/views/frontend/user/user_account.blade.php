@@ -47,7 +47,7 @@
                     <div class="sidebar sidebar-main">
                         <div class="welcome">
                             <label>Xin chào</label>
-                            <div class="name">Test</div>
+                            <div class="name">{{ \Illuminate\Support\Facades\Auth::user()->name }}</div>
                         </div>
                         @include('frontend.component.sidebar')
                     </div>

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\RegisterRequest;
 use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
@@ -29,14 +31,10 @@ class AuthController extends Controller
         return view('frontend.auth.signup');
     }
 
-    public function postSignup(Request $request)
+    public function postSignup(RegisterRequest $request)
     {
         $this->logout($request);
-        $validated = $request->validate([
-            'name' => 'required|unique:users',
-            'email' => 'required|unique:users|email',
-            'password' => 'required',
-        ]);
+
         $user = null;
         try {
             $token = Str::random(8);
@@ -46,8 +44,8 @@ class AuthController extends Controller
                 'password' => Hash::make($request->password),
                 'email_token'=>$token
             ]);
-        
-            Mail::to($request->email)->send(new Hello($request->name,  $token));  
+
+            Mail::to($request->email)->send(new Hello($request->name,  $token));
         } catch (\Throwable $th) {
             dd($th);
             $user->delete();
@@ -56,12 +54,9 @@ class AuthController extends Controller
         return redirect()->route('frontend.auth.login');
     }
 
-    public function postLogin(Request $request)
+    public function postLogin(LoginRequest $request)
     {
-        $validated = $request->validate([
-            'name' => 'required',
-            'password' => 'required',
-        ]);
+
         $name = $request->name;
         $password = $request->password;
         $data = [
@@ -100,8 +95,8 @@ class AuthController extends Controller
                 $user->update([
                     'email_token' => $token,
                 ]);
-                
-                Mail::to($user->email)->send(new Hello($request->name,  $token));  
+
+                Mail::to($user->email)->send(new Hello($request->name,  $token));
                 return view('verify', compact(['name', 'password', 'token']))->with('error', 'Đã gửi lại!');
             } catch (\Throwable $th) {
                 dd($th);
@@ -120,12 +115,12 @@ class AuthController extends Controller
             ];
             if (Auth::attempt($data)) {
                 $user = User::find(Auth::user()->id);
-                $user->update(['email_verified_at' => now()]);  
+                $user->update(['email_verified_at' => now()]);
                 return redirect()->route('template');
             }
             return redirect()->back()->with('error', 'Nhập sai mật khẩu hoặc tên đăng nhập!');
         }
-        
+
     }
 
     public function forget_password(Request $request) {
@@ -138,18 +133,23 @@ class AuthController extends Controller
                 $email =  $request->email;
                 $token = Str::random(8);
                 $user = User::where('email', $request->email)->get()->first();
-                $user->update([
-                    'email_token' => $token,
-                ]);
-                
-                Mail::to($user->email)->send(new ChangePassWordMail($request->name,  $token));  
-                $hasAuth = 1;
-                return view('frontend.auth.fpassword', compact(['hasAuth', 'email']));
+                if (!$user) {
+                    // Email không tồn tại trong hệ thống
+                    return view('frontend.auth.fpassword')->with('error', 'Email này không tồn tại trong hệ thống!');
+                } else {
+                    $user->update([
+                        'email_token' => $token,
+                    ]);
+
+                    Mail::to($user->email)->send(new ChangePassWordMail($request->name, $token));
+                    $hasAuth = 1;
+                    return view('frontend.auth.fpassword', compact(['hasAuth', 'email']));
+                }
             } catch (\Throwable $th) {
                 return view('frontend.auth.fpassword', compact(['hasAuth']))->with('error', 'Email này không tồn tại trong hệ thống!');
             }
         } else {
-            
+
             $user = User::where('email', $request->email)->get()->first();
             if (!$request->token == $user->email_token) {
                 $hasAuth = 1;
@@ -164,8 +164,8 @@ class AuthController extends Controller
 
             ]);
             return view('frontend.auth.fpassword', compact(['hasAuth']))->with('succed', 'Đổi mật khẩu thành công');
-    
+
         }
-        
+
     }
 }

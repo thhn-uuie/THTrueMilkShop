@@ -31,7 +31,7 @@
                                placeholder="Nhập username">
 
                         @if($errors->has('name'))
-                            <div class="error-message">
+                            <div class="error-message-signup">
                                 * {{ $errors->first('name') }}
                             </div>
                         @endif
@@ -42,7 +42,7 @@
                         <input type="password" name="password" id="password" placeholder="Nhập mật khẩu">
 
                         @if($errors->has('password'))
-                            <div class="error-message">
+                            <div class="error-message-signup">
                                 * {{ $errors->first('password') }}
                             </div>
                         @endif
@@ -77,5 +77,11 @@
 </div>
 @include('frontend.component.script')
 </body>
-
+<style>
+    .error-message-signup{
+        color:red;
+        font-size: 12px;
+        font-style: italic;
+    }
+</style>
 </html>

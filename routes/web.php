@@ -41,8 +41,6 @@ Route::post('/signup', [AuthController::class, 'postSignup']);
 Route::get('/login', [AuthController::class, 'login'])->name('frontend.auth.login');
 Route::post('/login', [AuthController::class, 'postLogin']);
 Route::post('/verify', [AuthController::class, 'verify'])->name('verify');
-Route::post('/verify', [AuthController::class, 'verify'])->name('verify');
-
 //Logout
 Route::get('/logout', [AuthController::class, 'logout'])->name('frontend.auth.logout');
 
@@ -60,8 +58,8 @@ Route::match(['GET', 'POST'],'/gio-hang/xoa/{id}', [CartController::class, 'dele
 Route::match(['GET', 'POST'],'/thong-tin', [CustomerController::class, 'showProfile'])->name('user.user_account')->middleware('customer');
 Route::match(['GET', 'POST'],'/thong-tin/cap-nhat', [CustomerController::class, 'update'])->name('user.user_account_update')->middleware('customer');
 Route::get( 'san-pham/chi-tiet/{id}', [CustomerController::class, 'detail'])->name('chi-tiet');
-Route::post('/quen_mat_khau', [AuthController::class, 'forget_password'])->name('fpassword');
-Route::get('/quen_mat_khau', [AuthController::class, 'forget_password'])->name('fpassword');
+Route::post('/quen-mat-khau', [AuthController::class, 'forget_password'])->name('fpassword');
+Route::get('/quen-mat-khau', [AuthController::class, 'forget_password'])->name('fpassword');
 
 
 // Backend

@@ -51,7 +51,7 @@
                         <input type="text" name="name" id="name" placeholder="Nhập tên ">
 
                         @if($errors->has('name'))
-                            <div class="error-message">
+                            <div class="error-message-signup">
                                 * {{ $errors->first('name') }}
                             </div>
                         @endif
@@ -59,10 +59,10 @@
 
                     <div class="in-group email">
                         <label for="email">Email<i style="color: red;">*</i></label>
-                        <input type="email" name="email" id="email" placeholder="Nhập email">
+                        <input type="text" name="email" id="email" placeholder="Nhập email">
 
                         @if($errors->has('email'))
-                            <div class="error-message">
+                            <div class="error-message-signup">
                                 * {{ $errors->first('email') }}
                             </div>
                         @endif
@@ -78,7 +78,7 @@
                         <input type="password" name="password" id="password" placeholder="Nhập mật khẩu">
 
                         @if($errors->has('password'))
-                            <div class="error-message">
+                            <div class="error-message-signup">
                                 * {{ $errors->first('password') }}
                             </div>
                         @endif
@@ -97,7 +97,7 @@
                             nhập</a>
                     </div>
                     <div class="f-password">
-                        <a href="fpassword.php">Quên mật khẩu?</a>
+                        <a href="{{ route('fpassword') }}">Quên mật khẩu?</a>
                     </div>
                 </form>
             </div>
@@ -152,5 +152,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </body>
-
+<style>
+    .error-message-signup{
+        color:red;
+        font-size: 12px;
+        font-style: italic;
+    }
+</style>
 </html>

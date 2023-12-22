@@ -202,7 +202,13 @@
             items: 3,
         });
     </script>
+    <script>
+        function showLoginAlert() {
+            alert('Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng.');
+            // Redirect to login page if needed
 
+        }
+    </script>
 </body>
 
 </html>

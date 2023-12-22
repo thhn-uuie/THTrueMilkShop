@@ -27,10 +27,10 @@
                         <h1>Order: #{{$order_details['0']->id_order}}</h1>
                     </div>
                     <div class="col-sm-6 text-right">
-                        <form method="POST" action="{{ route('admin.order.delete', ['id' => $order_details['0']->id_order]) }}" onsubmit="return confirm('Bạn chắc chắn muốn xóa?')">
-                            @csrf
-                            <button type="submit" class="btn btn-primary">Xóa</button>
-                        </form>
+{{--                        <form method="POST" action="{{ route('admin.order.delete', ['id' => $order_details['0']->id_order]) }}" onsubmit="return confirm('Bạn chắc chắn muốn xóa?')">--}}
+{{--                            @csrf--}}
+{{--                            <button type="submit" class="btn btn-primary">Xóa</button>--}}
+{{--                        </form>--}}
                         <a href="{{ asset('admin/order') }}" class="btn btn-primary">Back</a>
                     </div>
                 </div>
