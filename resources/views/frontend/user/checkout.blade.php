@@ -131,7 +131,7 @@
 
                             <div class="total-ship">
                                 <span>Phí giao hàng</span>
-                                <p class="price-ship">25.000 đồng</p>
+                                <p class="price-ship">25000 đồng</p>
                             </div>
 
                             <div class="total-grand">
