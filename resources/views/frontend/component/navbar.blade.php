@@ -164,6 +164,9 @@ use App\Models\Gallery;
                 <a href="{{ route('khuyen_mai') }}">Khuyến mãi</a>
             </li>
             <li class="page-scroll">
+                <a href="#">Cửa hàng</a>
+            </li>
+            <li class="page-scroll">
                 <a href="{{ route('truyen_thong') }}">Truyền thông</a>
 
             </li>
