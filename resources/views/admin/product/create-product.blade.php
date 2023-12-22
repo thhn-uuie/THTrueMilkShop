@@ -56,8 +56,9 @@
                                         <div class="col-md-12">
                                             <div class="mb-3">
                                                 <label for="price">Price<i style="color: red;">*</i></label>
-                                                <input type="text" name="price" id="price" class="form-control"
-                                                       placeholder="Price" class="summernote"required>
+                                                <input type="number" name="price" id="price" class="form-control"
+                                                       placeholder="Price" class="summernote" required>
+
                                             </div>
                                         </div>
                                         <div class="col-md-12">

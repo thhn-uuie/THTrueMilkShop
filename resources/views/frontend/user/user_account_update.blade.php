@@ -44,10 +44,6 @@
                 <div class="col-lg-12 col-md-12"></div>
                 <div class="col-lg-3 col-md-3 order-1 col-left-sidebar">
                     <div class="sidebar sidebar-main">
-                        <div class="welcome">
-                            <label>Xin chào</label>
-                            <div class="name">Test</div>
-                        </div>
                         @include('frontend.component.sidebar')
                     </div>
                 </div>

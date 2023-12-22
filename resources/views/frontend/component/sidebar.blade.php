@@ -1,3 +1,7 @@
+<div class="welcome">
+    <label>Xin chào</label>
+    <div class="name">{{ \Illuminate\Support\Facades\Auth::user()->name }}</div>
+</div>
 <div class="block account-nav">
     <div class="title account-nav-title"></div>
     <div class="content account-nav-content">

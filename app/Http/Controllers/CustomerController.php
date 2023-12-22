@@ -25,9 +25,11 @@ class CustomerController extends Controller
         $customer = Profile::where('id_user', Auth::user()->id)->get()->first();
         if ($request->isMethod('POST')) {
             if ($request->has('file_upload')) {
-                $oldFile = public_path('frontend/img/profile') . '/' . $customer->image;
-                if (File::exists($oldFile)) {
-                    File::delete($oldFile);
+                if ($customer->image != 'no-image.jpg') {
+                    $oldFile = public_path('frontend/img/profile') . '/' . $customer->image;
+                    if (File::exists($oldFile)) {
+                        File::delete($oldFile);
+                    }
                 }
                 $file = $request->file('file_upload');
                 $file_name = time() . '_' . $file->getClientOriginalName();

@@ -30,6 +30,9 @@
                             <button type="submit" class="btn btn-primary">Xóa</button>
                         </form>
                     </div>
+                    <div class="col-sm-6 text-right">
+                        <a href="{{ url('/admin/category') }}" class="btn btn-primary">Back</a>
+                    </div>
 
                 </div>
             </div>
