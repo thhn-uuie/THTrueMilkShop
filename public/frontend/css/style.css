@@ -23,6 +23,9 @@
      display: inline-grid !important; */
  }
 
+.icon-login.active {
+}
+
 .icon-login .acc {
     float: right;
     display: inline-grid;
@@ -45,6 +48,12 @@
  a.active {
      outline: 0;
  }
+
+a.act1 {
+    width: 60px;
+    height: 20px;
+    overflow: hidden;
+}
  
  .page-scroll a {
      font-size: 14px;
@@ -1337,7 +1346,7 @@
     font-size: 12px;
 }
 
-.icon-login.active a.act1 {font-weight: 600; font-size: 14px} 
+.icon-login.active a.act1 {font-weight: 600;font-size: 14px;} 
  .icon-login span.log {
     font-weight: 600;
 }
