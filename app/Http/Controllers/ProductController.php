@@ -128,9 +128,9 @@ class ProductController extends Controller
                 'status' => $request->status,
             ]);
 
-            if (!$old_price == $product->price) {
+            if ($old_price !== $request->price) {
                 Cart::where('id_product', $product->id)->update([
-                    'price'=>$product->price
+                    'price'=>$request->price
                 ]);
             }
             return redirect()->route('admin.product.product-detail', ['id' => $product->id])->with('success', 'Cập nhật sản phẩm thành công');
