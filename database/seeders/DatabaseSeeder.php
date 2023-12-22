@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,11 +13,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        $userRole = DB::table('role')->where('id', 2)->first();
+        if (!$userRole) {
+            DB::table('role')->insert([
+                'id' => 2,
+                'name_role' => 'user',
+            ]);
+        }
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        // Check if 'admin' role exists before inserting
+        $adminRole = DB::table('role')->where('id', 1)->first();
+        if (!$adminRole) {
+            DB::table('role')->insert([
+                'id' => 1,
+                'name_role' => 'admin',
+            ]);
+        }
     }
 }
