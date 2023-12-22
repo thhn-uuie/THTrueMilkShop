@@ -198,10 +198,8 @@
                                 <p></p>
                             </div>
                             <div class="list1">
-                                <a class="btn btn-primary" href="/he-thong-cua-hang/?csrt=14388090062690665609"
-                                   target="">
-                                    Tìm cửa hàng <i class="fa fa-search"></i></a>
-                                <a class="btn btn-primary" href="https://www.thtruemart.vn/" target="_blank">
+
+                                <a class="btn btn-primary" href="{{ asset('/san-pham') }}">
                                     Mua hàng trực tuyến <i class="fa fa-shopping-cart"></i></a>
                             </div>
                         </div>
@@ -218,65 +216,7 @@
             </div>
         </div>
 
-        <div class="nd4">
-            <div class="container">
-                <h2 class="c-title-special1"><span>Góc sức khỏe</span>
-                </h2>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-6 col-md-3">
-                        <a class="list1__link1"
-                           href="http://thmilk.vn/healths/thong-tin-tu-van-su-dung-sua/?csrt=14388090062690665609">
-                            <div class="list1__content1">
-                                <div class="list1__img1">
-                                    <img src="https://www.thmilk.vn/wp-content/uploads/2019/11/img-pc1.jpg"
-                                         alt="img-pc1">
-                                </div>
 
-                                <p class="list1__text1">Thông tin tư vấn sử dụng sữa</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-3">
-                        <a class="list1__link1"
-                           href="http://thmilk.vn/healths/bi-quyet-khoe-dep-tu-nhien/?csrt=14388090062690665609">
-                            <div class="list1__content1">
-                                <div class="list1__img1">
-                                    <img src="https://www.thmilk.vn/wp-content/uploads/2019/11/img-qc2.jpg"
-                                         alt="img-qc2">
-                                </div>
-
-                                <p class="list1__text1">Bí quyết khoẻ đẹp tự nhiên</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-3">
-                        <a class="list1__link1"
-                           href="http://thmilk.vn/healths/bi-quyet-cham-soc-con-cai/?csrt=14388090062690665609">
-                            <div class="list1__content1">
-                                <div class="list1__img1">
-                                    <img src="https://www.thmilk.vn/wp-content/uploads/2019/11/img-qc3.jpg"
-                                         alt="img-qc3">
-                                </div>
-
-                                <p class="list1__text1">Bí quyết chăm sóc con cái</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-3">
-                        <a class="list1__link1"
-                           href="http://thmilk.vn/healths/phong-cach-song-xanh/?csrt=14388090062690665609">
-                            <div class="list1__content1">
-                                <div class="list1__img1">
-                                    <img src="https://www.thmilk.vn/wp-content/uploads/2019/11/img-qc4.jpg"
-                                         alt="img-qc4">
-                                </div>
-                                <p class="list1__text1">Phong cách sống xanh</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
     <div class="footer">
