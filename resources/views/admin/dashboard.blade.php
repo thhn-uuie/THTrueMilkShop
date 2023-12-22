@@ -161,16 +161,27 @@ foreach ($categoryPercentages as $item) {
 ?>
 
 <script>
+    function generateRandomColors(count) {
+        var colors = [];
+        for (var i = 0; i < count; i++) {
+            var color = 'rgba(' + getRandomInt(50, 255) + ', ' + getRandomInt(70, 255) + ', ' + getRandomInt(20, 255) + ', 0.8)';
+            console.log(color);
+            colors.push(color);
+        }
+        return colors;
+    }
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
     const data = {
         labels: <?php echo json_encode($name_cate) ?>,
         datasets: [{
-            label: 'My First Dataset',
+            label: 'Số lượng:',
             data: <?php echo json_encode($data_cate) ?>,
-            backgroundColor: [
-                'rgb(255, 99, 132)',
-                'rgb(54, 162, 235)',
-                'rgb(255, 205, 86)'
-            ],
+            backgroundColor: generateRandomColors(<?php echo count($name_cate) ?>),
             hoverOffset: 4
         }]
     };
@@ -215,26 +226,10 @@ foreach ($bestseller as $item) {
     const databanchay = {
         labels: labels,
         datasets: [{
-            label: 'Sản phẩm bán chạy',
+            label: 'Số lượng:',
             data: <?php echo json_encode($data_sell) ?>,
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-                'rgba(255, 205, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(201, 203, 207, 0.2)'
-            ],
-            borderColor: [
-                'rgb(255, 99, 132)',
-                'rgb(255, 159, 64)',
-                'rgb(255, 205, 86)',
-                'rgb(75, 192, 192)',
-                'rgb(54, 162, 235)',
-                'rgb(153, 102, 255)',
-                'rgb(201, 203, 207)'
-            ],
+            backgroundColor: generateRandomColors(<?php echo count($name_product) ?>),
+            borderColor: generateRandomColors(<?php echo count($name_product) ?>),
             borderWidth: 1
         }]
     };
@@ -257,3 +252,4 @@ foreach ($bestseller as $item) {
 
 
 </html>
+
