@@ -23,7 +23,7 @@
             @if ($message = Session::get('success'))
 
                 <div class="alert alert-success alert-block">
-                    <i class="fa fa-check" aria-hidden="true"></i>
+                <i class="fa fa-check-circle" aria-hidden="true"></i>
                     <button type="button" class="close" data-dismiss="alert">×</button>
 
                     <strong>{{ $message }}</strong>
@@ -34,7 +34,7 @@
             @if ($message = Session::get('error'))
 
                 <div class="alert alert-danger alert-block">
-                    <i class="fa fa-check" aria-hidden="true"></i>
+                <i class="fa fa-check-circle" aria-hidden="true"></i>
                     <button type="button" class="close" data-dismiss="alert">×</button>
 
                     <strong>{{ $message }}</strong>

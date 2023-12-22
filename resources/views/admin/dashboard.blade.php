@@ -133,7 +133,7 @@ use Illuminate\Support\Facades\DB;
 </div>
 </body>
 
-@include('admin.component.script');
+@include('admin.component.script')
 
 <?php
 $categories = DB::table('category')->get();
