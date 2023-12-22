@@ -148,6 +148,7 @@
                             @foreach($galleries as $item)
                             <div class="product">
                                 <div class="row">
+                                    
                                     <div class="col-lg-4 col-xs-12">
                                         <img
                                             src="{{ url('public/admin/img/product') . '/' . $item->image}}"
@@ -220,17 +221,17 @@
 
     nameInput.addEventListener('input', function (event) {
         // Cập nhật nội dung của div dựa trên giá trị đã nhập
-        $('.name').html("Họ và tên: " + event.target.value);
+        $('.name').html("<strong>Họ và tên:</strong> " + event.target.value);
     });
 
     phoneInput.addEventListener('input', function (event) {
         // Cập nhật nội dung của div dựa trên giá trị đã nhập
-        $('.phone').html("Số điện thoại: " + event.target.value);
+        $('.phone').html("<strong>Số điện thoại:</strong> " + event.target.value);
     });
 
     addrInput.addEventListener('input', function (event) {
         // Cập nhật nội dung của div dựa trên giá trị đã nhập
-        $('.addr').html("Địa chỉ: " + event.target.value);
+        $('.addr').html("<strong>Địa chỉ:</strong> " + event.target.value);
     });
 
 </script>
