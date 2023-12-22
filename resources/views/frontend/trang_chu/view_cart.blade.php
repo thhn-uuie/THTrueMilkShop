@@ -12,8 +12,7 @@
     @include('frontend.component.head')
 </head>
 
-<body id="page-top" class="index header-14-style home-14-style footer-7-style layout-full_width"
-      cz-shortcut-listen="true">
+<body id="page-top" class="index">
 <button onclick="topFunction()" id="back-top" style="display: block;">
     <i class="fa fa-angle-double-up"></i>
 </button>
@@ -82,13 +81,13 @@
             </div>
         </div>
     </div>
+    </div>
     <!--  -->
 
     <div class="footer">
         @include('frontend.component.footer')
     </div>
 
-</div>
 @include('frontend.component.script')
 <script type="text/javascript">
     let mybutton = document.getElementById("back-top");
@@ -116,7 +115,7 @@
 
 
 </script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 </body>
 </html>

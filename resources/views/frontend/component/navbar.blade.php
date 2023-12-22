@@ -38,7 +38,7 @@ use App\Models\Gallery;
                 <div class="icon-login active">
                 <i class="fa fa-solid fa-user fa-lg"></i>
                     <div class="acc">
-                    <a href="{{ route('user.user_account') }}" class="act1" style="font-size: 14px">{{ Auth::user()->name }}</a>
+                    <a href="{{ route('user.user_account') }}" class="act1">{{ Auth::user()->name }}</a>
                     <a class="act2" href="{{ route('frontend.auth.logout') }}">Logout</a>
                     </div>
                     </div>
@@ -151,7 +151,7 @@ use App\Models\Gallery;
                 <a href="#page-top"></a>
             </li>
             <li class="page-scroll">
-                <a href="{{ route('cau_chuyen_that_th') }}" class="click">CÂU CHUYỆN THẬT TH</a>
+                <a href="{{ route('cau_chuyen_that_th') }}">CÂU CHUYỆN THẬT TH</a>
             </li>
             <li class="page-scroll">
                 <a href="{{ route('san_pham') }}">SẢN PHẨM</a>
