@@ -83,7 +83,6 @@
                                 <th>Product</th>
                                 <th>Price</th>
                                 <th>Category</th>
-                                <th>Description</th>
                                 <th width="100px">Status</th>
                                 <th width="100px">Action</th>
                             </tr>
@@ -103,7 +102,6 @@
                                     <td><a href="#">{{ $item->name_product }}</a></td>
                                     <td>{{ $item->price }}</td>
                                     <td>{{ $item->category->name_category }}</td>
-                                    <td>{!! $item->description !!}</td>
                                     <td>
                                         @if( $item->status == 1)
                                             <svg class="text-success-500 h-6 w-6 text-success"
