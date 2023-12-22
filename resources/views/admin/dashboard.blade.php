@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\DB;
         @include('admin.component.sidebar')
     </aside>
 
-    <div class="content-wrapper" style="min-height: 384.76px;">
+    <div class="content-wrapper" style="min-height: 384.76px; overflow:scroll;">
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
@@ -108,16 +108,16 @@ use Illuminate\Support\Facades\DB;
             <!-- /.card -->
         </section>
         <!-- /.content -->
-        <section class="chart-dash">
-            <div class="card mb-4" style="margin-top: 25px;">
+        <section class="content chart-dash">
+            <div class="card mb-4">
                 <div class="card-header-chart">
-                    <p>Phân loại sản phẩm</p>
+                    <p class="h3">Phân loại sản phẩm</p>
                 </div>
                 <div class="card-body-chart">
-                    <div class="chartBox" style="width: 400px">
+                    <div class="chartBox left" >
                         <canvas id="phanloai"></canvas>
                     </div>
-                    <div class="chartBox" style="width: 400px">
+                    <div class="chartBox right" >
                         <canvas id="banchay"></canvas>
                     </div>
                 </div>

@@ -95,7 +95,7 @@
                                         </div>
                                         <div class="sub-info">
                                             <p class="tittle">Giá tiền</p>
-                                            <p id="price">${{ $product_item->price }}</p>
+                                            <p id="price">{{ $product_item->price }}đ</p>
                                         </div>
 
                                         <div class="sub-info">
