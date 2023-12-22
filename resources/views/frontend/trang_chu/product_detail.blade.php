@@ -91,13 +91,13 @@
                                 @csrf
 
                                     @guest
-                                        <button type="button" onclick="showLoginAlert()">
+                                        <button type="button" onclick="showLoginAlert()" class="btn btn-primary">
                                             <i class="fa fa-shopping-cart"></i>
                                             Thêm vào giỏ hàng
                                         </button>
                                     @else
                                         <button name="id_product" value="{{ $product->id }}"
-                                                type="submit">
+                                                type="submit" class="btn btn-primary">
                                             <input type="hidden" name="price"
                                                    value="{{ $product->price }}">
                                             <i class="fa fa-shopping-cart"></i>

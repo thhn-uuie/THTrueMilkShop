@@ -60,10 +60,10 @@
 
                             @foreach($galleries as $item)
                                     <div class="order-item"><img
-                                        src="{{ url('public/admin/img/product') . '/' . $item->image}}" style="width: 30%; height:100px;"
+                                        src="{{ url('public/admin/img/product') . '/' . $item->image}}"
                                         class="product-image">
                                     <div class="info">
-                                        <div class="product-name" style="font-size:22px; font-weight: 400">{{ $item->product->name_product }}</div>
+                                        <div class="product-name">{{ $item->product->name_product }}</div>
                                         <div class="product-price">{{ $item->product->price }} ₫</div>
                                         <div class="product-quantity">Số lượng: {{ $qty->where('id_product', $item->id_product)->pluck('qty')->first()}}</div>
                                         <form action="{{ route('cart.delete', ['id'=>$qty->where('id_product', $item->id_product)->pluck('id')->first()]) }}"

@@ -521,7 +521,7 @@
      margin-bottom: 20px;
  }
  
- .nd3 a.btn.btn-primary {
+ .nd3 .btn.btn-primary {
      margin-right: 20px;
      padding: 10px 30px;
      background: #103A71;
@@ -535,7 +535,7 @@
      padding: 0px 5px;
  }
  
- .nd3 a.btn.btn-primary:hover {
+ .nd3 .btn.btn-primary:hover {
      background: #ffffff;
      border: 1px solid #103A71;
      color: #103A71 !important;
@@ -1238,11 +1238,10 @@
  }
 
  .detail .owl-item {
-    border-right: 1px solid #8080803d;
+    border: 1px solid #8080803d;
 }
 
 .detail .owl-stage-outer {
-    border: 1px solid #8080803d ;
 }
 
 .detail {
@@ -1305,7 +1304,7 @@
 .auth-box .alert.alert-success.alert-block {
     background: #FAE5E5;
     color: red;
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 100 !important;
     border: none;
     padding: 10px 15px;

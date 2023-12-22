@@ -17,7 +17,6 @@
 
     <!-- Custom CSS -->
     <link href="public/frontend/css/style.css" rel="stylesheet">
-    <link href="public/frontend/css/custom.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
