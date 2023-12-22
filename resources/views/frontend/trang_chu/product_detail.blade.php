@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Sữa tươi tiệt trùng – True Happiness</title>
+    <title>{{$product->name_product}}</title>
 
     @include('frontend.component.head')
 </head>
@@ -33,7 +33,9 @@
         <div class="context">
             <div class="container">
                 <span class="item"><a href="{{ asset('/') }}">Trang chủ > </a></span>
-                <span class="item">Sản phẩm > Sữa tươi tiệt trùng</span>
+                <span class="item"><a href="{{ asset('/san-pham') }}">Sản phẩm > </a></span>
+                <span class="item"><a href="{{ route('chi-tiet', ['id'=>$product->id]) }}">{{$product->name_product}} </a></span>
+
             </div>
         </div>
 

@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Thông tin tài khoản</title>
+    <title>Cập nhật tài khoản</title>
     @include('frontend.component.head')
     <link href="{{ asset('/public/admin/css/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('/public/frontend/css/user_style.css') }}" rel="stylesheet">
@@ -105,10 +105,10 @@
                                             <label>Giới tính</label>
                                             <div class="data">
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="gender" value="male">Nam
+                                                    <input type="radio" name="gender" value="Nam">Nam
                                                 </label>
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="gender" value="female">Nữ
+                                                    <input type="radio" name="gender" value="Nữ">Nữ
                                                 </label>
                                             </div>
                                         </div>

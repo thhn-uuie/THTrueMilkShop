@@ -1,6 +1,7 @@
 <html lang="en" style="height: auto;">
 
 <head>
+    <title> Hồ sơ </title>
     @include('admin.component.head')
 </head>
 

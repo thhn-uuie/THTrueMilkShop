@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Quên mật khẩu – TH true MILK</title>
+    <title>Quên mật khẩu</title>
     @include('frontend.component.head')
 </head>
 

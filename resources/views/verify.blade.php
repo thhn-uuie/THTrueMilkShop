@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Thanh toán</title>
+    <title>Kích hoạt tài khoản</title>
     @include('frontend.component.head')
     <link href="{{ asset('/public/frontend/css/user_style.css') }}" rel="stylesheet">
 </head>

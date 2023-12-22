@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <title> Chi tiết hồ sơ </title>
     @include('admin.component.head')
     <link rel="stylesheet" href="{{ asset('/public/admin/plugins/summernote/summernote-bs4.min.css') }}">
 </head>
@@ -64,7 +65,7 @@
                                                 <p class="tittle">Điện thoại</p>
                                                 <p id="tel">{{ $profile->phone }}</p>
                                             </div>
-                                       
+
                                             <div class="col-sm-6 sub-info">
                                                 <p class="tittle">Ngày sinh</p>
                                                 <p id="birthday">{{$profile->birthday}}</p>
@@ -77,7 +78,7 @@
                                             <p class="tittle">Địa chỉ</p>
                                             <p id="address">{{$profile->address}}</p>
                                         </div>
-                                        
+
                                         {{--                                        <div class="sub-info">--}}
                                         {{--                                            <p class="tittle">Trạng thái</p>--}}
                                         {{--                                            @if( $profile->status == 1)--}}

@@ -1,6 +1,6 @@
 <aside class="main-sidebar elevation-4" style="background: #fff;">
     <!-- Brand Logo -->
-    <a href="#" class="brand-link">
+    <a href="{{asset('/admin')}}" class="brand-link">
         <!-- <img src="https://www.thmilk.vn/wp-content/themes/wp-th/assets/images/logo.png?>" alt="logo"> -->
         <span class="brand-text">TH True Milk</span>
     </a>

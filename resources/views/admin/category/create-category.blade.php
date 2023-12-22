@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <title> Thêm danh mục</title>
     @include('admin.component.head')
 </head>
 

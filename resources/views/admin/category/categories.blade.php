@@ -1,5 +1,6 @@
 <html lang="en" style="height: auto;">
 <head>
+    <title>Danh mục sản phẩm</title>
     @include('admin.component.head')
 </head>
 

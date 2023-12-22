@@ -1,3 +1,4 @@
+<title> Error </title>
 <div class="main-wrapper" style="padding-top: 25px;">
     <div class="error-box" style="text-align: center;">
         <h1>405</h1>

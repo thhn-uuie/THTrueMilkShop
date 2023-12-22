@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 ?>
 <html lang="en" style="height: auto;">
 <head>
+    <title>Trang chủ</title>
     @include('admin.component.head')
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>

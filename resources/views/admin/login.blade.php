@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+        <title>Đăng nhập</title>
 		@include('admin.component.head')
 	</head>
 	<body class="hold-transition login-page">

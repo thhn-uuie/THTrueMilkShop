@@ -24,19 +24,17 @@
                      alt="">
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-3">
-                <h4 class="h4 mb-0"><strong>Mohit Singh</strong></h4>
-                <div class="mb-3">example@example.com</div>
+                <h4 class="h4 mb-0"><strong>{{ \Illuminate\Support\Facades\Auth::user()->name }}</strong></h4>
+                <div class="mb-3">{{ \Illuminate\Support\Facades\Auth::user()->email }}</div>
                 <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
-                    <i class="fas fa-user-cog mr-2"></i> Settings
-                </a>
+
                 <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
-                    <i class="fas fa-lock mr-2"></i> Change Password
+                <a href="{{route('user.changepass')}}" class="dropdown-item">
+                    <i class="fas fa-lock mr-2"></i> Đổi mật khẩu
                 </a>
                 <div class="dropdown-divider"></div>
                 <a href="{{route('admin.logout')}}" class="dropdown-item text-danger">
-                    <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                    <i class="fas fa-sign-out-alt mr-2"></i> Đăng xuất
                 </a>
             </div>
         </li>

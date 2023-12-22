@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <title> Sản phẩm </title>
     @include('admin.component.head')
 </head>
 

@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Tài khoản của tôi</title>
+    <title>Giỏ hàng</title>
     <link href="{{ asset('/public/frontend/css/user_style.css') }}" rel="stylesheet">
     @include('frontend.component.head')
 </head>

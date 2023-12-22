@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <title>Chi tiết sản phẩm</title>
     @include('admin.component.head')
     <link rel="stylesheet" href="{{ asset('/public/admin/plugins/summernote/summernote-bs4.min.css') }}">
 </head>

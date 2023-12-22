@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <title> Đăng nhập </title>
     @include('frontend.component.head')
 </head>
 

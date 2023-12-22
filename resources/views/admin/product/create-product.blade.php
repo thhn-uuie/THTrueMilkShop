@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <title>Thêm mới sản phẩm</title>
     @include('admin.component.head')
     <link rel="stylesheet" href="{{ asset('/public/admin/plugins/summernote/summernote-bs4.min.css') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">

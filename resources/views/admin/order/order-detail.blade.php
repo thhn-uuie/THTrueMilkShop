@@ -3,6 +3,8 @@
 <html lang="en">
 
 <head>
+    <title>Chi tiết đơn hàng</title>
+
     @include('admin.component.head')
 </head>
 
@@ -121,7 +123,7 @@
 
 
                                         <select name="status" id="status" class="form-control">
-                                            <option value="0">Đang vận chuyển</option>
+                                            <option value="0">Đã xác nhận</option>
                                             <option value="1">Đang vận chuyển</option>
                                             <option value="2">Giao thành công</option>
                                         </select>

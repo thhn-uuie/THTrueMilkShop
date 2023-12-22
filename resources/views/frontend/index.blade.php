@@ -108,7 +108,7 @@
                     <div class="owl-carousel owl-theme " id="owl-carousel2">
 
                                 <?php $products = \App\Models\Product::where('status', 1)
-                                    ->latest()
+                                    ->orderBy('id', 'desc')
                                     ->limit(5)
                                     ->get(); ?>
                                 @foreach($products as $item)
