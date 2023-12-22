@@ -45,7 +45,7 @@
 
                 <div class="col-lg-8 col-md-8 order-1">
                     <div class="column main">
-                        <form method="POST" action="{{ route('user.order.create') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('user.order.create') }}" enctype="multipart/form-data" id="checkout">
                                 @csrf
                             <div class="block-title h3">
                                 <span style="font-weight: 600;">ĐỊA CHỈ GIAO HÀNG</span>
@@ -124,7 +124,7 @@
                         <div class="block-title h3">Tóm tắt đơn hàng</div>
 
                         <div class="block-content shipping-content">
-                            <div class="total-price">
+                            <div class="total_price">
                                 <span>Tổng tiền</span>
                                 <p class="price">{{$total}}.000 đồng</p>
                             </div>
@@ -285,8 +285,6 @@
 
 </script>
 
-
-<!-- Font Awesome -->
 </body>
 
 </html>

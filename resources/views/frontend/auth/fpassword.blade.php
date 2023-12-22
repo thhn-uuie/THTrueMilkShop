@@ -44,30 +44,13 @@
                     @else
                         <div class="in-group password">
                             <label>Mã xác nhận<i style="color: red;">*</i></label>
-                            <input type="text" name="token" id="token"  placeholder="Nhập mã xác nhận">
+                            <input type="text" name="token" id="token" required placeholder="Nhập mã xác nhận">
                             <input type="hidden" name="email" id="email" value="{{$email}}">
                         </div>
-{{--                    {{dd(($error1))}}--}}
-                        @if (session('error'))
-                            <div class="alert alert-danger">
-                                {{ session('error') }}
-                            </div>
-                        @endif
                         <div class="in-group password">
                             <label for="password">Mật khẩu mới<i style="color: red;">*</i></label>
-                            <input type="password" name="n_password" id="password" required
+                            <input type="password" name="password" id="password" required
                                    placeholder="Nhập mật khẩu mới">
-
-                            @if ($errors->any())
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        {{dd($error)}}
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif
                         </div>
 
                         <div class="in-group c_password">
