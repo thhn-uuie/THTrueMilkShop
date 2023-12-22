@@ -293,8 +293,8 @@ button.trash-icon {
     min-height: 40px;
 }
 
-.account .account-form .btn-edit button.btn.btn-primary, .btn-edit .edit {
-    padding: 0px 40px;
+.account .account-form .btn-edit button.btn.btn-primary, .btn-edit .edit, button.btn-edit.submit {
+    padding: 0px 40px !important;
     line-height: 40px;
     display: inline-block;
     width: auto;
