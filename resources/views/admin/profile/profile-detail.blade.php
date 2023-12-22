@@ -39,9 +39,9 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <div class="row product-info">
+                                <div class="row user-info">
 
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-3">
                                         <div id="image">
                                             <a href="{{ url('public/frontend/img/profile') . '/' . $profile->image  }}" target="_blank">
                                             <img
@@ -49,33 +49,35 @@
                                             </a>
                                         </div>
                                     </div>
-                                    <div class="col-sm-8">
-                                        <h1 class="h2" id="product-name">{{ $profile->name }}</h1>
+                                    <div class="col-sm-9">
+                                        <h1 class="h2" id="product-name">Thông tin người dùng</h1>
                                         <div class="row">
+                                        <div class="col-sm-6 sub-info">
+                                                <p class="tittle">Username</p>
+                                                <p id="username">{{ $profile->name }} </p>
+                                            </div>
                                             <div class="col-sm-6 sub-info">
                                                 <p class="tittle">Email</p>
-                                                <p id="description">{{ \App\Models\Profile::find($profile->id)->user->email }} </p>
+                                                <p id="email">{{ \App\Models\Profile::find($profile->id)->user->email }} </p>
                                             </div>
                                             <div class="col-sm-6 sub-info">
                                                 <p class="tittle">Điện thoại</p>
-                                                <p id="price">{{ $profile->phone }}</p>
+                                                <p id="tel">{{ $profile->phone }}</p>
                                             </div>
-                                        </div>
-                                        <div class="row">
+                                       
                                             <div class="col-sm-6 sub-info">
                                                 <p class="tittle">Ngày sinh</p>
-                                                <p id="category">{{$profile->birthday}}</p>
+                                                <p id="birthday">{{$profile->birthday}}</p>
                                             </div>
                                             <div class="col-sm-6 sub-info">
                                                 <p class="tittle">Giới tính</p>
-                                                <p id="category">{{$profile->gender}}</p>
+                                                <p id="gender">{{$profile->gender}}</p>
                                             </div>
-                                        </div>
-                                        <div class="sub-info">
+                                        <div class="col-sm-6 sub-info">
                                             <p class="tittle">Địa chỉ</p>
-                                            <p id="category">{{$profile->address}}</p>
+                                            <p id="address">{{$profile->address}}</p>
                                         </div>
-
+                                        
                                         {{--                                        <div class="sub-info">--}}
                                         {{--                                            <p class="tittle">Trạng thái</p>--}}
                                         {{--                                            @if( $profile->status == 1)--}}
@@ -102,7 +104,7 @@
 
 </div>
 
-@include('admin.component.script');
+@include('admin.component.script')
 </body>
 
 </html>

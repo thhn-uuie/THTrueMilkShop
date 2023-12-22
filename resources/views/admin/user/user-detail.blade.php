@@ -47,9 +47,9 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header pt-3">
-                                <div class="row product-info">
+                                <div class="row user-info">
                                     <div class="col-sm-12">
-                                        <h1 class="h4 mb-3" id="product-name">Thông tin tài khoản</h1>
+                                        <h1 class="h4 mb-3" id="product-name">{{ $user_item->name }}</h1>
                                     </div>
                                     <div class="col-sm-6">
                                         @if($user_item->id_role ==1)
@@ -57,7 +57,7 @@
                                         @else
                                             <h5>User</h5>
                                         @endif
-                                        <p id="id"> Username: {{ $user_item->name }}</p>
+                                        
                                         <p id="email">Email: {{ $user_item->email }}</p>
                                     </div>
                                 </div>
@@ -76,7 +76,7 @@
 
 </div>
 
-@include('admin.component.script');
+@include('admin.component.script')
 </body>
 
 </html>

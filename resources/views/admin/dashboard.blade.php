@@ -46,8 +46,8 @@ use App\Models\Category;
                                         <?php
                                         $countAdmins = User::where('id_role', 1)->count();
                                         ?>
-                                        <h6 id="u_active" style="font-size: 14px;">Admin: {{$countAdmins}}</h6>
-                                        <h6 id="u_block" style="font-size: 14px;"> User: {{$count_user-$countAdmins}}</h6>
+                                        <h6 id="u_active" style="font-size: 14px;">Quản trị viên: {{$countAdmins}}</h6>
+                                        <h6 id="u_block" style="font-size: 14px;"> Người dùng: {{$count_user-$countAdmins}}</h6>
                                     </div>
                                 </div>
                                 <div class="icon">

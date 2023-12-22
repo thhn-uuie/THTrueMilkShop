@@ -1,5 +1,6 @@
 * {}
 
+
 .w-4 {
     width: 1rem;
 }
@@ -344,4 +345,9 @@ input#product_images {
     position: absolute;
     right: 15px;
     top: 7px;
+}
+
+.user-info img {
+    max-width: 100%;
+    padding: 10px 30px 10px 0px;
 }

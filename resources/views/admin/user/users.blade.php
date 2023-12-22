@@ -77,7 +77,7 @@
                                         {{ $item->id }}
                                     </td>
                                     <td>{{ $item->name }}</td>
-                                    <td>{{ $item->email }}/td>
+                                    <td>{{ $item->email }}</td>
 
                                     <td>
                                         <svg class="text-success-500 h-6 w-6 text-success"

@@ -49,7 +49,7 @@
 							<div class="card-body">
 								<div class="row">
 
-									<div class="col-md-6">
+									<div class="col-md-12">
 										<div class="mb-3">
 											<label for="name">Username<i style="color: red;">*</i></label>
 											<input type="text" name="name" id="name" class="form-control"
@@ -61,7 +61,7 @@
                                             </div>
                                         @endif
 									</div>
-									<div class="col-md-6">
+									<div class="col-md-12">
 										<div class="mb-3">
 											<label for="email">Email<i style="color: red;">*</i></label>
 											<input type="text" name="email" id="email" class="form-control"
@@ -73,7 +73,7 @@
                                             </div>
                                         @endif
 									</div>
-									<div class="col-md-6">
+									<div class="col-md-12">
 										<div class="mb-3">
 											<label for="phone">Password<i style="color: red;">*</i></label>
 											<input type="password" name="password" id="password" class="form-control"
