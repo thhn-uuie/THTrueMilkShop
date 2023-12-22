@@ -83,13 +83,12 @@ class OrderController extends Controller
         $order_item = Order::find($id);
         $order_details = OrderDetail::where('id_order', $id)->get();
         $allCost = 0;
-        $user = Profile::where('id_user', ($order_item->id_user))->get()['0'];
         foreach ($order_details as $order_detail) {
             $allCost += $order_detail->price * $order_detail->number_product;
         }
 
         if (Auth::user()->id_role == 1) {
-            return view('admin.order.order-detail', compact(['order_details', 'allCost', 'user', 'order_item']));
+            return view('admin.order.order-detail', compact(['order_details', 'allCost', 'order_item']));
         }
     }
 

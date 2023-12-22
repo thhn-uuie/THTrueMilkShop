@@ -49,9 +49,9 @@
                                     <div class="col-sm-4 invoice-col">
                                         <h1 class="h5 mb-3">Shipping Address</h1>
                                         <address>
-                                            <strong>Tên khách hàng: </strong> {{$user->name}}<br>
-                                            <strong>SDT: </strong> {{$user->phone}}<br>
-                                            <strong>Địa chỉ: </strong> {{$user->address}}<br>
+                                            <strong>Tên khách hàng: </strong> {$order_item->name}}<br>
+                                            <strong>SDT: </strong> {{$order_item->tel}}<br>
+                                            <strong>Địa chỉ: </strong> {{$order_item->add}}<br>
                                         </address>
                                     </div>
 
