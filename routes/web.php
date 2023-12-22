@@ -60,6 +60,8 @@ Route::match(['GET', 'POST'],'/thong-tin/cap-nhat', [CustomerController::class, 
 Route::get( 'san-pham/chi-tiet/{id}', [CustomerController::class, 'detail'])->name('chi-tiet');
 Route::post('/quen-mat-khau', [AuthController::class, 'forget_password'])->name('fpassword');
 Route::get('/quen-mat-khau', [AuthController::class, 'forget_password'])->name('fpassword');
+Route::get('/doi_mat_khau', [UserController::class, 'update_password'])->middleware('auth')->name('user.changepass');
+Route::post('/doi_mat_khau', [UserController::class, 'update_password'])->middleware('auth')->name('user.changepass');
 
 
 // Backend
@@ -149,6 +151,7 @@ Route::prefix('user/order')->middleware('auth')->name('user.order.')->group(func
     Route::match(['GET', 'POST'],'/delete/{id}', [OrderController::class, 'destroy'])->name('delete');
     Route::match(['GET', 'POST'],'/create', [OrderController::class, 'store'])->name('create');
 });
+
 
 
 

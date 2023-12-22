@@ -72,7 +72,7 @@
                     <div class="navbar-nav navbar-right">
                         <div class="icon-cart" onclick="toggleCartDropdown()">
                             <i class="fa fa-solid fa-cart-shopping fa-lg"></i>
-                            <span>0</span>
+                            <span></span>
                         </div>
 
                         <div class="cart-dropdown">
@@ -82,10 +82,7 @@
                             <div class="product-info">
                                 <!-- Dynamic content will be added here -->
                             </div>
-                            <div class="total-price">
-                                <span class="label">Tổng tiền: </span>
-                                <span id="totalPrice">0 ₫</span>
-                            </div>
+                            
                             <div class="actions">
                                 <div class="action viewcart">Xem giỏ hàng</div>
                                 <div class="action checkout">Thanh toán</div>
@@ -159,18 +156,15 @@
                                             <a href="user_account.html">Thông tin tài khoản</a>
                                         </li>
                                         <li class="nav item">
-                                            <a href="https://www.thtruemart.vn/sales/order/history/">Quản lý đơn
+                                            <a href="{{route('user.order.orders')}}">Quản lý đơn
                                                 hàng</a>
                                         </li>
+                        
                                         <li class="nav item">
-                                            <a href="https://www.thtruemart.vn/customer/address/">Địa chỉ giao hàng</a>
+                                            <a href="">Đổi mật khẩu</a>
                                         </li>
                                         <li class="nav item">
-                                            <a href="https://www.thtruemart.vn/customer/account/passwordforgot/">Đổi mật
-                                                khẩu</a>
-                                        </li>
-                                        <li class="nav item">
-                                            <a href="https://www.thtruemart.vn/customer/account/logout/">Đăng xuất</a>
+                                            <a href="{{route('frontend.auth.logout')}}">Đăng xuất</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -183,7 +177,8 @@
                                 <strong>Vui lòng nhập mật khẩu mới của bạn</strong>
                             </div>
                             <div class="block-content">
-                                <form action="" id="form_shange_pass">
+                                <form method = 'POST' action="{{route('user.changepass')}}" id="form_shange_pass">
+                                    @csrf
                                     <div class="account-form form-wrap">
                                         <div class="row mb-4">
                                             <div class="form-group col-12 col-md-6 col-lg-6">
@@ -200,12 +195,11 @@
                                             </div>
                                             
                                         </div>
-                                        <div class="btn-edit submit">
-                                            <a class="action edit"
-                                                >
+                                        <button class="btn-edit submit">
+                                            
                                                 <span>Đổi mật khẩu</span>
-                                            </a>
-                                        </div>
+                                            
+                                        </button>
                                     </div>
                                 </form>
                             </div>

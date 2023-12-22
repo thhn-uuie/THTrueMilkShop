@@ -73,6 +73,38 @@ class UserController extends Controller
         return view('admin.user.user-update', compact('user'));
     }
 
+    public function update_password(Request $request)
+    {
+        $user = null;
+        if ($request->isMethod('POST')) {
+            
+            $user = User::find(Auth::user()->id);
+            if (!$user->password == $request->password) {
+                return view('frontend.user.user_cpassword', compact('user'))->with('error', 'Mật khẩu cũ không đúng');
+            }
+            $validator = Validator::make($request->all(), [
+                'new_password' => [
+                    'required',
+                    'min:8',
+                    'regex:/^(?=.*\d)(?=.*[A-Z]).*$/',
+                ],
+            ]);
+            if ($validator->fails()) {
+                return redirect()->back()->withErrors('Mật khẩu phải có ít nhất 8 ký tự bao gồm chữ cái hoa, chữ số')->withInput();
+            }
+            $result = $user->update([
+                'password' => Hash::make($request->new_password),
+            ]);
+            if ($result) {
+                return redirect()->route('user.user_account')->with('success', 'Cập nhật mật khẩu thành công');
+            }
+        }
+
+        
+        return view('frontend.user.user_cpassword', compact('user'));
+    }
+
+
     public function destroy(Request $request, string $id)
     {
         if ($request->isMethod('POST')) {

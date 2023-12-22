@@ -1,1 +1,1 @@
-Xin chào {{$name}}, đây là mã đổi mật khẩu của bạn {{$token}}
+Xin chào {{$name}}, đây là mật khẩu tạm thời của bạn {{$password}}

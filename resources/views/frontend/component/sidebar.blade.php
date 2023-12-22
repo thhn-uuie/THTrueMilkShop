@@ -9,7 +9,7 @@
                 <a href="{{route('user.order.orders')}}">Quản lý đơn hàng</a>
             </li>
             <li class="nav item">
-                <a href="https://www.thtruemart.vn/customer/account/passwordforgot/">Đổi mật
+                <a href="{{route('user.changepass')}}">Đổi mật
                     khẩu</a>
             </li>
             <li class="nav item">
