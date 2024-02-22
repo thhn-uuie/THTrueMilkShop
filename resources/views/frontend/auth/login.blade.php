@@ -16,15 +16,6 @@
             <div class="card-text">
                 <form method="POST" action="{{route('frontend.auth.login')}}">
                     @csrf
-                    <!-- <div class="in-group username">
-                                <label for="username">Username<i style="color: red;">*</i></label>
-                                <input type="text" name="username" id="username" required>
-                            </div>
-
-                            <div class="in-group email">
-                                <label for="email">Email<i style="color: red;">*</i></label>
-                                <input type="email" name="email" id="email" required>
-                            </div> -->
 
                     <div class="in-group tel">
                         <label for="text">Username<i style="color: red;">*</i></label>

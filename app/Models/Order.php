@@ -25,6 +25,10 @@ class Order extends Model
             $sum = $sum +  $ord->number_product * $ord->price;
         }
         return $sum;
+    }
 
+    public function username()
+    {
+        return $this->belongsTo(User::class, 'id_user');
     }
 }

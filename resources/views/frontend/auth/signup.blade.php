@@ -38,7 +38,7 @@
                 <p>Đăng ký</p>
             </div>
             <div class="card-text">
-                <form method="POST" action="" id="form-signup">
+                <form method="POST" action="{{route('frontend.auth.signup')}}" id="form-signup">
                     @csrf
                     @if (session('success'))
                         <div class="alert alert-primary">
@@ -67,10 +67,6 @@
                         @endif
                     </div>
 
-                    {{--                        <div class="in-group tel">--}}
-                    {{--                            <label for="tel">Số điện thoại<i style="color: red;">*</i></label>--}}
-                    {{--                            <input type="tel" name="tel" id="tel" required placeholder="Nhập số điện thoại">--}}
-                    {{--                        </div>--}}
 
                     <div class="in-group password">
                         <label for="password">Mật khẩu<i style="color: red;">*</i></label>
@@ -82,13 +78,7 @@
                             </div>
                         @endif
                     </div>
-
-                    <!-- <div class="in-group email">
-                        <label for="password">Nhập lại mật khẩu<i style="color: red;">*</i></label>
-                        <input type="password" name="c-password" id="c-password" required placeholder="Nhập lại mật khẩu">
-                    </div> -->
-
-                    <!-- /.col -->
+                    <input type="hidden" name="id_role" value="2">
                     <div class="in-group">
                         <button type="submit" class="btn btn-primary btn-block">Đăng ký</button>
                         <!-- /.col -->
@@ -104,49 +94,6 @@
     </div>
 </div>
 
-<!-- đang lỗi huhu -->
-<!-- Bao gồm thư viện jQuery Validate -->
-<!-- <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-
-<script>
-
-    $(document).ready(function () {
-        $.validator.addMethod(
-            "phoneFormat",
-            function (value, element) {
-                // Kiểm tra số điện thoại chỉ chứa chữ số và dấu "+"
-                return this.optional(element) || /^[0-9+]+$/.test(value);
-            },
-            "Số điện thoại không hợp lệ."
-        );
-        $("#form-sigup").validate({
-            rules: {
-                username: {
-                    required: true,
-                },
-                password: {
-                    required: true,
-                },
-                tel: {
-                    required: true,
-                    phoneFormat: true,
-                }
-            },
-            messages: {
-                username: {
-                    required: "Vui lòng nhập giá tiền"
-                },
-                password: {
-                    required: "Vui lòng nhập password"
-                },
-                tel: {
-                    required: "Vui lòng nhập số điện thoại",
-                    digits: "Số điện thoại chỉ được chứa chữ số"
-                }
-            }
-        });
-    });
-</script> -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>

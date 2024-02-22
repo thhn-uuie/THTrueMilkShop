@@ -35,7 +35,6 @@
                 <span class="item"><a href="{{ asset('/') }}">Trang chủ > </a></span>
                 <span class="item"><a href="{{ asset('/san-pham') }}">Sản phẩm > </a></span>
                 <span class="item"><a href="{{ route('chi-tiet', ['id'=>$product->id]) }}">{{$product->name_product}} </a></span>
-
             </div>
         </div>
 

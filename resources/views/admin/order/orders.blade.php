@@ -54,25 +54,29 @@
 				<div class="container-fluid">
 					<div class="card">
 						<div class="card-header">
-							<div class="card-tools">
-								<div class="input-group input-group" style="width: 250px;">
-									<input type="text" name="table_search" class="form-control float-right"
-										placeholder="Search">
+                            <div class="card-tools">
+                                <form action=""></form>
+                                <form action="{{ route('admin.order.search-order') }}" method="get">
+                                    @csrf
+                                    <div class="input-group input-group" style="width: 250px;">
+                                        <input type="text" name="search" class="form-control float-right"
+                                               placeholder="Search" value=" {{ isset($search) ? $search : " " }}">
 
-									<div class="input-group-append">
-										<button type="submit" class="btn btn-default">
-											<i class="fas fa-search"></i>
-										</button>
-									</div>
-								</div>
-							</div>
+                                        <div class="input-group-append">
+                                            <button type="submit" class="btn btn-default">
+                                                <i class="fas fa-search"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
 						</div>
 						<div class="card-body table-responsive p-0">
 							<table class="table table-hover text-nowrap">
 								<thead>
 									<tr>
 										<th>ID</th>
-										<th>ID Customer</th>
+										<th>Customer</th>
 										<th>Note</th>
 										<th>Status</th>
 										<th>Date Purchased</th>
@@ -82,7 +86,7 @@
 								@foreach($order as $item)
                                 <tr>
                                     <td> {{ $item->id }} </td>
-                                    <td> {{ $item->id_user}}</td>
+                                    <td> {{ $item->username->name}}</td>
                                     <td> {{ $item->note}}</td>
                                     <td> {{ $item->status}}</td>
 									<td> {{ $item->order_date}}

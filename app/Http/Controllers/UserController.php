@@ -77,7 +77,7 @@ class UserController extends Controller
     {
         $user = null;
         if ($request->isMethod('POST')) {
-            
+
             $user = User::find(Auth::user()->id);
             if (!$user->password == $request->password) {
                 return view('frontend.user.user_cpassword', compact('user'))->with('error', 'Mật khẩu cũ không đúng');
@@ -100,7 +100,7 @@ class UserController extends Controller
             }
         }
 
-        
+
         return view('frontend.user.user_cpassword', compact('user'));
     }
 
@@ -119,5 +119,19 @@ class UserController extends Controller
         } else {
             return view('errors.405');
         }
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->search;
+        $user = User::where(function ($query) use ($search) {
+            $query->where('name', 'like', "%$search%")
+            ->orWhere('email', 'like', "%$search%");
+        })
+            ->paginate(5);
+
+        $user->appends(['search' => $search]); // Thêm tham số tìm kiếm vào liên kết phân trang
+
+        return view('admin.user.users', compact('user', 'search'));
     }
 }

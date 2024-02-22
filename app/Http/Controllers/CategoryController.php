@@ -48,7 +48,7 @@ class CategoryController extends Controller
             $request->merge(['image' => $file_name]);
             $category = Category::create($request->all());
             if ($category) {
-                return redirect()->route('admin.category.category-detail', ['id'=>$category->id])->with('success', 'Thêm mới thành công');
+                return redirect()->route('admin.category.category-detail', ['id' => $category->id])->with('success', 'Thêm mới thành công');
             }
         }
         return view('admin.category.create-category');
@@ -89,8 +89,8 @@ class CategoryController extends Controller
                 $file->move(public_path('admin/img/category'), $file_name);
                 $request->merge(['image' => $file_name]);
             } else {
-                    $file_name = $category->image;
-                    $request->merge(['image' => $file_name]);
+                $file_name = $category->image;
+                $request->merge(['image' => $file_name]);
 
             }
             if ($request->status == 0) {
@@ -110,7 +110,7 @@ class CategoryController extends Controller
      */
     public function destroy(Request $request, string $id)
     {
-        if($request->isMethod('POST')) {
+        if ($request->isMethod('POST')) {
             $category = Category::find($id);
             $oldFile = public_path('admin/img/category') . '/' . $category->image;
             if (File::exists($oldFile)) {
@@ -126,4 +126,17 @@ class CategoryController extends Controller
             return view('errors.405');
         }
     }
+
+    public function search(Request $request)
+    {
+        $search = $request->search;
+        $categories = Category::where(function ($query) use ($search) {
+            $query->where('name_category', 'like', "%$search%");
+        })->paginate(5);
+
+        $categories->appends(['search' => $search]); // Thêm tham số tìm kiếm vào liên kết phân trang
+
+        return view('admin.category.categories', compact('categories', 'search'));
+    }
+
 }

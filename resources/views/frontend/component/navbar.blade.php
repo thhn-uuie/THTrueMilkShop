@@ -21,11 +21,8 @@ use App\Models\Gallery;
     </div>
 
     <?php $authCheck = Auth::check(); ?>
-        <!-- Shopping cart tạm thế đã -->
     <div class="navbar-nav navbar-right">
         <div class="login">
-
-
                 @if($authCheck == false)
                 <div class="icon-login">
                 <i class="fa fa-solid fa-user fa-lg"></i>
@@ -160,14 +157,14 @@ use App\Models\Gallery;
 
             </li>
 
-            <li class="page-scroll">
-                <a href="{{ route('khuyen_mai') }}">Khuyến mãi</a>
-            </li>
-           
-            <li class="page-scroll">
-                <a href="{{ route('truyen_thong') }}">Truyền thông</a>
+{{--            <li class="page-scroll">--}}
+{{--                <a href="{{ route('khuyen_mai') }}">Khuyến mãi</a>--}}
+{{--            </li>--}}
 
-            </li>
+{{--            <li class="page-scroll">--}}
+{{--                <a href="{{ route('truyen_thong') }}">Truyền thông</a>--}}
+
+{{--            </li>--}}
 
             </li>
             <!-- <li class="page-scroll">

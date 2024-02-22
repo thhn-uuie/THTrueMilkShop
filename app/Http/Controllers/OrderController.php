@@ -43,7 +43,7 @@ class OrderController extends Controller
             $data = Order::create([
                 'id_user' => $id,
                 'note' => $request->note ?? '',
-                'status' => '0',
+                'status' => 'Đang chờ',
                 'name' => $request->name,
                 'tel' => $request->tel,
                 'add' => $request->addr,
@@ -64,7 +64,7 @@ class OrderController extends Controller
                     $san_pham->delete();
                 }
 
-                $order = Order::where('id_user', Auth::user()->id)->get();
+                $order = Order::where('id_user', Auth::user()->id)->paginate(5);
 //                return view('frontend.user.user_order', compact('order'));
 
                 return redirect()->route('user.order.orders', compact('order'));
@@ -127,6 +127,21 @@ class OrderController extends Controller
     {
         $order = Order::where('id_user', Auth::user()->id)->get();
         return view('frontend.user.user_order', compact('order'));
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->search;
+        $order = Order::where(function ($query) use ($search) {
+            $query->where('status', 'like', "%$search%");
+        })
+            ->orWhereHas('username', function ($query) use ($search) {
+                $query->where('name', 'like', "%$search%");
+            })
+            ->paginate(5);
+        $order->appends(['search' => $search]); // Thêm tham số tìm kiếm vào liên kết phân trang
+
+        return view('admin.order.orders', compact('order', 'search'));
     }
 
 }

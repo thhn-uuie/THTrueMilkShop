@@ -46,7 +46,7 @@
                             <p class="card-text">Mọi câu chuyện đều có một khởi đầu. Với TH, chúng tôi bắt đầu câu
                                 chuyện của mình
                                 bằng khao khát vươn lên mang tên tầm vóc Việt</p>
-                            <a href="#" class="btn btn-primary">Chi tiết</a>
+                            <a href="" class="btn btn-primary">Chi tiết</a>
                         </div>
                     </div>
                 </div>
@@ -57,7 +57,7 @@
                         <div class="card-body">
                             <h5 class="card-title">QUI TRÌNH SẢN XUẤT SỮA TƯƠI SẠCH</h5>
                             <p class="card-text">Tìm hiểu qui trình sản xuất sữa sạch TH true MILK</p>
-                            <a href="#" class="btn btn-primary">Chi tiết</a>
+                            <a href="{{ route('quytrinh') }}" class="btn btn-primary">Chi tiết</a>
                         </div>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
                         <div class="card-body">
                             <h5 class="card-title">TRANG TRẠI TH</h5>
                             <p class="card-text">Tham quan trang trại ứng dụng công nghệ cao lớn nhất Châu Á</p>
-                            <a href="#" class="btn btn-primary">Chi tiết</a>
+                            <a href="{{ route('trangtrai') }}" class="btn btn-primary">Chi tiết</a>
                         </div>
                     </div>
                 </div>

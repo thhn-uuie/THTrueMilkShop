@@ -339,7 +339,7 @@ input#product_images {
     margin: 10px 0 20px 0;
     width: 100%;
 }
- 
+
 .login-box .alert.alert-success.alert-block button.close {
     color: black;
     position: absolute;
@@ -381,4 +381,17 @@ section.content.chart-dash {
 
 .content-wrapper{
     min-height: 384.76px !important;
+}
+
+.signup{
+    margin-top: 10px;
+    font-size: 15px;
+    text-align: center;
+}
+.signup label{
+    color: #0313ab;
+    cursor: pointer;
+}
+.signup label:hover{
+    text-decoration: underline;
 }

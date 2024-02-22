@@ -65,9 +65,10 @@
                                         <b>Tổng tiền:</b> {{$allCost+25000}}đ<br>
                                         <?php
                                         $statuses = [
-                                            0 => "Đã xác nhận",
-                                            1 => "Đang vận chuyển",
-                                            2 => "Giao thành công",
+                                            "Đang chờ" => "Đang chờ",
+                                            "Đã xác nhận" => "Đã xác nhận",
+                                            "Đang vận chuyển" => "Đang vận chuyển",
+                                            "Giao thành công" => "Giao thành công"
                                         ];
 
                                         ?>
@@ -114,18 +115,24 @@
                     </div>
                     <div class="col-md-3">
                         <div class="card">
+                            <?php $currentStatus = $order_item->status; ?>
                             <form method="POST" action="{{ route('update-status') }}">
                                 @csrf
                                 <div class="card-body">
                                     <h2 class="h4 mb-3">Order Status</h2>
                                     <div class="mb-3">
                                         <input type="hidden" name="id" value="{{ $order_details['0']->id_order }}">
-
-
                                         <select name="status" id="status" class="form-control">
-                                            <option value="0">Đã xác nhận</option>
-                                            <option value="1">Đang vận chuyển</option>
-                                            <option value="2">Giao thành công</option>
+                                            <option value="{{ $currentStatus }}" disabled selected> {{ $currentStatus }}</option>
+                                            @foreach($statuses as $key => $value)
+                                                @if($key !== $currentStatus)
+                                                    <option value="{{ $key }}"> {{ $value }} </option>
+                                                @endif
+                                            @endforeach
+{{--                                            <option value="Đang chờ"> Đang chờ </option>--}}
+{{--                                            <option value="Đã xác nhận"> Đã xác nhận </option>--}}
+{{--                                            <option value="Đang vận chuyển"> Đang vận chuyển </option>--}}
+{{--                                            <option value="Giao thành công"> Giao thành công </option>--}}
                                         </select>
                                     </div>
                                     <div class="mb-3">

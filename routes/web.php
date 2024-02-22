@@ -45,6 +45,10 @@ Route::post('/verify', [AuthController::class, 'verify'])->name('verify');
 Route::get('/logout', [AuthController::class, 'logout'])->name('frontend.auth.logout');
 
 Route::get('/cau-chuyen-that-th', [SiteController::class, 'story'])->name('cau_chuyen_that_th');
+Route::get('/quy-trinh', [SiteController::class, 'quytrinh'])->name('quytrinh');
+Route::get('/trang-trai', [SiteController::class, 'trangtrai'])->name('trangtrai');
+
+
 
 Route::get('/san-pham', [SiteController::class, 'product'])->name('san_pham');
 Route::get('/detail', [SiteController::class, 'show'])->name('detail');
@@ -70,7 +74,13 @@ Route::post('/doi_mat_khau', [UserController::class, 'update_password'])->middle
 
 Route::get('/admin/login', [AdminController::class, 'login'])->name('admin.login');
 Route::post('/admin/login', [AdminController::class, 'postLogin']);
+
 Route::get('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
+
+Route::get('/admin/register', [AdminController::class, 'register'])->name('admin.register');
+Route::post('/admin/register', [AdminController::class, 'postRegister']);
+
+Route::post('/admin/verify', [AdminController::class, 'verify'])->name('verify');
 
 // Dashboard
 Route::get('/admin', [DashboardController::class, 'index'])->name('admin.dashboard')->middleware('admin');
@@ -92,6 +102,8 @@ Route::prefix('admin/category')->middleware('admin')->name('admin.category.')->g
     // Update category:  localhost/project/admin/category/update/{id}
     Route::match(['GET', 'POST'],'/update/{id}', [CategoryController::class, 'update'])->name('category-update');
 
+    Route::get('/search', [CategoryController::class, 'search'])->name('search-category');
+
 });
 
 
@@ -112,6 +124,9 @@ Route::prefix('admin/product')->middleware('admin')->name('admin.product.')->gro
     // Update: localhost/project/admin/product/update/{id}
     Route::match(['GET', 'POST'],'/update/{id}', [ProductController::class, 'update'])->name('product-update');
 
+    Route::get('/search', [ProductController::class, 'search'])->name('search-product');
+
+
 });
 Route::post('/deleteimage/{id}',[ProductController::class,'deleteimage'])->name('deleteimage');
 Route::post('/upload-image',[ProductController::class,'uploadImage'])->name('uploadimage');
@@ -126,6 +141,7 @@ Route::prefix('admin/user')->middleware('admin')->name('admin.user.')->group(fun
     Route::match(['GET', 'POST'],'/detail/{id}', [UserController::class, 'show'])->name('user-detail');
     Route::match(['GET', 'POST'],'/delete/{id}', [UserController::class, 'destroy'])->name('delete');
     Route::match(['GET', 'POST'],'/update/{id}', [UserController::class, 'update'])->name('user-update');
+    Route::get('/search', [UserController::class, 'search'])->name('search-user');
 
 });
 
@@ -142,13 +158,16 @@ Route::prefix('admin/order')->middleware('admin')->name('admin.order.')->group(f
     Route::match(['GET', 'POST'],'/detail/{id}', [OrderController::class, 'show'])->name('detail');
     Route::match(['GET', 'POST'],'/delete/{id}', [OrderController::class, 'destroy'])->name('delete');
     Route::match(['GET', 'POST'],'/update/{id}', [OrderController::class, 'update'])->name('update');
+    Route::get('/search', [OrderController::class, 'search'])->name('search-order');
 });
 
+// User order
 Route::prefix('user/order')->middleware('auth')->name('user.order.')->group(function () {
     Route::get('/', [OrderController::class, 'index_user'])->name('orders');
     Route::match(['GET', 'POST'],'/detail/{id}', [OrderController::class, 'show'])->name('detail');
     Route::match(['GET', 'POST'],'/delete/{id}', [OrderController::class, 'destroy'])->name('delete');
     Route::match(['GET', 'POST'],'/create', [OrderController::class, 'store'])->name('create');
+
 });
 
 

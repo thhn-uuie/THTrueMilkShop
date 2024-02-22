@@ -42,13 +42,14 @@ class AuthController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
-                'email_token'=>$token
+                'email_token'=>$token,
+                'id_role'=>$request->id_role,
             ]);
 
             Mail::to($request->email)->send(new Hello($request->name,  $token));
         } catch (\Throwable $th) {
             $user->delete();
-            
+
         }
         return redirect()->route('frontend.auth.login');
     }
@@ -122,7 +123,7 @@ class AuthController extends Controller
 
     }
 
-    public function forget_password(Request $request) {    
+    public function forget_password(Request $request) {
         if ($request->isMethod('POST')) {
             try {
                 $email =  $request->email;

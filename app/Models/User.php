@@ -22,6 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'id_role',
         'email_token',
         'email_verified_at'
     ];
@@ -64,7 +65,7 @@ class User extends Authenticatable
         $profile = new Profile();
         $profile->id_user = $this->id;
         $profile->image = 'no-image.jpg';
-    
+
         $this->profile()->save($profile);
     }
     public function profile()

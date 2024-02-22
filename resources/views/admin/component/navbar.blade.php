@@ -19,7 +19,7 @@
         </li>
         <li class="nav-item dropdown">
             <a class="nav-link p-0 pr-3" data-toggle="dropdown" href="#">
-                <img src="{{ url('public/admin/img/avatar5.png') }}" class="img-circle elevation-2" width="40"
+                <img src="{{ url('public/admin/img/avatar-admin.jpg') }}" class="img-circle elevation-2" width="40"
                      height="40"
                      alt="">
             </a>

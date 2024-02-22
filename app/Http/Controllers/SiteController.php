@@ -18,6 +18,16 @@ class SiteController extends Controller
         return view('frontend.trang_chu.cau_chuyen_that_th');
     }
 
+    public function quytrinh()
+    {
+        return view('frontend.trang_chu.quytrinh');
+    }
+
+    public function trangtrai()
+    {
+        return view('frontend.trang_chu.trangtrai');
+    }
+
     public function product()
     {
 //        $products = Product::all();

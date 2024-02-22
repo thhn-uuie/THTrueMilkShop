@@ -55,7 +55,7 @@
                         <!-- <button class="action checkout" onclick="clearUserOrders()">Clear</button> -->
                         <div class="block-content order-content">
                             @foreach($order as $ord)
-                                <div class="order-container"><strong>Order: #{{$ord->id}}</strong>
+                                <div class="order-container"><strong>Trạng thái đơn hàng: {{$ord->status}}</strong>
                                     @foreach($ord->order_detail() as $item)
                                         <div class="order-item">
                                             <img

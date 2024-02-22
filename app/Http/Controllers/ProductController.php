@@ -130,7 +130,7 @@ class ProductController extends Controller
 
             if ($old_price !== $request->price) {
                 Cart::where('id_product', $product->id)->update([
-                    'price'=>$request->price
+                    'price' => $request->price
                 ]);
             }
             return redirect()->route('admin.product.product-detail', ['id' => $product->id])->with('success', 'Cập nhật sản phẩm thành công');
@@ -143,7 +143,7 @@ class ProductController extends Controller
      */
     public static function destroy(Request $request, string $id)
     {
-        if($request->isMethod('POST')) {
+        if ($request->isMethod('POST')) {
             $product = Product::find($id);
             foreach ($product->image as $item) {
                 if ($item->image != 'no-image.jpg') {
@@ -185,4 +185,19 @@ class ProductController extends Controller
         return back();
     }
 
+    public function search(Request $request)
+    {
+        $search = $request->search;
+        $products = Product::where(function ($query) use ($search) {
+            $query->where('name_product', 'like', "%$search%");
+        })
+            ->orWhereHas('category', function ($query) use ($search) {
+                $query->where('name_category', 'like', "%$search%");
+            })
+            ->paginate(5);
+
+        $products->appends(['search' => $search]); // Thêm tham số tìm kiếm vào liên kết phân trang
+
+        return view('admin.product.products', compact('products', 'search'));
+    }
 }
