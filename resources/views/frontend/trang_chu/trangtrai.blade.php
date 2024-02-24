@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Câu chuyện thật TH – TH true MILK</title>
+    <title>Trang trại TH – TH true MILK</title>
     <link href="{{ asset('/public/frontend/css/trangtrai.css') }}" rel="stylesheet">
 
     @include('frontend.component.head')
@@ -29,7 +29,7 @@
         <div class="container">
             <span class="item"><a href="{{ asset('/') }}">Trang chủ > </a></span>
             <span class="item"><a href="{{ route('cau_chuyen_that_th') }}">Câu chuyện thật TH> </a></span>
-            <span class="item">Quy trình sản xuất sữa tươi sạch</span>
+            <span class="item" style="color: #befffb">Trang trại</span>
         </div>
     </div>
 

@@ -46,7 +46,7 @@
                             <p class="card-text">Mọi câu chuyện đều có một khởi đầu. Với TH, chúng tôi bắt đầu câu
                                 chuyện của mình
                                 bằng khao khát vươn lên mang tên tầm vóc Việt</p>
-                            <a href="" class="btn btn-primary">Chi tiết</a>
+                            <a href="{{ route('truebook') }}" class="btn btn-primary">Chi tiết</a>
                         </div>
                     </div>
                 </div>

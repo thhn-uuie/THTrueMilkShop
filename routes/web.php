@@ -47,6 +47,8 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('frontend.auth.lo
 Route::get('/cau-chuyen-that-th', [SiteController::class, 'story'])->name('cau_chuyen_that_th');
 Route::get('/quy-trinh', [SiteController::class, 'quytrinh'])->name('quytrinh');
 Route::get('/trang-trai', [SiteController::class, 'trangtrai'])->name('trangtrai');
+Route::get('/true-book', [SiteController::class, 'truebook'])->name('truebook');
+
 
 
 

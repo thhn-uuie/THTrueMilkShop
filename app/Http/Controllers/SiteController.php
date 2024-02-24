@@ -28,6 +28,11 @@ class SiteController extends Controller
         return view('frontend.trang_chu.trangtrai');
     }
 
+    public function truebook()
+    {
+        return view('frontend.trang_chu.truebook');
+    }
+
     public function product()
     {
 //        $products = Product::all();
