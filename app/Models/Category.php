@@ -11,7 +11,7 @@ class Category extends Model
 
     protected $table = 'category';
     public $timestamps = false;
-    protected $fillable = ['name_category', 'image', 'status'];
+    protected $fillable = ['name_category', 'image', 'status', 'created_at', 'created_by'];
 
     public function products()
     {

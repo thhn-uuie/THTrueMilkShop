@@ -9,7 +9,9 @@ use App\Models\Product;
 use App\Models\Cart;
 use App\Models\ProductImages;
 use App\Models\OrderDetail;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
@@ -41,6 +43,8 @@ class ProductController extends Controller
             $product->description = $request->description;
             $product->id_category = $request->category;
             $product->status = $request->status;
+            $product->created_at = Carbon::now();
+            $product->created_by = Auth::user()->id;
             $product->save();
 
             if ($request->hasFile('product_images')) {

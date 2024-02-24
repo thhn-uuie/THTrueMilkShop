@@ -22,6 +22,8 @@
             <div class="card-text">
                 <form method="POST" action="{{route('verify')}}" enctype="multipart/form-data">
                     @csrf
+                    <p style="font-style: italic">Kiểm tra email bạn đã đăng ký để lấy mã xác nhận tài khoản.</p>
+
                     <div class="in-group password">
                         <label for="password">Mã xác nhận<i style="color: red;">*</i></label>
                         <input type="text" name="token_input" placeholder="Nhập mã xác nhận">

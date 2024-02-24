@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
@@ -46,7 +48,12 @@ class CategoryController extends Controller
                 $file->move(public_path('admin/img/category'), $file_name);
             }
             $request->merge(['image' => $file_name]);
-            $category = Category::create($request->all());
+            $category = Category::create([
+                'name_category' => $request->name_category,
+                'image' =>  $request->image,
+                'created_by' => Auth::user()->id,
+                'created_at' => \Carbon\Carbon::now(),
+            ]);
             if ($category) {
                 return redirect()->route('admin.category.category-detail', ['id' => $category->id])->with('success', 'Thêm mới thành công');
             }
