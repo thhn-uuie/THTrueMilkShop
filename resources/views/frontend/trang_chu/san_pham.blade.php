@@ -45,12 +45,19 @@
                                 <a class="c-listitem1__link1"
                                    href="{{asset('/san-pham')}}">
                                     <div class="c-listitem1__img1">
+                                        <a href="#"
+                                           data-target="{{ 'category-' . $item->id }}">
                                         <img src="{{ url('/public/admin/img/category') . '/' . $item->image }}"
-                                             alt="ic-suatietrung"
                                              style="width: 60px!important; height: 60px!important;">
+                                        </a>
                                     </div>
                                     <article class="c-listitem1__content1">
-                                        <h4 class="title1">{{ $item->name_category }}</h4>
+                                        <h4 class="title1">
+                                            <a href="#"
+                                               data-target="{{ 'category-' . $item->id }}">
+
+                                                {{ $item->name_category }}
+                                            </a></h4>
                                     </article>
                                 </a>
                             </div>
@@ -66,7 +73,7 @@
             @foreach($category as $item)
                     <?php $products = \App\Models\Product::where('id_category', $item->id)->where('status', 1)->get(); ?>
                 @if($products->isNotEmpty())
-                    <div class="p-product2__box1" id="">
+                    <div class="p-product2__box1" id="{{ 'category-' . $item->id }}">
                         <h2 class="p-product2__title1">{{ $item->name_category }}</h2>
                         <div class="c-listitem3-root1">
                             <div class="c-listitem3">
@@ -176,6 +183,27 @@
         // Redirect to login page if needed
 
     }
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Lấy tất cả các anchor tag có thuộc tính data-target
+        const anchors = document.querySelectorAll("[data-target]");
+        // Lặp qua từng anchor tag
+        anchors.forEach(function(anchor) {
+            // Gán sự kiện click cho anchor tag
+            anchor.addEventListener("click", function(event) {
+                event.preventDefault();
+                // Lấy giá trị của thuộc tính data-target
+                const target = this.getAttribute("data-target");
+                // Di chuyển đến phần sản phẩm tương ứng
+                const element = document.getElementById(target);
+                if (element) {
+                    element.scrollIntoView({ behavior: "smooth" });
+                }
+            });
+        });
+    });
 </script>
 </body>
 

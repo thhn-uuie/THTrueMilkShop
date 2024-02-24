@@ -36,7 +36,9 @@ class SiteController extends Controller
     public function product()
     {
 //        $products = Product::all();
-        $category = Category::where('status', 1)->get();
+        $category = Category::whereHas('products', function ($query) {
+            $query->where('status', 1);
+        })->get();
         return view('frontend.trang_chu.san_pham', compact('category'));
     }
 
