@@ -22,7 +22,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate(5);
+        $products = Product::where('created_by', Auth::id())->paginate(5);
         return view('admin.product.products', compact('products'));
     }
 
@@ -80,16 +80,15 @@ class ProductController extends Controller
     public function show(string $id)
     {
         $product_item = Product::find($id);
+        if (!$product_item || $product_item->created_by !== Auth::id()) {
+            abort(403, 'Unauthorized');
+        }
         return view('admin.product.product-detail', compact('product_item'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -97,6 +96,9 @@ class ProductController extends Controller
     public function update(Request $request, string $id)
     {
         $product = Product::find($id);
+        if (!$product || $product->created_by !== Auth::id()) {
+            abort(403, 'Unauthorized');
+        }
         $old_price = $product->price;
 
         if ($request->isMethod('POST')) {

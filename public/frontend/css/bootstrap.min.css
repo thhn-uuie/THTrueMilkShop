@@ -1359,7 +1359,7 @@ html {
 }
 
 body {
-    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "DINRoundOT";
     font-size: 15px;
     line-height: 1.42857143;
     color: #2c3e50;
@@ -1373,12 +1373,12 @@ input,button,select,textarea {
 }
 
 a {
-    color: #18bc9c;
+    color: #103A71;
     text-decoration: none
 }
 
 a:hover,a:focus {
-    color: #18bc9c;
+    color: #10473c;
     text-decoration: underline
 }
 
@@ -1456,7 +1456,7 @@ hr {
 }
 
 h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {
-    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "DINRoundOT";
     font-weight: 400;
     line-height: 1.1;
     color: inherit

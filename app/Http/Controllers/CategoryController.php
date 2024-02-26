@@ -24,7 +24,7 @@ class CategoryController extends Controller
 //    }
     public function index()
     {
-        $categories = Category::paginate(5);
+        $categories = Category::where('created_by', Auth::id())->paginate(5);
         return view('admin.category.categories', compact('categories'));
     }
 
@@ -55,7 +55,7 @@ class CategoryController extends Controller
                 'created_at' => \Carbon\Carbon::now(),
             ]);
             if ($category) {
-                return redirect()->route('admin.category.category-detail', ['id' => $category->id])->with('success', 'Thêm mới thành công');
+                return redirect()->route('admin.category.categories')->with('success', 'Thêm mới thành công');
             }
         }
         return view('admin.category.create-category');
@@ -64,19 +64,11 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        $category_item = Category::find($id);
-        return view('admin.category.category-detail', compact('category_item'));
-    }
+
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -85,6 +77,9 @@ class CategoryController extends Controller
     {
 //        dd($this->config());
         $category = Category::find($id);
+        if (!$category || $category->created_by !== Auth::id()) {
+            abort(403, 'Unauthorized');
+        }
         if ($request->isMethod('POST')) {
             if ($request->has('file_upload')) {
                 $oldFile = public_path('admin/img/category') . '/' . $category->image;

@@ -97,7 +97,6 @@ Route::prefix('admin/category')->middleware('admin')->name('admin.category.')->g
     Route::match(['GET', 'POST'],'/create', [CategoryController::class, 'store'])->name('create-category');
 
     // Xem chi tiết: localhost/project/admin/category/detail/{id}
-    Route::match(['GET', 'POST'],'/detail/{id}', [CategoryController::class, 'show'])->name('category-detail');
 
     Route::match(['GET', 'POST'],'/delete/{id}', [CategoryController::class, 'destroy'])->name('delete');
 

@@ -96,7 +96,7 @@
                                         <td>
                                             <img
                                                 src="{{ url('public/admin/img/category') . '/' . $item->image }}"
-                                                class="img-thumbnail" width="30%">
+                                                class="img-thumbnail" width="125px">
                                         </td>
                                         <td> {{ $item->name_category }} </td>
 
@@ -121,17 +121,6 @@
                                         </td>
                                         <td>
                                             <div class="col-sm-6 d-flex">
-{{--                                                <a href="{{ route('admin.category.category-detail', ['id' => $item->id]) }}"--}}
-{{--                                                   class="mr-2">--}}
-{{--                                                    <svg class="filament-link-icon w-4 h-4 mr-1"--}}
-{{--                                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"--}}
-{{--                                                         fill="currentColor" aria-hidden="true">--}}
-{{--                                                        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>--}}
-{{--                                                        <path fill-rule="evenodd"--}}
-{{--                                                              d="M19.707 9.293a1 1 0 010 1.414l-9 9a1 1 0 01-1.414 0l-9-9a1 1 0 111.414-1.414L10 16.586l8.293-8.293a1 1 0 011.414 0z"--}}
-{{--                                                              clip-rule="evenodd"/>--}}
-{{--                                                    </svg>--}}
-{{--                                                </a>--}}
                                                 <a href="{{ route('admin.category.category-update', ['id' => $item->id]) }}"
                                                    class="mr-2">
                                                     <svg class="filament-link-icon w-4 h-4 mr-1"
