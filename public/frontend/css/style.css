@@ -927,6 +927,11 @@ font-size: 14px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin-bottom: 20px;
+}
+
+.c-listitem3 span.info1__price1 {
+    font-size: 14px;
 }
 
 .c-listitem3-root1 {
@@ -941,7 +946,7 @@ font-size: 14px;
     height: 72px;
     background: url(https://www.thmilk.vn/wp-content/themes/wp-th/assets/images/product/bg-ke.png) no-repeat left top;
     background-size: 100% 100%;
-    bottom: 43px;
+    bottom: 55px;
 }
 
 .c-listitem3__card1 {

@@ -76,45 +76,49 @@
                     <div class="p-product2__box1" id="{{ 'category-' . $item->id }}">
                         <h2 class="p-product2__title1">{{ $item->name_category }}</h2>
                         <div class="c-listitem3-root1">
-                            <div class="c-listitem3">
+                        @php $count = 0; @endphp
+                        @foreach($products as $product)
+                            @if($count % 3 == 0)
+                                <div class="c-listitem3">
+                            @endif
 
-                                @foreach($products as $product)
-                                    <div class="c-listitem3__card1 item1-js">
-                                        <div class="c-listitem3__img1">
-                                                <?php $galleryProduct = \App\Models\Gallery::where('id_product', $product->id)->get(); ?>
-                                            <a href="{{ route('chi-tiet', ['id' => $product->id]) }}">
-                                                <img style="width: 150px!important; height: 150px!important;"
-                                                     src="{{ url('public/admin/img/product') . '/' . $galleryProduct->first()->image }}"
-                                                     alt="{{$product->name_product}}">
-                                            </a>
-
+                            <div class="c-listitem3__card1 item1-js">
+                                <div class="c-listitem3__img1">
+                                    <?php $galleryProduct = \App\Models\Gallery::where('id_product', $product->id)->get(); ?>
+                                    <a href="{{ route('chi-tiet', ['id' => $product->id]) }}">
+                                        <img style="height: 124px!important;"
+                                            src="{{ url('public/admin/img/product') . '/' . $galleryProduct->first()->image }}"
+                                            alt="{{$product->name_product}}">
+                                    </a>
+                                </div>
+                                <article class="c-listitem3__content1" style="top: -5px;position: relative;">
+                                    <form method="post" action="{{ route('cart.add') }}">
+                                        @csrf
+                                        <a href="{{ route('chi-tiet', ['id' => $product->id]) }}">
+                                            <h4 class="title1">{{ $product->name_product }}</h4>
+                                        </a>
+                                        <div class="info1">
+                                            <span class="info1__price1">{{ $product->price }} đồng</span>
+                                            @guest
+                                                <button type="button" onclick="showLoginAlert()">
+                                                    <i class="fa fa-solid fa-cart-shopping fa-lg"></i>
+                                                </button>
+                                            @else
+                                                <button name="id_product" value="{{ $product->id }}" type="submit">
+                                                    <i class="fa fa-solid fa-cart-shopping fa-lg"></i>
+                                                </button>
+                                            @endguest
                                         </div>
-                                        <article class="c-listitem3__content1">
-                                            <form method="post" action="{{ route('cart.add') }}">
-                                                @csrf
-                                                <a href="{{ route('chi-tiet', ['id' => $product->id]) }}">
-                                                    <h4 class="title1">{{ $product->name_product }}</h4>
-                                                </a>
-                                                <div class="info1">
-                                                    <span class="info1__price1">{{ $product->price }} đồng</span>
-                                                    @guest
-                                                        <button type="button" onclick="showLoginAlert()">
-                                                            <i class="fa fa-solid fa-cart-shopping fa-lg"></i>
-                                                        </button>
-                                                    @else
-                                                        <button name="id_product" value="{{ $product->id }}"
-                                                                type="submit">
-
-                                                            <i class="fa fa-solid fa-cart-shopping fa-lg"></i>
-                                                        </button>
-                                                    @endguest
-                                                </div>
-                                            </form>
-                                        </article>
-                                    </div>
-                                @endforeach
-
+                                    </form>
+                                </article>
                             </div>
+
+                            @php $count++; @endphp
+
+                            @if($count % 3 == 0 || $loop->last)
+                                </div>
+                            @endif
+                        @endforeach
 
                         </div>
 
