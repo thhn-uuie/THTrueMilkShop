@@ -38,7 +38,9 @@
             class="publuuflip">
     </iframe>
 </div>
-
+<div class="footer">
+    @include('frontend.component.footer')
+</div>
 </body>
 
 </html>

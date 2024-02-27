@@ -30,7 +30,7 @@ class Hello extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Hello',
+            subject: 'Xin chào',
         );
     }
 

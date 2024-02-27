@@ -31,6 +31,23 @@
                         <input type="hidden" name="password" value="{{$password}}">
                         <input type="hidden" name="token" value="{{$token}}">
                     </div>
+
+                    @if(isset($resend))
+                        <div class="alert alert-success">
+                            <i class="fa fa-check-circle" aria-hidden="true"></i>
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>{{ $resend }}</strong>
+                        </div>
+                    @endif
+
+                    @if(isset($error))
+                        <div class="alert alert-danger">
+                            <i class="fa fa-check-circle" aria-hidden="true"></i>
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>{{ $error }}</strong>
+                        </div>
+                    @endif
+
                     <div class="in-group">
                         <button type="submit" class="btn btn-primary btn-block" name="action" value="login">Đăng nhập
                         </button>

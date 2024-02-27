@@ -89,7 +89,8 @@ class AdminController extends Controller
                 ]);
 
                 Mail::to($user->email)->send(new Hello($request->name,  $token));
-                return view('verify', compact(['name', 'password', 'token']))->with('error', 'Đã gửi lại!');
+                $resend = "Đã gửi lại mã xác nhận. Vui lòng kiểm tra lại email của bạn.";
+                return view('verify', compact(['name', 'password', 'token', 'resend']));
             } catch (\Throwable $th) {
                 dd($th);
             }
@@ -99,7 +100,8 @@ class AdminController extends Controller
                 $name=$request->name;
                 $password = $request->password;
                 $token = $request->token;
-                return view('verify', compact(['name', 'password', 'token']))->with('error', 'Mã xác thực không đúng!');
+                $error = "Mã xác thực không đúng!";
+                return view('verify', compact(['name', 'password', 'token', 'error']));
             }
             $data = [
                 'name' => $request->name,
